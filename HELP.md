@@ -6,8 +6,8 @@ Node is the foundation for React.js
 * [Bebelrc](https://babeljs.io/docs/en/): 
 Babel is a Javascript compiler that makes writing React apps easier.
 * [Webpack](https://webpack.js.org/): 
-Webapack compiles multiple .js files into one file to load into scripts when starting the app. 
-* [Yarn](https://classic.yarnpkg.com/en/)
+Webpack compiles multiple .js files into one file to load into scripts when starting the app. 
+* [Yarn](https://classic.yarnpkg.com/en/):
 Makes package and dependency management easier.
 
 ### Set up Environment
@@ -29,7 +29,7 @@ Makes package and dependency management easier.
 
 
 
-### Reference Documentation
+### Reference Documentation for Java Spring
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
@@ -41,7 +41,7 @@ For further reference, please consider the following sections:
 * [Spring Configuration Processor](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#configuration-metadata-annotation-processor)
 * [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#using-boot-devtools)
 
-### Guides
+### Guides for Java Spring
 The following guides illustrate how to use some features concretely:
 
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
