@@ -7,8 +7,7 @@ Node is the foundation for React.js
 Babel is a Javascript compiler that makes writing React apps easier.
 * [Webpack](https://webpack.js.org/): 
 Webapack compiles multiple .js files into one file to load into scripts when starting the app. 
-* [Yarn](https://classic.yarnpkg.com/en/):  
-Makes package and dependency management easier.
+* [Yarn](https://classic.yarnpkg.com/en/):  Makes package and dependency management easier.
 
 ### Set up Environment
 - Install Node, which  includes npm (which we will use to install other tools)
