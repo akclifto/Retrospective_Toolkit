@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  },
+  "name": "retrospective_toolkit",
+  "version": "1.0.0",
+  "description": "Skeleton for Web App",
+  "main": "index.js",
+  "repository": "https://github.com/akclifto/Retrospective_Toolkit.git",
+  "author": "akclifto <akclifto@asu.edu>",
+  "license": "MIT"
+}

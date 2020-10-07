@@ -1,5 +1,21 @@
 # Getting Started
 
+### Set up environment
+- Install Node, which  includes npm (which we will use to install other tools)
+    - [Install node](https://nodejs.org/en/download/)
+- Install Yarn via npm: npm install yarn 
+- Install Babel locally in the project:
+    - [Install Bebelrc](https://babeljs.io/docs/en/)
+    - Using Yarn:  yarn add babel-cli
+    - Using npm: npm install babel-cli
+- Set up Yarn to use dependencies
+    - Using Yarn: yarn init
+    - will ask a series of questions, you can press enter to move through them without input.
+- Install babel presets to work with react
+    - Using Yarn:  yarn add babel-preset-react babel-preset-env
+
+
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
