@@ -1,11 +1,11 @@
 # Getting Started
 
 ### References
-* [Node.js](https://nodejs.org/en/download/)
+* [Node.js](https://nodejs.org/en/download/): 
 Node is the foundation for React.js
-* [Bebelrc](https://babeljs.io/docs/en/)
+* [Bebelrc](https://babeljs.io/docs/en/): 
 Babel is a Javascript compiler that makes writing React apps easier.
-* [Webpack](https://webpack.js.org/)
+* [Webpack](https://webpack.js.org/): 
 Webapack compiles multiple .js files into one file to load into scripts when starting the app. 
 
 ### Set up Environment
@@ -14,14 +14,16 @@ Webapack compiles multiple .js files into one file to load into scripts when sta
 - Install Babel locally in the project:
     - Using Yarn:  yarn add babel-cli
     - Using npm: npm install babel-cli
-- Set up Yarn to use dependencies
-    - Using Yarn: yarn init
+- Set up Yarn to use dependencies, using Yarn:
+    - yarn init
     - will ask a series of questions, you can press enter to move through them without input.
-- Install babel presets to work with react
-    - Using Yarn:  yarn add babel-preset-react babel-preset-env babel-loader@7.1.5
-- Install webpack via Yarn
-    - Using Yarn: yarn add webpack webpack-cli
-
+- Install babel presets to work with react, using Yarn:  
+    - yarn add babel-preset-react babel-preset-env babel-loader@7.1.5 babel-core
+    - yarn add babel-plugin-transform-class-properties
+- Install webpack via Yarn:
+    - yarn add webpack webpack-cli
+- Install React components via Yarn:
+    - yarn add react react-dom
 
 
 
