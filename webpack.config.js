@@ -3,7 +3,7 @@ const path = require('path');
 // entry point (app.js) -> output final bundle file
 module.exports = {
     mode : 'development',
-    entry: './src/ui/app.js',
+    entry: './src/main/ui/app.js',
     output : {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
