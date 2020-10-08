@@ -7,7 +7,8 @@
   "author": "akclifto <akclifto@asu.edu>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack-dev-server"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -16,9 +17,17 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "webpack": "^4.44.2"
+    "react-modal": "^3.11.2",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "validator": "^13.1.17",
+    "webpack": "^4.44.2",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "webpack-cli": "^3.3.12"
