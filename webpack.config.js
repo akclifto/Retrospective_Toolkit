@@ -5,7 +5,7 @@ module.exports = {
     mode : 'development',
     entry: './src/main/ui/app.js',
     output : {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'src/main/resources/public'),
         filename: 'bundle.js'
     },
     // loader, test rule using ' /.sometext$/ '  is called 'regular expression'
@@ -27,7 +27,7 @@ module.exports = {
     },
     devtool: 'eval-cheap-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'src/main/resources/public')
     }
 };
 

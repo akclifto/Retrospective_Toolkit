@@ -1,1 +1,1 @@
-web: java -jar target/reactTest.jar
+web: java -jar target/reactTest-1.0.jar
