@@ -9,7 +9,8 @@ Based on the requirements, I think Basic Auth is probably going to be sufficient
 
 ## Adam
 - **Basic Auth:**  Requires sign in with username/ID and password.
-		○ Typically takes the password and compares it to that which is stored in the authentication database.
+	- Typically takes the password and compares it to that which is stored in the authentication database.
+	- This appears to be the most applicable approach for our project.
 
 |   |   |   |   |
 |---|---|---|---|
