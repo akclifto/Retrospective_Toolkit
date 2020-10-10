@@ -22,5 +22,12 @@ Network Connectivity Diagram Created and Updated
     
 
 ## Adam
+- Potential network flow must be maintainable and scale.
+   -  Heroku service for app hosting and database (Postgres, included, but can use other database if necessary).
+      -  Heroku can scale app automatically as needed.  Can be adjusted in configuration of app service on website.  
+         -  assuming we build it correctly.
+   -  potential high-level design:
+   ![Potential High Level Design](resources/high-level-layer-design.PNG)
+
 
 ## Chris
