@@ -5,6 +5,7 @@
 ## Dillon
 
 ## Shane
+Based on the requirements, I think Basic Auth is probably going to be sufficient.  We know we will have to make updates and do an integration with StateFarms internal AD for authentication if they go to onboard this app.  So burning through the additional cycles beyond basic auth is probably not required.  We can add a stretch goal to dig standup an LDAP server and integrate authentication with that to make the transition from Heroku to SF easier, but I do not think that should be a priority task.
 
 ## Adam
 - **Basic Auth:**  Requires sign in with username/ID and password.
