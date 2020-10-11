@@ -1,6 +1,7 @@
 # Team 18's notes for Networking.
 
 ## Sergio
+   - AWS
 
 ## Dillon
 
