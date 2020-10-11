@@ -49,4 +49,5 @@ Excellent article discussing some animation strategies [React Animation Basics](
 ## Chris
 - **Fontend:** React would be the best framework as it is used widely in industry and was also a technology that was suggested by our sponsor. It also has fantastic documentation and a large community around it which has created many libraries to make development work with react easier.
   -  GraphQL or REST for fetching data
-- **Backend:** Node/Express
+- **Backend:** Node.JS with Express.JS
+  - This is pretty much the standard and would be the easiest to get up and running as Heroku and firebase both support Node.JS application out of the box.
