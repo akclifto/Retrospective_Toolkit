@@ -49,10 +49,11 @@ Excellent article discussing some animation strategies [React Animation Basics](
 ## Chris
 - **Fontend:** 
   - React.JS would be the best framework as it is used widely in industry and was also a technology that was suggested by our sponsor. It also has fantastic documentation and a large community around it which has created many libraries to make development work with react easier.
-    -  GraphQL or REST for fetching data
   - Vue.JS is another fantastic framework. It is not as widely used as react, but it can accomplish everything react can and it seems it can be easier to develop in.
 - **Backend:** 
-  - Node.JS with Express.JS
-    - This is pretty much the standard and would be the easiest to get up and running as Heroku and firebase both support Node.JS applications out of the box.
+  - Node.JS with Express.JS REST API
+    - This is pretty much the standard and would be the easiest to get up and running as Heroku and Firebase both support Node.JS applications out of the box. It is quick and performs exceptionally well provided it is not serving as the backend to something that is computationally heavy. Development time is also lessened as it takes less lines of code then it would to accomplish the same thing with others solutions.
+   - GraphQL
+      - GraphQL is another option, but since our requirements are not complex, a REST API would perform better and take less development time to implement
    - Java Spring BOOT
-      - This is a technology that was recommended by the sponsor as they are mostly a Java house. Can work as a backend as well but could take more work to get it running with the other technologies we are using in the project.
+      - This is a technology that was recommended by the sponsor as they are mostly a Java house. Can work as a backend for the project but it would take more work to get it running with the other technologies we are using in the project. This solution also has a larger memory footprint which with cloud services can create greater costs. It is a solid enterprise solution, but since we are not dealing with a data heavy or computationally heavy application, we would have better performance and quicker development time using a Node.JS/Express approach.
