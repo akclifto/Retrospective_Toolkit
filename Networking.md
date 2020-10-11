@@ -1,13 +1,14 @@
 # Team 18's notes for Networking.
 
 ## Sergio
-  -**AWS** would be a deployment platform for docker containers. This optionw ould require a lot of setup and configuration. It would mean we have a ton of flexibility. This comes in a free option for us to use for our capstone.
-  
-  -**Firebase** can handle authentication, storage, and the application program all with itself. It contains a wealth of options to analyze and grow the project. However, a big drawback is that it is very hard to migrate from it. This would mean that our sponsor would have a difficult time moving the capstone to their proprietary systems once the project is done.
 
-  -**Heroku** is a likely the best choice for the ease of use straightforward nature. It is easy to migrate projects to and from heroku, and comes with a student option to use for the capstone. Heroku offers site hosting, with a drawback of the site required a "wake-up" period after inactivity.
-   
-- Heroku has limited plugin support compared to other options. For our capstone, they should be sufficient as it offers MySQL, Postgres, and MongoDB support.
+- **AWS** would be a deployment platform for docker containers. This optionw ould require a lot of setup and configuration. It would mean we have a ton of flexibility. This comes in a free option for us to use for our capstone.
+  
+- **Firebase** can handle authentication, storage, and the application program all with itself. It contains a wealth of options to analyze and grow the project. However, a big drawback is that it is very hard to migrate from it. This would mean that our sponsor would have a difficult time moving the capstone to their proprietary systems once the project is done.
+
+- **Heroku** is a likely the best choice for the ease of use straightforward nature. It is easy to migrate projects to and from heroku, and comes with a student option to use for the capstone. Heroku offers site hosting, with a drawback of the site required a "wake-up" period after inactivity.
+
+  - Heroku has limited plugin support compared to other options. For our capstone, they should be sufficient as it offers MySQL, Postgres, and MongoDB support.
 
 ## Dillon
 

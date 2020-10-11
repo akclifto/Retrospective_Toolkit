@@ -2,6 +2,20 @@
 
 ## Sergio
 
+- **Java Spring Boot** would utilize a REST to send and receive data from the the backend and the website. This data will be formatted in JSON as we will be using javascript of some sort for the website design.
+  
+  - This approach is easy as the setup is handled by spring framework that exists in most IDEs.
+
+  - Talks to the browser via GET and POST calls which contain JSON objects.
+
+  - Easy to implement with Heroku as it sets up either gradle or maven during spring setup.
+
+- **ReactJS** is a library to greatly ease the creation process of the project. It is built on top of nodeJS.
+  
+  - Easily modularize elements of website into components for reuse.
+
+  - Ton of libraries to make designing web interface and animation easier.
+
 ## Dillon
 
 ## Shane
