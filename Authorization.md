@@ -1,12 +1,12 @@
 # Team 18's notes for Authorization.
 
 ## Sergio
-- **Basic Auth** is an obvious choice for authorization. It is easy to implement and straight forward. It isn't as basic as storing data in plain text but it is definitely limited in security. This method utilizes Base64 encoding/decoding in the Header. 
-  - Adding JWT to determine authorization would be a smart idea. This would handle admin granting access to admin pages once they are authenticated.
+-**Basic Auth** is an obvious choice for authorization. It is easy to implement and straight forward. It isn't as basic as storing data in plain text but it is definitely limited in security. This method utilizes Base64 encoding/decoding in the Header. 
+  -Adding JWT to determine authorization would be a smart idea. This would handle admin granting access to admin pages once they are authenticated.
 ![JWT-Example](resources/JWT-Example.webp)
 
-- **OAuth** relegates the authorization process to another site (i.e: Google, Facebook). There are many ***flows*** that Oath can use to perform authentication, such as granting short-lived code or an access token.
-  - This would be a good stretch goal to implement as it is a part of the best practices to do.
+-**OAuth** relegates the authorization process to another site (i.e: Google, Facebook). There are many ***flows*** that Oath can use to perform authentication, such as granting short-lived code or an access token.
+  -This would be a good stretch goal to implement as it is a part of the best practices to do.
 
 It is also important to note with either decision we choose, our sponsor will use their company integration as the authentication. The lifetime of the authentication will only live as long as the project remains our capstone.
 
