@@ -11,6 +11,20 @@
 It is also important to note with either decision we choose, our sponsor will use their company integration as the authentication. The lifetime of the authentication will only live as long as the project remains our capstone.
 
 ## Dillon
+Basic Authentication
+- Most basic authentication utilizing a password and a username tied to the password. This is easy to achieve but for our client may not be the best due to security issues. Can be a victim of brute force hacking which employs many attempts to get into an account. Although easy to deploy, the danger to our client is large.
+
+MultiFactor
+- MFA requires multiple methods to identify our user. This can be deployed such as a log in attempt with a password and username and also include a captcha or a code sent to a third party email. People can lose their second authorization but it is a good defense against hack attempts. Could be utilized for our client but deployment may be difficult.
+
+Cerificate Based
+Identifies users based on digital certificates. This can be used using a public key and a digital signature of a certifcation authority. User would simply provide a digital cerficiate when sigining on to our server. This is simply to much for what we are trying to achieve and may cause too many complications. 
+
+Biometric authentication
+Biometric autehntication uses biological aspects of a person such as a fingerpint scanner or face scanner. We do not have the current technologies at our disposal and cannot deploy this to the client. This may be used when developing an iphone app for the deliverables. Using the Iphone's toolkit and face scanning technology. We could request users to either enter a passcode or use the face scanner. This opens up alot of debate for privacy and information of clients. 
+
+Token Based authentication
+Allows aour user to enter credentials into our server and receive an encrypte string to the user. The user can then use the token that the system gave to enter into in order to avoid entering credentials again. This is quite useful for the user but requires heavy implemntation on our part. It may be too much for our current project. 
 
 ## Shane
 Based on the requirements, I think Basic Auth is probably going to be sufficient.  We know we will have to make updates and do an integration with StateFarms internal AD for authentication if they go to onboard this app.  So burning through the additional cycles beyond basic auth is probably not required.  We can add a stretch goal to dig standup an LDAP server and integrate authentication with that to make the transition from Heroku to SF easier, but I do not think that should be a priority task.
