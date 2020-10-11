@@ -47,3 +47,6 @@ Excellent article discussing some animation strategies [React Animation Basics](
       - will need to research this topic more when we begin to use it.
 
 ## Chris
+- **Fontend:** React would be the best framework as it is used widely in industry and was also a technology that was suggested by our sponsor. It also has fantastic documentation and a large community around it which has created many libraries to make development work with react easier.
+  -  GraphQL or REST for fetching data
+- **Backend:** Node/Express
