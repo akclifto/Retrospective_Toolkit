@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import DiceLanding from './containers/DiceLanding/DiceLanding';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <DiceLanding />
   </React.StrictMode>,
   document.getElementById('root')
 );
