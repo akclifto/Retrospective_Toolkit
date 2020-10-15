@@ -6,10 +6,10 @@ async function login(email, password) {
     try {
         const user = await userDAO.findUserByEmail(email);
 
-        const match = await bcrypt.compare(password, user.pwhash);
+        const match = await bcrypt.compare(password, user.rows[0].password);
 
         if (match) {
-            return {id: user.id, roles: user.roles};
+            return {id: user.rows[0].id, roles: user.rows[0].role};
         } else {
             return Promise.reject('wrong username or password');
         }
