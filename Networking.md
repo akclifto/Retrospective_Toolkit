@@ -26,7 +26,11 @@ A couple of other things to consider and make decisions on
 Network Connectivity Diagram Created and Updated
 ![NetworkConnectivity](resources/network_connectivity.png)
 
+Reserach update:  Looks like we may have to setup a call to get the DB URL whenever we make use the DB.  Had issue with url changing... found out it is a feature.  Should use heroku config to pull DB URL at app start.
 
+*It is best practice to always fetch the database URL config var from the corresponding Heroku app when your application starts. For example, you may follow 12Factor application configuration principles by using the Heroku CLI and invoke your process like so*
+
+`DATABASE_URL=$(heroku config:get DATABASE_URL -a your-app) your_process`
     
 
 ## Adam
