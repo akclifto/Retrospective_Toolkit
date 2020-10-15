@@ -1,8 +1,8 @@
-// fake db for roughing out some structure
-
 const bcrypt = require('bcrypt');
+const pool = require('../db/postgres');
 
-const users = {
+// fake db for testing
+/*const users = {
     'user1@asu.edu' : {
         pwhash: bcrypt.hashSync('user1pw', 10),
         roles: ['ADMIN'],
@@ -14,11 +14,24 @@ const users = {
         roles: ['USER'],
         id: '9d8cf56b-1780-4972-81ff-1007b6a96ca5'
     }
-}
+}*/
 
 async function findUserByEmail(email) {
-    const user = users[email];
-    return user ? user : Promise.reject('user not found');
+    try { 
+    const user = await pool.query(
+        `SELECT users.id, email, password, roles.role 
+        FROM users 
+        LEFT JOIN roles 
+        ON roles.id = users.role
+        WHERE email = '${email}'`);
+
+    // const user = users[email];
+    return user.rowCount > 0 ? user : Promise.reject('user not found');
+    } catch(err)  {
+        console.error(err) // TODO: remove from production code'
+    }
 }
 
-module.exports = {findUserByEmail};
+module.exports = {
+    findUserByEmail
+};
