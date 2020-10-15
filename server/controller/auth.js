@@ -1,4 +1,6 @@
-function login (req, res) {
+const authService = require('../service/auth');
+
+async function login (req, res) {
 
     const {email, password} = req.body;
 
@@ -9,14 +11,14 @@ function login (req, res) {
         return res.status(400).json('Bad request params - you need to provide an email and password');
     }
     
-    //check if login information is correct
-    // ...
-    
-    // for testing we'll assume the login is correct for now
-    req.session.clientId = 'someuser';
-    req.session.someNum = 42;
-    
-    res.json('you are now logged in');
+    try {
+        const user = await authService.login(email, password);
+        req.session.user = user;
+        res.sendStatus(204);
+    } catch(err) {
+        console.error(err); // TODO: Only for debugging. Remove this.
+        res.status(401).json(err);
+    }
 }
 
 module.exports = {
