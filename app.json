@@ -1,5 +1,0 @@
-{
-  "name": "reactTest",
-  "description": "A barebones Java app with React, which can easily be deployed to Heroku.",
-  "addons": [ "heroku-postgresql" ]
-}

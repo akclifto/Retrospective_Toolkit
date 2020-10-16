@@ -1,1 +1,0 @@
-web: java -jar target/reactTest-1.0.jar
