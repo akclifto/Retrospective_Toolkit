@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a from-scratch attemp at creating a functional java backend service to wire to frontend.
+This is a from-scratch attempt at creating a functional java backend service to wire to frontend.
 
 ### Reference Documentation
 
