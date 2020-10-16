@@ -75,6 +75,7 @@ public class MessageServiceDao {
         if(message.getId() == null) {   
             ++messageCount;
         }
+        
         for(Message i : messages) {
             
             if(i.getId() == message.getId()) {
