@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a from-scratch attempt at creating a functional java backend service to wire to frontend.
+This is a from-scratch attempt at creating a functional java backend service to wire to frontend. Build tools include Gradle and Yarn. Yarn is used as primary tool for scripts.  See *Yarn scripts* below.
 
 ### Reference Documentation
 
@@ -30,13 +30,13 @@ Makes package and dependency management easier.
 
 #### Yarn Scripts
 
-View the package.json file to see available script to run in Yarn.  The goal was to use Yarn script for all scripts related to
+View the package.json file to see available scripts to run in Yarn.  The goal was to use Yarn script for all scripts related to
 development.  The only script not included is starting the Spring Application server.
 
 By default, the Spring server runs Apache Tomcat on local port: 8080.
 By default, the frontend development server runs on local port: 3000.
 
-* **build:** Runs webpack to build bundle.js file.
+* **build:** Runs webpack to build frontend files. View *webpack.config.js* for more details on build.
 * **build-all:** Runs both webpack and gradle to build frontend and backend files.
 * **gradle:** Runs gradle to build backend files.
 * **gradle-trace:** Runs gradle with stacktrace for debugging.
