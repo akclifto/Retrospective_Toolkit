@@ -5,19 +5,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import dieImage from '../../resources/volleyball.svg'
-import classes from './Die.css';
+import classes from './Die.module.css';
+
 
 const Die = (props) => {
     const assignedClasses = [];
     const [counter, setCounter] = useState(0);
-    const buttonStyle = {
-          border: '1px solid black',
-          padding: '16px',
-          backgroundColor: 'darkgreen',
-          font: 'inherit',
-          color: 'white',
-          cursor: 'pointer'
-    };
 
     useEffect(() => {
       //HTTP request
@@ -25,33 +18,38 @@ const Die = (props) => {
       alert('Rolling somewhere else...');
       }
     }, [counter])
-  
+    
+    let btnClass = '';
+
+    if (props.showPersons) {
+      btnClass = '';
+    }
 
     if (counter === 1) {
       assignedClasses.push(classes.red); //assignedClasses = ['bold', 'red']
  
-    } else if (counter >= 2) {
+    } if (counter >= 2) {
       assignedClasses.push(classes.bold); //assignedClasses = ['bold']
       
     }
 
     return (
       <div>
-        <img className="Die" src={dieImage} alt="Dice" />
+        <img src={dieImage} alt="Dice" />
         <p 
           className={assignedClasses.join(' ')}>
             This die has {props.numSides} sides and is an {props.title} die. 
           </p>
         <button 
-          style={buttonStyle}
           onClick={() => setCounter(counter + 1)}
+          className = {btnClass}
           >
           Send Message to Server (no server exists yet)
         </button>
       </div>
     )
-
 }
+
 
 Die.propTypes = {
   title: PropTypes.string,

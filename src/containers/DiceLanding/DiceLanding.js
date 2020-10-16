@@ -1,3 +1,6 @@
+/**
+ * This class will be used as a container component that holds the other components in the landing page
+ */
 
 import React from 'react';
 import Emoji from '../../components/Emoji';
