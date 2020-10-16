@@ -9,12 +9,10 @@
   "scripts": {
     "build": "webpack",
     "build-all": "yarn run gradle && yarn run build",
-    "dev": "webpack-dev-server --port 3000",
     "gradle": "gradle build",
     "gradle-trace": "gradle build --stacktrace",
     "gradle-warn": "gradle build --warning-mode all ",
-    "start": "react-scripts start",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server --port 3000"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",

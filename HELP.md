@@ -4,7 +4,32 @@
 
 This is a from-scratch attempt at creating a functional java backend service to wire to frontend.
 
+
+
 ### Reference Documentation
+
+#### References for React
+
+* [Maven](https://maven.apache.org/install.html):
+Maven used for Java/Spring boot build files
+* [Node.js](https://nodejs.org/en/download/): 
+Node is the foundation for React.js
+* [Bebelrc](https://babeljs.io/docs/en/): 
+Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
+* [Webpack](https://webpack.js.org/): 
+Webpack compiles multiple .js files into one file to load into scripts when starting the app. 
+* [Yarn](https://classic.yarnpkg.com/en/):
+Makes package and dependency management easier.
+
+#### Setup after cloning repository:
+
+- navigate to toplevel folder in CLI (cd path/to/Retrospetive_Toolkit/)
+  - Ensure there is package.json in the root folder
+  - From CLI, run:
+    -   npm install yarn
+    -   yarn
+        - This will pull all the dependencies from package.json
+
 
 For further reference, please consider the following sections:
 
