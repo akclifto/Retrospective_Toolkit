@@ -37,15 +37,16 @@ class ReactApp extends React.Component {
                 </div>
 
                 <div>
+                <h3>Calling Backend Java Service to get some Messages:</h3>
                     {
                         this.state.messages.map( msg => 
-                            <ul>
-                                <li key={msg.id}> 
-                                    <li> Message id: {msg.id}</li>
-                                    <li> Message: {msg.message}</li>
-                                    <li> Some Int Value: {msg.testInt}</li>
-                                </li>
-                            </ul>
+                            <p>
+                                <ul key={msg.id}> 
+                                    <li> id: {msg.id} <br/></li>
+                                    <li> Message: {msg.message}<br/></li>
+                                    <li> Some Int Value: {msg.testInt}<br/></li>
+                                </ul>
+                            </p>
                         )
                     }
                 </div>
