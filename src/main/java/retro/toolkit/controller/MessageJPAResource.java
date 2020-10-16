@@ -17,13 +17,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import retro.toolkit.model.Message;
 import retro.toolkit.service.MessageNotFoundException;
 import retro.toolkit.service.MessageRepository;
-import retro.toolkit.service.MessageServiceDao;
 
+/**
+ * This class is a controller and resource for Message Repository Interface to test local data storage
+ */
 @RestController
 public class MessageJPAResource {
 
-    @Autowired
-    private MessageServiceDao messageService;
 
     @Autowired 
     private MessageRepository messageRepository;
@@ -51,7 +51,7 @@ public class MessageJPAResource {
     // create a new message via POST
     @PostMapping("jpa")
     public ResponseEntity<Object> createMessage(@RequestBody Message message) {
-        Message sevedMsg = messageService.save(message);
+        Message sevedMsg = messageRepository.save(message);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(sevedMsg.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
