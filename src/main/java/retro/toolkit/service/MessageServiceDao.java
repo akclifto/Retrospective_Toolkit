@@ -29,8 +29,8 @@ public class MessageServiceDao {
 
     //random message to generate
     public void setRandomMessage() {
-        int i = ThreadLocalRandom.current().nextInt(1, 11);
-        this.save(new Message(messageCount, "Here is a random int from the backend! ", i));
+        int i = ThreadLocalRandom.current().nextInt(1, 101);
+        this.save(new Message(++messageCount, "Here is a random int from the backend! ", i));
     }
 
     /**
@@ -71,15 +71,20 @@ public class MessageServiceDao {
      */
     private boolean checkID(Message message) {
 
+        boolean flag = true;
         for(Message i : messages) {
             
             if(i.getId() == message.getId()) {
                 System.out.printf("duplicate ID found for Message %d \n", i.getId());   
-                messageCount++;
-                return false;
+                message.setId(++messageCount);
+                flag = false;
             }
         } 
-        return true;
+        if(!flag){
+            checkID(message);
+        }
+        
+        return flag;
     }
 
 

@@ -20,6 +20,11 @@ public class MessageResource {
         return messageService.findAll();
     }
 
+    @GetMapping("test")
+    public void setRandomMessage(){
+        messageService.setRandomMessage();
+    }
+
     //test method to retrieve message by id at new mapping
     @GetMapping("messages/{id}")
     public Message retrieveMessage(@PathVariable long id) throws UserNotFoundException {
