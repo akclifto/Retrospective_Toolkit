@@ -1,7 +1,8 @@
 import React from 'react';
-import * as serviceWorker from './service/serviceWorker';
+import ReactDOM from 'react-dom';
+import * as serviceWorker from './serviceWorker';
 
-React.DOM(<p>Test render</p>, document.getElementById('app'));
+React.DOM(<div>SOME TEST RENDER</div>, document.getElementById('app'));
 
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

@@ -23,10 +23,10 @@ module.exports = {
             ]
         } ]
     },
-    // devtool: 'eval-cheap-module-source-map',
-    // devServer: {
-    //     contentBase: path.join(__dirname, 'public'),
-    //     historyApiFallback: true
-    // }
+    // devtool: 'eval-cheap-source-map',
+    devServer: {
+        contentBase: path.join(__dirname, './src/main/resources/public'),
+        historyApiFallback: true
+    }
 };
 
