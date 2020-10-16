@@ -28,6 +28,8 @@ By default, the frontend development server runs on local port: 3000.
 * **gradle-warn:** Run gradle with warnings to check dependency deprecation.
 * **start:** Starts local frontend development environment on port 3000.  
 
+*Script example from CLI: **yarn build-all***
+
 ### Reference Documentation
 
 #### References for React
