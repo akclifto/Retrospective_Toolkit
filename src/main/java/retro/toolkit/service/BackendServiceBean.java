@@ -1,4 +1,4 @@
-package retro.toolkit.controller;
+package retro.toolkit.service;
 
 /**
  * This service creates a json object to pass information from the backend to the frontend.
@@ -7,7 +7,9 @@ package retro.toolkit.controller;
 public class BackendServiceBean {
 
     //these var names need to match the toString [varName: %s], otherwise will get duplicate in the same json
+    public String id;
     public String message;
+    public int testint = 20;
 
     public BackendServiceBean(String msg) {
         this.message = msg;
