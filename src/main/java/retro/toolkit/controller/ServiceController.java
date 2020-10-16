@@ -20,7 +20,7 @@ public class ServiceController {
     public BackendServiceBean serviceBean() {
         return new BackendServiceBean("Test data passing");
     }
-    
+
 
     // example using method test with bean and path variable
     @GetMapping({"hello/{name}"})
