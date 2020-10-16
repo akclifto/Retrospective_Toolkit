@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Message {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     
