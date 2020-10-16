@@ -1,7 +1,17 @@
 import React from 'react';
-
+import MessageService from './service/MessageService';
 
 class ReactApp extends React.Component {
+
+    state = {
+        messages: []
+    };
+
+    componentDidMount() {
+        MessageService.getMessages().then((response) => {
+            this.setState( { messages: response.data } )
+        });
+    }
 
     render() {
 
