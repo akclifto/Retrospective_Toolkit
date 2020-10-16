@@ -26,7 +26,11 @@ public class MessageServiceDao {
         return messages;
     }
 
-
+    /**
+     * Find a single message by id
+     * @param id : id to search in messages list
+     * @return message with given id.
+     */
     public Message findMessageById(long id){
         for (Message i : messages) {
             if(i.getId() == id) {

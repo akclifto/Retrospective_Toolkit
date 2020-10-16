@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javassist.NotFoundException;
 import retro.toolkit.model.Message;
 
 @RestController
@@ -22,7 +23,14 @@ public class MessageResource {
 
     //test method to retrieve message by id at new mapping
     @GetMapping("messages/{id}")
-    public Message retrieveMessage(@PathVariable long id){
-        return messageService.findMessageById(id);
+    public Message retrieveMessage(@PathVariable long id) throws NotFoundException {
+
+            Message msg = messageService.findMessageById(id);
+            if(msg == null){
+                throw new NotFoundException("Message returned null");
+            } else {
+                return msg;
+            }
+
     }
 }
