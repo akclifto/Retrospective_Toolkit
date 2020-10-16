@@ -2,6 +2,7 @@ package retro.toolkit.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,15 +30,17 @@ public class MessageJPAResource {
 
     @GetMapping("jpa")
     public List<Message> retrieveAllMessages() {
-        return messageService.findAll();
+        return messageRepository.findAll();
     }
 
     // test method to retrieve message by id at new mapping
     @GetMapping("jpa/{id}")
-    public Message retrieveMessage(@PathVariable Integer id) throws MessageNotFoundException {
+    public Optional<Message> retrieveMessage(@PathVariable Integer id) throws MessageNotFoundException {
 
-        Message msg = messageService.findMessageById(id);
-        if (msg == null) {
+        // Message msg = messageService.findMessageById(id);
+        Optional<Message> msg = messageRepository.findById(id);
+
+        if (!msg.isPresent()) {
             throw new MessageNotFoundException("Message returned null. Id searched: " + id);
         } else {
             return msg;

@@ -17,6 +17,11 @@ import retro.toolkit.model.Message;
 import retro.toolkit.service.MessageNotFoundException;
 import retro.toolkit.service.MessageServiceDao;
 
+/**
+ * This class is a controller and resource for MessageServiceDao utilization.
+ * It maps webpaths and uses the MessageServiceDao to perform the necessary logic.
+ */
+
 @RestController
 public class MessageResource {
 
