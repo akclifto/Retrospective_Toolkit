@@ -1,4 +1,4 @@
-package com.retrokit.toolkit;
+package retro.toolkit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
