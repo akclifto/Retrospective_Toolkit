@@ -11,11 +11,10 @@ import retro.toolkit.model.Message;
 @Component
 public class MessageServiceDao {
     
-
     public static int messageCount = 3;
     private static List<Message> messages = new ArrayList<>();
 
-    //static block to add some random data
+    //static block to add some random data for testing
     static {
         messages.add(new Message(1, "First Message", 20));
         messages.add(new Message(2, "Second Message", 50));
@@ -75,7 +74,7 @@ public class MessageServiceDao {
         if(message.getId() == null) {   
             ++messageCount;
         }
-        
+
         for(Message i : messages) {
             
             if(i.getId() == message.getId()) {
@@ -89,6 +88,20 @@ public class MessageServiceDao {
         }
         
         return flag;
+    }
+
+
+    //Delete a message
+    public Message deleteMessage(Integer id) {
+
+        for(Message i : messages) {
+            if(i.getId() == id) {
+                messages.remove(i);
+                return i;
+            }
+        }
+        System.out.printf("Message not found by id: %d\n", id);
+        return null;
     }
 
 }
