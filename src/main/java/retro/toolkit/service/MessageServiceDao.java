@@ -38,7 +38,7 @@ public class MessageServiceDao {
      * @param id : id to search in messages list
      * @return message with given id.
      */
-    public Message findMessageById(long id){
+    public Message findMessageById(Integer id){
         for (Message i : messages) {
             if(i.getId() == id) {
                 return i;
@@ -72,6 +72,9 @@ public class MessageServiceDao {
     private boolean checkID(Message message) {
 
         boolean flag = true;
+        if(message.getId() == null) {   
+            ++messageCount;
+        }
         for(Message i : messages) {
             
             if(i.getId() == message.getId()) {

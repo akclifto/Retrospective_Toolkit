@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import retro.toolkit.model.Message;
@@ -29,14 +31,20 @@ public class MessageResource {
 
     //test method to retrieve message by id at new mapping
     @GetMapping("messages/{id}")
-    public Message retrieveMessage(@PathVariable long id) throws MessageNotFoundException {
+    public Message retrieveMessage(@PathVariable Integer id) throws MessageNotFoundException {
 
-            Message msg = messageService.findMessageById(id);
+        Message msg = messageService.findMessageById(id);
             if(msg == null){
                 throw new MessageNotFoundException("Message returned null. Id searched: " + id);
             } else {
                 return msg;
             }
 
+    }
+
+    //create a new message via POST
+    @PostMapping("messages")
+    public void createMessage(@RequestBody Message message){
+        Message savedMsg = messageService.save(message);
     }
 }

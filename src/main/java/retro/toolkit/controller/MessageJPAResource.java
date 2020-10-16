@@ -25,7 +25,7 @@ public class MessageJPAResource {
     }
 
     @GetMapping("jpa/{id}")
-    public Message retrieveMessage(@PathVariable long id) throws MessageNotFoundException {
+    public Message retrieveMessage(@PathVariable Integer id) throws MessageNotFoundException {
 
         Message msg = messageService.findMessageById(id);
         if(msg == null){

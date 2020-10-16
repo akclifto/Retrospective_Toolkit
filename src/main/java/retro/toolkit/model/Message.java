@@ -14,7 +14,7 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     
     private String message;
@@ -30,18 +30,18 @@ public class Message {
      * @param message : message to be passed
      * @param testInt : test int to be passed
      */
-    public Message(long id, String message, int testInt){
+    public Message(Integer id, String message, int testInt){
         super();
         this.id = id;
         this.message = message;
         this.testInt = testInt;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id){
+    public void setId(Integer id){
         this.id = id;
     }
 
