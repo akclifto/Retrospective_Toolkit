@@ -2,24 +2,9 @@
 
 ## Introduction
 
-This is a from-scratch attempt at creating a functional java backend service to wire to frontend. Build tools include Gradle and Yarn. Yarn is used as primary tool for scripts.  See *Yarn scripts* below.
+This is a from-scratch attempt at creating a functional java backend service to wire to frontend. Build tools include Gradle and Yarn. Yarn is used as primary tool for scripts.  See *Yarn Scripts* below.
 
-### Reference Documentation
-
-#### References for React
-
-* [Maven](https://maven.apache.org/install.html):
-Maven used for Java/Spring boot build files
-* [Node.js](https://nodejs.org/en/download/):
-Node is the foundation for React.js
-* [Bebelrc](https://babeljs.io/docs/en/):
-Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
-* [Webpack](https://webpack.js.org/):
-Webpack compiles multiple .js files into one file to load into scripts when starting the app.
-* [Yarn](https://classic.yarnpkg.com/en/):
-Makes package and dependency management easier.
-
-#### Setup after cloning repository
+### Setup After Cloning Repository
 
 * Navigate to the top-level folder in CLI (cd path/to/Retrospective_Toolkit/)
   * Ensure there is package.json in the root folder
@@ -42,6 +27,21 @@ By default, the frontend development server runs on local port: 3000.
 * **gradle-trace:** Runs gradle with stacktrace for debugging.
 * **gradle-warn:** Run gradle with warnings to check dependency deprecation.
 * **start:** Starts local frontend development environment on port 3000.  
+
+### Reference Documentation
+
+#### References for React
+
+* [Maven](https://maven.apache.org/install.html):
+Maven used for Java/Spring boot build files.
+* [Node.js](https://nodejs.org/en/download/):
+Node is the foundation for React.js.
+* [Bebelrc](https://babeljs.io/docs/en/):
+Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
+* [Webpack](https://webpack.js.org/):
+Webpack compiles multiple .js files into one file to load into scripts when starting the app.
+* [Yarn](https://classic.yarnpkg.com/en/):
+Makes package, scripting and dependency management easier.
 
 For further reference, please consider the following sections:
 
