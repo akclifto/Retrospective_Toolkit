@@ -56,7 +56,9 @@ The timeline for development of the Toolkit will be broken down into Sprint goal
 ## Implementation:
 
 Product Aspects and Tools: Frontend
+
 Product Aspects and Tools: Backend
+
 Product Aspects and Tools: Cloud-hosting and Database
 
 Minimum Value Product (MVP):
