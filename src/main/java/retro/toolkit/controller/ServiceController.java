@@ -1,5 +1,6 @@
 package retro.toolkit.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import retro.toolkit.service.BackendServiceBean;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ServiceController {
 
 
-    //Get mapping for index
+    //Get mapping for index TODO: fix
     @RequestMapping("/")
     String index(){
         return "index";
