@@ -1,8 +1,8 @@
-.Landing {
+.landing {
   text-align: center;
 }
 
-.App-logo {
+.appLogo {
   height: 30vmin;
   pointer-events: none;
   position: absolute;
@@ -12,7 +12,7 @@
 }
 
 
-.Landing-header {
+.landingHeader {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
