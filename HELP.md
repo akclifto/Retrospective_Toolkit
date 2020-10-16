@@ -4,32 +4,44 @@
 
 This is a from-scratch attempt at creating a functional java backend service to wire to frontend.
 
-
-
 ### Reference Documentation
 
 #### References for React
 
 * [Maven](https://maven.apache.org/install.html):
 Maven used for Java/Spring boot build files
-* [Node.js](https://nodejs.org/en/download/): 
+* [Node.js](https://nodejs.org/en/download/):
 Node is the foundation for React.js
-* [Bebelrc](https://babeljs.io/docs/en/): 
+* [Bebelrc](https://babeljs.io/docs/en/):
 Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
-* [Webpack](https://webpack.js.org/): 
-Webpack compiles multiple .js files into one file to load into scripts when starting the app. 
+* [Webpack](https://webpack.js.org/):
+Webpack compiles multiple .js files into one file to load into scripts when starting the app.
 * [Yarn](https://classic.yarnpkg.com/en/):
 Makes package and dependency management easier.
 
-#### Setup after cloning repository:
+#### Setup after cloning repository
 
-- navigate to toplevel folder in CLI (cd path/to/Retrospetive_Toolkit/)
-  - Ensure there is package.json in the root folder
-  - From CLI, run:
-    -   npm install yarn
-    -   yarn
-        - This will pull all the dependencies from package.json
+* Navigate to toplevel folder in CLI (cd path/to/Retrospetive_Toolkit/)
+  * Ensure there is package.json in the root folder
+  * From CLI, run:
+    * npm install yarn
+    * yarn
+      * This will pull all the dependencies from package.json
 
+#### Yarn Scripts
+
+View the package.json file to see available script to run in Yarn.  The goal was to use Yarn script for all scripts related to
+development.  The only script not included is starting the Spring Application server.
+
+By default, the Spring server runs Apache Tomcat on local port: 8080
+By default, the frontend development server runs on local port: 3000
+
+* **build: "webpack" :** Runs webpack to build bundle.js file.
+* **build-all: "yarn run gradle && yarn run build" :** Runs both webpack and gradle to build frontend and backend files.
+* **gradle: "gradle build" :** Runs gradle to build backend files.
+* **gradle-trace: "gradle build --stacktrace" :** Runs gradle with stacktrace for debugging.
+* **gradle-warn: "gradle build --warning-mode all " :** Run gradle with warnings to check dependency deprecation.
+* **start: "webpack-dev-server --port 3000" :** Starts local frontend development environment on port 3000.  
 
 For further reference, please consider the following sections:
 
