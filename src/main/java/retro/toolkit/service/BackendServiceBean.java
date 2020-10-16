@@ -7,7 +7,7 @@ package retro.toolkit.service;
 public class BackendServiceBean {
 
     //these var names need to match the toString [varName: %s], otherwise will get duplicate in the same json
-    public String id;
+    public long id;
     public String message;
     public int testInt;
 
