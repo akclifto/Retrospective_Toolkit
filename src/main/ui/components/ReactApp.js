@@ -1,11 +1,19 @@
 import React from 'react';
-import MessageService from './service/MessageService';
+import MessageService from '../service/MessageService';
+
 
 class ReactApp extends React.Component {
 
-    state = {
-        messages: []
-    };
+    // state = {
+    //     messages: []
+    // };
+
+    constructor(props){
+        super(props)
+        this.state = {
+            messages:[]
+        }
+    }
 
     componentDidMount() {
         MessageService.getMessages().then((response) => {
@@ -26,6 +34,20 @@ class ReactApp extends React.Component {
                 <div>
                     <h2>{head}</h2>
                     <p> {para}</p>
+                </div>
+
+                <div>
+                    {
+                        this.state.messages.map( msg => 
+                            <ul>
+                                <li key={msg.id}> 
+                                    <li> Message id: {msg.id}</li>
+                                    <li> Message: {msg.message}</li>
+                                    <li> Some Int Value: {msg.testInt}</li>
+                                </li>
+                            </ul>
+                        )
+                    }
                 </div>
             
             </div>
