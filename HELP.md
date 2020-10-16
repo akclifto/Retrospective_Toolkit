@@ -34,6 +34,7 @@ View the package.json file to see available script to run in Yarn.  The goal was
 development.  The only script not included is starting the Spring Application server.
 
 By default, the Spring server runs Apache Tomcat on local port: 8080
+
 By default, the frontend development server runs on local port: 3000
 
 * **build: "webpack" :** Runs webpack to build bundle.js file.
