@@ -2,6 +2,7 @@ package retro.toolkit.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,12 @@ public class MessageServiceDao {
     //return all messages in list.
     public List<Message> findAll() {
         return messages;
+    }
+
+    //random message to generate
+    public void setRandomMessage() {
+        int i = ThreadLocalRandom.current().nextInt(1, 11);
+        this.save(new Message(messageCount, "Here is a random int from the backend! ", i));
     }
 
     /**
@@ -49,16 +56,30 @@ public class MessageServiceDao {
      */
     public Message save(Message message){
 
+        if(checkID(message)) {
+            message.setId(messageCount);
+            messages.add(message);
+            return message;
+        }
+        return null;
+    }
+
+    /**
+     * Method to check id for duplicates, increments id if finds duplicate
+     * @param message : message to check for id
+     * @return true if id is unique, false otherwise.
+     */
+    private boolean checkID(Message message) {
+
         for(Message i : messages) {
             
             if(i.getId() == message.getId()) {
-                System.out.printf("duplicate ID found for Message %d \n", i.getId());
-                return null;
+                System.out.printf("duplicate ID found for Message %d \n", i.getId());   
+                messageCount++;
+                return false;
             }
         } 
-        message.setId(++messageCount);
-        messages.add(message);
-        return message;
+        return true;
     }
 
 
