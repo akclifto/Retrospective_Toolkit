@@ -1,5 +1,6 @@
 package retro.toolkit.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,15 +9,20 @@ import javax.persistence.Id;
  * This is a model class for the message test that will be passed from backend to React frontend.
  * 
  */
-
+@Entity
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;
 
+    
     private String message;
     private int testInt;
+
+    protected Message(){
+
+    }
 
     /**
      * Constructor

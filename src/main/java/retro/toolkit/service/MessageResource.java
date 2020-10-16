@@ -27,11 +27,11 @@ public class MessageResource {
 
     //test method to retrieve message by id at new mapping
     @GetMapping("messages/{id}")
-    public Message retrieveMessage(@PathVariable long id) throws UserNotFoundException {
+    public Message retrieveMessage(@PathVariable long id) throws MessageNotFoundException {
 
             Message msg = messageService.findMessageById(id);
             if(msg == null){
-                throw new UserNotFoundException("Message returned null. Id searched: " + id);
+                throw new MessageNotFoundException("Message returned null. Id searched: " + id);
             } else {
                 return msg;
             }
