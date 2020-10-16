@@ -13,11 +13,21 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation('org.springframework.boot:spring-boot-starter')
+	implementation('org.springframework.boot:spring-boot-starter-activemq')
+	implementation ('org.springframework.boot:spring-boot-starter-web')
+	implementation ('org.springframework:spring-webmvc')
+	implementation ('org.springframework.boot:spring-boot-starter-tomcat')
+	
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+	runtime ('com.h2database:h2')
 }
+
+
 
 test {
 	useJUnitPlatform()

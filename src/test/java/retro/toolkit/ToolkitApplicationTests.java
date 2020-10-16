@@ -1,4 +1,4 @@
-package com.retrokit.toolkit;
+package retro.toolkit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
