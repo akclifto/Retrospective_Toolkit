@@ -21,7 +21,7 @@ Makes package and dependency management easier.
 
 #### Setup after cloning repository
 
-* Navigate to toplevel folder in CLI (cd path/to/Retrospetive_Toolkit/)
+* Navigate to the top-level folder in CLI (cd path/to/Retrospective_Toolkit/)
   * Ensure there is package.json in the root folder
   * From CLI, run:
     * npm install yarn
@@ -36,12 +36,12 @@ development.  The only script not included is starting the Spring Application se
 By default, the Spring server runs Apache Tomcat on local port: 8080.
 By default, the frontend development server runs on local port: 3000.
 
-* **build: "webpack" :** Runs webpack to build bundle.js file.
-* **build-all: "yarn run gradle && yarn run build" :** Runs both webpack and gradle to build frontend and backend files.
-* **gradle: "gradle build" :** Runs gradle to build backend files.
-* **gradle-trace: "gradle build --stacktrace" :** Runs gradle with stacktrace for debugging.
-* **gradle-warn: "gradle build --warning-mode all " :** Run gradle with warnings to check dependency deprecation.
-* **start: "webpack-dev-server --port 3000" :** Starts local frontend development environment on port 3000.  
+* **build:** Runs webpack to build bundle.js file.
+* **build-all:** Runs both webpack and gradle to build frontend and backend files.
+* **gradle:** Runs gradle to build backend files.
+* **gradle-trace:** Runs gradle with stacktrace for debugging.
+* **gradle-warn:** Run gradle with warnings to check dependency deprecation.
+* **start:** Starts local frontend development environment on port 3000.  
 
 For further reference, please consider the following sections:
 
