@@ -39,7 +39,7 @@ test {
 }
 
 // scripts test
-task thetest {
-	println "testttt"
-}
+// task thetest {
+// 	println "testttt"
+// }
 
