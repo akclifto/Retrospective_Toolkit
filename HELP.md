@@ -1,5 +1,9 @@
 # Getting Started
 
+* Deploy name:
+<https://afternoon-gorge-09211.herokuapp.com/>
+* current only showing backend, not frontend react.
+
 ## Introduction
 
 This is a from-scratch attempt at creating a functional java backend service to wire to frontend. Build tools include Gradle and Yarn. Yarn is used as primary tool for scripts.  See *Yarn Scripts* below.
@@ -37,7 +41,7 @@ By default, the frontend development server runs on local port: 3000.
     * heroku create
     * git push heroku main || git push heroku master (if main doesn't work, had mixed results)
       * if in a branch:
-        * git push heroku nameOfBranch:master
+        * git push heroku nameOfBranch:master  || git push nameOfBranch:main
 
 * Misc:
   * heroku logs --tail
