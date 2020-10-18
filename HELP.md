@@ -34,16 +34,11 @@ By default, the frontend development server runs on local port: 3000.
 
 #### References for React
 
-* [Maven](https://maven.apache.org/install.html):
-Maven used for Java/Spring boot build files.
-* [Node.js](https://nodejs.org/en/download/):
-Node is the foundation for React.js.
-* [Bebelrc](https://babeljs.io/docs/en/):
-Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
-* [Webpack](https://webpack.js.org/):
-Webpack compiles multiple .js files into one file to load into scripts when starting the app.
-* [Yarn](https://classic.yarnpkg.com/en/):
-Makes package, scripting and dependency management easier.
+* ~~[Maven](https://maven.apache.org/install.html): Maven used for Java/Spring boot build files.~~
+* [Node.js](https://nodejs.org/en/download/): Node is the foundation for React.js.
+* [Bebelrc](https://babeljs.io/docs/en/): Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
+* [Webpack](https://webpack.js.org/): Webpack compiles multiple .js files into one file to load into scripts when starting the app.
+* [Yarn](https://classic.yarnpkg.com/en/): Makes package, scripting and dependency management easier.
 
 For further reference, please consider the following sections:
 

@@ -23,6 +23,7 @@ dependencies {
 	implementation ('org.springframework:spring-webmvc')
 	implementation ('org.springframework.boot:spring-boot-devtools')
 
+	//database tools
 	implementation ('com.zaxxer:HikariCP')
 	
 	// test tools

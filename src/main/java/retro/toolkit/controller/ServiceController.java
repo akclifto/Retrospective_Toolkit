@@ -38,6 +38,7 @@ public class ServiceController {
     /*
     Below are examples when learning bean/spring
     */
+    
     // example using method test as URI
     @GetMapping("hello")
     public String hello() {
