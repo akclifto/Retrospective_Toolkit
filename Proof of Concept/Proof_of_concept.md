@@ -15,6 +15,8 @@ Over the course of our sponsor meetings,  we have initiated research spikes into
 
 The purpose of this project is to provide a viable training tool for State Farm in the form of a web application.  This will be done using a dynamic frontend framework for the client-facing web application, basic authentication to segregate facilitators from users of the Toolkit, a backend framework suitable for State Farm, as well as temporary cloud-hosting and database management.  Upon completion of the project, it is expected that State Farm will integrate the Toolkit into their own hosting and database management services.
 
+The purpose of this proof of concept is to display aspects of knowledge the team has gained from the research spike stories conducted during the sprint. 
+
 ## Testing
 
 This section describes testing aspects of the product in three areas:  frontend, backend, and cloud-hosting and database.  Each area overlaps with each other to ensure vertical development:
@@ -63,10 +65,5 @@ Product Aspects and Tools: Cloud-hosting and Database
 
 Minimum Value Product (MVP):
 
-# Goals: What are we trying to achieve? 
-# Testing: What are the specifications that need to be tested? 
-# Timeline: Is it achievable in the given time frame? 
-# Implementation: How will this be implemented into the workflow exactly? 
-# Value: Does the project have any real value that we are trying to create? 
-# Resource: Do we have enough funds to complete the project? 
-# https://www.softwaresuggest.com/blog/proof-of-concept-in-software-development/
+
+#### https://www.softwaresuggest.com/blog/proof-of-concept-in-software-development/
