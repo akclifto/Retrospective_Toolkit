@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'retro'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1-DEV'
 sourceCompatibility = '15'
 compileJava.options.encoding = 'UTF-8'
 
@@ -21,8 +21,8 @@ dependencies {
 	implementation ('org.springframework.boot:spring-boot-starter-web')
 	implementation ('org.springframework.boot:spring-boot-starter-tomcat')
 	implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
-	implementation ('org.springframework:spring-webmvc')
 	implementation ('org.springframework.boot:spring-boot-devtools')
+	implementation ('org.springframework:spring-webmvc')
 
 	//database tools
 	implementation ('com.zaxxer:HikariCP')
