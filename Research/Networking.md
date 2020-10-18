@@ -1,4 +1,4 @@
-# Team 18's notes for Networking.
+# Team 18's notes for Networking
 
 ## Sergio
 
@@ -13,6 +13,7 @@
 ## Dillon
 
 ## Shane
+
 Network flow diagram updated.  Design needed to be able to scale.  Designed a forward looking architecture to accomodate a scaling design.  For the project we will implement a scaled down version, but having the design in place will ensure that we do not introduce any one way doors that would prevent this for succeeding as it scales.
 ![Network Flow Diagram](resources/netdiag.png)
 
@@ -28,25 +29,25 @@ Network Connectivity Diagram Created and Updated
 
 Reserach update:  Looks like we may have to setup a call to get the DB URL whenever we make use the DB.  Had issue with url changing... found out it is a feature.  Should use heroku config to pull DB URL at app start.
 
-*It is best practice to always fetch the database URL config var from the corresponding Heroku app when your application starts. For example, you may follow 12Factor application configuration principles by using the Heroku CLI and invoke your process like so*
+- It is best practice to always fetch the database URL config var from the corresponding Heroku app when your application starts. For example, you may follow 12Factor application configuration principles by using the Heroku CLI and invoke your process like so*
 
 `DATABASE_URL=$(heroku config:get DATABASE_URL -a your-app) your_process`
-    
 
 ## Adam
+
 - Potential network flow must be maintainable and scale.
 
-   -  Heroku service for app hosting and database (Postgres, included, but can use other database if necessary).
-      -  Heroku can scale app automatically as needed.  Can be adjusted in configuration of app service on website.  
-         -  assuming we build it correctly.
-         
-   -  potential high-level design:
+  - Heroku service for app hosting and database (Postgres, included, but can use other database if necessary).
+    - Heroku can scale app automatically as needed.  Can be adjusted in configuration of app service on website.  
+      - assuming we build it correctly.
+
+  - potential high-level design:
    ![Potential High Level Design](resources/high-level-layer-design.PNG)
-   
+
 **Conclusion:**  Based on group discussion after sponsor meeting on 10/12/2020, we have decided to use Heroku as our cloud service, and will include in proof of concept. Sponsors believe Heroku is a viable option for the project.  
 
-
 ## Chris
+
 **Breif:** Both Heroku and Firebase are excellent options for our project. For hosting and scaling, both will accomplish what we need them to. Firebase has a slight edge however as it also has other features which can be implemented into our development cycle such as authentication, a realtime database, and storage. Heroku also has a free database option using Postgre, but it has a connection limit of 20 which may or may not be an issue. It also lacks the authentification and file storage of Firebase, though this can be supplmented using a S3 bucket and using Auth0 or an in-house, basic auth solution for authentification.
 
 **Conclusion:** Between all the options, I would recommend having Heroku for our host, an S3 bucket for asset storage which would then use Cloudfront as the CDN, Auth0 for authentification, and useing the Heroku postre database solution. If the limitations of the Heroku database become too limiting, it can be exported and setup in-house at State Farm or with another provider.
