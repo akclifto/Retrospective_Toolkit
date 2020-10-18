@@ -30,6 +30,26 @@ By default, the frontend development server runs on local port: 3000.
 
 *Script example using CLI: **yarn build-all***
 
+### Heroku help
+
+* Sequence:
+  * heroku login
+    * heroku create
+    * git push heroku main || git push heroku master (if main doesn't work, had mixed results)
+      * if in a branch:
+        * git push heroku nameOfBranch:master
+
+* Misc:
+  * heroku logs --tail
+    * heroku ps:scale web={number}  this specifies number of dynos to use for webservice)
+    * heroku open (this opens the web service in browesr at https address)
+    * heroku local web (this opens local build of app for dev)
+    * mvn clean install (will need to run this after every change, with heroku local web to see changes)
+    * heroku config (shows configurations to service)
+    * heroku addons (shows addons to service, default is postgresql for database)
+    * heroku pg (shows database information)
+    * heroku ps:psql gives access to run queries on the database (running this locally has issues, works better with deployed service)
+
 ### Reference Documentation
 
 #### References for React
