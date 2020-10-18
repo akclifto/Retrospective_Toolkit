@@ -36,15 +36,15 @@ Excellent article discussing some animation strategies [React Animation Basics](
 ## Adam
 
 - **React JS:**  Use Node/React for frontend web application
-  -  React-Router can be used for page routes client-side.
-  -  React has extensive libraries that could be utilized to make dev easier
-  -  Will need async controllers to communicate with Java backend.
-      - found initial setup getting comms with java to be tough (mostly due to my lack of experience with async and Java Spring)
+  - React-Router can be used for page routes client-side.
+  - React has extensive libraries that could be utilized to make dev easier
+  - Will need async controllers to communicate with Java backend.
+    - found initial setup getting comms with java to be tough (mostly due to my lack of experience with async and Java Spring)
 - **Java Spring Boot:** backend. Suggested by sponsor as they primarily use Java for their backend.
   - Spring initializer app helps eliminate alot of boiler plate code creation.  
   - Integrates well with Maven, Gradle
   - Requires async calls to communicate with frontend Node/React.
-      - will need to research this topic more when we begin to use it.
+    - will need to research this topic more when we begin to use it.
 
 **Conclusion:**  We appear to be unanimous in our agreement to implement a React frontend.  There is dispute as to which backend implementation to use.  Express.js appears to have strong native support and ease of use as a backend implementation, demonstrated by Chris below. Our sponsor runs a Java backend, so using Spring would be their first choice for easier integration.  We are working on building out skeletons for both Spring and Express and will weigh the pros and cons of each before we make a final decision for our backend. 
       
