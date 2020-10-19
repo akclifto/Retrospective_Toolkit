@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Login(props) {
   const classes = useStyles();
 
+  //ref hooks for inputs
   const email = useRef();
   const password = useRef();
 
