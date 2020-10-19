@@ -5,8 +5,9 @@
 //Imports
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import dieImage from '../../resources/volleyball.svg'
 import classes from './Die.module.css';
+import Emoji from '../Emoji'
+import Card from '@material-ui/core/Card';
 
 
 const Die = (props) => {
@@ -43,8 +44,8 @@ const Die = (props) => {
     return (
       //Ensures the button inherits the .Button properties from Die.module.css
       //All buttons in this div would be CSS'd the same way
-      <div className={classes.Die}>
-        <img src={dieImage} alt="Dice" />
+      <Card className={classes.Die}>
+        <Emoji label="dice" symbol="🎲"></Emoji>
         <p 
           className={assignedClasses.join(' ')}>
             This die has {props.numSides} sides and is an {props.title} die. 
@@ -54,7 +55,7 @@ const Die = (props) => {
           >
           Roll This Die
         </button>
-      </div>
+      </Card>
     )
 }
 
