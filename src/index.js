@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './components/Login';
+import Routes from './routes/routes';
+import { BrowserRouter as Router } from 'react-router-dom';
+//initial page checks to see if user is logged in
+// if logged in, send to the app
+// otherwise, send to sign in page
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Login />
-  </React.StrictMode>,
+  <Router>
+    <Routes />
+  </Router>,
   document.getElementById('root')
 );
