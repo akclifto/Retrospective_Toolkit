@@ -4,29 +4,37 @@
 
 //Imports
 import React from 'react';
-import Emoji from '../../components/Emoji';
-import logo from '../../resources/statefarmLogo.svg'
-import landingPage from './DiceLanding.module.css'
 import Die from '../../components/Dice/Die';
-import {sides as sidesConst, themes as themeConst} from '../../constants/DieConstants'
+import {sides as sidesConst, themes as themeConst, themes} from '../../constants/DieConstants'
+import { makeStyles } from '@material-ui/core/styles';
+import Header from '../../components/Header/Header'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.primary,
+    backgroundColor: 'whitesmoke',
+  },
+}));
 
 
 //Returns a landing page for the Dice Game
 const DiceLanding = () => {
+const classes = useStyles();
 
   return (
     
-    <div className={landingPage.landing}>
-      
-      <header className={landingPage.landingHeader}>
-      <img src={logo} className={landingPage.appLogo} alt="logo" />
+    <div className={classes.root} >
+        <Header/>
         {/** Creates a Die object, contains variable properties*/}
         <Die 
           numSides={sidesConst.SIX.sides}
           title={themeConst.Action}
         />
-
-      </header>
     </div>
   );
 }
