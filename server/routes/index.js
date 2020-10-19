@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authenticate = require('../middleware/authenticate');
 const authController = require('../controller/auth');
-const profileController = require('../controller/profile');
-const adminController = require('../controller/admin');
+//const adminController = require('../controller/admin');
 
 router.get('/ping', (req, res) => {
     res.send('pong');
@@ -14,13 +13,19 @@ router.get('/express_backend', (req, res) => {
 });
 
 // create unprotected login endpoint
-router.post('/login', authController.login);
+router.post('/api/users/login', authController.login);
 
 // all routes after this are protected
 // and can only be accessed by logged in users
 router.use(authenticate);
 
-router.get('/profile', profileController.profile);
+router.get('/api/checksession', function(req, res) {
+    res.sendStatus(200);
+});
+
+router.get('/landingpage', function(req, res) {
+    res.sendStatus(200);
+});
 
 //router.get('/admin', adminController.admin);
 
