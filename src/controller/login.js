@@ -3,20 +3,19 @@ import axios from 'axios';
 async function loginController (user, pass) {
     // call axios post and await
     try {
-        await axios.post('/api/users/login', 
+        const res = await axios.post('/api/users/login', 
         {
             email: user, 
             password: pass
         })
-        .then(res => {
-            if (res.status === 204) {
-                return true;
-            }
-            return false;
-        })
+        if (res.status === 204) {
+            return true;
+        }
+        return false;
+        
     }
     catch(err) {
-
+        console.error(err);
     }
 
     // if good proceed to App

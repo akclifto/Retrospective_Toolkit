@@ -14,10 +14,10 @@ async function login (req, res) {
     try {
         const user = await authService.login(email, password);
         req.session.user = user;
-        res.sendStatus(204);
+        return res.sendStatus(204);
     } catch(err) {
         console.error(err); // TODO: Only for debugging. Remove this.
-        res.status(401).json(err);
+        return res.status(401).json(err);
     }
 }
 

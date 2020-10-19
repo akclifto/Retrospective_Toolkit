@@ -14,7 +14,7 @@ export default function ifAuth(ComponentToProtect) {
     componentDidMount() {
       axios.get('/api/checksession')
         .then(res => {
-          if (res.status === 200) {
+          if (res.status === 204 || res.status === 200) {
             this.setState({ loading: false });
           } else {
             const error = new Error(res.error);
@@ -22,7 +22,6 @@ export default function ifAuth(ComponentToProtect) {
           }
         })
         .catch(err => {
-          console.error(err);
           this.setState({ loading: false, redirect: true });
         });
     }

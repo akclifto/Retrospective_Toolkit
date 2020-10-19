@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import loginController from '../controller/login';
-import { useHistory } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -59,21 +58,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Login(props) {
   const classes = useStyles();
 
   const email = useRef();
   const password = useRef();
-  const history = useHistory();
 
-  function handleSubmit () {
-    const loggedIn = loginController(email.current.value, password.current.value);
+  async function handleSubmit (e) {
+    e.preventDefault();
+    const isAuth = await loginController(email.current.value, password.current.value);
 
-    if (loggedIn) {
-      history.push('/');
+    if(isAuth) {
+      props.history.push('/');
     }
   }
-
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -87,7 +85,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate >
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -118,7 +116,7 @@ export default function Login() {
             />
             <Button
               fullWidth
-              onClick= {handleSubmit}
+              type="submit"
               variant="contained"
               color="primary"
               className={classes.submit}

@@ -20,13 +20,7 @@ router.post('/api/users/login', authController.login);
 router.use(authenticate);
 
 router.get('/api/checksession', function(req, res) {
-    res.sendStatus(200);
+    res.sendStatus(204);
 });
-
-router.get('/landingpage', function(req, res) {
-    res.sendStatus(200);
-});
-
-//router.get('/admin', adminController.admin);
 
 module.exports = router;
