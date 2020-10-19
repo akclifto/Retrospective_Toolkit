@@ -27,9 +27,9 @@ public class MessageServiceDao {
     }
 
     //random message to generate
-    public void setRandomMessage() {
+    public Message setRandomMessage() {
         int i = ThreadLocalRandom.current().nextInt(1, 101);
-        this.save(new Message(++messageCount, "Here is a random int from the backend! ", i));
+        return new Message(++messageCount, "Here is a random int from the backend! ", i);
     }
 
     /**

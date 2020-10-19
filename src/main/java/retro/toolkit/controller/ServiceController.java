@@ -6,12 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import retro.toolkit.model.Message;
 import retro.toolkit.service.BackendServiceBean;
-import retro.toolkit.service.MessageRepository;
+import retro.toolkit.service.MessageServiceDao;
+import retro.toolkit.repository.MessageRepository;
+
+/**
+ * This class handles the mapping to React frontend.
+ */
 
 // @CrossOrigin(origins = "*", allowedHeaders = "*")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -20,20 +26,22 @@ import retro.toolkit.service.MessageRepository;
 public class ServiceController {
 
 
-    // Get mapping for index TODO: fix
-    // @RequestMapping("/")
-    // String index(){
-    //     return "index";
-    // }
-
     @Autowired 
     private MessageRepository messageRepository;
+    private MessageServiceDao serviceDao;
 
     // Mapped for frontend access
     @GetMapping("/")
     public List<Message> getMessages() {
         return this.messageRepository.findAll();
     }
+
+    @PostMapping("/")
+    public void setRandomMessage() {
+        System.out.println("Setting a random message");
+        messageRepository.save(serviceDao.setRandomMessage());
+    }
+
 
     /*
     Below are examples when learning bean/spring

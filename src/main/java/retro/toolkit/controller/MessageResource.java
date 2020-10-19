@@ -33,9 +33,10 @@ public class MessageResource {
         return messageService.findAll();
     }
 
-    @GetMapping("test")
+    @GetMapping("messages/test")
     public void setRandomMessage() {
-        messageService.setRandomMessage();
+        System.out.println("Setting a random message");
+        messageService.save(messageService.setRandomMessage());
     }
 
     // test method to retrieve message by id at new mapping

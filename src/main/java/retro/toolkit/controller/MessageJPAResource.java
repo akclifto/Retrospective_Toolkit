@@ -16,7 +16,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import retro.toolkit.model.Message;
 import retro.toolkit.service.MessageNotFoundException;
-import retro.toolkit.service.MessageRepository;
+import retro.toolkit.service.MessageServiceDao;
+import retro.toolkit.repository.MessageRepository;
 
 /**
  * This class is a controller and resource for Message Repository Interface to test local data storage
@@ -27,6 +28,7 @@ public class MessageJPAResource {
 
     @Autowired 
     private MessageRepository messageRepository;
+    private MessageServiceDao serviceDao;
 
     @GetMapping("jpa")
     public List<Message> retrieveAllMessages() {
@@ -46,6 +48,11 @@ public class MessageJPAResource {
             return msg;
         }
 
+    }
+
+    @GetMapping("jpa/test")
+    public void setRandomMessage() {
+        messageRepository.save(serviceDao.setRandomMessage());
     }
 
     // create a new message via POST

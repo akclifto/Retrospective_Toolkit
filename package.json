@@ -7,13 +7,13 @@
   "author": "akclifto <akclifto@asu.edu>",
   "license": "MIT",
   "scripts": {
+    "backend": "java -jar build/libs/toolkit-0.0.1-DEV.jar",
     "build": "webpack",
     "build-all": "yarn run gradle && yarn run build",
     "gradle": "gradle build",
     "gradle-trace": "gradle build --stacktrace",
     "gradle-warn": "gradle build --warning-mode all ",
-    "start": "webpack-dev-server --port 3000",
-    "backend": "java -jar build/libs/toolkit-0.0.1-DEV.jar"
+    "start": "webpack-dev-server --port 3000"
   },
   "dependencies": {
     "axios": "^0.20.0",
