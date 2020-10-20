@@ -5,9 +5,13 @@
 ### Authors
 
 Adam Clifton
+
 Christopher Gold
+
 Dillon O'Brien
+
 Sergio Prieto
+
 Shane Thoney
 
 ## Table of Contents
@@ -63,6 +67,7 @@ The functional aspects of the Toolkit are separated into three areas: (1) fronte
 - [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/gradle-plugin/reference/html/)
 - [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/gradle-plugin/reference/html/#build-image)
 - [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
+- [ExpressJS](https://expressjs.com/)
 
 #### References for Cloud-hosting and Database Heroku/postgresql
 
