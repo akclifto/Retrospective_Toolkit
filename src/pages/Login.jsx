@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link as ReactLink} from 'react-router-dom';
 import loginController from '../controller/login';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -131,8 +132,8 @@ export default function Login(props) {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
-                  Already have an account? Sign in
+                <Link component={ReactLink} to="/signup" variant="body2">
+                  Need an account? Sign up
                 </Link>
               </Grid>
             </Grid>
