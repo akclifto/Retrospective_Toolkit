@@ -9,13 +9,15 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
+    "concurrently": "^5.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "yarn run build && (cd server %% yarn start)",
+    "heroku-server": "cd server && yarn && node index.js",
+    "heroku-postbuild": "yarn & yarn run build",
     "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
