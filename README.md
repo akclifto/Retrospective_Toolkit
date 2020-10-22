@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Retrospective_Toolkit
 
 ## SER 401 Team 18 Capstone Project
@@ -88,3 +89,4 @@ These additional references should also help you:
 
 - [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 - [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
+
