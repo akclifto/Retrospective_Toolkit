@@ -56,7 +56,7 @@ const Header = () => {
           <Typography variant="body" className={classes.title} >
             Developed by High Rollers
           </Typography>
-          <Link to='/login' style={ {textDecoration: 'none'} } activeClassName="is-active">
+          <Link to='/login' style={ {textDecoration: 'none', color: 'black'} } activeClassName="is-active">
             <Button color="inherit">Login</Button>
           </Link>
         </Toolbar>

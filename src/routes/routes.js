@@ -12,7 +12,7 @@ function Routes() {
     return (
         <Switch>
                 <Route exact path='/' component = {LandingPage} />
-                <Route path='/login__CHANGEME' component = {ifAuth(AuthLandingPage)} />
+                <Route path='/admin' component = {ifAuth(AuthLandingPage)} />
                 <Route path='/login' component = {Login} />
                 <Route path='/signup' component = {Signup} />
         </Switch>
