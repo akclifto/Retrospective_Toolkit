@@ -15,10 +15,12 @@ const Die = (props) => {
     const [counter, setCounter] = useState(0); // Sets initial counter state to 0
 
     //Will only occur when counter is changed. 
+    // TODO: Move to onClick alert, causes any link off page to create alert
     useEffect(() => {
       //HTTP request
       return () => {
-      alert('Rolling somewhere else...');
+      // alert('Rolling somewhere else...');
+      console.log("Rolling somewhere else...");
       }
     }, [counter]) //If [counter] was [] instead, useEffect would occur at first render.
     

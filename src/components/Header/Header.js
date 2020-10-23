@@ -4,12 +4,14 @@
 
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Toolbar } from '@material-ui/core';
 import logo from '../../resources/statefarmLogo.svg';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
     background: 'whitesmoke',
   },
   menuButton: {
+    color: 'black',
+    textDecoration: 'none'
   },
   image: {
     height: '6vmin',
@@ -52,7 +56,9 @@ const Header = () => {
           <Typography variant="body" className={classes.title} >
             Developed by High Rollers
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Link to='/login' style={ {textDecoration: 'none'} } activeClassName="is-active">
+            <Button color="inherit">Login</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
