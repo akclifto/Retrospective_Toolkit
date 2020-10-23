@@ -2,7 +2,7 @@
 //const redis = require('redis');
 
 //Heroku deployment
-var redisClient = require('redis').createClient(process.env.REDIS_URL);
+var redisClient = require('redis').createClient('redis://h:p343f46b6946ec0516ef9ace243e856e99223c708ff817633212d183ae46674f6@ec2-3-211-169-9.compute-1.amazonaws.com:25329');
 
 //configure redis for local development
 /*const redisClient = redis.createClient({
