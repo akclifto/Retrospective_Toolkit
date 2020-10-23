@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-To initialize dependencies before running"
+To initialize dependencies before running:
 
 ### `yarn`
 
