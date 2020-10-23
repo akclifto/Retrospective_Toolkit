@@ -53,7 +53,7 @@ const Die = (props) => {
             This die has {props.numSides} sides and is an {props.title} die. 
           </p>
         <button 
-          onClick={() => incrementCounter}
+          onClick={() => alert('DiceRolled')}
           >
           Roll This Die
         </button>
