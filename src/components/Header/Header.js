@@ -51,11 +51,11 @@ const Header = () => {
           <Typography variant ="h5" className={classes.title}>
             RETROSPECTIVE TOOLKIT
           </Typography>
-          <Typography variant="body" className={classes.title} >
+          <Typography variant="body1" className={classes.title} >
             Developed by High Rollers
           </Typography>
-          <Link to='/login' className={classes.menuButton} activeClassName="is-active">
-            <Button color="inherit">Login</Button>
+          <Link to='/login' className={classes.menuButton} >
+            <Button>Login</Button>
           </Link>
         </Toolbar>
       </AppBar>

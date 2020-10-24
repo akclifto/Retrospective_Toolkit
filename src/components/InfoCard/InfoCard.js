@@ -19,33 +19,42 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'left',
     margin: 10,
+    boxShadow: 
+      '0 1px 3px rgba(0,0,0,0.12)',
+    transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
+    '&:hover': {
+      boxShadow: '0 10px 13px rgba(0,0,0,0.25)'
+    }
   },
 });
+
 
 const InfoCard = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography variant="h4" className={classes.title} color="textPrimary" gutterBottom align="center">
-          {props.title}
-        </Typography>
-        <Typography variant="body" component="p">
-          {props.body}
-        </Typography>
-        <Typography className={classes.pos} component="p">
-          <br></br>
-          {props.body2}
-        </Typography>
-        <Typography variant="body2" component="p" color="textSecondary">
-          {props.body3}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" onClick={props.clicked}>Learn More</Button>
-      </CardActions>
-    </Card>
+  
+      <Card className={classes.root}  variant="outlined" >
+        <CardContent>
+          <Typography variant="h4" className={classes.title} color="textPrimary" gutterBottom align="center">
+            {props.title}
+          </Typography>
+          <Typography variant="body1" component="p">
+            {props.body}
+          </Typography>
+          <Typography className={classes.pos} component="p">
+            <br></br>
+            {props.body2}
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            {props.body3}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" onClick={props.clicked}>Learn More</Button>
+        </CardActions>
+      </Card>
+
   )
 }
 

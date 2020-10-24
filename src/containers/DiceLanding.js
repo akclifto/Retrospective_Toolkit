@@ -5,7 +5,7 @@
 //Imports
 import React from 'react';
 import Die from '../components/Dice/Die';
-import {sides as sidesConst, themes as themeConst, themes} from '../constants/DieConstants';
+import {sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '../components/Header/Header'
 import InfoCard from '../components/InfoCard/InfoCard';
@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//Directs the browser to statefarm for more information.
+//Directs the browser to statefarm for more information in new tab.
 const redirect = (e) => {
   e.preventDefault();
-  window.location.href="http://statefarm.com";
+  const url = "http://statefarm.com";
+  window.open(url, '_blank');
 }
 
 

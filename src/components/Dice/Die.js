@@ -3,7 +3,7 @@
  */
 
 //Imports
-import React, { useEffect, useState , useRef } from 'react';
+import React, { useState , useRef } from 'react';
 import PropTypes from 'prop-types';
 import classes from '../../styles/Die.module.css';
 import Card from '@material-ui/core/Card';
