@@ -5,14 +5,13 @@ import 'react-dice-complete/dist/react-dice-complete.css'
 
 const DiceModel = (props) => {
 
-  let reactDice = useRef(null);
+  let reactDice = useRef(null); //Needed once more dice get added
 
   const rollAll = () => {
     this.reactDice.rollAll()
   }
 
   const rollDoneCallback = (num) => {
-    console.log(`You rolled a ${num} [DICEMODEL]`);
     props.result(num)
   }
 
