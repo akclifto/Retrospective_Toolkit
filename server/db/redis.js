@@ -1,12 +1,12 @@
 // var Redis = require('ioredis');
-const redis = require('redis');
+// const redis = require('redis');
 
-/* Heroku deployment */
-// var redisClient = require('redis').createClient(process.env.REDIS_URL);
+
+//Heroku deployment
+var redisClient = require('redis').createClient('redis://h:p343f46b6946ec0516ef9ace243e856e99223c708ff817633212d183ae46674f6@ec2-3-211-169-9.compute-1.amazonaws.com:25329');
+
 
 /* configure redis for local development */
-let redisClient = redis.createClient();
-
 // const redisClient = redis.createClient({
 //     port: 6379,
 //     host: 'localhost'
