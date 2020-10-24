@@ -3,57 +3,44 @@
  */
 
 //Imports
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , useRef } from 'react';
 import PropTypes from 'prop-types';
 import classes from './Die.module.css';
-import Emoji from '../Emoji'
 import Card from '@material-ui/core/Card';
+import DiceModel from './DiceModel';
 
 
 const Die = (props) => {
-    const assignedClasses = []; //Holds variable CSS classes to apply to a <p> tag
-    const [counter, setCounter] = useState(0); // Sets initial counter state to 0
+    const [diceResult, setDiceResult] = useState(0);
+    const textRef = useRef("This die has " + props.numSides + " sides and is an " + props.title + " die.")
 
-    //Will only occur when counter is changed. 
-    // TODO: Move to onClick alert, causes any link off page to create alert
-    useEffect(() => {
-      //HTTP request
-      return () => {
-      // alert('Rolling somewhere else...');
-      console.log("Rolling somewhere else...");
-      }
-    }, [counter]) //If [counter] was [] instead, useEffect would occur at first render.
+    //Pass the reference to this function to DieModel.js
+    const updateResult = (rollResult) => {
+      setDiceResult(rollResult);
+    };
     
+    useEffect(() => {
+      //HTTP request (also called a side effect) would go here
+        textRef.current = "You rolled a " + diceResult + "!";
+      return () => {
+      }
+    }, [diceResult])
 
-    //Each if statement is called each render cycle. 
-    if (counter >= 1) {
-      assignedClasses.push(classes.red); //assignedClasses = ['bold', 'red']
-    }
-    if (counter >= 2) {
-      assignedClasses.push(classes.bold); //assignedClasses = ['bold']
-    }
-    if (counter >= 3) {
-      assignedClasses.push(classes.large)
-    }
-
-    //Increments counter by 1.
-    const incrementCounter = () => {
-      //setCounter(count + 1) doesn't update the value of count until after the render is done
-      setCounter(prevCounter => prevCounter +1)
-    }
 
     //Returns JSX to DiceLanding
     return (
       //Ensures the button inherits the .Button properties from Die.module.css
       //All buttons in this div would be CSS'd the same way
       <Card className={classes.Die}>
-        <Emoji label="dice" symbol="🎲"></Emoji>
-        <p 
-          className={assignedClasses.join(' ')}>
-            This die has {props.numSides} sides and is an {props.title} die. 
+        <DiceModel 
+        result={updateResult}
+          />
+          <br></br>
+        <p>
+            {textRef.current}
           </p>
         <button 
-          onClick={() => alert('DiceRolled')}
+          // onClick={() => rollDice(props.numSides)} //TODO: implement the button to roll the dice
           >
           Roll This Die
         </button>
