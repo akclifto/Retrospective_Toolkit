@@ -1,10 +1,43 @@
-SER401 Team 18 Capstone Project - Node.JS/Express.JS Proof of Concept
+# Retrospective_Toolkit
 
-A basic proof of concept application to test the use of React, Node.js, Express.js, Heroku, Redis, and Postegre for our project
+## SER 401 Team 18 Capstone Project
+
+### Authors
+
+Adam Clifton
+
+Christopher Gold
+
+Dillon O'Brien
+
+Sergio Prieto
+
+Shane Thoney
+
+## Table of Contents
+
+- [Introduction](#Introduction)
+- [Build Instructions](#Build_Instructions)
+- [Frontend Overview](#Frontend-Overview)
+- [Frontend Technology](#Frontend-Technology)
+- [Frontend Tools](#Frontend-Tools)
+- [Backend Overview](#Backend-Overview)
+- [Backend Technology](#Backend-Technology)
+- [Backend Tools](#Backend-Tools)
+- [Cloud-hosting and Database Overview](#[Cloud-hosting-and-Database-Overview)
+- [Cloud-hosting and Database Technology](#[Cloud-hosting-and-Database-Technology)
+- [Cloud-hosting and Database Tools](#[Cloud-hosting-and-Database-Tools)
+- [Reference Materials](#Reference-Materials)
+
+### Introduction
+
+This Retrospective Toolkit (the "Toolkit") is the product of Team 18's capstone project.  The toolkit will be used as a training tool by our sponsor and will contain two base activities: a cube activity and a model-building activity.
+
+The functional aspects of the Toolkit are separated into three areas: (1) frontend components, (2) backend components, and (3) cloud-hosting and database components.  This document will cover the topics and technology used in the project.
+
+### Build Instructions
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 To initialize dependencies before running:
 
@@ -39,32 +72,57 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Frontend Overview
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Frontend Technology
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Frontend Tools
 
-### Code Splitting
+### Backend Overview
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Backend Technology
 
-### Analyzing the Bundle Size
+### Backend Tools
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Cloud-hosting and Database Overview
 
-### Making a Progressive Web App
+### Cloud-hosting and Database Technology
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Cloud-hosting and Database Tools
 
-### Advanced Configuration
+### Reference Materials
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### References for Frontend/React
 
-### Deployment
+- [Node.js](https://nodejs.org/en/download/): Node is the foundation for React.js.
+- [Bebelrc](https://babeljs.io/docs/en/): Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
+- [Webpack](https://webpack.js.org/): Webpack compiles multiple .js files into one file to load into scripts when starting the app.
+- [Yarn](https://classic.yarnpkg.com/en/): Makes package, scripting and dependency management easier.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### References for Backend/Java/Spring
 
-### `yarn build` fails to minify
+- [Official Gradle documentation](https://docs.gradle.org)
+- [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/gradle-plugin/reference/html/)
+- [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/gradle-plugin/reference/html/#build-image)
+- [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
+- [ExpressJS](https://expressjs.com/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### References for Cloud-hosting and Database Heroku/postgresql
+
+- [Heroku](https://devcenter.heroku.com/categories/reference)
+- [Postgresql](https://www.postgresql.org/docs/)
+
+#### Guides
+
+The following guides illustrate how to use some features concretely:
+
+- [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+- [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+- [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+
+#### Additional Links
+
+These additional references should also help you:
+
+- [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+- [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
