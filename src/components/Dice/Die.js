@@ -18,16 +18,10 @@ const Die = (props) => {
     const updateResult = (rollResult) => {
       setDiceResult(rollResult);
     };
-    
-    //This is being called async and is not updating until after the render. 
-    //TODO: to fix this ):
-    useEffect(() => {
-      //HTTP request (also called a side effect) would go here
-      textRef.current = "You rolled a " + diceResult + "!"; 
-      return () => {
-      }
-    }, [diceResult])
 
+    if (diceResult !== 0) {
+      textRef.current = "You rolled a " + diceResult + "!"; 
+    }
 
     //Returns JSX to DiceLanding
     return (
