@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
-import ReactDice from 'react-dice-complete'
-import 'react-dice-complete/dist/react-dice-complete.css'
+import React, { useRef } from 'react';
+import ReactDice from 'react-dice-complete';
+import 'react-dice-complete/dist/react-dice-complete.css';
 
 
 const DiceModel = (props) => {

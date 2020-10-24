@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/LandingPage.css';
+import '../styles/LandingPage.css';
 import bg from '../resources/fin.png';
 
 

@@ -2,7 +2,6 @@
  * Stateless component that displays the header for all of the landing pages.
  */
 
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Toolbar } from '@material-ui/core';
 import logo from '../../resources/statefarmLogo.svg';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +54,7 @@ const Header = () => {
           <Typography variant="body" className={classes.title} >
             Developed by High Rollers
           </Typography>
-          <Link to='/login' style={ {textDecoration: 'none', color: 'black'} } activeClassName="is-active">
+          <Link to='/login' className={classes.menuButton} activeClassName="is-active">
             <Button color="inherit">Login</Button>
           </Link>
         </Toolbar>
