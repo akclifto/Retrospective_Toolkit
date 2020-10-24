@@ -18,6 +18,7 @@
   "scripts": {
     "heroku-server": "cd server && yarn && node index.js",
     "heroku-postbuild": "yarn & yarn run build",
+    "start-server": "cd server && node index.js",
     "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
