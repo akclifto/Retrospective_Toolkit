@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     marginRight: theme.spacing(2),
   },
-
   toolbar: {
     color: 'black',
     background: 'whitesmoke',
