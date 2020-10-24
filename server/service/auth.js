@@ -9,6 +9,7 @@ async function login(email, password) {
         const match = await bcrypt.compare(password, user.rows[0].password);
 
         if (match) {
+
             return {id: user.rows[0].id, roles: user.rows[0].role};
         } else {
             return Promise.reject('wrong username or password');
