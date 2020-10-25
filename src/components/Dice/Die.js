@@ -24,9 +24,10 @@ const Die = (props) => {
     }
 
     //Returns JSX to DiceLanding
+    //Ensures the button inherits the .Button properties from Die.module.css
+    //All buttons in this div would be CSS'd the same way
+    // onClick={() => rollDice(props.numSides)} //TODO: implement the button to roll the dice
     return (
-      //Ensures the button inherits the .Button properties from Die.module.css
-      //All buttons in this div would be CSS'd the same way
       <Card className={classes.Die}>
         <DiceModel 
         result={updateResult}
@@ -35,7 +36,7 @@ const Die = (props) => {
             {textRef.current}
           </p>
         <button 
-          // onClick={() => rollDice(props.numSides)} //TODO: implement the button to roll the dice
+          
           >
           Roll This Die
         </button>

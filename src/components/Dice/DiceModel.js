@@ -15,11 +15,12 @@ const DiceModel = (props) => {
     props.result(num)
   }
 
+    // Note: Default roll needs to be larger than the number of sides to not roll on page load
     return (
       <div>
         <ReactDice
           numDice={1}
-          defaultRoll={7} //Needs to be larger than the number of sides to not roll on page load
+          defaultRoll={7}
           rollDone={rollDoneCallback}
           ref={dice => reactDice = dice}
         />
