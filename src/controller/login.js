@@ -17,10 +17,6 @@ async function loginController (user, pass) {
     catch(err) {
         console.error(err);
     }
-
-    // if good proceed to App
-
-    //if not, show appropriate message
 }
 
 export default loginController;
