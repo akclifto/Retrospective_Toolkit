@@ -2,8 +2,8 @@
  * Stateless component that displays the header for all of the landing pages.
  */
 
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -25,12 +25,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     marginRight: theme.spacing(2),
   },
-
   toolbar: {
     color: 'black',
     background: 'whitesmoke',
   },
   menuButton: {
+    color: 'black',
+    textDecoration: 'none'
   },
   image: {
     height: '6vmin',
@@ -49,10 +50,12 @@ const Header = () => {
           <Typography variant ="h5" className={classes.title}>
             RETROSPECTIVE TOOLKIT
           </Typography>
-          <Typography variant="span" className={classes.title} >
+          <Typography variant="body1" className={classes.title} >
             Developed by High Rollers
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Link to='/login' className={classes.menuButton} >
+            <Button>Login</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

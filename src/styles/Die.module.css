@@ -1,0 +1,44 @@
+.red {
+    color: red;
+  }
+  
+.bold {
+  font-weight:bold;
+}
+
+.large {
+  font-size: 150%;
+}
+  
+  .Die {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding:10px;
+    justify-content: space-evenly;
+    width: 275px;
+    height: 200px;
+
+  }
+  .Die button {
+    border: 1px solid black;
+    padding: 16px;
+    background-color: darkgreen;
+    font: inherit;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .Die button:hover {
+    background-color: lightgreen;
+    color: black;
+  }
+  
+  .Die button.Red {
+    background-color: red;
+  }
+  
+  .Die button.Red:hover {
+    background-color: salmon;
+    color: black;
+  }
