@@ -1,10 +1,18 @@
 import React from 'react';
-import DiceLanding from '../containers/DiceLanding';
+import '../css/LandingPage.css';
+import bg from '../resources/fin.png';
 
-const LandingPage = () => {
+
+function LandingPage() {
 
     return (
-        <DiceLanding />
+        <div class="centered">
+            <img src={bg} 
+                alt="fin"
+                height={318}
+                width={546} 
+            />
+        </div>
     );
 }
 
