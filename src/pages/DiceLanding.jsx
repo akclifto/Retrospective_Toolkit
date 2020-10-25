@@ -4,12 +4,13 @@
 
 //Imports
 import React from 'react';
-import Die from '../components/Dice/Die';
-import {sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
+import Die from '../controller/Die';
+import {sides as sidesConst, themes as themeConst, themes} from '../controller/DieConstants'
 import { makeStyles } from '@material-ui/core/styles';
-import Header from '../components/Header/Header'
-import InfoCard from '../components/InfoCard/InfoCard';
+import Header from '../components/Header'
+import InfoCard from '../components/InfoCard';
 import Grid from '@material-ui/core/Grid'
+import '../css/DiceLanding.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,11 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//Directs the browser to statefarm for more information in new tab.
+//Directs the browser to statefarm for more information.
 const redirect = (e) => {
   e.preventDefault();
-  const url = "http://statefarm.com";
-  window.open(url, '_blank');
+  window.location.href="http://statefarm.com";
 }
 
 
@@ -47,7 +47,6 @@ const classes = useStyles();
               clicked={redirect}
               />
           </Grid>
-        {/** Creates a Die object, contains variable properties*/}
         <Grid item xs={5}>
         <div className={classes.dice}>
         <Die 
