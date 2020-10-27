@@ -8,7 +8,7 @@ const DiceModel = (props) => {
   let reactDice = useRef(null); //Needed once more dice get added
 
   const rollAll = () => {
-    this.reactDice.rollAll()
+    reactDice.rollAll()
   }
 
   const rollDoneCallback = (num) => {

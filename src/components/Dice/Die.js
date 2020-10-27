@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import classes from '../../styles/Die.module.css';
 import Card from '@material-ui/core/Card';
 import DiceModel from './DiceModel';
+import Button from '@material-ui/core/Button'
 
 
 const Die = (props) => {
@@ -35,11 +36,11 @@ const Die = (props) => {
         <p>
             {textRef.current}
           </p>
-        <button 
-          
-          >
-          Roll This Die
-        </button>
+          <Button 
+            variant="contained" 
+            color="secondary">
+              Roll Dice
+            </Button>
       </Card>
     )
 }
