@@ -17,7 +17,7 @@ Shane Thoney
 ## Table of Contents
 
 - [Introduction](#Introduction)
-- [Build Instructions](#Build_Instructions)
+- [Build Instructions](#Build-Instructions)
 - [Frontend Overview](#Frontend-Overview)
 - [Frontend Technology](#Frontend-Technology)
 - [Frontend Tools](#Frontend-Tools)
