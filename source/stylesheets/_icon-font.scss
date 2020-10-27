@@ -10,8 +10,16 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'comfortaaregular';
+  src: url('../fonts/comfortaa-variablefont_wght-webfont.woff2') format('woff2'),
+       url('../fonts/comfortaa-variablefont_wght-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 %icon {
-  font-family: 'slate';
+  font-family: 'comfortaaregular';
   speak: none;
   font-style: normal;
   font-weight: normal;
