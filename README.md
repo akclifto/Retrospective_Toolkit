@@ -46,18 +46,20 @@ To initialize dependencies before running:
 In the project directory, you can run:
 
 #### `yarn start-server`
+
 and then
+
 #### `yarn start-client`
 
-Runs the app in the development mode.<br />
+Runs the app in the development mode.  
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 #### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
+Builds the app for production to the `build` folder.  
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
+The build is minified and the filenames include the hashes.  
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
@@ -98,13 +100,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [Bebelrc](https://babeljs.io/docs/en/): Babel is a Javascript compiler that makes writing React apps easier and more similar to JS.
 - [Webpack](https://webpack.js.org/): Webpack compiles multiple .js files into one file to load into scripts when starting the app.
 - [Yarn](https://classic.yarnpkg.com/en/): Makes package, scripting and dependency management easier.
+- [Create React App](https://github.com/facebook/create-react-app)
 
 #### References for Backend/Java/Spring
 
-- [Official Gradle documentation](https://docs.gradle.org)
-- [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/gradle-plugin/reference/html/)
-- [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/gradle-plugin/reference/html/#build-image)
-- [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
 - [ExpressJS](https://expressjs.com/)
 
 #### References for Cloud-hosting and Database Heroku/postgresql
@@ -116,13 +115,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 The following guides illustrate how to use some features concretely:
 
-- [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-- [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-- [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-
 #### Additional Links
 
 These additional references should also help you:
 
-- [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 - [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
