@@ -25,10 +25,13 @@ const redirect = (e) => {
       <Grid item xs={5}>
         <InfoCard
           title="Cube Game"
-          body="This cube game is intended to promote communication and understanding within a team."
+          body="This cube game is intended to promote communication
+           and understanding within a team."
           body2="How To Play:"
-          body3="First, choose an action dice, then roll it. It will roll on a side with a picture. 
-          Describe how the picture relates to an experience in software development you have had."
+          body3="First, choose an action dice, then roll it.
+            It will roll on a side with a picture. 
+            Describe how the picture relates to an experience in 
+            software development you have had."
           clicked={redirect}
           />
       </Grid>

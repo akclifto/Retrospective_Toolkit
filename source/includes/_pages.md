@@ -45,7 +45,9 @@ const password = useRef();
 // email and password as arguments
 async function handleSubmit (e) {
   e.preventDefault();
-  const isAuth = await loginController(email.current.value, password.current.value);
+  const isAuth = await loginController(
+    email.current.value, 
+    password.current.value);
 
   // if logged in, this will take the user to the
   // protected homepage
@@ -61,7 +63,8 @@ async function handleSubmit (e) {
   <Grid container component="main" className={classes.root}>
     <CssBaseline />
     <Grid item xs={false} sm={4} md={7} className={classes.image} />
-    <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+    <Grid item xs={12} sm={8} md={5} component={Paper} 
+      elevation={6} square>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -69,7 +72,8 @@ async function handleSubmit (e) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} noValidate 
+          onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -114,7 +118,8 @@ async function handleSubmit (e) {
               </Link>
             </Grid>
             <Grid item>
-              <Link component={ReactLink} to="/signup" variant="body2">
+              <Link component={ReactLink} to="/signup" 
+                variant="body2">
                 Need an account? Sign up
               </Link>
             </Grid>
@@ -197,8 +202,10 @@ Images displayed on this page are randomly generated from <a href='http://unspla
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox value="allowExtraEmails" color="primary" />}
-            label="I want to receive inspiration, marketing promotions and updates via email."
+            control={<Checkbox value="allowExtraEmails" 
+            color="primary" />}
+            label="I want to receive inspiration, 
+              marketing promotions and updates via email."
           />
         </Grid>
       </Grid>
@@ -214,7 +221,8 @@ Images displayed on this page are randomly generated from <a href='http://unspla
       </Button>
       <Grid container justify="flex-end">
         <Grid item>
-          <Link component={ReactLink} to="/login" variant="body2">
+          <Link component={ReactLink} to="/login" 
+            variant="body2">
             Already have an account? Sign in
           </Link>
         </Grid>

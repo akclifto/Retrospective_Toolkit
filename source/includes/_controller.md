@@ -8,7 +8,9 @@ This folder is used to contain the logical workings of the application
 ```javascript
 async function handleSubmit (e) {
   e.preventDefault();
-  const isAuth = await loginController(email.current.value, password.current.value);
+  const isAuth = await loginController(
+    email.current.value, 
+    password.current.value);
 }
 ```
 

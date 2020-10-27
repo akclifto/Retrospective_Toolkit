@@ -23,7 +23,8 @@ This folder contains all of the projects react components. These are pieces of j
 ```javascript
   // create hooks
   const [diceResult, setDiceResult] = useState(0);
-  const textRef = useRef("This die has " + props.numSides + " sides and is an " + props.title + " die.")
+  const textRef = useRef("This die has " + props.numSides + 
+  " sides and is an " + props.title + " die.")
 
   //Pass the reference to this function to DieModel.js
   const updateResult = (rollResult) => {
@@ -148,7 +149,8 @@ false | true | Authorized: Redirect to protected page
 ```jsx
 <Card className={classes.root}  variant="outlined" >
   <CardContent>
-    <Typography variant="h4" className={classes.title} color="textPrimary" gutterBottom align="center">
+    <Typography variant="h4" className={classes.title} 
+      color="textPrimary" gutterBottom align="center">
       {props.title}
     </Typography>
     <Typography variant="body1" component="p">
