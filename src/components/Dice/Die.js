@@ -35,7 +35,7 @@ const Die = (props) => {
         <p>
             {textRef.current}
           </p>
-        <button 
+        <button onClick={() => this.DiceModel.rollAll()}
           
           >
           Roll This Die
