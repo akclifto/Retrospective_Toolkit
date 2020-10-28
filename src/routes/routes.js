@@ -5,7 +5,7 @@ import AuthLandingPage from '../pages/AuthLandingPage';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import PageNotFound from '../pages/PageNotFound';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, Link, NavLink } from 'react-router-dom';
 
 
 //TODO: change AuthLandingPage route
@@ -18,7 +18,7 @@ function Routes() {
                         <Route path='/admin' component = {ifAuth(AuthLandingPage)} />
                         <Route path='/login' component = {Login} />
                         <Route path='/signup' component = {Signup} />
-                        <Route component={} />
+                        <Route component = {PageNotFound} />
                 </Switch>
             </div>
         </BrowserRouter>
