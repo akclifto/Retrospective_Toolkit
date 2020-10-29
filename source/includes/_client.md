@@ -1,4 +1,4 @@
-# The Client (src)
+# The Client
 
 > This jsx sets up the routing:
 

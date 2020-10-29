@@ -14,7 +14,7 @@ This folder contains the react routes used in the application
   <Route path='/signup' component = {Signup} />
 </Switch>
 ```
-> ifAuth can be examined [here](##isAuth)
+> ifAuth can be examined [here](#ifauth-js)
 
 ### Unprotected Routes:
 * /

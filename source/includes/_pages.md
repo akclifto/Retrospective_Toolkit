@@ -134,9 +134,9 @@ async function handleSubmit (e) {
 ```
 This page represents the login page of the application. It uses <a href='https://material-ui.com/'>material-ui</a> to create the style of the page as well as the forms.
 
-Once a user has submitted their email and password, the <code>handleSubmit</code> function is called. This function, in turn, calls the  <code>LoginController</code> which is located in [login.js](##Login.js). If successful, the functions pushes the secure route on the history stack and redirects the user. If unsuccessful, the user is not redirected and must try again or proceed to another unsecured page.
+Once a user has submitted their email and password, the <br /><code>handleSubmit</code> function is called. This function, in turn, calls the <br /><code>LoginController</code> which is located in [login.js](#login-js). If successful, the functions pushes the secure route on the history stack and redirects the user. If unsuccessful, the user is not redirected and must try again or proceed to another unsecured page.
 
-Images displayed on this page are randomly generated from <a href='http://unsplash.com'>unsplash</a> from a random api endpoint located at <code>https://source.unsplash.com/random</code>
+Images displayed on this page are randomly generated from <a href='http://unsplash.com'>unsplash</a> from a random api endpoint located at <br /><code>https://source.unsplash.com/random</code>
 
 ## Signup.jsx
 

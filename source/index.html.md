@@ -18,6 +18,13 @@ includes:
   - pages
   - routes
   - styles
+  - server
+  - serverController
+  - DAO
+  - DB
+  - middleware
+  - routesServer
+  - service
 
 search: true
 
