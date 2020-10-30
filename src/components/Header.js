@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     display: 'flex',
     justifyContent: 'flex-end',
-    color: 'red',
+    color: theme.palette.primary.main,
     fontWeight: "bold",
     marginRight: theme.spacing(2),
   },
@@ -54,7 +54,7 @@ const Header = () => {
             Developed by High Rollers
           </Typography>
           <Link to='/login' className={classes.menuButton} >
-            <Button>Login</Button>
+            <Button variant="outlined" color = "primary">Login</Button>
           </Link>
         </Toolbar>
       </AppBar>
