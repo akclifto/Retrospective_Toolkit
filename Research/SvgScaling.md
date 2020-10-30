@@ -9,12 +9,13 @@ The benefit of using svg images is their ability to scale well on surfaces rangi
 
 [This article discusses two method to scale an svcg to specific sizes](https://medium.com/@ayumitabinote/how-to-resize-a-svg-image-7829bac8948c)
 
-The file I am using to scale is the origSun.svg image, with the testSun.svg being the output test file that can be found in the [resources/svg-resources folder](resources/svg-resources/).  To adjust a scale size of an svg file, open the svg file in a text editor:
-![svg-img1](resources/svg-resources/svg-img1.png)
+The file I am using to scale is the origSun.svg image, with the testSun.svg being the output test file that can be found in the [resources/svg-resources folder](resources/svg-resources/).  To adjust a scale size of an svg file, open the svg file in a text editor:  
 
-Add height and with constraints to the image, if necessary.  These put a max-value threshold on the image. In the example below, the max-value threshold is 1000px by 1000px.
+![svg-img1](resources/svg-resources/svg-img1.PNG)
 
-![svg-img2](resources/svg-resources/svg-img2.png)
+Add height and width constraints to the image, if necessary.  These put a max-value threshold on the image. In the example below, the max-value threshold is 1000px by 1000px.
+
+![svg-img2](resources/svg-resources/svg-img2.PNG)
 
 These can be adjusted as needed and should be able to be used to scale to the surface of our cubes.  
 
