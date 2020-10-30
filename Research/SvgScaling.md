@@ -19,7 +19,7 @@ Add height and width constraints to the image, if necessary.  These put a max-va
 
 These can be adjusted as needed and should be able to be used to scale to the surface of our cubes.  
 
-Additionally, you can constraing or change the svg size with CSS using the background-size modifier:
+Additionally, you can constraints or change the SVG image size with CSS using the background-size modifier:
 
 `image: {
     background-size: 400px 600px
