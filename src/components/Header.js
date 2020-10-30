@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     height: '6vmin',
-    paddingBottom: '1vmin',
+    paddingBottom: '.8vmin',
   },
 }));
 
@@ -46,7 +46,9 @@ const Header = () => {
     <div className={classes.root}>
       <AppBar position="static" className={classes.toolbar}>
         <Toolbar>
-          <img src={logo} className={classes.image} alt="logo" />
+          <Link to='/'>
+            <img src={logo} className={classes.image} alt="logo" />
+          </Link> 
           <Typography variant ="h5" className={classes.title}>
             RETROSPECTIVE TOOLKIT
           </Typography>

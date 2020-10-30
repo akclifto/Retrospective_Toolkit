@@ -1,5 +1,5 @@
 /**
- * Represents a die that makes a call to a server via a button.
+ * This represents a card that the dice and the button handler will live on.
  */
 
 //Imports
@@ -9,8 +9,8 @@ import classes from '../../styles/Die.module.css';
 import Card from '@material-ui/core/Card';
 import DiceModel from './DiceModel';
 
-
 const Die = (props) => {
+    //diceResult will rerender the DOM when it is updated
     const [diceResult, setDiceResult] = useState(0);
     const textRef = useRef("This die has " + props.numSides + " sides and is an " + props.title + " die.")
 
@@ -24,25 +24,19 @@ const Die = (props) => {
     }
 
     //Returns JSX to DiceLanding
-    //Ensures the button inherits the .Button properties from Die.module.css
-    //All buttons in this div would be CSS'd the same way
-    // onClick={() => rollDice(props.numSides)} //TODO: implement the button to roll the dice
     return (
       <Card className={classes.Die}>
-        <DiceModel 
-        result={updateResult}
-          />
         <p>
-            {textRef.current}
+          {textRef.current}
           </p>
-        <button 
-          
-          >
-          Roll This Die
-        </button>
+        <DiceModel
+          result={updateResult}
+          css={classes.Die}
+          />
       </Card>
     )
 }
+
 
 /**
  * "Strict typing" of the properties that this function will need
