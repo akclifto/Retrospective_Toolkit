@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDice from 'react-dice-complete';
 import 'react-dice-complete/dist/react-dice-complete.css';
 import Button from '@material-ui/core/Button'
+import { useTheme } from '@material-ui/core/styles'
 
 
 const DiceModel = (props) => {
@@ -26,10 +27,13 @@ const DiceModel = (props) => {
     <Button 
       variant="contained" 
       onClick={rollAll}
-      color="secondary">
+      color="primary">
         Roll Dice
       </Button>
   )
+
+  const theme = useTheme();
+
 
     // Note: Default roll needs to be larger than the number of sides to not roll on page load
     return (
@@ -39,7 +43,7 @@ const DiceModel = (props) => {
           rollDone={rollDoneCallback}
           disableIndividual={false}
           defaultRoll={7}
-          faceColor={"#EB0700"}
+          faceColor={theme.palette.secondary.main}
           dotColor={"#FFFFFF"}
           outline={true}
           ref={dice => reactDice = dice}
