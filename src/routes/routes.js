@@ -8,7 +8,6 @@ import PageNotFound from '../pages/PageNotFound';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 
-//TODO: change AuthLandingPage route
 function Routes() {
     return (
         <BrowserRouter>

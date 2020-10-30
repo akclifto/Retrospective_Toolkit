@@ -9,6 +9,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Toolbar } from '@material-ui/core';
+import SettingsApplicationsSharpIcon from '@material-ui/icons/SettingsApplicationsSharp';
 import logo from '../resources/statefarmLogo.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,12 +32,12 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     color: 'black',
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   image: {
     height: '6vmin',
     paddingBottom: '.8vmin',
-  },
+  }
 }));
 
 const Header = () => {
@@ -56,7 +57,10 @@ const Header = () => {
             Developed by High Rollers
           </Typography>
           <Link to='/login' className={classes.menuButton} >
-            <Button>Login</Button>
+          <Button>
+            <SettingsApplicationsSharpIcon color="black" fontSize="large" />
+             Login
+            </Button>
           </Link>
         </Toolbar>
       </AppBar>
