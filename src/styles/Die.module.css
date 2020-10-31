@@ -1,9 +1,0 @@
-  .Die {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    padding: 10px;
-    justify-content: space-around;
-    width: 275px;
-    min-height: 150px;
-  }
