@@ -144,15 +144,15 @@ Images displayed on this page are randomly generated from <a href='http://unspla
 
 ```jsx
 <div className={classes.root}>
-    <Header/>
-    <img className={classes.img} src={Oops} alt="Oops! Page Not Found" />
-    <h1 className={classes.header}>404! Oops...</h1>
-    <div className={classes.body}>
-        <h2>The page you are looking for doesn't exist!</h2>
-        <Button className={classes.button}>
-            <Link className={classes.goHome} to= "/">Go Home</Link>
-        </Button>
-    </div>
+  <Header/>
+  <img className={classes.img} src={Oops} alt="Oops! Page Not Found" />
+  <h1 className={classes.header}>404! Oops...</h1>
+  <div className={classes.body}>
+    <h2>The page you are looking for doesn't exist!</h2>
+    <Button className={classes.button}>
+      <Link className={classes.goHome} to= "/">Go Home</Link>
+    </Button>
+  </div>
 </div>
 ```
 
