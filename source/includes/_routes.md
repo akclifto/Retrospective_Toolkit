@@ -8,15 +8,15 @@ This folder contains the react routes used in the application
 
 ```jsx
 <BrowserRouter>
-    <div>
-        <Switch>
-                <Route exact path='/' component = {LandingPage} />
-                <Route path='/admin' component = {ifAuth(AuthLandingPage)} />
-                <Route path='/login' component = {Login} />
-                <Route path='/signup' component = {Signup} />
-                <Route component = {PageNotFound} />
-        </Switch>
-    </div>
+  <div>
+    <Switch>
+      <Route exact path='/' component = {LandingPage} />
+      <Route path='/admin' component = {ifAuth(AuthLandingPage)} />
+      <Route path='/login' component = {Login} />
+      <Route path='/signup' component = {Signup} />
+      <Route component = {PageNotFound} />
+    </Switch>
+  </div>
 </BrowserRouter>
 ```
 > ifAuth can be examined [here](#ifauth-js)
