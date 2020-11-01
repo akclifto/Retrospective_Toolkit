@@ -10,7 +10,7 @@ This folder contains all of the projects react components. These are pieces of j
   let reactDice = useRef(null);
 
   const rollAll = () => {
-    this.reactDice.rollAll()
+    reactDice.rollAll()
   }
 
   const rollDoneCallback = (num) => {
@@ -66,7 +66,9 @@ This file allows emoji images to be used within the project.
     <div className={classes.root}>
       <AppBar position="static" className={classes.toolbar}>
         <Toolbar>
-          <img src={logo} className={classes.image} alt="logo" />
+          <Link to='/'>
+            <img src={logo} className={classes.image} alt="logo" />
+          </Link> 
           <Typography variant ="h5" className={classes.title}>
             RETROSPECTIVE TOOLKIT
           </Typography>

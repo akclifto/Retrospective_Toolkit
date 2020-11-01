@@ -138,6 +138,28 @@ Once a user has submitted their email and password, the <br /><code>handleSubmit
 
 Images displayed on this page are randomly generated from <a href='http://unsplash.com'>unsplash</a> from a random api endpoint located at <br /><code>https://source.unsplash.com/random</code>
 
+## PageNotFound.jsx
+
+> JSX returned by PageNotFound.jsx
+
+```jsx
+<div className={classes.root}>
+    <Header/>
+    <img className={classes.img} src={Oops} alt="Oops! Page Not Found" />
+    <h1 className={classes.header}>404! Oops...</h1>
+    <div className={classes.body}>
+        <h2>The page you are looking for doesn't exist!</h2>
+        <Button className={classes.button}>
+            <Link className={classes.goHome} to= "/">Go Home</Link>
+        </Button>
+    </div>
+</div>
+```
+
+This page represents the 404 page of the application. It uses <a href='https://material-ui.com/'>material-ui</a> to create the style of the page.
+
+Whenever a user tries to navigate to an undefined route, they will be greeted by this page letting them know they have navigated to a page which does not exist.
+
 ## Signup.jsx
 
 > JSX returned by Signup.jsx
