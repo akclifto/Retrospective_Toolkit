@@ -34,7 +34,7 @@ const classes = useStyles();
   return (
     
     <div>
-      <Header/>
+
       <Grid className={classes.root} 
         container direction="row" justify="center" alignItems="center">
           <Grid item xs={5}>

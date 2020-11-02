@@ -10,7 +10,7 @@ function AuthLandingPage() {
     return (
 
         <div>
-            <Header/>
+
             <div class="centered">
                 <img src={bg} 
                     alt="fin"
