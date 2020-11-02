@@ -7,7 +7,6 @@ import React from 'react';
 import Die from '../components/Dice/Die';
 import {sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
-import Header from '../components/Header'
 import InfoCard from '../components/InfoCard';
 import Grid from '@material-ui/core/Grid'
 

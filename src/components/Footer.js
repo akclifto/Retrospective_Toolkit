@@ -1,60 +1,48 @@
-import React from 'react';
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Slide from '@material-ui/core/Slide';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles( () => ({
+const useStyles = makeStyles(() => ({
 
+    root: {
+        boxShadow: '0 -7px 5px rgba(0,0,0,0.10)',
+      },
     footer: {
-        marginTop: 'calc(5% + 100px)',
-        bottom: 0
+        top: '95%',
+        position: 'fixed',
+        bottom: 0,
+        backgroundColor: 'whitesmoke',
+
+    },
+    footer__text: {
+        color: 'black',
+        fontSize: '1rem',
+        fontWeight: 'bold',
+        marginBottom: "20px"
+    },
+    grow: {
+        flexGrow: 1,
     }
+
 }));
-
-function HideOnScroll(props) {
-    const { children } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
-    const trigger = useScrollTrigger({ target: undefined });
-  
-    return (
-      <Slide appear={false} direction="up" in={!trigger}>
-        {children}
-      </Slide>
-    );
-  }
-
-  HideOnScroll.propTypes = {
-    children: PropTypes.element.isRequired,
-
-  };
 
 
 const Footer = () => {
+    const classes = useStyles();
 
     return (
-
         <React.Fragment>
-        <CssBaseline />
-        <HideOnScroll {...props}>
-          <AppBar>
-            <Toolbar>
-              <Typography variant="h6">&copy; 2020 - Retrospective Toolkit</Typography>
-            </Toolbar>
-          </AppBar>
-        </HideOnScroll>
-        <Toolbar />
-      </React.Fragment>
-
+                <AppBar className={classes.footer}>
+                    <Toolbar className={classes.root}>
+                        <Typography className={classes.footer__text}>&copy; 2020 - Retrospective Toolkit</Typography>
+                        <div className={classes.grow} />
+                        <Typography className={classes.footer__text}>Developed by High Rollers</Typography>
+                    </Toolbar>
+                </AppBar>
+        </React.Fragment>
     );
-
-
 }
 
 export default Footer;
