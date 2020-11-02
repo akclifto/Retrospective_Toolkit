@@ -10,11 +10,11 @@ const useStyles = makeStyles(() => ({
         boxShadow: '0 -7px 5px rgba(0,0,0,0.10)',
       },
     footer: {
-        top: '95%',
+        top: 'auto',
         position: 'fixed',
         bottom: 0,
         backgroundColor: 'whitesmoke',
-
+        height: '40px'
     },
     footer__text: {
         color: 'black',
