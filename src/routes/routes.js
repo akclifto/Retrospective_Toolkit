@@ -1,5 +1,6 @@
 import React from 'react';
 import ifAuth from '../components/ifAuth';
+import LayoutTemplate from '../containers/LayoutTemplate';
 import LandingPage from '../pages/LandingPage.jsx';
 import AuthLandingPage from '../pages/AuthLandingPage';
 import Login from '../pages/Login';
@@ -20,21 +21,22 @@ const theme = createMuiTheme({
     }
 })
 
-//TODO: change AuthLandingPage route
 function Routes() {
     return (
         <BrowserRouter>
-            <div>
+            <LayoutTemplate>
                 <ThemeProvider theme={theme}>
-                    <Switch>
-                        <Route exact path='/' component = {LandingPage} />
-                        <Route path='/admin' component = {ifAuth(AuthLandingPage)} />
-                        <Route path='/login' component = {Login} />
-                        <Route path='/signup' component = {Signup} />
-                        <Route component = {PageNotFound} />
-                    </Switch>
+                    <div>
+                        <Switch>
+                            <Route exact path='/' component={LandingPage} />
+                            <Route path='/admin' component={ifAuth(AuthLandingPage)} />
+                            <Route path='/login' component={Login} />
+                            <Route path='/signup' component={Signup} />
+                            <Route component={PageNotFound} />
+                        </Switch>
+                    </div>
                 </ThemeProvider>
-            </div>
+            </LayoutTemplate>
         </BrowserRouter>
     );
 }

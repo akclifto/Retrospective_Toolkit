@@ -70,8 +70,9 @@ export default function Login(props) {
     e.preventDefault();
     const isAuth = await loginController(email.current.value, password.current.value);
 
+    // push to admin page if login successful.  
     if(isAuth) {
-      props.history.push('/');
+      props.history.push('/admin');
     }
   }
 

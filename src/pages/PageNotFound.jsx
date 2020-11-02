@@ -51,7 +51,7 @@ const PageNotFound = () => {
 
     return (
         <div className={classes.root}>
-            <Header/>
+
             <img className={classes.img} src={Oops} alt="Oops! Page Not Found" />
             <h1 className={classes.header}>404! Oops...</h1>
             <div className={classes.body}>
