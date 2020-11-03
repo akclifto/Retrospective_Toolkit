@@ -51,7 +51,7 @@ const InfoCard = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={props.clicked}>Learn More</Button>
+          <Button variant="contained" color="primary" onClick={props.clicked}>Learn More</Button>
         </CardActions>
       </Card>
 
