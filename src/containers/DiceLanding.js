@@ -28,7 +28,7 @@ const redirect = (e) => {
 
 //Returns a landing page for the Dice Game
 const DiceLanding = () => {
-const classes = useStyles();
+  const classes = useStyles();
 
   return (
     

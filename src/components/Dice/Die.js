@@ -1,19 +1,37 @@
 /**
- * Represents a die that makes a call to a server via a button.
+ * This represents a card that the dice and the button handler will live on.
  */
 
 //Imports
 import React, { useState , useRef } from 'react';
 import PropTypes from 'prop-types';
-import classes from '../../styles/Die.module.css';
 import Card from '@material-ui/core/Card';
 import DiceModel from './DiceModel';
-import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core';
 
+const useStyles = makeStyles({
+  card: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    padding: '10px',
+    justifyContent: 'space-around',
+    maxWidth: '275px',
+    textAlign: 'center',
+    height: '200px',
+  },
+  dieButton: {
+    flex: 'initial',
+    flexWrap: 'wrap',
+    padding: '10px',
+  },
+});
 
 const Die = (props) => {
+    const dieClass = useStyles();
+    //diceResult will rerender the DOM when it is updated
     const [diceResult, setDiceResult] = useState(0);
-    const textRef = useRef("This die has " + props.numSides + " sides and is an " + props.title + " die.")
+    let displayText = "This die has " + props.numSides + " sides and is an " + props.title + " die. asdfjkasdjfkl";
 
     //Pass the reference to this function to DieModel.js
     const updateResult = (rollResult) => {
@@ -21,29 +39,23 @@ const Die = (props) => {
     };
 
     if (diceResult !== 0) {
-      textRef.current = "You rolled a " + diceResult + "!"; 
+      displayText = "You rolled a " + diceResult + "!"; 
     }
 
     //Returns JSX to DiceLanding
-    //Ensures the button inherits the .Button properties from Die.module.css
-    //All buttons in this div would be CSS'd the same way
-    // onClick={() => rollDice(props.numSides)} //TODO: implement the button to roll the dice
     return (
-      <Card className={classes.Die}>
-        <DiceModel 
-        result={updateResult}
+      <Card className={dieClass.card}>
+        <Typography >
+          {displayText}
+          </Typography>
+        <DiceModel
+          result={updateResult}
+          css={dieClass.dieButton}
           />
-        <p>
-            {textRef.current}
-          </p>
-          <Button 
-            variant="contained" 
-            color="secondary">
-              Roll Dice
-            </Button>
       </Card>
     )
 }
+
 
 /**
  * "Strict typing" of the properties that this function will need
