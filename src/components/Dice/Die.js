@@ -31,7 +31,7 @@ const Die = (props) => {
     const dieClass = useStyles();
     //diceResult will rerender the DOM when it is updated
     const [diceResult, setDiceResult] = useState(0);
-    let displayText = "This die has " + props.numSides + " sides and is an " + props.title + " die. asdfjkasdjfkl";
+    let displayText = "This die has " + props.numSides + " sides and is an " + props.title + " die.";
 
     //Pass the reference to this function to DieModel.js
     const updateResult = (rollResult) => {
