@@ -102,7 +102,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [Yarn](https://classic.yarnpkg.com/en/): Makes package, scripting and dependency management easier.
 - [Create React App](https://github.com/facebook/create-react-app)
 
-#### References for Backend/Java/Spring
+#### References for Backend/Node Express
 
 - [ExpressJS](https://expressjs.com/)
 
@@ -120,3 +120,4 @@ The following guides illustrate how to use some features concretely:
 These additional references should also help you:
 
 - [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
+- [Jest Testing Documentation](https://jestjs.io/)  
