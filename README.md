@@ -119,5 +119,5 @@ The following guides illustrate how to use some features concretely:
 
 These additional references should also help you:
 
-- [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
+- [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)  
 - [Jest Testing Documentation](https://jestjs.io/)  
