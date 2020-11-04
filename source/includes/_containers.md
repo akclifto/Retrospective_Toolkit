@@ -19,7 +19,6 @@ const redirect = (e) => {
 
 ```jsx
 <div>
-  <Header/>
   <Grid className={classes.root} 
     container direction="row" justify="center" alignItems="center">
       <Grid item xs={5}>
@@ -49,3 +48,19 @@ const redirect = (e) => {
 ```
 
 This class will be used as a container component that holds the other components in the landing page
+
+## LayoutTemplate.js
+
+> JSX returned by DiceLanding.js
+
+```jsx
+<div className={classes.template}>
+  <Header />
+    <div>
+      {props.children} 
+    </div>
+  <Footer />          
+</div>
+```
+
+This container will serve as a LayoutTemplate for the pages of the application

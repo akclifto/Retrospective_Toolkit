@@ -52,7 +52,7 @@ async function handleSubmit (e) {
   // if logged in, this will take the user to the
   // protected homepage
   if(isAuth) {
-    props.history.push('/');
+    props.history.push('/admin');
   }
 }
 ```
@@ -144,7 +144,6 @@ Images displayed on this page are randomly generated from <a href='http://unspla
 
 ```jsx
 <div className={classes.root}>
-  <Header/>
   <img className={classes.img} src={Oops} alt="Oops! Page Not Found" />
   <h1 className={classes.header}>404! Oops...</h1>
   <div className={classes.body}>
