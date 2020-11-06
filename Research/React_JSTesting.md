@@ -22,7 +22,6 @@
 - [Jest With Async](https://jestjs.io/docs/en/asynchronous)  
 - [Jest Setup and Teardown](https://jestjs.io/docs/en/setup-teardown)
 - [Jest Mock Functions](https://jestjs.io/docs/en/mock-functions)
-- [Jest Mock Functions](https://jestjs.io/docs/en/mock-functions)
 - [Jest Platform Modules](https://jestjs.io/docs/en/jest-platform)
 - [Jest React Testing](https://jestjs.io/docs/en/tutorial-react)
 
