@@ -64,7 +64,7 @@ router.get('/api/checksession', function(req, res) {
 });
 ```
 
-> ifAuth function that calls this API
+> [ifAuth](#ifauth-js) function that calls this API
 
 ```javascript
 axios.get('/api/checksession')

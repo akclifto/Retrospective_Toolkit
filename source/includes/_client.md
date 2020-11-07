@@ -11,7 +11,7 @@ ReactDOM.render(
 );
 ```
 
-> Routes are inside the Routes component within the routes folder
+> Routes are inside the [Routes component](#routes-js) within the routes folder
 
 The client was created with <a href='https://create-react-app.dev/docs/getting-started/'>create-react-app</a> using the <a href='https://yarnpkg.com/'>yarn package manager</a>.
 

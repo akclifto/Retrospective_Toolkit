@@ -12,7 +12,7 @@ if (!email || !password) {
 }
 ```
 
-> Call login function in[service/auth.js](#auth-js-service)
+> Call login function in [service/auth.js](#auth-js-service)
 
 ```javascript
     const user = await authService.login(email, password);

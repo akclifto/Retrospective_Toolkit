@@ -2,9 +2,49 @@
 
 This folder contains all of the projects react components. These are pieces of jsx which are loaded within other components. Full page components are stored within the pages folder.
 
-## Dice.js & DiceModel.js
+## Die.js
 
-> DiceModel.js variables and functions
+> Die.js variables and functions
+
+```javascript
+  // create hooks
+  const [diceResult, setDiceResult] = useState(0);
+  let displayText = "This die has " + props.numSides + " sides and is an " + props.title + " die.";
+
+  //Pass the reference to this function to DieModel.js
+  const updateResult = (rollResult) => {
+      setDiceResult(rollResult);
+  };
+
+  // check dice result and display result
+  if (diceResult !== 0) {
+    displayText = "You rolled a " + diceResult + "!";
+  }
+```
+
+> JSX returned to DiceLanding.js
+
+```jsx
+<Card className={dieClass.card}>
+  <Typography >
+    {displayText}
+    </Typography>
+  <DiceModel
+    result={updateResult}
+    css={dieClass.dieButton}
+    />
+</Card>
+```
+
+Die.js represents a card that the dice and the button handler will live on
+
+<aside class="notice">
+At present, until the dice game is finished in Unity, we have a temporary dice game which has been created using the <a href='https://github.com/AdamTyler/react-dice-complete'>react-dice-complete</a> library.
+</aside>
+
+## DiceModel.js
+
+> DieModel.js variables and functions
 
 ```javascript
   let reactDice;
@@ -49,43 +89,7 @@ This folder contains all of the projects react components. These are pieces of j
 </div>
 ```
 
-> Dice.js variables and functions
-
-```javascript
-  // create hooks
-  const [diceResult, setDiceResult] = useState(0);
-  let displayText = "This die has " + props.numSides + " sides and is an " + props.title + " die. asdfjkasdjfkl";
-
-  //Pass the reference to this function to DieModel.js
-  const updateResult = (rollResult) => {
-      setDiceResult(rollResult);
-  };
-
-  // check dice result and display result
-  if (diceResult !== 0) {
-    displayText = "You rolled a " + diceResult + "!";
-  }
-```
-
-> JSX returned to DiceLanding.js
-
-```jsx
-<Card className={dieClass.card}>
-  <Typography >
-    {displayText}
-    </Typography>
-  <DiceModel
-    result={updateResult}
-    css={dieClass.dieButton}
-    />
-</Card>
-```
-
-This folder contains DiceModel.js and Die.js. DiceModel is used to instantiate the variables used by Die.js as well as it's functions for rolling.
-
-<aside class="notice">
-At present, until the dice game is finished in Unity, we have a temporary dice game which has been created using the <a href='https://github.com/AdamTyler/react-dice-complete'>react-dice-complete</a> library.
-</aside>
+This component represents the dice themselves, the rolling, and the functionality needed to roll them
 
 ## Emoji.js
 > JSX returned by Emoji.js
@@ -195,7 +199,7 @@ render() {
   return <ComponentToProtect {...this.props} />;
 }
 ```
-This is a higher order component which is used to protect the routes of the application which require authentication.
+This is a higher order component which is used to protect the [routes](#routes-js) of the application which require authentication.
 
 When a protected route is called in the browser, this component is wrapped around it and acts as a gatekeeper.The protected component is taken as an argument to this higher order component and stored in as an argument named 
 <code>ComponentToProtect</code>. If the user is authenticated, they will be redirected to the protected page. Otherwise, they are redirected to the login page.
