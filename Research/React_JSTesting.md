@@ -14,6 +14,7 @@
 - [Jest Plugins](#Jest-Plugins)
 - [React Jest Testing](#Jest-Testing-with-React)
 - [React DOM Testing](#React-DOM-Testing)
+- [End to End Testing](#End-To-End-Testing)
 
 ### Links
 
@@ -380,7 +381,28 @@ If a snapshot fails, we will need to inspect where is from an intended or uninte
 To make assertions in DOM testing and to manipulate components, there's three tools we may use:
 
 - [react-testing-library](https://github.com/testing-library/react-testing-library)
+  
+  - Focused on integration tests from user perspective. 
+  - Simulate mouseclicks and typing from keystrokes, rather than using handlers.
+  - Treats code as black box
+  - easy
+  - Opinionated (one way RTL wants you to do tests)
+
 - [Enzyme](https://enzymejs.github.io/enzyme/)
+
+  - Focuses on code implementation and unit tests
+  - Handles user input by testing event handlers / listeners
+  - Very flexible / Open
+  
 - [React's TestUtils](https://reactjs.org/docs/test-utils.html)
 
 These are covered in the documentation and we can choose which we like best to use.  
+
+### End to End Testing
+Testing a multiple routes of an application. Testing between multiple pages of an application or from browser to a database to test login capabilities. 
+
+Should use a separate framework such as Cypress or a library like Puppeteer
+
+[Cypress](https://www.cypress.io/)
+
+[Puppeteer](https://github.com/puppeteer/puppeteer)
