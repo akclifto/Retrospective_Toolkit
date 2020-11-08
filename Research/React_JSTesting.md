@@ -404,5 +404,16 @@ Testing a multiple routes of an application. Testing between multiple pages of a
 Should use a separate framework such as Cypress or a library like Puppeteer
 
 [Cypress](https://www.cypress.io/)
+  - Specifically made for E2E Testing
+  - Able to "rewind time" to make debugging easier
+  - Syntax is different to JS
+  - Is free unless we want to use SSO 
+  - **Can't do multiple browser tabs in same test**
 
 [Puppeteer](https://github.com/puppeteer/puppeteer)
+  - Similar syntax to Jest/JS
+  - Meant for automation, not testing. We have to add some testing functionality ourselves.
+    - Somewhat offset by adding a `jest-puppeteer` dependency
+  - Only chrome/firefox
+  - No time travel, can't individually run tests
+  - Runs in a real browser
