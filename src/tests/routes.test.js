@@ -106,7 +106,7 @@ test('Validate Login Page', () => {
 
 });
 
-test('Validate SignupPage', () => {
+test('Validate Signup Page', () => {
 
     const wrapper = mount(
 
