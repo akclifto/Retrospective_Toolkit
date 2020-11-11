@@ -70,7 +70,7 @@ test('Validate AuthLandingPage, Auth FALSE', () => {
 });
 
 // Unsure how to test ifAuth method route
-// Commenting out this test until it I figure out how to validate it correctly
+// Commenting out this test until I figure out how to validate it correctly
 // test('Validate AuthLandingPage, Auth TRUE', () => {
 
 
