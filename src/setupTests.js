@@ -5,4 +5,6 @@ import {configure} from 'enzyme';
 // There is a workaround for the time being, used below 
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
+// Configures an adapter need to perform React tests when using Enzyme.  
+// See README.md for Enzyme documentation.
 Enzyme.configure({adapter: new Adapter()});
