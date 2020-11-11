@@ -24,4 +24,4 @@ I found this package on NPM for Unity WebGL:
 
     unityInstance.SendMessage('MyGameObject', 'MyFunction', 'MyString');
 ```
-Code from Unity looks like it is executed on its own scope, so we should be able to embed the Unity content without conflicting with anything else on the web application page.
+Code from Unity looks like it is executed on its own scope, so we should be able to embed the Unity content without conflicting with anything else on the web application page.  

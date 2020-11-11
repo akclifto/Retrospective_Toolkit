@@ -77,7 +77,7 @@ Jest Matchers test for equality.  Common matchers:
   - `expect(something).toEqual(exactEquality)`
     - uses keyword `.toEqual` to check for exact equality. toEqual recursively checks every field.
   - `expect(something).not.toBe(equality)`
-    - uses keyword `.not` to test fort the opposite of the matcher.
+    - uses keyword `.not` to test for the opposite of the matcher.
 
 #### Jest Truthiness
 
@@ -92,7 +92,7 @@ differently during testing.  Jest allows explicit use with keywords:
 
 Use the matcher that most closely corresponds to what you want your code to do.
 
-Additions matchers for Strings, Numbers, Arrays and Iterables, and Exceptions  
+Additional matchers for Strings, Numbers, Arrays and Iterables, and Exceptions  
 can be found here:
 [Jest Using Matchers](https://jestjs.io/docs/en/using-matchers)
 
@@ -131,7 +131,7 @@ Jest works using Promises as well using `.resolves` / `.rejects` keywords.  Alte
 #### Jest Setup and Teardown
 
 Similar to JUnit (and probably all testing), you may need some setup before testing and teardown of  
-the setup upon completion. Jest using keyword `beforeEach` and `afterEach` to handle that:
+the setup upon completion. Jest uses keywords `beforeEach` and `afterEach` to handle that:
 
 ```
 beforeEach(() => {
@@ -399,21 +399,24 @@ To make assertions in DOM testing and to manipulate components, there's three to
 These are covered in the documentation and we can choose which we like best to use.  
 
 ### End to End Testing
-Testing a multiple routes of an application. Testing between multiple pages of an application or from browser to a database to test login capabilities. 
+
+Testing a multiple routes of an application. Testing between multiple pages of an application or from browser to a database to test login capabilities.  
 
 Should use a separate framework such as Cypress or a library like Puppeteer
 
 [Cypress](https://www.cypress.io/)
-  - Specifically made for E2E Testing
+
+- Specifically made for E2E Testing
   - Able to "rewind time" to make debugging easier
   - Syntax is different to JS
-  - Is free unless we want to use SSO 
+  - Is free unless we want to use SSO
   - **Can't do multiple browser tabs in same test**
 
 [Puppeteer](https://github.com/puppeteer/puppeteer)
-  - Similar syntax to Jest/JS
+
+- Similar syntax to Jest/JS
   - Meant for automation, not testing. We have to add some testing functionality ourselves.
     - Somewhat offset by adding a `jest-puppeteer` dependency
   - Only chrome/firefox
   - No time travel, can't individually run tests
-  - Runs in a real browser
+  - Runs in a real browser  
