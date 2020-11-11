@@ -1,8 +1,6 @@
 # Research React and JS testing (4 hrs)
 
-## Adam Clifton Section
-
-### Contents
+## Contents
 
 - [Jest Overview](#Jest)
 - [Jest Matchers](#Jest-Matchers)
