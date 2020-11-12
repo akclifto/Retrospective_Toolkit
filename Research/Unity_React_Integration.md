@@ -16,7 +16,7 @@ I found this package on NPM for Unity WebGL:
   - Calling JS or ReactJS from Unity is similar to endpoint usage.
   - Sending data from JS to Unity script uses the `unityInstance.SendMessage(objectName, methodName, value);` keyword.  An Example:
 
-```
+```csharp
     unityInstance.SendMessage('MyGameObject', 'MyFunction');
     unityInstance.SendMessage('MyGameObject', 'MyFunction', 5);
 

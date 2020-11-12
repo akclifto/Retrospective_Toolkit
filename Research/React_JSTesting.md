@@ -30,7 +30,7 @@
 
 Basic implementation, we have a file called `sum.js`:
 
-```
+```javascript
 function sum(a, b) {
   return a + b;
 }
@@ -39,7 +39,7 @@ module.exports = sum;
 
 We make a test for it called `sum.test.js`:
 
-```
+```javascript
 const sum = require('./sum');
 
 test('adds 1 + 2 to equal 3', () => {
@@ -49,7 +49,7 @@ test('adds 1 + 2 to equal 3', () => {
 
 Add scripts to top-level `package.json` file:
 
-```
+```javascript
 {
   "scripts": {
     "test": "jest"
@@ -60,7 +60,7 @@ Add scripts to top-level `package.json` file:
 Then run `yarn test`.  
 The output result is:
 
-```
+```javascript
 PASS  ./sum.test.js
 ✓ adds 1 + 2 to equal 3 (5ms)
 ```
@@ -104,7 +104,7 @@ the `done` callback is called before finishing the testing.
 For example, we have a fetchData(callback) func to get something from the backend, and a  
 callBack(data) func that retrieved the data response from the backend.  This would be done as:
 
-```
+```javascript
 test('the data is peanut butter', done => {
   function callback(data) {
     try {
@@ -131,7 +131,7 @@ Jest works using Promises as well using `.resolves` / `.rejects` keywords.  Alte
 Similar to JUnit (and probably all testing), you may need some setup before testing and teardown of  
 the setup upon completion. Jest uses keywords `beforeEach` and `afterEach` to handle that:
 
-```
+```javascript
 beforeEach(() => {
   initializeCityDatabase();
 });
@@ -163,7 +163,7 @@ This is similar to mock functions used in JUnit for Java.
 
 For example, we have a function that loops through some data and returns items:
 
-```
+```javascript
 function forEach(items, callback) {
   for (let index = 0; index < items.length; index++) {
     callback(items[index]);
@@ -174,7 +174,7 @@ function forEach(items, callback) {
 To test the above example, mock functions are used to inspect the mock function's state to make sure the  
 callback() is invoked correctly:
 
-```
+```javascript
 const mockCallback = jest.fn(x => 42 + x);
 forEach([0, 1], mockCallback);
 
@@ -195,7 +195,7 @@ What's new in the above is the `jest.fn()` call.  This does what you think it wo
 
 the `.mock` property holds data about how the function is called and where it is returned.  It also tracks the value of `this` for each call:
 
-```
+```javascript
 const myMock = jest.fn();
 
 const a = new myMock();
@@ -209,7 +209,7 @@ console.log(myMock.mock.instances);
 
 The `.mock` property is used to assert functions get called, instantiated and return values:
 
-```
+```javascript
 // The function was called exactly once
 expect(someMockFunction.mock.calls.length).toBe(1);
 
@@ -258,7 +258,7 @@ Create-react-app ships with Jest, we it should be installed in our toolkit alrea
 From here, we would need to create a snapshot test for Components.  The example test is for link components.  
 Here is the sample code for a Link components that handles hyperlinks:
 
-```
+```javascript
 // Link.react.js
 import React from 'react';
 
@@ -304,7 +304,7 @@ export default class Link extends React.Component {
 
 From here, we would need to create a test renderer to interact with the component and capture the output in a snapshot file:
 
-```
+```javascript
 // Link.react.test.js
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -333,7 +333,7 @@ test('Link changes the class when hovered', () => {
 
 Running `yarn test` or `jest` will produce the following output file:
 
-```
+```javascript
 // __tests__/__snapshots__/Link.react.test.js.snap
 exports[`Link changes the class when hovered 1`] = `
 <a
