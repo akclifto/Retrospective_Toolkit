@@ -4,7 +4,7 @@
 
 //Imports
 import React from 'react';
-import Die from '../components/Dice/Die';
+import Die from '../components/DiceNative/Die';
 import {sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
 import InfoCard from '../components/InfoCard';
