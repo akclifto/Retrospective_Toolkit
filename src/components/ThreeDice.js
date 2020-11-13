@@ -1,7 +1,9 @@
 import React, { useRef, Suspense } from 'react';
 import { TextureLoader } from 'three';
 import { Canvas, useFrame, useLoader } from 'react-three-fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 //import { SVGLoader as loader } from './SVGLoader';
+import { Html, draco } from 'drei';
 import barChart from '../resources/bar_chart.png';
 import bubbleChart from '../resources/bubble_chart.png';
 import highlight from '../resources/highlight.png';
@@ -52,13 +54,22 @@ const Plane = () => {
     )
 }
 
+function Model({ url }) {
+    const { scene } = useLoader(GLTFLoader, url, draco())
+    return <primitive object={scene} dispose={null} />
+  }
+
 const ThreeDice = () => {
 
     return (
         <Canvas camera={{ position: [-5, 8, 15], fov: 60 }}>
+            
             <ambientLight intensity={0.3} />
-            <Suspense fallback={<Block />} >
+            <Suspense fallback={<Html>loading..</Html>}>
                 <Die />
+            </Suspense>
+            <Suspense fallback={<Html>loading..</Html>}>
+                <Model url={'%PUBLIC'} />
             </Suspense>
         </Canvas>
     )
