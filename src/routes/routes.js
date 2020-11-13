@@ -26,7 +26,6 @@ function Routes() {
         <BrowserRouter>
             <LayoutTemplate>
                 <ThemeProvider theme={theme}>
-                    <div>
                         <Switch>
                             <Route exact path='/' component={LandingPage} />
                             <Route path='/admin' component={ifAuth(AuthLandingPage)} />
@@ -34,7 +33,6 @@ function Routes() {
                             <Route path='/signup' component={Signup} />
                             <Route component={PageNotFound} />
                         </Switch>
-                    </div>
                 </ThemeProvider>
             </LayoutTemplate>
         </BrowserRouter>
