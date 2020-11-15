@@ -3,13 +3,13 @@
  */
 
 //Imports
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Die from '../components/Dice/Die';
 import {sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
 import InfoCard from '../components/InfoCard';
 import Grid from '@material-ui/core/Grid'
-
+import socketIOClient from 'socket.io-client';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,9 +25,18 @@ const redirect = (e) => {
   window.open(url, '_blank');
 }
 
-
 //Returns a landing page for the Dice Game
 const DiceLanding = () => {
+  const [response, setResponse] = useState("");
+
+  useEffect(() => {
+    const socket = socketIOClient("http://localhost:5000")
+    socket.on("FromAPI", data => {
+      setResponse(data)
+    });
+    return () => socket.disconnect();
+  }, []);
+
   const classes = useStyles();
 
   return (
@@ -56,8 +65,10 @@ const DiceLanding = () => {
         </div>
       </Grid>
     </Grid>
+    <p>Here's a test response! {response}</p>
   </div>
   );
 }
+
 
 export default DiceLanding;
