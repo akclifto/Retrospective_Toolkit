@@ -57,6 +57,9 @@ Add scripts to top-level `package.json` file:
 }
 ```
 
+Since we used a `create-react-app` initially to start the project,  
+we do not need to add the script to the `package.json` file listed above.  
+
 Then run `yarn test`.  
 The output result is:
 
@@ -368,7 +371,7 @@ exports[`Link changes the class when hovered 3`] = `
 
 So, each `yarn test` will produce a new snapshot output file.  These output files will be used to compare to eachother when something fails.  Each snapshot should be committed to our Github along with code changes.  
 
-If a snapshot fails, we will need to inspect where is from an intended or unintended change.  If it is intended, we should invoke Jest with `jest -u` to overwrite the existing snapshot.
+If a snapshot fails, we will need to inspect where it is from an intended or unintended change.  If it is intended, we should invoke Jest with `jest -u` to overwrite the existing snapshot.
 
 [Samples of snapshot example above are here](https://github.com/facebook/jest/tree/master/examples/snapshot)
 
@@ -380,7 +383,7 @@ To make assertions in DOM testing and to manipulate components, there's three to
 
 - [react-testing-library](https://github.com/testing-library/react-testing-library)
   
-  - Focused on integration tests from user perspective. 
+  - Focused on integration tests from user perspective
   - Simulate mouseclicks and typing from keystrokes, rather than using handlers.
   - Treats code as black box
   - easy

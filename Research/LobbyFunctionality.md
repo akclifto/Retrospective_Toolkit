@@ -1,7 +1,12 @@
 # Research Lobby Functionality
 
-This is to supplement research from @sthoney, who looked at lobby functionality using React Context. For this research,  
-@akclifto will be looking at Photon for C#.  The idea behind this is:  if we get Unity integrated into our web application, then we can use Unity to fully control the lobby and multi-user functionality. That being said, this would be contingent on Unity integration.  
+This is to supplement research from @sthoney, who looked at lobby functionality using React  
+Context.  
+
+For this research, @akclifto will be looking at Photon for C#.  The idea behind this is:  
+if we get Unity integrated into our web application, then we can use Unity to fully control  
+the lobby and multi-user functionality. That being said, this would be contingent on Unity  
+integration.  
 
 ## **Photon for Unity**
 
