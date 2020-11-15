@@ -107,6 +107,7 @@ class Die extends Component {
       margin: `${this.props.margin}px`,
       display: 'inline-block',
     }
+    
     return (
       <div
         className='die-container'
