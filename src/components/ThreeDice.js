@@ -1,29 +1,21 @@
-import React, { useRef, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { TextureLoader } from 'three';
-import { Canvas, useFrame, useLoader } from 'react-three-fiber';
+import { Canvas, useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 //import { SVGLoader as loader } from './SVGLoader';
 import { Html, draco, OrbitControls } from 'drei';
+import { Physics, useBox } from 'use-cannon';
 import barChart from '../resources/bar_chart.png';
 import bubbleChart from '../resources/bubble_chart.png';
 import highlight from '../resources/highlight.png';
 import insertEmoticon from '../resources/insert_emoticon.png';
 import insertPhoto from '../resources/insert_photo.png';
 import cloudQueue from '../resources/cloud_queue.png';
-/*
-Bar_chart
-Bubble_chart
-Highlight
-Insert_emoticon
-Insert_photo
-Cloud_queue
-*/
 
-const Die = () => {
-    const mesh = useRef(null);
-    useFrame(() => {mesh.current.rotation.x = mesh.current.rotation.y += 0.01});
+const Die = (props) => {
+    const [mesh, api] = useBox(() => ({ mass: 1, position: [-6, 10, 3], velocity: [5, 0, -3] ,angularVelocity: [5, 0, 3], ...props}));
     return (
-        <mesh position={[0,0,1]} ref={mesh}>
+        <mesh ref={mesh}>
             <boxBufferGeometry attach='geometry' args={[1,1,1]} />
             <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, barChart)} />
             <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, bubbleChart)} />
@@ -44,24 +36,43 @@ const Plane = () => {
     )
 }
 
-function Model({ url }) {
+function Model({ url, props }) {
+    const [tray] = useBox(() => ({ 
+        type: "Static",
+        args: [12, 0, 22],
+        position: [0, 1, 0], 
+        rotation: [0, -Math.PI / 2, 0],
+        ...props}));
     const { scene } = useLoader(GLTFLoader, url, draco())
-    return <primitive scale={[6,6,6]} rotation={[-Math.PI / 2, -Math.PI / 2 , Math.PI]} position={[-10.5, 0, -2]} object={scene} dispose={null} />
-  }
+    return (
+        <primitive ref={tray} object={scene} dispose={null} />
+    )
+}
+
+const Lights = () => {
+    return (
+        <>
+            <ambientLight intensity={0.5} />
+            <directionalLight
+                intensity={1.0}
+                position={[0, 20, 0]}
+            />
+        </>
+    )
+}
 
 const ThreeDice = () => {
 
     return (
-            <Canvas style={{width: '100vw', height: '250px'}} camera={{ position: [0, 0, 6], fov: 60 }}>             
-                <directionalLight position={[0, 0, 20]} />
-                <ambientLight intensity={0.3} />
-                <Suspense fallback={<Html>loading..</Html>}>
-                    <Die />
-                </Suspense>
-                <Suspense fallback={<Html>loading..</Html>}>
-                    <Model url={'trayModel/tray.gltf'} />
-                </Suspense>
-                <gridHelper />
+            <Canvas style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 0], fov: 50 }}>             
+                <Physics>
+                    <Suspense fallback={<Html>loading..</Html>}>
+                        <Die />
+                        <Model url={'trayModel/tray.glb'} />
+                    </Suspense>
+                </Physics>
+                <Lights />
+                <gridHelper args={[50, 50, 'red', 'black']} />
                 <OrbitControls />
             </Canvas>
     )
