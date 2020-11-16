@@ -5,8 +5,6 @@
 //Imports
 import React from 'react';
 import Die from '../components/Dice/Die';
-// import Die from '../components/DiceNative/Die';
-// import DiceContainer from '../components/DiceDrei/DiceContainer';
 import { sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
 import InfoCard from '../components/InfoCard';
@@ -48,13 +46,13 @@ const DiceLanding = () => {
             clicked={redirect}
           />
         </Grid>
-        
+
         {/** Creates a Die object, contains variable properties*/}
         <Grid item xs={5}>
           <div className={classes.dice}>
             <Die
-            // numSides={sidesConst.SIX.sides}
-            // title={themeConst.Action}
+              numSides={sidesConst.SIX.sides}
+              title={themeConst.Action}
             />
           </div>
         </Grid>
