@@ -123,7 +123,8 @@ class Die extends Component {
 
     let dotStyle = {
 
-      background: this.props.dotColor,
+      background-image URL ("../../resources/fb.png");
+      //background: this.props.dotColor,
 
       height: `${dotSize}px`,
 
