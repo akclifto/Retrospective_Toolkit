@@ -12,7 +12,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 import SettingsApplicationsSharpIcon from '@material-ui/icons/SettingsApplicationsSharp';
-import logo from '../resources/statefarmLogo.svg';
+
+const sfLogoURL = "https://d1g31diwtzkeb3.cloudfront.net/statefarmLogo.svg"
 
 const useStyles = makeStyles((theme) => ({
 
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
   },
 }));
+
 
 /***
  * HideOnScroll triggers the Header to hide when scrolling down the page, and to 
@@ -66,7 +68,7 @@ const Header = (props) => {
         <AppBar className={classes.toolbar}>
           <Toolbar className={classes.root}>
             <Link to='/'>
-              <img src={logo} alt="logo" />
+              <img src={sfLogoURL} alt="logo" />
             </Link>
             <div className={classes.grow} />
             <Link to='/login' className={classes.menuButton} >
