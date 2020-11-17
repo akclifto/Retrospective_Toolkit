@@ -74,6 +74,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+#### `yarn test`
+
+This invokes the testing framework provided with the `create-react-app` package.  `Yarn test` will first initialize any test components from the `src/setupTests.js` file, then it will search for files with the `*.test.js` naming convention to run provided tests.  The `setupTests.js` file is a top-level file in the `src` folder, similiar to `index.js`.  These tests should be written and placed in the `src/tests/` directory.  Any mock functionality that is needed for test environment is accessed from the `src/tests/__mocks__/` directory.
+
+Mock components and other functionality should be written and placed in the `src/tests/__mocks__/` folder. For more information about react testing, see the [Jest documentation](https://jestjs.io/) and [React Jest Testing](https://jestjs.io/docs/en/tutorial-react).
+
 ### Frontend Overview
 
 ### Frontend Technology
@@ -102,7 +108,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - [Yarn](https://classic.yarnpkg.com/en/): Makes package, scripting and dependency management easier.
 - [Create React App](https://github.com/facebook/create-react-app)
 
-#### References for Backend/Java/Spring
+#### References for Backend/Node Express
 
 - [ExpressJS](https://expressjs.com/)
 
@@ -119,4 +125,6 @@ The following guides illustrate how to use some features concretely:
 
 These additional references should also help you:
 
-- [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
+- [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)  
+- [Jest Testing Documentation](https://jestjs.io/)  
+- [Jest-Enzyme React Testing Documentation](https://enzymejs.github.io/enzyme/)
