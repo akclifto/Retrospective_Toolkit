@@ -73,7 +73,7 @@ const Header = (props) => {
             <div className={classes.grow} />
             <Link to='/login' className={classes.menuButton} >
               <Button>
-                <SettingsApplicationsSharpIcon color="black" fontSize="large" />
+                <SettingsApplicationsSharpIcon fontSize="large" />
                 Login
             </Button>
             </Link>
