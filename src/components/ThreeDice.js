@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import { TextureLoader } from 'three';
 import { Canvas, useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-//import { SVGLoader as loader } from './SVGLoader';
 import { Html, draco, OrbitControls } from 'drei';
 import { Physics, useBox } from 'use-cannon';
 import barChart from '../resources/bar_chart.png';
@@ -12,17 +11,27 @@ import insertEmoticon from '../resources/insert_emoticon.png';
 import insertPhoto from '../resources/insert_photo.png';
 import cloudQueue from '../resources/cloud_queue.png';
 
+const Theme = (props) => {
+    if (props.theme === 'action') {
+        return (
+            <>
+                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, barChart)} />
+                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, bubbleChart)} />
+                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, highlight)} />
+                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertEmoticon)} />
+                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertPhoto)} />
+                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, cloudQueue)} />
+            </>
+        )
+    }
+}
+
 const Die = (props) => {
-    const [mesh, api] = useBox(() => ({ mass: 1, position: [-6, 10, 3], velocity: [5, 0, -3] ,angularVelocity: [5, 0, 3], ...props}));
+    const [mesh, api] = useBox(() => ({ mass: 1, position: props.position, velocity: [5, 0, -3] ,angularVelocity: [5, 0, 3], ...props}));
     return (
         <mesh ref={mesh}>
             <boxBufferGeometry attach='geometry' args={[1,1,1]} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, barChart)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, bubbleChart)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, highlight)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertEmoticon)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertPhoto)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, cloudQueue)} />
+            <Theme theme={props.theme} />;
         </mesh>
     )
 }
@@ -67,7 +76,7 @@ const ThreeDice = () => {
             <Canvas style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 0], fov: 50 }}>             
                 <Physics>
                     <Suspense fallback={<Html>loading..</Html>}>
-                        <Die />
+                        <Die position={[-6, 10, 3]} theme='action' />
                         <Model url={'trayModel/tray.glb'} />
                     </Suspense>
                 </Physics>
