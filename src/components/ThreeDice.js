@@ -11,16 +11,12 @@ import insertEmoticon from '../resources/insert_emoticon.png';
 import insertPhoto from '../resources/insert_photo.png';
 import cloudQueue from '../resources/cloud_queue.png';
 
+//work in progress
 const Theme = (props) => {
     if (props.theme === 'action') {
         return (
             <>
-                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, barChart)} />
-                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, bubbleChart)} />
-                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, highlight)} />
-                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertEmoticon)} />
-                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertPhoto)} />
-                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, cloudQueue)} />
+
             </>
         )
     }
@@ -31,7 +27,13 @@ const Die = (props) => {
     return (
         <mesh ref={mesh}>
             <boxBufferGeometry attach='geometry' args={[1,1,1]} />
-            <Theme theme={props.theme} />;
+            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, barChart)} />
+            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, bubbleChart)} />
+            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, highlight)} />
+            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertEmoticon)} />
+            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertPhoto)} />
+            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, cloudQueue)} />
+            {/*<Theme theme={props.theme} />*/}
         </mesh>
     )
 }
