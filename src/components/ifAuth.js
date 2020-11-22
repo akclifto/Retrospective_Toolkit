@@ -1,39 +1,41 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 
-export default function ifAuth(ComponentToProtect) {
+export default function ifAuth (ComponentToProtect) {
   return class extends Component {
-    constructor() {
-      super();
+    constructor () {
+      super()
       this.state = {
         loading: true,
-        redirect: false,
-      };
+        redirect: false
+      }
     }
-    componentDidMount() {
+
+    componentDidMount () {
       axios.get('/api/checksession')
         .then(res => {
           if (res.status === 204 || res.status === 200) {
-            this.setState({ loading: false });
+            this.setState({ loading: false })
           } else {
-            const error = new Error(res.error);
-            throw error;
+            const error = new Error(res.error)
+            throw error
           }
         })
         .catch(err => {
-          this.setState({ loading: false, redirect: true });
-        });
+          this.setState({ loading: false, redirect: true })
+        })
     }
-    render() {
-      const { loading, redirect } = this.state;
+
+    render () {
+      const { loading, redirect } = this.state
       if (loading) {
-        return null;
+        return null
       }
       if (redirect) {
-        return <Redirect to="/login" />;
+        return <Redirect to='/login' />
       }
-      return <ComponentToProtect {...this.props} />;
+      return <ComponentToProtect {...this.props} />
     }
   }
 }

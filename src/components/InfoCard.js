@@ -1,16 +1,16 @@
 /**
- * Base class of a text-based info card. It is expected to use a few paragraphs of text that will be 
+ * Base class of a text-based info card. It is expected to use a few paragraphs of text that will be
  * separated by line breaks.
  */
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 
-//Custom CSS elements for an info card.
+// Custom CSS elements for an info card.
 const useStyles = makeStyles({
   root: {
     maxWidth: '500px',
@@ -19,43 +19,42 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'left',
     margin: 10,
-    boxShadow: 
+    boxShadow:
       '0 1px 3px rgba(0,0,0,0.12)',
-    transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
+    transition: 'all 0.3s cubic-bezier(.25,.8,.25,1)',
     '&:hover': {
       boxShadow: '0 10px 13px rgba(0,0,0,0.25)'
     }
-  },
-});
-
+  }
+})
 
 const InfoCard = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
-  
-      <Card className={classes.root}  variant="outlined" >
-        <CardContent>
-          <Typography variant="h4" className={classes.title} color="textPrimary" gutterBottom align="center">
-            {props.title}
-          </Typography>
-          <Typography variant="body1" component="p">
-            {props.body}
-          </Typography>
-          <Typography className={classes.pos} component="p">
-            <br></br>
-            {props.body2}
-          </Typography>
-          <Typography variant="body2" component="p" color="textSecondary">
-            {props.body3}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button variant="contained" color="primary" onClick={props.clicked}>Learn More</Button>
-        </CardActions>
-      </Card>
+
+    <Card className={classes.root} variant='outlined'>
+      <CardContent>
+        <Typography variant='h4' className={classes.title} color='textPrimary' gutterBottom align='center'>
+          {props.title}
+        </Typography>
+        <Typography variant='body1' component='p'>
+          {props.body}
+        </Typography>
+        <Typography className={classes.pos} component='p'>
+          <br />
+          {props.body2}
+        </Typography>
+        <Typography variant='body2' component='p' color='textSecondary'>
+          {props.body3}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button variant='contained' color='primary' onClick={props.clicked}>Learn More</Button>
+      </CardActions>
+    </Card>
 
   )
 }
 
-export default InfoCard;
+export default InfoCard

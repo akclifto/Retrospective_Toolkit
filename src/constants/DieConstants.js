@@ -1,29 +1,29 @@
-//Contains information about different types of dice that can be used
+// Contains information about different types of dice that can be used
 
 const dieSides = {
   FOUR: {
     sides: 4,
-    chance: 1 / 4,
+    chance: 1 / 4
   },
   SIX: {
     sides: 6,
-    chance: 1 / 6,
+    chance: 1 / 6
   },
   EIGHT: {
     sides: 8,
-    chance: 1 / 8,
+    chance: 1 / 8
   },
   TEN: {
     sides: 10,
-    chance: 1 / 10,
+    chance: 1 / 10
   },
   TWELVE: {
     sides: 12,
-    chance: 1 / 12,
+    chance: 1 / 12
   },
   TWENTY: {
     sides: 20,
-    chance: 1 / 20,
+    chance: 1 / 20
   }
 }
 
@@ -49,4 +49,4 @@ const dieThemes = {
       'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_photo.png'
 */
 
-export {dieSides as sides, dieThemes as themes} ;
+export { dieSides as sides, dieThemes as themes }

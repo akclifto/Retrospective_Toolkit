@@ -26,7 +26,10 @@
     "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "std": "standard",
+    "std-fix": "standard --fix",
+    "std-file": "cd src/tests/out && yarn standard > standard_checkstyle.txt"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,6 +50,7 @@
   "devDependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.3.1",
     "enzyme": "^3.11.0",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "standard": "^16.0.3"
   }
 }

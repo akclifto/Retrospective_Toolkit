@@ -1,12 +1,10 @@
-import React from 'react';
-import DiceLanding from '../containers/DiceLanding';
-
+import React from 'react'
+import DiceLanding from '../containers/DiceLanding'
 
 const LandingPage = () => {
-
-    return (
-            <DiceLanding />
-    );
+  return (
+    <DiceLanding />
+  )
 }
 
-export default LandingPage;
+export default LandingPage
