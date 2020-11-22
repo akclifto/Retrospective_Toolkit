@@ -4,30 +4,20 @@ import { Canvas, useLoader } from 'react-three-fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Html, draco, OrbitControls } from 'drei';
 import { Physics, useBox } from 'use-cannon';
-import barChart from '../resources/bar_chart.png';
-import bubbleChart from '../resources/bubble_chart.png';
-import highlight from '../resources/highlight.png';
-import insertEmoticon from '../resources/insert_emoticon.png';
-import insertPhoto from '../resources/insert_photo.png';
-import cloudQueue from '../resources/cloud_queue.png';
-import { AspectRatio } from '@material-ui/icons';
+import { themes } from '../constants/DieConstants'
 
 // work in progress
-const Theme = (props) => {
+const ThemedDie = (props) => {
     if (props.theme === 'action') {
         return (
-            <>
-
-            </>
+            <Die position={props.position} images={themes.action.images} />
         )
     }
 }
 
 
 const Die = (props) => {
-
-
-    const [mesh, api] = useBox(() => ({ mass: 1, position: props.position, velocity: [5, 0, -3] ,angularVelocity: [5, 0, 3], ...props}));
+    const [mesh, api] = useBox(() => ({ mass: 1, position: props.position, velocity: [5, 0, -3] ,angularVelocity: [5, 0, 3]}));
     return (
         <mesh ref={mesh}>
             <boxBufferGeometry attach='geometry' args={[1,1,1]} />
@@ -80,11 +70,11 @@ const ThreeDice = (props) => {
             <Canvas concurrent style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 12], fov: 50 }} >             
                 <Physics>
                     <Suspense fallback={<Html>loading..</Html>}>
-                        <Die position={[-6, 10, 3]} theme='action' images={props.images}/>
-                        <Die position={[-5, 9, 4]} theme='action' images={props.images}/>
-                        <Die position={[-7, 10, 3]} theme='action' images={props.images}/>
-                        <Die position={[-5, 10, 3]} theme='action' images={props.images}/>
-                        <Die position={[-6, 15, 3]} theme='action' images={props.images}/>
+                        <ThemedDie position={[-6, 10, 3]} theme='action' />
+                        <ThemedDie position={[-5, 9, 4]}  theme='action' />
+                        <ThemedDie position={[-7, 10, 3]} theme='action' />
+                        <ThemedDie position={[-5, 10, 3]} theme='action' />
+                        <ThemedDie position={[-6, 15, 3]} theme='action' />
                         <Model url={'trayModel/tray.glb'} />
                     </Suspense>
                 </Physics>
