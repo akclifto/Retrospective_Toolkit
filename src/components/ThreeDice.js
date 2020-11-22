@@ -21,9 +21,9 @@ const Die = (props) => {
     return (
         <mesh ref={mesh}>
             <boxBufferGeometry attach='geometry' args={[1,1,1]} />
-            {props.images.map(image => (                
+            {props.images.map((image, key) => (                
                 // eslint-disable-next-line react-hooks/rules-of-hooks
-                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, image)} />
+                <meshStandardMaterial key={key} attachArray='material' map={useLoader(TextureLoader, image)} />
             ))}
             {/*<Theme theme={props.theme} />*/}
         </mesh>
