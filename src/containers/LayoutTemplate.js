@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles(() => ({
 
     template: {
-        minHeight: '100vh',
+        minHeight: '100vh'
     }
 }));
 
@@ -17,7 +17,7 @@ const LayoutTemplate = (props) => {
             <div className={classes.template}>
                     <Header />
                         <div>
-                            {props.children} 
+                            {props.children}
                         </div>
                     <Footer />          
             </div>

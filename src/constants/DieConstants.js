@@ -28,8 +28,25 @@ const dieSides = {
 }
 
 const dieThemes = {
-  Action: 'Action'
-
+  action: {
+    images: [
+      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bar_chart.png',
+      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bubble_chart.png',
+      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/cloud_queue.png',
+      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/highlight.png',
+      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_emoticon.png',
+      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_photo.png'
+    ]
+  }
 }
+
+/*
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bar_chart.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bubble_chart.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/cloud_queue.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/highlight.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_emoticon.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_photo.png'
+*/
 
 export {dieSides as sides, dieThemes as themes} ;

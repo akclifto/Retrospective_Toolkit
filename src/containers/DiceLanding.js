@@ -8,13 +8,14 @@ import Die from '../components/Dice/Die';
 import { sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
 import InfoCard from '../components/InfoCard';
+import ThreeDice from '../components/ThreeDice'
 import Grid from '@material-ui/core/Grid'
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: '5px',
+    padding: '5px'
   },
 }));
 
@@ -31,10 +32,7 @@ const DiceLanding = () => {
   const classes = useStyles();
 
   return (
-
-    <div>
-
-      <Grid className={classes.root}
+      <Grid className={classes.root} 
         container direction="row" justify="center" alignItems="center">
         <Grid item xs={5}>
           <InfoCard
@@ -55,9 +53,11 @@ const DiceLanding = () => {
               title={themeConst.Action}
             />
           </div>
-        </Grid>
       </Grid>
-    </div>
+      <Grid item xs={12}>
+        <ThreeDice />
+      </Grid>
+    </Grid>
   );
 }
 
