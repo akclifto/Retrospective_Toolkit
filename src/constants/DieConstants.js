@@ -1,5 +1,10 @@
 //Contains information about different types of dice that can be used
-
+import barChart from '../resources/bar_chart.png';
+import bubbleChart from '../resources/bubble_chart.png';
+import highlight from '../resources/highlight.png';
+import insertEmoticon from '../resources/insert_emoticon.png';
+import insertPhoto from '../resources/insert_photo.png';
+import cloudQueue from '../resources/cloud_queue.png';
 const dieSides = {
   FOUR: {
     sides: 4,
@@ -31,7 +36,19 @@ const dieThemes = {
   Action: {
     name: 'Action',
     images: [
-      
+      barChart,
+      bubbleChart,
+      highlight,
+      insertEmoticon,
+      insertPhoto,
+      cloudQueue
+
+      // 'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bar_chart.png',
+      // 'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bubble_chart.png',
+      // 'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/cloud_queue.png',
+      // 'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/highlight.png',
+      // 'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_emoticon.png',
+      // 'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_photo.png',
     ]
   }
 

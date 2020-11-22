@@ -32,7 +32,6 @@ const DiceLanding = () => {
   const classes = useStyles();
 
   return (
-
       <Grid className={classes.root} 
         container direction="row" justify="center" alignItems="center">
         <Grid item xs={5}>
@@ -54,10 +53,11 @@ const DiceLanding = () => {
               title={themeConst.Action}
             />
           </div>
-        </Grid>
       </Grid>
       <Grid item xs={12}>
-        <ThreeDice />
+        <ThreeDice 
+        images={themeConst.Action.images}
+        />
       </Grid>
     </Grid>
   );

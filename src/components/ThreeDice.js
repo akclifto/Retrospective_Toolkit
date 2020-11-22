@@ -23,17 +23,18 @@ const Theme = (props) => {
     }
 }
 
+
 const Die = (props) => {
+
+
     const [mesh, api] = useBox(() => ({ mass: 1, position: props.position, velocity: [5, 0, -3] ,angularVelocity: [5, 0, 3], ...props}));
     return (
         <mesh ref={mesh}>
             <boxBufferGeometry attach='geometry' args={[1,1,1]} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, barChart)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, bubbleChart)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, highlight)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertEmoticon)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, insertPhoto)} />
-            <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, cloudQueue)} />
+            {props.images.map(image => (                
+                // eslint-disable-next-line react-hooks/rules-of-hooks
+                <meshStandardMaterial attachArray='material' map={useLoader(TextureLoader, image)} />
+            ))}
             {/*<Theme theme={props.theme} />*/}
         </mesh>
     )
@@ -73,17 +74,17 @@ const Lights = () => {
     )
 }
 
-const ThreeDice = () => {
+const ThreeDice = (props) => {
 
     return (
             <Canvas concurrent style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 12], fov: 50 }} >             
                 <Physics>
                     <Suspense fallback={<Html>loading..</Html>}>
-                        <Die position={[-6, 10, 3]} theme='action' />
-                        <Die position={[-5, 9, 4]} theme='action' />
-                        <Die position={[-7, 10, 3]} theme='action' />
-                        <Die position={[-5, 10, 3]} theme='action' />
-                        <Die position={[-6, 15, 3]} theme='action' />
+                        <Die position={[-6, 10, 3]} theme='action' images={props.images}/>
+                        <Die position={[-5, 9, 4]} theme='action' images={props.images}/>
+                        <Die position={[-7, 10, 3]} theme='action' images={props.images}/>
+                        <Die position={[-5, 10, 3]} theme='action' images={props.images}/>
+                        <Die position={[-6, 15, 3]} theme='action' images={props.images}/>
                         <Model url={'trayModel/tray.glb'} />
                     </Suspense>
                 </Physics>
