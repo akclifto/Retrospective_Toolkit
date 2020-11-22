@@ -5,7 +5,7 @@
 //Imports
 import React from 'react';
 import Die from '../components/Dice/Die';
-import {sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
+import { sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
 import InfoCard from '../components/InfoCard';
 import ThreeDice from '../components/ThreeDice'
@@ -32,31 +32,34 @@ const DiceLanding = () => {
   const classes = useStyles();
 
   return (
+    <>
       <Grid className={classes.root} 
         container direction="row" justify="center" alignItems="center">
-          <Grid item xs={5}>
-            <InfoCard
-              title="Cube Game"
-              body="This cube game is intended to promote communication and understanding within a team."
-              body2="How To Play:"
-              body3="First, choose an action dice, then roll it. It will roll on a side with a picture. 
+        <Grid item xs={5}>
+          <InfoCard
+            title="Cube Game"
+            body="This cube game is intended to promote communication and understanding within a team."
+            body2="How To Play:"
+            body3="First, choose an action dice, then roll it. It will roll on a side with a picture. 
               Describe how the picture relates to an experience in software development you have had."
-              clicked={redirect}
-              />
-          </Grid>
+            clicked={redirect}
+          />
+        </Grid>
+
         {/** Creates a Die object, contains variable properties*/}
         <Grid item xs={5}>
-        <div className={classes.dice}>
-        <Die 
-          numSides={sidesConst.SIX.sides}
-          title={themeConst.Action}
-        />
-        </div>
+          <div className={classes.dice}>
+            <Die
+              numSides={sidesConst.SIX.sides}
+              title={themeConst.Action}
+            />
+          </div>
+        </Grid>
       </Grid>
       <Grid item xs={12}>
         <ThreeDice />
       </Grid>
-    </Grid>
+    </>
   );
 }
 

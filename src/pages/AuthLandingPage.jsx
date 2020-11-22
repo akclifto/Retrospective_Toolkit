@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/LandingPage.css';
 import Header from '../components/Header';
-import bg from '../resources/fin.png';
 
 
+const bg = "https://d1g31diwtzkeb3.cloudfront.net/fin.png"
 
 function AuthLandingPage() {
 
