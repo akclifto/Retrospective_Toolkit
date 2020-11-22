@@ -10,8 +10,9 @@ import highlight from '../resources/highlight.png';
 import insertEmoticon from '../resources/insert_emoticon.png';
 import insertPhoto from '../resources/insert_photo.png';
 import cloudQueue from '../resources/cloud_queue.png';
+import { AspectRatio } from '@material-ui/icons';
 
-//work in progress
+// work in progress
 const Theme = (props) => {
     if (props.theme === 'action') {
         return (
@@ -75,10 +76,14 @@ const Lights = () => {
 const ThreeDice = () => {
 
     return (
-            <Canvas style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 0], fov: 50 }}>             
+            <Canvas concurrent style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 12], fov: 50 }} >             
                 <Physics>
                     <Suspense fallback={<Html>loading..</Html>}>
                         <Die position={[-6, 10, 3]} theme='action' />
+                        <Die position={[-5, 9, 4]} theme='action' />
+                        <Die position={[-7, 10, 3]} theme='action' />
+                        <Die position={[-5, 10, 3]} theme='action' />
+                        <Die position={[-6, 15, 3]} theme='action' />
                         <Model url={'trayModel/tray.glb'} />
                     </Suspense>
                 </Physics>
