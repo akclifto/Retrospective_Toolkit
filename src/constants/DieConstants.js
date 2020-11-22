@@ -28,7 +28,12 @@ const dieSides = {
 }
 
 const dieThemes = {
-  Action: 'Action'
+  Action: {
+    name: 'Action',
+    images: [
+      
+    ]
+  }
 
 }
 

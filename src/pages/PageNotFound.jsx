@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Header from '../components/Header';
-import Oops from '../resources/404.gif';
 
+const Oops = "https://d1g31diwtzkeb3.cloudfront.net/404.gif"
 const useStyles = makeStyles( () => ({
     root: {
         display: "block",
