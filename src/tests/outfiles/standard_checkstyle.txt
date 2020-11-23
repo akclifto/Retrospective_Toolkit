@@ -1,0 +1,50 @@
+$ C:\Users\Adam\source\repos\Retrospective_Toolkit\node_modules\.bin\standard
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\server\dao\user.js:13:39: Expected the Promise rejection reason to be an Error.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\server\middleware\session.js:8:14: A constructor name should not start with a lowercase letter.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\server\service\auth.js:14:14: Expected the Promise rejection reason to be an Error.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\server\service\auth.js:17:12: Expected the Promise rejection reason to be an Error.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\components\Dice\DiceModel.js:48:14: Arrow function should not return assignment.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\components\Dice\Die.js:6:27: 'useRef' is defined but never used.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\components\ifAuth.js:25:16: Expected error to be handled.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\components\InfoCard.js:53:53: Handler function for onClick prop key must be a camelCase name beginning with 'handle' only
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\components\ThreeDice.js:19:16: 'api' is assigned a value but never used.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\components\ThreeDice.js:24:9: Definition for rule 'react-hooks/rules-of-hooks' was not found.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\components\ThreeDice.js:32:7: 'Plane' is assigned a value but never used.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\Die.test.js:9:1: 'describe' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\Die.test.js:17:3: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\Die.test.js:21:3: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\Die.test.js:29:5: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\Die.test.js:32:3: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\Die.test.js:40:5: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\Die.test.js:42:19: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:12:1: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:20:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:21:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:22:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:23:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:25:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:29:1: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:37:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:38:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:39:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:40:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:42:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:46:1: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:54:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:55:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:56:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:57:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:59:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:81:1: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:89:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:90:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:91:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:92:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:94:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:97:1: 'test' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:105:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:106:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:107:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:108:3: 'expect' is not defined.
+  C:\Users\Adam\source\repos\Retrospective_Toolkit\src\tests\routes.test.js:110:3: 'expect' is not defined.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
