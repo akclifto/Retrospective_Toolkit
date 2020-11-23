@@ -17,7 +17,7 @@ Shane Thoney
 ## Table of Contents
 
 - [Introduction](#Introduction)
-- [Build Instructions](#Build-Instructions)
+- [Build Instructions and Testing](#Build-Instructions-and-Testing)
 - [Frontend Overview](#Frontend-Overview)
 - [Frontend Technology](#Frontend-Technology)
 - [Frontend Tools](#Frontend-Tools)
@@ -35,7 +35,7 @@ This Retrospective Toolkit (the "Toolkit") is the product of Team 18's capstone 
 
 The functional aspects of the Toolkit are separated into three areas: (1) frontend components, (2) backend components, and (3) cloud-hosting and database components.  This document will cover the topics and technology used in the project.
 
-### Build Instructions
+### Build Instructions and Testing
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -79,6 +79,28 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 This invokes the testing framework provided with the `create-react-app` package.  `Yarn test` will first initialize any test components from the `src/setupTests.js` file, then it will search for files with the `*.test.js` naming convention to run provided tests.  The `setupTests.js` file is a top-level file in the `src` folder, similiar to `index.js`.  These tests should be written and placed in the `src/tests/` directory.  Any mock functionality that is needed for test environment is accessed from the `src/tests/__mocks__/` directory.
 
 Mock components and other functionality should be written and placed in the `src/tests/__mocks__/` folder. For more information about react testing, see the [Jest documentation](https://jestjs.io/) and [React Jest Testing](https://jestjs.io/docs/en/tutorial-react).
+
+#### `yarn std`, `yarn std-fix`, `yarn std-file` Code Quality tool
+
+`yarn std` runs standardjs, which is essentially a static analysis tool that checks the style of javascript files for code quality.  
+If run in the console, it will output the results from check by file-path and line of the code that should be adjusted to format  
+with standard javascript formatting practices.  It will give a brief description of the code quality that is flagged.  
+If you have an excessive amount of code flags,  the terminal will express an error has occurred.  This error can be ignored.
+
+`yarn std-fix` will automatically fix the code to proper quality and format.  
+This works for roughly 90% of the quality flags found in the code.  The remaining flags will need to be manually adjusted.
+
+`yarn std-file` performs the code quality check and outputs it to a file called `standard_checkstyle.txt` in the 'src/tests/out/' folder.  
+The file will be overwritten each time `yarn std-file` is called.  If there are an excessive amount of errors written to the file,  
+the console will express an error has occurred. If this occurs, you can open up the output file,  
+`standard_checkstyle.txt`, and check the last line written to the file. If the last line written is:
+
+`info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.`, you can ignore the error,  
+because the check completed.  If this is not the last line, then something went wrong, and you may need to re-run the `yarn std-file` check.
+
+Ideally, you should run `yarn std` to see your code quality flags.  
+Then run `yarn std-fix` to automatically fix any errors that may have occurred.  
+Last, run `yarn std-file` to write all the errors to the file that were not fixed automatically so you can fix them manually.  
 
 ### Frontend Overview
 
