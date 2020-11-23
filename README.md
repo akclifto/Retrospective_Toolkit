@@ -90,7 +90,7 @@ If you have an excessive amount of code flags,  the terminal will express an err
 `yarn std-fix` will automatically fix the code to proper quality and format.  
 This works for roughly 90% of the quality flags found in the code.  The remaining flags will need to be manually adjusted.
 
-`yarn std-file` performs the code quality check and outputs it to a file called `standard_checkstyle.txt` in the 'src/tests/out/' folder.  
+`yarn std-file` performs the code quality check and outputs it to a file called `standard_checkstyle.txt` in the `src/tests/outfiles/` folder.  
 The file will be overwritten each time `yarn std-file` is called.  If there are an excessive amount of errors written to the file,  
 the console will express an error has occurred. If this occurs, you can open up the output file,  
 `standard_checkstyle.txt`, and check the last line written to the file. If the last line written is:
