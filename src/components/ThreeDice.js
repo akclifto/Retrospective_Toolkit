@@ -25,7 +25,6 @@ const Die = (props) => {
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 <meshStandardMaterial key={key} attachArray='material' map={useLoader(TextureLoader, image)} />
             ))}
-            {/*<Theme theme={props.theme} />*/}
         </mesh>
     )
 }
