@@ -5,10 +5,12 @@
 //Imports
 import React from 'react';
 import Die from '../components/Dice/Die';
+import ThemeCard from '../components/ThemeCard';
 import { sides as sidesConst, themes as themeConst } from '../constants/DieConstants';
 import { makeStyles } from '@material-ui/core/styles';
 import InfoCard from '../components/InfoCard';
 import ThreeDice from '../components/ThreeDice/ThreeDice'
+import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 
 
@@ -32,10 +34,40 @@ const redirect = (e) => {
 const DiceLanding = () => {
   const classes = useStyles();
 
+  //TODO:Rerolls the dice
+  const reRoll = () => {
+    return true;
+  }
+  
+  //TODO: create dynamic theme swithcing
+  const diceTheme =  themeConst.action;
+  
+  const rollButton = (
+    <Button 
+      variant="contained" 
+      color="primary">
+        Roll Dice
+      </Button>
+  )
+
+  //TODO: Dynamically change which image is loaded (which image is determined by the roll)
+  //Currently does not work with rawgit CDN...because reasons
+  const rollResult = (
+    [
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bar_chart.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bubble_chart.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/cloud_queue.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/highlight.png',
+      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_emoticon.png'
+    ]
+  )
+
+
   return (
+    <Grid container >
       <Grid className={classes.root} 
-        container direction="row" justify="center" alignItems="center">
-        <Grid item xs={5}>
+        container xs={10} direction="row" justify="center" alignItems="center">
+        <Grid item xs={4}>
           <InfoCard
             title="Cube Game"
             body="This cube game is intended to promote communication and understanding within a team."
@@ -43,22 +75,40 @@ const DiceLanding = () => {
             body3="First, choose an action dice, then roll it. It will roll on a side with a picture. 
               Describe how the picture relates to an experience in software development you have had."
             clicked={redirect}
+            buttonText="Learn More"
           />
         </Grid>
 
         {/** Creates a Die object, contains variable properties*/}
-        <Grid item xs={5}>
+        <Grid item xs={3}>
           <div className={classes.dice}>
             <Die
               numSides={sidesConst.SIX.sides}
-              title={themeConst.Action}
+              rollButton={rollButton}
+              results={rollResult}
             />
           </div>
       </Grid>
-      <Grid item xs={12}>
-        <ThreeDice />
+      <Grid item xs={10}>
+        <ThreeDice 
+          rollButton = {rollButton}
+          theme = {diceTheme}
+        />
       </Grid>
     </Grid>
+    <Grid 
+      container xs={2} className={classes.root} >
+          <Grid item >
+            <div className={classes.dice}>
+              <ThemeCard
+                theme={diceTheme}
+              />
+            </div>
+        </Grid>
+
+      </Grid>
+
+  </Grid>
   );
 }
 
