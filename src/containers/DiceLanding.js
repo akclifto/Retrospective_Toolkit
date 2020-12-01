@@ -12,6 +12,7 @@ import ThreeDice from '../components/ThreeDice/ThreeDice'
 import Grid from '@material-ui/core/Grid'
 
 
+// eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,

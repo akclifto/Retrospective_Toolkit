@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 function Copyright() {
   return (
@@ -74,6 +75,11 @@ export default function Login(props) {
     if(isAuth) {
       props.history.push('/admin');
     }
+  }
+  Login.propTypes = {
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }).isRequired,
   }
 
   return (

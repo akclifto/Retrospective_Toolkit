@@ -11,6 +11,7 @@
     "axios": "^0.21.0",
     "drei": "^1.5.7",
     "jotai": "^0.11.2",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dice-complete": "^1.2.1",
     "react-dom": "^17.0.1",
@@ -49,6 +50,9 @@
   "devDependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.3.1",
     "enzyme": "^3.11.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "react-test-renderer": "^17.0.1"
   }
 }

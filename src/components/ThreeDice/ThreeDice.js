@@ -9,12 +9,13 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import { Provider, useAtom } from 'jotai';
-import { useResetAtom } from 'jotai/utils'
-import { gameStart, diceArray, diceDefault, gameReset } from './gameState';
+//import { useResetAtom } from 'jotai/utils'
+import { gameStart, diceDefault, gameReset } from './gameState';
+import PropTypes from 'prop-types';
 
 function GameManager() {
     const [gameStarted, setGameState] = useAtom(gameStart);
-    const [onReset, setReset] = useAtom(gameReset);
+    //const [onReset, setReset] = useAtom(gameReset);
 
     const useStyles = makeStyles((theme) => ({
         button: {
@@ -94,7 +95,7 @@ function GameManager() {
 }
 
 const ThemedDie = (props) => {
-    const [position, setPosition] = useAtom(diceArray)
+    //const [position, setPosition] = useAtom(diceArray)
     const [dicePos] = useAtom(diceDefault)
     const [onReset, setReset] = useAtom(gameReset);
 
@@ -126,19 +127,24 @@ const Die = (props) => {
     const velocity = useRef([0, 0, 0])
     const angVelocity = useRef([0, 0, 0])
     const [mesh, api] = useBox(() => ({ mass: 300, inertia: 13, position: props.position, rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI], velocity: [15, 0, -10] , angularVelocity: [-15, 2, -10], linearDamping: 0.1, angularDamping: 0.1, material: {restitution: 0.3}}));
+
     useEffect(() => {
         api.velocity.subscribe((v) => (velocity.current = v))
         api.angularVelocity.subscribe((av) => (angVelocity.current = av))
-    }, [])
+    }, [api.velocity, api.angularVelocity])
     return (
         <mesh onClick={() => {api.position.set(props.position[0], props.position[1], props.position[2]); api.velocity.set(15, 0, -10); api.angularVelocity.set(-15, 2, -10) }} ref={mesh}>
             <boxBufferGeometry />
             {props.images.map((image, key) => (                
                 // eslint-disable-next-line react-hooks/rules-of-hooks
-                <meshStandardMaterial flatShading emissive roughness={0.8} key={key} attachArray='material' map={useLoader(TextureLoader, image)} />
+                <meshStandardMaterial flatShading roughness={0.8} key={key} attachArray='material' map={useLoader(TextureLoader, image)} />
             ))}
         </mesh>
     )
+}
+Die.propTypes = {
+    images: PropTypes.array.isRequired,
+    position: PropTypes.arrayOf(PropTypes.number).isRequired
 }
 
 const CollisionMesh = () => {
@@ -173,7 +179,7 @@ const CollisionMesh = () => {
     )
 }
 
-function Model({ url, props }) {
+function Model({ url }) {
 
     const { scene } = useLoader(GLTFLoader, url, draco())
     return (
@@ -181,6 +187,10 @@ function Model({ url, props }) {
             <primitive rotation={[0, -Math.PI / 2, 0]} object={scene} dispose={null} />
         </group>
     )
+}
+
+Model.propTypes = {
+    url: PropTypes.string.isRequired
 }
 
 const Lights = () => {
@@ -198,7 +208,7 @@ const Lights = () => {
     )
 }
 
-const ThreeDice = (props) => {  
+const ThreeDice = () => {  
     return (
             <Canvas shadowMap concurrent style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 12], fov: 50 }} >  
                 <Lights />

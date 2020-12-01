@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { makeStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(() => ({
 
@@ -23,4 +24,8 @@ const LayoutTemplate = (props) => {
             </div>
         );
 }
+LayoutTemplate.propTypes = {
+    children: PropTypes.node
+}
+
 export default LayoutTemplate;

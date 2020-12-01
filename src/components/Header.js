@@ -15,6 +15,7 @@ import SettingsApplicationsSharpIcon from '@material-ui/icons/SettingsApplicatio
 
 const sfLogoURL = "https://d1g31diwtzkeb3.cloudfront.net/statefarmLogo.svg"
 
+// eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
 
   root: {
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
  * appear again when scrolling back up page.
  */
 function HideOnScroll(props) {
+  // eslint-disable-next-line no-unused-vars
   const { children } = props;
   const trigger = useScrollTrigger({ target: undefined });
 
@@ -53,7 +55,7 @@ function HideOnScroll(props) {
 
 
 HideOnScroll.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node
 };
 
 

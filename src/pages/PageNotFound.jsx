@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Header from '../components/Header';
 
 const Oops = "https://d1g31diwtzkeb3.cloudfront.net/404.gif"
 const useStyles = makeStyles( () => ({
@@ -55,7 +54,7 @@ const PageNotFound = () => {
             <img className={classes.img} src={Oops} alt="Oops! Page Not Found" />
             <h1 className={classes.header}>404! Oops...</h1>
             <div className={classes.body}>
-                <h2>The page you are looking for doesn't exist!</h2>
+                <h2>The page you are looking for doesn&apos;t exist!</h2>
                 <Button className={classes.button}>
                     <Link className={classes.goHome} to= "/">Go Home</Link>
                 </Button>

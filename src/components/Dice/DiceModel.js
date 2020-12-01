@@ -58,6 +58,7 @@ const DiceModel = (props) => {
 
 DiceModel.propTypes = {
   result: PropTypes.func,
+  css: PropTypes.string
 };
 
 export default DiceModel;

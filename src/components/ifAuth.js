@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export default function ifAuth(ComponentToProtect) {
-  return class extends Component {
+  return class ifAuth extends Component {
     constructor() {
       super();
       this.state = {
@@ -21,7 +21,7 @@ export default function ifAuth(ComponentToProtect) {
             throw error;
           }
         })
-        .catch(err => {
+        .catch(() => {
           this.setState({ loading: false, redirect: true });
         });
     }
@@ -37,3 +37,4 @@ export default function ifAuth(ComponentToProtect) {
     }
   }
 }
+Component.displayName ='ifAuth';

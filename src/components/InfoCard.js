@@ -9,6 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 //Custom CSS elements for an info card.
 const useStyles = makeStyles({
@@ -56,6 +57,13 @@ const InfoCard = (props) => {
       </Card>
 
   )
+}
+InfoCard.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+  body2: PropTypes.string,
+  body3: PropTypes.string,
+  clicked: PropTypes.any
 }
 
 export default InfoCard;
