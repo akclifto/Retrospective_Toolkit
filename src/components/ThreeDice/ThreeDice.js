@@ -136,8 +136,7 @@ const Die = (props) => {
         <mesh onClick={() => {api.position.set(props.position[0], props.position[1], props.position[2]); api.velocity.set(15, 0, -10); api.angularVelocity.set(-15, 2, -10) }} ref={mesh}>
             <boxBufferGeometry />
             {props.images.map((image, key) => (                
-                // eslint-disable-next-line react-hooks/rules-of-hooks
-                <meshStandardMaterial flatShading roughness={0.8} key={key} attachArray='material' map={useLoader(TextureLoader, image)} />
+                <meshStandardMaterial flatShading roughness={0.8} key={key} attachArray='material' map={useLoader(TextureLoader, image.url)} />
             ))}
         </mesh>
     )
@@ -210,7 +209,7 @@ const Lights = () => {
 
 const ThreeDice = () => {  
     return (
-            <Canvas shadowMap concurrent style={{width: '100vw', height: '500px'}} camera={{ position: [0, 20, 12], fov: 50 }} >  
+            <Canvas shadowMap concurrent style={{width: '65vw', height: '500px'}} camera={{ position: [0, 20, 12], fov: 50 }} >  
                 <Lights />
                 <Provider>        
                     <Physics gravity={[0, -30, 0]}>
