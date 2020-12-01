@@ -29,13 +29,32 @@ const dieSides = {
 
 const dieThemes = {
   action: {
+    title: "action",
     images: [
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/bar_chart.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/bubble_chart.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/cloud_queue.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/highlight.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/insert_emoticon.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/insert_photo.png'
+      {
+        name: "Bar Chart",
+        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bar_chart.png'
+      },
+      {
+        name: "Bubble Chart",
+        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bubble_chart.png'
+      },
+      {
+        name: "Cloud Queue",
+        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/cloud_queue.png'
+      },
+      {
+        name: "Highlight",
+        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/highlight.png'
+      },
+      {
+        name: "Insert Emoticon",
+        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_emoticon.png'
+      },
+      {
+        name: "Insert Photo",
+        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_photo.png'
+      }
     ]
   }
 }
