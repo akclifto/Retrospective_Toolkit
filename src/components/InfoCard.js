@@ -50,9 +50,10 @@ const InfoCard = (props) => {
           <Typography variant="body2" component="p" color="textSecondary">
             {props.body3}
           </Typography>
+          {props.content}
         </CardContent>
         <CardActions>
-          <Button variant="contained" color="primary" onClick={props.clicked}>Learn More</Button>
+          <Button variant="contained" color="primary" onClick={props.clicked}>{props.buttonText}</Button>
         </CardActions>
       </Card>
 
