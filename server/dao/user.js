@@ -1,21 +1,24 @@
-const pool = require('../db/postgres');
+const pool = require("../db/postgres");
 
 async function findUserByEmail(email) {
-    try { 
+  try {
     const user = await pool.query(
-        `SELECT users.id, email, password, roles.role 
+      `SELECT users.id, email, password, roles.role 
         FROM users 
         LEFT JOIN roles 
         ON roles.id = users.role
-        WHERE email = '${email}'`);
+        WHERE email = '${email}'`
+    );
 
     // const user = users[email];
-    return user.rowCount > 0 ? user : Promise.reject('user not found');
-    } catch(err)  {
-        console.error(err) // TODO: remove from production code'
-    }
+    return user.rowCount > 0
+      ? user
+      : Promise.reject(new Error("user not found"));
+  } catch (err) {
+    return Promise.reject(new Error(err));
+  }
 }
 
 module.exports = {
-    findUserByEmail
+  findUserByEmail,
 };

@@ -1,16 +1,16 @@
 # Research Lobby Functionality
 
 This is to supplement research from @sthoney, who looked at lobby functionality using React  
-Context.  
+Context.
 
-For this research, @akclifto will be looking at Photon for C#.  The idea behind this is:  
+For this research, @akclifto will be looking at Photon for C#. The idea behind this is:  
 if we get Unity integrated into our web application, then we can use Unity to fully control  
 the lobby and multi-user functionality. That being said, this would be contingent on Unity  
-integration.  
+integration.
 
 ## **Photon for Unity**
 
-Photon Unity Network (PUN) is a package that allows for multiplayer games.  For our application, we would use it to have multiple users for an embedded Unity activity within the page.  It is probably overkill for what we need, but may work more effectively with an embbedded Unity activity.  
+Photon Unity Network (PUN) is a package that allows for multiplayer games. For our application, we would use it to have multiple users for an embedded Unity activity within the page. It is probably overkill for what we need, but may work more effectively with an embbedded Unity activity.
 
 - Free account with up to 20 concurrent users
 - [Photon Documentation](https://doc.photonengine.com/en-us/pun/v2/getting-started/pun-intro)
@@ -87,9 +87,9 @@ namespace Com.Retrospective.Toolkit
 }
 ```
 
-- Makes use of callBacks to relay most information.  
-- `ConnectUsingSettings` allows online access to `PhotonServerSettings` assets to connect.  
-- GameObject can be initialized as "networked GameObjects" in a `PhotonView` component.  
+- Makes use of callBacks to relay most information.
+- `ConnectUsingSettings` allows online access to `PhotonServerSettings` assets to connect.
+- GameObject can be initialized as "networked GameObjects" in a `PhotonView` component.
 
 Example:
 
@@ -131,7 +131,7 @@ photonView.RPC("OnAwakeRPC", RpcTarget.All, (byte)1);
 
 ### **Drawbacks**
 
-- Requires use of Photon servers.  This would be an extra step to get Photon up and running
+- Requires use of Photon servers. This would be an extra step to get Photon up and running
   - It has a build in server wizard for Photon provided servers, but means we are reliant on some 3rd servers to be up and functional
   - It allows for creation of our own Photon server, but again would mean we need an additional step to get up and running
 - Does not appear to be asynchronous (could be good or bad)

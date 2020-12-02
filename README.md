@@ -31,9 +31,9 @@ Shane Thoney
 
 ### Introduction
 
-This Retrospective Toolkit (the "Toolkit") is the product of Team 18's capstone project.  The toolkit will be used as a training tool by our sponsor and will contain two base activities: a cube activity and a model-building activity.
+This Retrospective Toolkit (the "Toolkit") is the product of Team 18's capstone project. The toolkit will be used as a training tool by our sponsor and will contain two base activities: a cube activity and a model-building activity.
 
-The functional aspects of the Toolkit are separated into three areas: (1) frontend components, (2) backend components, and (3) cloud-hosting and database components.  This document will cover the topics and technology used in the project.
+The functional aspects of the Toolkit are separated into three areas: (1) frontend components, (2) backend components, and (3) cloud-hosting and database components. This document will cover the topics and technology used in the project.
 
 ### Build Instructions
 
@@ -76,7 +76,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 #### `yarn test`
 
-This invokes the testing framework provided with the `create-react-app` package.  `Yarn test` will first initialize any test components from the `src/setupTests.js` file, then it will search for files with the `*.test.js` naming convention to run provided tests.  The `setupTests.js` file is a top-level file in the `src` folder, similiar to `index.js`.  These tests should be written and placed in the `src/tests/` directory.  Any mock functionality that is needed for test environment is accessed from the `src/tests/__mocks__/` directory.
+This invokes the testing framework provided with the `create-react-app` package. `Yarn test` will first initialize any test components from the `src/setupTests.js` file, then it will search for files with the `*.test.js` naming convention to run provided tests. The `setupTests.js` file is a top-level file in the `src` folder, similiar to `index.js`. These tests should be written and placed in the `src/tests/` directory. Any mock functionality that is needed for test environment is accessed from the `src/tests/__mocks__/` directory.
 
 Mock components and other functionality should be written and placed in the `src/tests/__mocks__/` folder. For more information about react testing, see the [Jest documentation](https://jestjs.io/) and [React Jest Testing](https://jestjs.io/docs/en/tutorial-react).
 
@@ -125,6 +125,6 @@ The following guides illustrate how to use some features concretely:
 
 These additional references should also help you:
 
-- [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)  
-- [Jest Testing Documentation](https://jestjs.io/)  
+- [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
+- [Jest Testing Documentation](https://jestjs.io/)
 - [Jest-Enzyme React Testing Documentation](https://enzymejs.github.io/enzyme/)
