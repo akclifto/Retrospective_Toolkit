@@ -63,7 +63,7 @@ Die.propTypes = {
 };
 
 Die.defaultProps = {
-  title: "",
+  title: "undefined",
 };
 
 export default Die;
