@@ -59,7 +59,7 @@ const GameManager = () => {
       {gameStarted && (
         <>
           <Suspense fallback={null}>
-            <ThemedDie />
+            <ThemedDie theme="action" />
             <CollisionMesh />
           </Suspense>
           <Html position={[-3, 0, 9]} scaleFactor={25}>
@@ -100,36 +100,33 @@ const GameManager = () => {
   );
 };
 
-const ThemedDie = (theme) => {
+const ThemedDie = (props) => {
   // const [position, setPosition] = useAtom(diceArray)
+  const { theme } = props;
   const [dicePos] = useAtom(diceDefault);
   const [onReset, setReset] = useAtom(gameReset);
+  const actionTextures = useLoader(TextureLoader, [...themes.action.images]);
 
   if (theme === "action") {
-    return null;
+    return dicePos.map((pos) => {
+      return (
+        <Die key={pos.uuid} position={pos.position} images={actionTextures} />
+      );
+    });
   }
 
   if (onReset) {
     setReset(false);
     return null;
   }
-
-  return dicePos.map((pos) => {
-    return (
-      <Die
-        key={pos.uuid}
-        position={pos.position}
-        images={themes.action.images}
-      />
-    );
-  });
+  // if we are here, something has gone wrong
+  return new Error("problem encountered in ThemedDice");
 };
 
 const Die = (props) => {
   const velocity = useRef([0, 0, 0]);
   const angVelocity = useRef([0, 0, 0]);
   const { images } = props;
-  const texture = useLoader(TextureLoader, [...images]);
   const [mesh, api] = useBox(() => ({
     mass: 300,
     inertia: 13,
@@ -173,7 +170,7 @@ const Die = (props) => {
       ref={mesh}
     >
       <boxBufferGeometry />
-      {texture.map((image) => {
+      {images.map((image) => {
         return (
           <meshStandardMaterial
             key={image.uuid}
