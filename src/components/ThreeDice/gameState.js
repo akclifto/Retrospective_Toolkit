@@ -1,11 +1,10 @@
 import { atom } from "jotai";
-import { atomWithReset } from "jotai/utils";
 import { v4 as uuidv4 } from "uuid";
 
-export const gameStart = atom(false);
-export const gameReset = atom(false);
+export const gameStartState = atom(false);
+export const rerollState = atom(false);
 
-export const diceDefault = atom([
+export const diceDefaultState = atom([
   {
     uuid: uuidv4(),
     position: [-13, 5, 6],
@@ -27,5 +26,3 @@ export const diceDefault = atom([
     position: [-13, 6, 2],
   },
 ]);
-
-export const diceArray = atomWithReset([[]]);
