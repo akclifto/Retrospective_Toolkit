@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 export default function ifAuth(ComponentToProtect) {
   return class extends Component {
@@ -11,9 +11,11 @@ export default function ifAuth(ComponentToProtect) {
         redirect: false,
       };
     }
+
     componentDidMount() {
-      axios.get('/api/checksession')
-        .then(res => {
+      axios
+        .get("/api/checksession")
+        .then((res) => {
           if (res.status === 204 || res.status === 200) {
             this.setState({ loading: false });
           } else {
@@ -21,10 +23,11 @@ export default function ifAuth(ComponentToProtect) {
             throw error;
           }
         })
-        .catch(err => {
+        .catch(() => {
           this.setState({ loading: false, redirect: true });
         });
     }
+
     render() {
       const { loading, redirect } = this.state;
       if (loading) {
@@ -33,7 +36,8 @@ export default function ifAuth(ComponentToProtect) {
       if (redirect) {
         return <Redirect to="/login" />;
       }
-      return <ComponentToProtect {...this.props} />;
+      return <ComponentToProtect />;
     }
-  }
+  };
 }
+Component.displayName = "ifAuth";

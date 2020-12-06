@@ -1,4 +1,4 @@
-//Contains information about different types of dice that can be used
+// Contains information about different types of dice that can be used
 
 const dieSides = {
   FOUR: {
@@ -24,21 +24,21 @@ const dieSides = {
   TWENTY: {
     sides: 20,
     chance: 1 / 20,
-  }
-}
+  },
+};
 
 const dieThemes = {
   action: {
     images: [
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bar_chart.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bubble_chart.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/cloud_queue.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/highlight.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_emoticon.png',
-      'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_photo.png'
-    ]
-  }
-}
+      "https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/bar_chart.png",
+      "https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/bubble_chart.png",
+      "https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/cloud_queue.png",
+      "https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/highlight.png",
+      "https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/insert_emoticon.png",
+      "https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/master/src/resources/insert_photo.png",
+    ],
+  },
+};
 
 /*
       'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bar_chart.png',
@@ -49,4 +49,4 @@ const dieThemes = {
       'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_photo.png'
 */
 
-export {dieSides as sides, dieThemes as themes} ;
+export { dieSides as sides, dieThemes as themes };

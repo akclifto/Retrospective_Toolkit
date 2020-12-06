@@ -16,9 +16,9 @@
 
 ### Links
 
-- [Jest Documentation](https://jestjs.io/)  
+- [Jest Documentation](https://jestjs.io/)
 - [Jest Using Matchers](https://jestjs.io/docs/en/using-matchers)
-- [Jest With Async](https://jestjs.io/docs/en/asynchronous)  
+- [Jest With Async](https://jestjs.io/docs/en/asynchronous)
 - [Jest Setup and Teardown](https://jestjs.io/docs/en/setup-teardown)
 - [Jest Mock Functions](https://jestjs.io/docs/en/mock-functions)
 - [Jest Platform Modules](https://jestjs.io/docs/en/jest-platform)
@@ -40,9 +40,9 @@ module.exports = sum;
 We make a test for it called `sum.test.js`:
 
 ```javascript
-const sum = require('./sum');
+const sum = require("./sum");
 
-test('adds 1 + 2 to equal 3', () => {
+test("adds 1 + 2 to equal 3", () => {
   expect(sum(1, 2)).toBe(3);
 });
 ```
@@ -58,7 +58,7 @@ Add scripts to top-level `package.json` file:
 ```
 
 Since we used a `create-react-app` initially to start the project,  
-we do not need to add the script to the `package.json` file listed above.  
+we do not need to add the script to the `package.json` file listed above.
 
 Then run `yarn test`.  
 The output result is:
@@ -70,7 +70,7 @@ PASS  ./sum.test.js
 
 #### Jest Matchers
 
-Jest Matchers test for equality.  Common matchers:
+Jest Matchers test for equality. Common matchers:
 
 - Test for equality
   - `expect(something).toBe(someEquality)`
@@ -83,7 +83,7 @@ Jest Matchers test for equality.  Common matchers:
 #### Jest Truthiness
 
 Truthiness distinguishes between `undefined`, `null`, and `false`, yet doesn't treat them  
-differently during testing.  Jest allows explicit use with keywords:
+differently during testing. Jest allows explicit use with keywords:
 
 - `toBeNull` matches only `null`
 - `toBeUndefined` matches only `undefined`
@@ -101,17 +101,17 @@ can be found here:
 
 When testing async, we want to make sure we fetch some data from the backend, and then  
 call back the data once the backend does whatever it needs to do to fetch some data.  
-This is handled in Jest testing using an argument called `done`.  Jest will wait until  
-the `done` callback is called before finishing the testing.  
+This is handled in Jest testing using an argument called `done`. Jest will wait until  
+the `done` callback is called before finishing the testing.
 
 For example, we have a fetchData(callback) func to get something from the backend, and a  
-callBack(data) func that retrieved the data response from the backend.  This would be done as:
+callBack(data) func that retrieved the data response from the backend. This would be done as:
 
 ```javascript
-test('the data is peanut butter', done => {
+test("the data is peanut butter", (done) => {
   function callback(data) {
     try {
-      expect(data).toBe('peanut butter');
+      expect(data).toBe("peanut butter");
       done();
     } catch (error) {
       done(error);
@@ -123,11 +123,11 @@ test('the data is peanut butter', done => {
 ```
 
 In the above, if the done isn't called, the test fails, which means the callBack either never occurs  
-or the callBack data fetched wasn't as expected.  
+or the callBack data fetched wasn't as expected.
 
-Jest works using Promises as well using `.resolves` / `.rejects` keywords.  Alternatively, you can use  
+Jest works using Promises as well using `.resolves` / `.rejects` keywords. Alternatively, you can use  
 `async` / `await` calls to handle async testing.  
-[More async here](https://jestjs.io/docs/en/asynchronous)  
+[More async here](https://jestjs.io/docs/en/asynchronous)
 
 #### Jest Setup and Teardown
 
@@ -143,18 +143,18 @@ afterEach(() => {
   clearCityDatabase();
 });
 
-test('city database has Vienna', () => {
-  expect(isCity('Vienna')).toBeTruthy();
+test("city database has Vienna", () => {
+  expect(isCity("Vienna")).toBeTruthy();
 });
 
-test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy();
+test("city database has San Juan", () => {
+  expect(isCity("San Juan")).toBeTruthy();
 });
 ```
 
 One-time testing uses keywords `beforeAll` and `afterAll`.  
 Scoping can be done using the keyword `describe` to group tests together.  
-[More setup and teardown here](https://jestjs.io/docs/en/setup-teardown)  
+[More setup and teardown here](https://jestjs.io/docs/en/setup-teardown)
 
 #### Mock Functions
 
@@ -162,7 +162,7 @@ Mock functions are used to simulate links between code without actual implementa
 function, capture calls to/from functions, and capture instances of constructors to allow  
 test-time configuration return values.
 
-This is similar to mock functions used in JUnit for Java.  
+This is similar to mock functions used in JUnit for Java.
 
 For example, we have a function that loops through some data and returns items:
 
@@ -178,7 +178,7 @@ To test the above example, mock functions are used to inspect the mock function'
 callback() is invoked correctly:
 
 ```javascript
-const mockCallback = jest.fn(x => 42 + x);
+const mockCallback = jest.fn((x) => 42 + x);
 forEach([0, 1], mockCallback);
 
 // The mock function is called twice
@@ -194,9 +194,9 @@ expect(mockCallback.mock.calls[1][0]).toBe(1);
 expect(mockCallback.mock.results[0].value).toBe(42);
 ```
 
-What's new in the above is the `jest.fn()` call.  This does what you think it would: it creates a mock function directly in testing.  The remaining parameters make use of [Jest Matchers](#Jest-Matchers) discussed above. To mock an object method, you can use the `jest.spyOn` calls; to mock a whole module, you can use the `jest.mock` call.
+What's new in the above is the `jest.fn()` call. This does what you think it would: it creates a mock function directly in testing. The remaining parameters make use of [Jest Matchers](#Jest-Matchers) discussed above. To mock an object method, you can use the `jest.spyOn` calls; to mock a whole module, you can use the `jest.mock` call.
 
-the `.mock` property holds data about how the function is called and where it is returned.  It also tracks the value of `this` for each call:
+the `.mock` property holds data about how the function is called and where it is returned. It also tracks the value of `this` for each call:
 
 ```javascript
 const myMock = jest.fn();
@@ -217,20 +217,20 @@ The `.mock` property is used to assert functions get called, instantiated and re
 expect(someMockFunction.mock.calls.length).toBe(1);
 
 // The first arg of the first call to the function was 'first arg'
-expect(someMockFunction.mock.calls[0][0]).toBe('first arg');
+expect(someMockFunction.mock.calls[0][0]).toBe("first arg");
 
 // The second arg of the first call to the function was 'second arg'
-expect(someMockFunction.mock.calls[0][1]).toBe('second arg');
+expect(someMockFunction.mock.calls[0][1]).toBe("second arg");
 
 // The return value of the first call to the function was 'return value'
-expect(someMockFunction.mock.results[0].value).toBe('return value');
+expect(someMockFunction.mock.results[0].value).toBe("return value");
 
 // This function was instantiated exactly twice
 expect(someMockFunction.mock.instances.length).toBe(2);
 
 // The object returned by the first instantiation of this function
 // had a `name` property whose value was set to 'test'
-expect(someMockFunction.mock.instances[0].name).toEqual('test');
+expect(someMockFunction.mock.instances[0].name).toEqual("test");
 ```
 
 There are many varieties of mock functions that can be used, including mocking modules, names, implementations, and custom matchers.
@@ -258,16 +258,16 @@ Create-react-app ships with Jest, we it should be installed in our toolkit alrea
 
 `yarn add --dev react-test-renderer` to install with yarn.
 
-From here, we would need to create a snapshot test for Components.  The example test is for link components.  
+From here, we would need to create a snapshot test for Components. The example test is for link components.  
 Here is the sample code for a Link components that handles hyperlinks:
 
 ```javascript
 // Link.react.js
-import React from 'react';
+import React from "react";
 
 const STATUS = {
-  HOVERED: 'hovered',
-  NORMAL: 'normal',
+  HOVERED: "hovered",
+  NORMAL: "normal",
 };
 
 export default class Link extends React.Component {
@@ -283,18 +283,18 @@ export default class Link extends React.Component {
   }
 
   _onMouseEnter() {
-    this.setState({class: STATUS.HOVERED});
+    this.setState({ class: STATUS.HOVERED });
   }
 
   _onMouseLeave() {
-    this.setState({class: STATUS.NORMAL});
+    this.setState({ class: STATUS.NORMAL });
   }
 
   render() {
     return (
       <a
         className={this.state.class}
-        href={this.props.page || '#'}
+        href={this.props.page || "#"}
         onMouseEnter={this._onMouseEnter}
         onMouseLeave={this._onMouseLeave}
       >
@@ -309,13 +309,13 @@ From here, we would need to create a test renderer to interact with the componen
 
 ```javascript
 // Link.react.test.js
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Link from '../Link.react';
+import React from "react";
+import renderer from "react-test-renderer";
+import Link from "../Link.react";
 
-test('Link changes the class when hovered', () => {
+test("Link changes the class when hovered", () => {
   const component = renderer.create(
-    <Link page="http://www.facebook.com">Facebook</Link>,
+    <Link page="http://www.facebook.com">Facebook</Link>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
@@ -369,9 +369,9 @@ exports[`Link changes the class when hovered 3`] = `
 `;
 ```
 
-So, each `yarn test` will produce a new snapshot output file.  These output files will be used to compare to eachother when something fails.  Each snapshot should be committed to our Github along with code changes.  
+So, each `yarn test` will produce a new snapshot output file. These output files will be used to compare to eachother when something fails. Each snapshot should be committed to our Github along with code changes.
 
-If a snapshot fails, we will need to inspect where it is from an intended or unintended change.  If it is intended, we should invoke Jest with `jest -u` to overwrite the existing snapshot.
+If a snapshot fails, we will need to inspect where it is from an intended or unintended change. If it is intended, we should invoke Jest with `jest -u` to overwrite the existing snapshot.
 
 [Samples of snapshot example above are here](https://github.com/facebook/jest/tree/master/examples/snapshot)
 
@@ -382,7 +382,7 @@ If a snapshot fails, we will need to inspect where it is from an intended or uni
 To make assertions in DOM testing and to manipulate components, there's three tools we may use:
 
 - [react-testing-library](https://github.com/testing-library/react-testing-library)
-  
+
   - Focused on integration tests from user perspective
   - Simulate mouseclicks and typing from keystrokes, rather than using handlers.
   - Treats code as black box
@@ -394,14 +394,14 @@ To make assertions in DOM testing and to manipulate components, there's three to
   - Focuses on code implementation and unit tests
   - Handles user input by testing event handlers / listeners
   - Very flexible / Open
-  
+
 - [React's TestUtils](https://reactjs.org/docs/test-utils.html)
 
-These are covered in the documentation and we can choose which we like best to use.  
+These are covered in the documentation and we can choose which we like best to use.
 
 ### End to End Testing
 
-Testing a multiple routes of an application. Testing between multiple pages of an application or from browser to a database to test login capabilities.  
+Testing a multiple routes of an application. Testing between multiple pages of an application or from browser to a database to test login capabilities.
 
 Should use a separate framework such as Cypress or a library like Puppeteer
 
@@ -420,4 +420,4 @@ Should use a separate framework such as Cypress or a library like Puppeteer
     - Somewhat offset by adding a `jest-puppeteer` dependency
   - Only chrome/firefox
   - No time travel, can't individually run tests
-  - Runs in a real browser  
+  - Runs in a real browser

@@ -5,19 +5,23 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@react-three/cannon": "^0.5.3",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
     "drei": "^1.5.7",
+    "jotai": "^0.11.2",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dice-complete": "^1.2.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "react-three-fiber": "^5.2.1",
+    "scheduler": "^0.20.1",
     "three": "^0.122.0",
-    "use-cannon": "^0.5.3"
+    "uuid": "^8.3.1"
   },
   "scripts": {
     "heroku-server": "cd server && yarn && node index.js",
@@ -26,7 +30,8 @@
     "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,6 +52,13 @@
   "devDependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.3.1",
     "enzyme": "^3.11.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.1"
   }
 }

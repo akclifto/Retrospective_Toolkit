@@ -1,13 +1,23 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
-const Emoji = props => (
+const Emoji = (props) => {
+  const { label, symbol } = props;
+  return (
     <div
-        className="emoji"
-        role="img"
-        aria-label={props.label ? props.label : ""}
-        aria-hidden={props.label ? "false" : "true"}
+      className="emoji"
+      role="img"
+      aria-label={label || ""}
+      aria-hidden={label ? "false" : "true"}
     >
-        {props.symbol}
-    </div>);
-    
-    export default Emoji;
+      {symbol}
+    </div>
+  );
+};
+
+Emoji.propTypes = {
+  label: PropTypes.string.isRequired,
+  symbol: PropTypes.symbol.isRequired,
+};
+
+export default Emoji;
