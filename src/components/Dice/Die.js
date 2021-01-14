@@ -1,5 +1,5 @@
 /**
- * This represents a card that the dice and the button handler will live on.
+ * This represents a card that the dice and the button handler will live on. The dice shown will be the result of the rolls that occur in the table.
  */
 
 //Imports
