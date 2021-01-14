@@ -104,7 +104,12 @@ Last, run `yarn std-file` to write all the errors to the file that were not fixe
 
 ### Frontend Overview
 
+Frontent consists of a landing page containing selections to available activities.  Currently the Cube activity is the only available.  
+Administrators have the ability to login from the landing page, and will be redirected to an administrator landing page.  This is still WIP.
+
 ### Frontend Technology
+
+Frontend technology consists of React.js making heavy use of three.js libraries for the cube activity and material-iu for stylistic design.  
 
 ### Frontend Tools
 
