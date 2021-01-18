@@ -74,14 +74,11 @@ const ThemedDie = (props) => {
   const [mesh, api] = useBox(() => ({
     mass: 300,
     inertia: 13,
-    position: dicePos,
     rotation: [
       Math.random() * Math.PI,
       Math.random() * Math.PI,
       Math.random() * Math.PI,
     ],
-    velocity: [15, 0, -10],
-    angularVelocity: [-15, 2, -10],
     linearDamping: 0.5,
     angularDamping: 0.1,
     material: { restitution: 0.3 },
