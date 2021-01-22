@@ -115,7 +115,6 @@ const ThemedDie = (props) => {
       </mesh>
     );
   }
-
   // if we are here, something has gone wrong
   return new Error("problem encountered in ThemedDice");
 };
