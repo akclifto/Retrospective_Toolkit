@@ -1,8 +1,6 @@
 import React, { Suspense, useEffect } from "react";
-import { TextureLoader } from "three";
-import { Canvas, useLoader } from "react-three-fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Html, draco, OrbitControls, useProgress } from "drei";
+import { Canvas } from "react-three-fiber";
+import { Html, useGLTF, useTexture, OrbitControls, useProgress } from "drei";
 // eslint-disable-next-line import/no-unresolved
 import { Physics, useBox } from "@react-three/cannon";
 import Button from "@material-ui/core/Button";
@@ -71,19 +69,16 @@ const Loader = () => {
 
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useLoader(TextureLoader, [...themes.action.images]);
+  const actionTextures = useTexture([...themes.action.images]);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
     inertia: 13,
-    position: dicePos,
     rotation: [
       Math.random() * Math.PI,
       Math.random() * Math.PI,
       Math.random() * Math.PI,
     ],
-    velocity: [15, 0, -10],
-    angularVelocity: [-15, 2, -10],
     linearDamping: 0.5,
     angularDamping: 0.1,
     material: { restitution: 0.3 },
@@ -120,7 +115,6 @@ const ThemedDie = (props) => {
       </mesh>
     );
   }
-
   // if we are here, something has gone wrong
   return new Error("problem encountered in ThemedDice");
 };
@@ -210,7 +204,7 @@ const GameManager = () => {
 };
 
 function Model({ url }) {
-  const { scene } = useLoader(GLTFLoader, url, draco());
+  const { scene } = useGLTF(url);
   return (
     <primitive rotation={[0, -Math.PI / 2, 0]} object={scene} dispose={null} />
   );

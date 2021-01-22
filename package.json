@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "@react-three/cannon": "^0.5.3",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.1",
-    "drei": "^1.5.7",
+    "axios": "^0.21.0",
+    "drei": "^2.2.17",
     "jotai": "^0.11.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -20,8 +20,8 @@
     "react-scripts": "4.0.0",
     "react-three-fiber": "^5.2.1",
     "scheduler": "^0.20.1",
-    "three": "^0.122.0",
-    "uuid": "^8.3.1"
+    "three": "^0.124.0",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "heroku-server": "cd server && yarn && node index.js",
@@ -31,7 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix && prettier --write src/ && prettier --write server/"
   },
   "eslintConfig": {
     "extends": "react-app"
