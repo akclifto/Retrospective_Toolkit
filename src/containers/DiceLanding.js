@@ -1,5 +1,5 @@
 /**
- * This class will be used as a container component that holds the other components in the landing page
+ * This class will be used as a container component that holds the other components in the landing page.
  */
 
 //Imports
