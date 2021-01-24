@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MemoryRouter } from "react-router";
 import LandingPage from "../pages/LandingPage";
@@ -8,6 +8,12 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PageNotFound from "../pages/PageNotFound";
 import Routes from "../routes/routes";
+
+// Snapshot test for Routes
+test("SNAPSHOT: render Routes", () => {
+  const wrapper = shallow(<Routes />);
+  expect(wrapper).toMatchSnapshot();
+});
 
 // validate PageNotFound redirect true
 test("Validate PageNotFound redirect true to 404 page", () => {
