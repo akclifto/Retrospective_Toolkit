@@ -54,11 +54,12 @@ const DiceLanding = () => {
   //Currently does not work with rawgit CDN...because reasons
   const rollResult = (
     [
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bar_chart.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bubble_chart.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/cloud_queue.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/highlight.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_emoticon.png'
+        'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/brush-24px.svg',
+        'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_run-24px.svg',
+        'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_walk-24px.svg',
+        'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/edit-black-18dp.svg',
+        'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/alt_route-24px.svg',
+        'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/emoji_objects-24px.svg'
     ]
   )
 

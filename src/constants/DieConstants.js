@@ -33,39 +33,30 @@ const dieThemes = {
     images: [
       {
         name: "Bar Chart",
-        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bar_chart.png'
+        url: 'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/brush-24px.svg'
       },
       {
         name: "Bubble Chart",
-        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/bubble_chart.png'
+        url: 'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_run-24px.svg'
       },
       {
         name: "Cloud Queue",
-        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/cloud_queue.png'
+        url: 'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_walk-24px.svg'
       },
       {
         name: "Highlight",
-        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/highlight.png'
+        url: 'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/edit-black-18dp.svg'
       },
       {
         name: "Insert Emoticon",
-        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_emoticon.png'
+        url: 'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/alt_route-24px.svg'
       },
       {
         name: "Insert Photo",
-        url: 'https://ghcdn.rawgit.org/akclifto/Retrospective_Toolkit/chris-threejs/src/resources/insert_photo.png'
+        url: 'https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/emoji_objects-24px.svg'
       }
     ]
   }
 }
-
-/*
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bar_chart.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/bubble_chart.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/cloud_queue.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/highlight.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_emoticon.png',
-      'https://d1g31diwtzkeb3.cloudfront.net/DiceThemes/Action/insert_photo.png'
-*/
 
 export {dieSides as sides, dieThemes as themes} ;
