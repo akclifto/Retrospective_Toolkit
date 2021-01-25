@@ -1,6 +1,7 @@
 import React from "react";
 import iconsArr from "../constants/IconsDataStructure";
 
+// iterate and renders array.
 const Testing = () => {
   return (
     <div>

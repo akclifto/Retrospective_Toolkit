@@ -34,8 +34,27 @@ import luggage from "../resources/destination/luggage-24px.svg";
 import naturePeople from "../resources/destination/nature_people-24px.svg";
 import pool from "../resources/destination/pool-24px.svg";
 
+// Feeling Icons
+import acUnit from "../resources/feeling/ac_unit-24px.svg";
+import barChart from "../resources/feeling/bar_chart-24px.svg";
+import bedtime from "../resources/feeling/bedtime-24px.svg";
+import brightnessLow from "../resources/feeling/brightness_low-24px.svg";
+import bubbleChart from "../resources/feeling/bubble_chart-24px.svg";
+import cake from "../resources/feeling/cake-24px.svg";
+import cloudQueue from "../resources/feeling/cloud_queue-24px.svg";
+import groups from "../resources/feeling/groups-24px.svg";
+import healing from "../resources/feeling/healing-24px.svg";
+import insertEmoticons from "../resources/feeling/insert_emoticon-24px.svg";
+import miscServices from "../resources/feeling/miscellaneous_services-24px.svg";
+import moodBad from "../resources/feeling/mood_bad-24px.svg";
+import networkCheck from "../resources/feeling/network_check-24px.svg";
+import selfImprovement from "../resources/feeling/self_improvement-24px.svg";
+import startBorder from "../resources/feeling/star_border-24px.svg";
+import timer from "../resources/feeling/timer-24px.svg";
+
 // Export all icons
 export default [
+  // action
   altRoute,
   brush,
   directionsRun,
@@ -52,7 +71,7 @@ export default [
   sync,
   toys,
   watch,
-
+  // destination
   agriculture,
   apartment,
   beachAccess,
@@ -69,6 +88,23 @@ export default [
   luggage,
   naturePeople,
   pool,
+  // feeling
+  acUnit,
+  barChart,
+  bedtime,
+  brightnessLow,
+  bubbleChart,
+  cake,
+  cloudQueue,
+  groups,
+  healing,
+  insertEmoticons,
+  miscServices,
+  moodBad,
+  networkCheck,
+  selfImprovement,
+  startBorder,
+  timer,
 ];
 
 // Export Action Icons only
@@ -91,6 +127,7 @@ export const actionArr = [
   watch,
 ];
 
+// Export Destination Icons Only
 export const destinationArr = [
   agriculture,
   apartment,
@@ -108,4 +145,24 @@ export const destinationArr = [
   luggage,
   naturePeople,
   pool,
+];
+
+// Export Feeling Icons only
+export const feelingArr = [
+  acUnit,
+  barChart,
+  bedtime,
+  brightnessLow,
+  bubbleChart,
+  cake,
+  cloudQueue,
+  groups,
+  healing,
+  insertEmoticons,
+  miscServices,
+  moodBad,
+  networkCheck,
+  selfImprovement,
+  startBorder,
+  timer,
 ];
