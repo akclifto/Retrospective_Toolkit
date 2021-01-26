@@ -7,10 +7,10 @@ const Testing = () => (
     <h1>Testing DS -- Total Items: {iconsArr.length} </h1>
     {iconsArr.map((icon) => (
       <div>
-        <li key={icon}>
+        <ul key={icon.id}>
           {" "}
           <img src={icon} alt={icon} /> Name: {icon}
-        </li>
+        </ul>
       </div>
     ))}
   </div>
