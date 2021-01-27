@@ -2,6 +2,10 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid"; // clear annoying console warning about unique keys
 import iconsArr from "../constants/IconsDataStructure";
 
+/**
+ * Method to get icon information from iconsArr data structure.
+ * @param {*} finalIdx : index of randomly selected indeces to retrieve from iconsArr.
+ */
 function getIcons(finalIdx) {
   const icons = [];
   for (let i = 0; i < finalIdx.length; i += 1) {
@@ -13,6 +17,12 @@ function getIcons(finalIdx) {
   return icons;
 }
 
+/**
+ * Method compiles an array of randomly selected indeces, ensures no duplicated indeces.
+ * Calls getIcons to retrieve icon information from iconsArr.
+ * Currently hardcoded for 5 die, but can change to implicit representation easily.
+ * @param {*} dieNumber: number of die sides to index images.
+ */
 function getRandom(dieNumber) {
   let rand;
   const loopLength = iconsArr.length * 10;
@@ -37,11 +47,14 @@ function getRandom(dieNumber) {
   return ret;
 }
 
-const randomSelected = getRandom(36);
+// Store final array with randomly selected items from iconsArr
+const randomSelected = getRandom(30);
+
 // eslint-disable-next-line no-console
 // console.log(randomSelected);
 
-// iterate and renders array.
+// Exported component.  Renders random selected,
+// then renders all icons and name for validation check.
 const Testing = () => (
   <div>
     <h2>Random Selected: </h2>
