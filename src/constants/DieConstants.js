@@ -1,4 +1,5 @@
 // Contains information about different types of dice that can be used
+// Pulls information from the AWS CDN that is set up by the Team.
 
 const dieSides = {
   FOUR: {
