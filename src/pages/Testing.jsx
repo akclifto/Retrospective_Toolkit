@@ -5,6 +5,7 @@ import iconsArr from "../constants/IconsDataStructure";
 /**
  * Method to get icon information from iconsArr data structure.
  * @param {*} finalIdx : index of randomly selected indeces to retrieve from iconsArr.
+ * @returns icons array.
  */
 function getIcons(finalIdx) {
   const icons = [];
@@ -22,6 +23,7 @@ function getIcons(finalIdx) {
  * Calls getIcons to retrieve icon information from iconsArr.
  * Currently hardcoded for 5 die, but can change to implicit representation easily.
  * @param {*} dieNumber: number of die sides to index images.
+ * @returns final randomly selected icons array.
  */
 function getRandom(dieNumber) {
   let rand;
@@ -34,7 +36,7 @@ function getRandom(dieNumber) {
 
     if (count === dieNumber) {
       // eslint-disable-next-line no-console
-      console.log(finalIdx);
+      // console.log(finalIdx);
       break;
     }
 
