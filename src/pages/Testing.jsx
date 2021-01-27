@@ -13,7 +13,6 @@ function getIcons(finalIdx) {
   return icons;
 }
 
-// getRandom indexes based on number of die used. Avoid duplication.
 function getRandom(dieNumber) {
   let rand;
   const loopLength = iconsArr.length * 10;
@@ -38,7 +37,6 @@ function getRandom(dieNumber) {
   return ret;
 }
 
-// eslint-disable-next-line no-unused-vars
 const randomSelected = getRandom(36);
 // eslint-disable-next-line no-console
 // console.log(randomSelected);
