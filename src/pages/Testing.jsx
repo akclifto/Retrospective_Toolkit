@@ -27,56 +27,52 @@ function getIcons(finalIdx) {
  */
 function getRandom(dieNumber) {
   let rand;
-  const loopLength = iconsArr.length * 10;
+  const maxLen = dieNumber; // assuming this will eventually be (die * sides) = maxLen
   const finalIdx = [];
   let count = 0;
 
-  for (let i = 0; i < loopLength; i += 1) {
-    rand = Math.floor(Math.random() * iconsArr.length + 1);
-
-    if (count === dieNumber) {
-      // eslint-disable-next-line no-console
-      // console.log(finalIdx);
-      break;
-    }
+  while (count < maxLen) {
+    rand = Math.floor(Math.random() * iconsArr.length);
 
     if (!finalIdx.includes(rand)) {
       finalIdx.push(rand);
       count += 1;
     }
   }
+  // eslint-disable-next-line no-console
+  // console.log(finalIdx);
   const ret = getIcons(finalIdx);
+  // eslint-disable-next-line no-console
+  // console.log(ret);
   return ret;
 }
 
-// Store final array with randomly selected items from iconsArr
-const randomSelected = getRandom(30);
-
-// eslint-disable-next-line no-console
-// console.log(randomSelected);
-
 // Exported component.  Renders random selected,
 // then renders all icons and name for validation check.
-const Testing = () => (
-  <div>
-    <h2>Random Selected: </h2>
+const Testing = () => {
+  // Store final array with randomly selected items from iconsArr
+  const randomSelected = getRandom(6);
+  return (
     <div>
-      {randomSelected.map((icon) => (
-        <span>
-          <img src={icon} alt={icon} />{" "}
-        </span>
+      <h2>Random Selected: {randomSelected.length} </h2>
+      <div>
+        {randomSelected.map((icon) => (
+          <span>
+            <img src={icon} alt={icon} key={uuidv4()} />{" "}
+          </span>
+        ))}
+      </div>
+      <h1>Testing DS -- Total Items: {iconsArr.length} </h1>
+      {iconsArr.map((icon) => (
+        <div>
+          <li key={uuidv4()}>
+            {" "}
+            <img src={icon} alt={icon} key={uuidv4()} /> Name: {icon}
+          </li>
+        </div>
       ))}
     </div>
-    <h1>Testing DS -- Total Items: {iconsArr.length} </h1>
-    {iconsArr.map((icon) => (
-      <div>
-        <li key={uuidv4()}>
-          {" "}
-          <img src={icon} alt={icon} /> Name: {icon}
-        </li>
-      </div>
-    ))}
-  </div>
-);
+  );
+};
 
 export default Testing;
