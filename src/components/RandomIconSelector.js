@@ -7,12 +7,12 @@ import iconsArr from "../constants/IconsDataStructure";
  */
 export function getIcons(finalIdx) {
   const icons = [];
+
   for (let i = 0; i < finalIdx.length; i += 1) {
     const n = finalIdx[i];
     icons.push(iconsArr[n]);
   }
-  // eslint-disable-next-line no-console
-  // console.log(icons);
+
   return icons;
 }
 
@@ -23,7 +23,7 @@ export function getIcons(finalIdx) {
  * @param {*} dieNumber: number of die sides to index images.
  * @returns final randomly selected icons array.
  */
-export function getRandom(dieNumber) {
+export default function getRandom(dieNumber) {
   let rand;
   const maxLen = dieNumber; // assuming this will eventually be (die * sides) = maxLen
   const finalIdx = [];
@@ -37,10 +37,7 @@ export function getRandom(dieNumber) {
       count += 1;
     }
   }
-  // eslint-disable-next-line no-console
-  // console.log(finalIdx);
+
   const ret = getIcons(finalIdx);
-  // eslint-disable-next-line no-console
-  // console.log(ret);
   return ret;
 }
