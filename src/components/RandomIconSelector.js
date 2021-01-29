@@ -9,8 +9,7 @@ export function getIcons(finalIdx) {
   const icons = [];
 
   for (let i = 0; i < finalIdx.length; i += 1) {
-    const n = finalIdx[i];
-    icons.push(iconsArr[n]);
+    icons.push(finalIdx[i]);
   }
 
   return icons;
