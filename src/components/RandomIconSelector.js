@@ -1,6 +1,11 @@
 import iconsArr from "../constants/IconsDataStructure";
 
 /**
+ * RandomIconSelector.js file randomly selects desired number of icons
+ * without duplicating any of the icon results.
+ */
+
+/**
  * Method to get icon information from iconsArr data structure.
  * @param {*} finalIdx : index of randomly selected indeces to retrieve from iconsArr.
  * @returns icons array.
@@ -16,9 +21,8 @@ export function getIcons(finalIdx) {
 }
 
 /**
- * Method compiles an array of randomly selected indeces, ensures no duplicated indeces.
+ * Method compiles an array of randomly selected indeces, ensures no duplication.
  * Calls getIcons to retrieve icon information from iconsArr.
- * Currently hardcoded for 5 die, but can change to implicit representation easily.
  * @param {*} dieNumber: number of die sides to index images.
  * @returns final randomly selected icons array.
  */
