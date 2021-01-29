@@ -38,6 +38,6 @@ export default function getRandom(dieNumber) {
     }
   }
 
-  const ret = getIcons(finalIdx);
-  return ret;
+  const randomIcons = getIcons(finalIdx);
+  return randomIcons;
 }
