@@ -10,6 +10,7 @@ import { Provider, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
 import { themes } from "../../constants/DieConstants";
+import randomIconSelector from "../RandomIconSelector";
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
@@ -70,6 +71,7 @@ const Loader = () => {
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
   const actionTextures = useTexture([...themes.action.images]);
+  let randomIcons = [];
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -113,9 +115,43 @@ const ThemedDie = (props) => {
       </mesh>
     );
   }
+
+  // TODO:  foreach die, getrandom textures, map to die,
+  // make sure duplication holds over entire body of die.
+  // Default theme === all icons available.
+  if (theme === "default") {
+    randomIcons = randomIconSelector(30);
+    // eslint-disable-next-line no-console
+    console.log(randomIcons);
+
+    // adjust return statement
+    return (
+      <mesh
+        onClick={() => {
+          api.position.set(dicePos[0], dicePos[1], dicePos[2]);
+          api.velocity.set(15, 0, -10);
+          api.angularVelocity.set(-15, 2, -10);
+        }}
+        ref={mesh}
+      >
+        <boxBufferGeometry />
+        {actionTextures.map((image) => (
+          <meshStandardMaterial
+            key={image.uuid}
+            flatShading
+            roughness={0.8}
+            attachArray="material"
+            map={image}
+          />
+        ))}
+      </mesh>
+    );
+  }
+
   // if we are here, something has gone wrong
   return new Error("problem encountered in ThemedDice");
 };
+
 ThemedDie.propTypes = {
   theme: PropTypes.string.isRequired,
   dicePos: PropTypes.arrayOf(PropTypes.number).isRequired,

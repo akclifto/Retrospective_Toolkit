@@ -14,9 +14,8 @@ export function getIcons(finalIdx) {
   const icons = [];
 
   for (let i = 0; i < finalIdx.length; i += 1) {
-    icons.push(finalIdx[i]);
+    icons.push(iconsArr[finalIdx[i]]);
   }
-
   return icons;
 }
 
@@ -37,7 +36,7 @@ export default function getRandom(dieNumber) {
     // eslint-disable-next-line no-console
     console.log(
       "RandomIconsSelector.js: function getRandom(dieNumber):",
-      "maxLen exceed total number of Icons available, no duplication is impossible."
+      "maxLen exceeds total number of Icons available, duplication will occur."
     );
     return [];
   }

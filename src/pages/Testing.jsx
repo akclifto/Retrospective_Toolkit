@@ -10,8 +10,8 @@ import iconsArr from "../constants/IconsDataStructure";
 function getIcons(finalIdx) {
   const icons = [];
   for (let i = 0; i < finalIdx.length; i += 1) {
-    const n = finalIdx[i];
-    icons.push(iconsArr[n]);
+    // const n = finalIdx[i];
+    icons.push(iconsArr[finalIdx[i]]);
   }
   // eslint-disable-next-line no-console
   // console.log(icons);

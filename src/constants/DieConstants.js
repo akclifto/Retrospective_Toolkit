@@ -1,4 +1,5 @@
 // Contains information about different types of dice that can be used
+import iconsArr from "./IconsDataStructure";
 
 const dieSides = {
   FOUR: {
@@ -37,6 +38,10 @@ const dieThemes = {
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/toys-24px.svg",
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_walk-24px.svg",
     ],
+  },
+  // all icons produced by default
+  default: {
+    images: [iconsArr],
   },
 };
 
