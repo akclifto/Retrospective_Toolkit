@@ -150,7 +150,7 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<Loader />}>
-        <Model url="trayModel/diceTablev1.gltf" />
+        <Model url="trayModel/diceTable_v3.gltf" />
       </Suspense>
       {!gameStarted && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
