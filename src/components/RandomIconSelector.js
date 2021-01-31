@@ -32,6 +32,16 @@ export default function getRandom(dieNumber) {
   const finalIdx = [];
   let count = 0;
 
+  // check duplication possibility
+  if (maxLen > iconsArr.length) {
+    // eslint-disable-next-line no-console
+    console.log(
+      "RandomIconsSelector.js: function getRandom(dieNumber):",
+      "maxLen exceed total number of Icons available, no duplication is impossible."
+    );
+    return [];
+  }
+
   while (count < maxLen) {
     rand = Math.floor(Math.random() * iconsArr.length);
 
