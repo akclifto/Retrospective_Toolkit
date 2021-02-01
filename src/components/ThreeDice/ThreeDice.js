@@ -69,7 +69,7 @@ const Loader = () => {
 
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useTexture([...themes.standard.images]);
+  const actionTextures = useTexture([...themes.all.images]);
   // eslint-disable-next-line no-console
   console.log(actionTextures);
 
@@ -119,7 +119,7 @@ const ThemedDie = (props) => {
   // TODO:  foreach die, getrandom textures, map to die,
   // make sure duplication holds over entire body of die.
   // Default theme === all icons available.
-  if (theme === "default") {
+  if (theme === "all") {
     // adjust return statement
     return (
       <mesh
@@ -205,7 +205,7 @@ const GameManager = () => {
             {dicePosition.map((pos) => (
               <ThemedDie
                 key={pos.uuid}
-                theme="action"
+                theme="all"
                 dicePos={pos.position}
                 rerollToggle={reroll}
               />
