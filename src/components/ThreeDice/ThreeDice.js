@@ -67,11 +67,13 @@ const Loader = () => {
   return <Html center>{Math.trunc(progress)} % loaded</Html>;
 };
 
+// let textures = [];
+
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useTexture([...themes.all.images]);
-  // eslint-disable-next-line no-console
-  console.log(actionTextures);
+  const textures = useTexture([...themes.random.images]);
+  // // eslint-disable-next-line no-console
+  // console.log(actionTextures);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -92,7 +94,7 @@ const ThemedDie = (props) => {
     api.angularVelocity.set(-15, 2, -10);
   }, [api.angularVelocity, api.position, api.velocity, dicePos, rerollToggle]);
 
-  if (theme === "action") {
+  if (theme === "random") {
     return (
       <mesh
         onClick={() => {
@@ -103,35 +105,7 @@ const ThemedDie = (props) => {
         ref={mesh}
       >
         <boxBufferGeometry />
-        {actionTextures.map((image) => (
-          <meshStandardMaterial
-            key={image.uuid}
-            flatShading
-            roughness={0.8}
-            attachArray="material"
-            map={image}
-          />
-        ))}
-      </mesh>
-    );
-  }
-
-  // TODO:  foreach die, getrandom textures, map to die,
-  // make sure duplication holds over entire body of die.
-  // Default theme === all icons available.
-  if (theme === "all") {
-    // adjust return statement
-    return (
-      <mesh
-        onClick={() => {
-          api.position.set(dicePos[0], dicePos[1], dicePos[2]);
-          api.velocity.set(15, 0, -10);
-          api.angularVelocity.set(-15, 2, -10);
-        }}
-        ref={mesh}
-      >
-        <boxBufferGeometry />
-        {actionTextures.map((image) => (
+        {textures.map((image) => (
           <meshStandardMaterial
             key={image.uuid}
             flatShading
@@ -205,7 +179,7 @@ const GameManager = () => {
             {dicePosition.map((pos) => (
               <ThemedDie
                 key={pos.uuid}
-                theme="all"
+                theme="random"
                 dicePos={pos.position}
                 rerollToggle={reroll}
               />
@@ -219,6 +193,7 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
+                // eslint-disable-next-line react-hooks/rules-of-hooks
                 rerollDice(!reroll);
               }}
             >

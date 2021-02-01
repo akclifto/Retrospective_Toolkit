@@ -1,5 +1,6 @@
-// Contains information about different types of dice that can be used
 import iconsArr from "./IconsDataStructure";
+import randomIconSelector from "../components/RandomIconSelector";
+// Contains information about different types of dice that can be used
 
 const dieSides = {
   FOUR: {
@@ -29,6 +30,12 @@ const dieSides = {
 };
 
 const dieThemes = {
+  all: {
+    images: iconsArr,
+  },
+  random: {
+    images: randomIconSelector(dieSides.SIX.sides),
+  },
   action: {
     images: [
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/brush-24px.svg",
@@ -39,7 +46,7 @@ const dieThemes = {
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_walk-24px.svg",
     ],
   },
-  // all icons produced by default
+  // all icons from action theme
   test: {
     images: [
       // "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/alt_route-24px.svg",
@@ -59,9 +66,6 @@ const dieThemes = {
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/toys-24px.svg",
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/watch-24px.svg",
     ],
-  },
-  all: {
-    images: iconsArr,
   },
 };
 
