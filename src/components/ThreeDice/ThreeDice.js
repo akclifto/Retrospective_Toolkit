@@ -72,8 +72,6 @@ const Loader = () => {
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
   const textures = useTexture([...themes.random.images]);
-  // // eslint-disable-next-line no-console
-  // console.log(actionTextures);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -193,7 +191,6 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
-                // eslint-disable-next-line react-hooks/rules-of-hooks
                 rerollDice(!reroll);
               }}
             >

@@ -49,7 +49,7 @@ const dieThemes = {
   // all icons from action theme
   test: {
     images: [
-      // "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/alt_route-24px.svg",
+      // "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/alt_route-24px.svg", //this image doesn't load from CDN
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/brush-24px.svg",
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_run-24px.svg",
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_walk-24px.svg",
