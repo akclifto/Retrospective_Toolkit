@@ -1,5 +1,4 @@
 // Contains information about different types of dice that can be used
-import iconsArr from "./IconsDataStructure";
 
 const dieSides = {
   FOUR: {
@@ -40,8 +39,25 @@ const dieThemes = {
     ],
   },
   // all icons produced by default
-  default: {
-    images: [iconsArr],
+  standard: {
+    images: [
+      // "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/alt_route-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/brush-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_run-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/directions_walk-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/edit-black-18dp.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/emoji_objects-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/grass-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/headset-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/highlight-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/music_note-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/remove_red_eye-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/security-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/straighten-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/sync-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/toys-24px.svg",
+      "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/watch-24px.svg",
+    ],
   },
 };
 

@@ -10,7 +10,6 @@ import { Provider, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
 import { themes } from "../../constants/DieConstants";
-import randomIconSelector from "../RandomIconSelector";
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
@@ -70,8 +69,9 @@ const Loader = () => {
 
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useTexture([...themes.action.images]);
-  let randomIcons = [];
+  const actionTextures = useTexture([...themes.standard.images]);
+  // eslint-disable-next-line no-console
+  console.log(actionTextures);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -120,10 +120,6 @@ const ThemedDie = (props) => {
   // make sure duplication holds over entire body of die.
   // Default theme === all icons available.
   if (theme === "default") {
-    randomIcons = randomIconSelector(30);
-    // eslint-disable-next-line no-console
-    console.log(randomIcons);
-
     // adjust return statement
     return (
       <mesh
