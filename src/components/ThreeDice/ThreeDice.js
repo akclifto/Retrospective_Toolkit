@@ -9,7 +9,7 @@ import Icon from "@material-ui/core/Icon";
 import { Provider, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { themes } from "../../constants/DieConstants";
+import { formattedDiceArray as themes } from "../../constants/DieConstants";
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
