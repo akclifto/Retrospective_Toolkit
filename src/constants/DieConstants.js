@@ -47,7 +47,7 @@ const dieThemes = {
     ],
   },
   // all icons from action theme
-  test: {
+  testAction: {
     images: [
       // "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/alt_route-24px.svg", //this image doesn't load from CDN
       "https://d1g31diwtzkeb3.cloudfront.net/Dice/Themes/Action/brush-24px.svg",
