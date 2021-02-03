@@ -6,22 +6,8 @@ import iconsArr from "../constants/IconsDataStructure";
  */
 
 /**
- * Method to get icon information from iconsArr data structure.
- * @param {*} finalIdx : index of randomly selected indeces to retrieve from iconsArr.
- * @returns icons array.
- */
-export function getIcons(finalIdx) {
-  const icons = [];
-
-  for (let i = 0; i < finalIdx.length; i += 1) {
-    icons.push(iconsArr[finalIdx[i]]);
-  }
-  return icons;
-}
-
-/**
- * Method compiles an array of randomly selected indeces, ensures no duplication.
- * Calls getIcons to retrieve icon information from iconsArr.
+ * Method compiles an array of randomly selected indeces, ensures no duplication
+ * retrieve from IconDataStructure.
  * @param {*} dieNumber: number of die sides to index images.
  * @returns final randomly selected icons array.
  */
@@ -29,6 +15,7 @@ export default function getRandom(dieNumber) {
   let rand;
   const maxLen = dieNumber; // assuming this will eventually be (die * sides) = maxLen
   const finalIdx = [];
+  const randomIconSelection = [];
   let count = 0;
 
   // check duplication possibility
@@ -46,10 +33,10 @@ export default function getRandom(dieNumber) {
 
     if (!finalIdx.includes(rand)) {
       finalIdx.push(rand);
+      randomIconSelection.push(iconsArr[rand]);
       count += 1;
     }
   }
 
-  const randomIcons = getIcons(finalIdx);
-  return randomIcons;
+  return randomIconSelection;
 }
