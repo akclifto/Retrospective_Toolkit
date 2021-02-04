@@ -61,5 +61,19 @@
     "lint-staged": "^10.5.2",
     "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 80,
+        "branches": 80,
+        "functions": 80,
+        "lines": 80
+      }
+    },
+    "coverageReporters": [
+      "text-summary",
+      "text"
+    ]
   }
 }
