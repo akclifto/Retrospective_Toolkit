@@ -33,6 +33,7 @@
     "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-cover": "yarn test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix && prettier --write src/ && prettier --write server/"
