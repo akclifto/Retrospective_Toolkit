@@ -79,12 +79,11 @@ async function initDiceImages() {
 
     getS3Objects.Contents.shift(); // Removes first element, which is the Dice/Themes/Action folder "object"
     formatDiceArray(getS3Objects.Contents);
+    console.log(formattedDiceArray);
   } catch (e) {
     // eslint-disable-next-line
     console.log("error occured", e);
   }
-  // eslint-disable-next-line
-  console.log("TEST!!!");
   return formattedDiceArray;
 }
 
