@@ -150,10 +150,10 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<Loader />}>
-        <Model url="trayModel/diceTableSimple_v1.glb" />
+        <Model url="trayModel/diceTableSimple_v1_larger.glb" />
       </Suspense>
       {!gameStarted && (
-        <Html position={[-4, 0, 2]} scaleFactor={25}>
+        <Html position={[-4, 0, 4]} scaleFactor={75}>
           <Button
             variant="contained"
             color="primary"
@@ -214,7 +214,7 @@ const ThreeDice = () => (
   <Canvas
     concurrent
     style={{ width: "100vw", height: "500px" }}
-    camera={{ position: [0, 20, 12], fov: 50 }}
+    camera={{ position: [0, 20, 12], fov: 60 }}
   >
     <Provider>
       <Physics gravity={[0, -30, 0]} defaultContactMaterial>
