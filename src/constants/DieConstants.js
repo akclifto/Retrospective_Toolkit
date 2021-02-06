@@ -6,7 +6,7 @@ const AWS = require("aws-sdk");
 const config = require("../resources/awsConfig.json");
 
 const BASEURL = "https://retrospective-toolkit.s3-us-west-1.amazonaws.com/";
-const formattedDiceArray = [];
+export const formattedDiceArray = [];
 
 /**
  * Formats the Content into a usuable array for the rest of the project.
@@ -57,7 +57,7 @@ const formatDiceArray = (S3Content) => {
   return formattedDiceArray;
 };
 
-async function initDiceImages() {
+export async function initDiceImages() {
   // Initialize s3 object to point to our S3 bucket for the class
   try {
     AWS.config.update({
@@ -79,7 +79,6 @@ async function initDiceImages() {
 
     getS3Objects.Contents.shift(); // Removes first element, which is the Dice/Themes/Action folder "object"
     formatDiceArray(getS3Objects.Contents);
-    console.log(formattedDiceArray);
   } catch (e) {
     // eslint-disable-next-line
     console.log("error occured", e);
