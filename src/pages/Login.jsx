@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { Link as ReactLink } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -66,15 +66,12 @@ export default function Login(props) {
   const classes = useStyles();
 
   // ref hooks for inputs
-  const email = useRef();
-  const password = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const isAuth = await loginController(
-      email.current.value,
-      password.current.value
-    );
+    const isAuth = await loginController(email, password);
 
     // push to admin page if login successful.
     if (isAuth) {
@@ -109,7 +106,8 @@ export default function Login(props) {
               label="Email Address"
               name="email"
               autoComplete="email"
-              inputRef={email}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               autoFocus
             />
             <TextField
@@ -121,8 +119,9 @@ export default function Login(props) {
               label="Password"
               type="password"
               id="password"
-              inputRef={password}
               autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

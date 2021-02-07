@@ -1,8 +1,6 @@
 import React, { Suspense, useEffect } from "react";
-import { TextureLoader } from "three";
-import { Canvas, useLoader } from "react-three-fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Html, draco, OrbitControls, useProgress } from "drei";
+import { Canvas } from "react-three-fiber";
+import { Html, useGLTF, useTexture, OrbitControls, useProgress } from "drei";
 // eslint-disable-next-line import/no-unresolved
 import { Physics, useBox } from "@react-three/cannon";
 import Button from "@material-ui/core/Button";
@@ -69,21 +67,20 @@ const Loader = () => {
   return <Html center>{Math.trunc(progress)} % loaded</Html>;
 };
 
+// let textures = [];
+
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useLoader(TextureLoader, [...themes.action.images]);
+  const textures = useTexture([...themes.random.images]);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
     inertia: 13,
-    position: dicePos,
     rotation: [
       Math.random() * Math.PI,
       Math.random() * Math.PI,
       Math.random() * Math.PI,
     ],
-    velocity: [15, 0, -10],
-    angularVelocity: [-15, 2, -10],
     linearDamping: 0.5,
     angularDamping: 0.1,
     material: { restitution: 0.3 },
@@ -95,7 +92,7 @@ const ThemedDie = (props) => {
     api.angularVelocity.set(-15, 2, -10);
   }, [api.angularVelocity, api.position, api.velocity, dicePos, rerollToggle]);
 
-  if (theme === "action") {
+  if (theme === "random") {
     return (
       <mesh
         onClick={() => {
@@ -106,17 +103,15 @@ const ThemedDie = (props) => {
         ref={mesh}
       >
         <boxBufferGeometry />
-        {actionTextures.map((image) => {
-          return (
-            <meshStandardMaterial
-              key={image.uuid}
-              flatShading
-              roughness={0.8}
-              attachArray="material"
-              map={image}
-            />
-          );
-        })}
+        {textures.map((image) => (
+          <meshStandardMaterial
+            key={image.uuid}
+            flatShading
+            roughness={0.8}
+            attachArray="material"
+            map={image}
+          />
+        ))}
       </mesh>
     );
   }
@@ -124,6 +119,7 @@ const ThemedDie = (props) => {
   // if we are here, something has gone wrong
   return new Error("problem encountered in ThemedDice");
 };
+
 ThemedDie.propTypes = {
   theme: PropTypes.string.isRequired,
   dicePos: PropTypes.arrayOf(PropTypes.number).isRequired,
@@ -178,16 +174,14 @@ const GameManager = () => {
       {gameStarted && (
         <>
           <Suspense fallback={null}>
-            {dicePosition.map((pos) => {
-              return (
-                <ThemedDie
-                  key={pos.uuid}
-                  theme="action"
-                  dicePos={pos.position}
-                  rerollToggle={reroll}
-                />
-              );
-            })}
+            {dicePosition.map((pos) => (
+              <ThemedDie
+                key={pos.uuid}
+                theme="random"
+                dicePos={pos.position}
+                rerollToggle={reroll}
+              />
+            ))}
             <CollisionMesh />
           </Suspense>
           <Html position={[-3, 0, 9]} scaleFactor={25}>
@@ -210,7 +204,7 @@ const GameManager = () => {
 };
 
 function Model({ url }) {
-  const { scene } = useLoader(GLTFLoader, url, draco());
+  const { scene } = useGLTF(url);
   return (
     <primitive rotation={[0, -Math.PI / 2, 0]} object={scene} dispose={null} />
   );
@@ -220,21 +214,19 @@ Model.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-const ThreeDice = () => {
-  return (
-    <Canvas
-      concurrent
-      style={{ width: "100vw", height: "500px" }}
-      camera={{ position: [0, 20, 12], fov: 50 }}
-    >
-      <Provider>
-        <Physics gravity={[0, -30, 0]} defaultContactMaterial>
-          <GameManager />
-        </Physics>
-      </Provider>
-      <OrbitControls />
-    </Canvas>
-  );
-};
+const ThreeDice = () => (
+  <Canvas
+    concurrent
+    style={{ width: "100vw", height: "500px" }}
+    camera={{ position: [0, 20, 12], fov: 50 }}
+  >
+    <Provider>
+      <Physics gravity={[0, -30, 0]} defaultContactMaterial>
+        <GameManager />
+      </Physics>
+    </Provider>
+    <OrbitControls />
+  </Canvas>
+);
 
 export default ThreeDice;
