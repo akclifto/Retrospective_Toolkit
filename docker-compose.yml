@@ -6,15 +6,25 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "5000:5000"
+    container_name: backend
+    networks:
+      - retro_app
   frontend:
+    stdin_open: true
     build:
       context: .
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
+    container_name: frontend
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
     volumes:
-      - "/app/node_modules"
-      - "./src:/app/src"
+      - /app/node_modules
+      - ./src:/app/src
+    networks:
+      - retro_app
+networks:
+  retro_app:
+    driver: bridge

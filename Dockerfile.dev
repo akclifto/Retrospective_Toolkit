@@ -1,12 +1,17 @@
 FROM node:alpine
 
 WORKDIR /app
+
 COPY package.json ./
-RUN yarn
+COPY yarn.lock ./
+
+RUN yarn install
 
 ENV PATH="./node_modules/.bin:$PATH"
 
 COPY ./src ./src
 COPY ./public ./public
+
 EXPOSE 3000
-RUN yarn start-client
+
+CMD ["yarn", "start-client"]
