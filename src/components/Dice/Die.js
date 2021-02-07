@@ -59,11 +59,12 @@ const Die = (props) => {
  */
 Die.propTypes = {
   title: PropTypes.string,
-  numSides: PropTypes.number.isRequired,
+  numSides: PropTypes.number,
 };
 
 Die.defaultProps = {
   title: "undefined",
+  numSides: 6,
 };
 
 export default Die;
