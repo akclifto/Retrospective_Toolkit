@@ -1,7 +1,7 @@
 FROM node:alpine
 WORKDIR '/backend'
 COPY ./server/package.json ./
-RUN yarn --production
+RUN yarn install --production
 COPY ./server .
 CMD [ "yarn", "start"]
 
@@ -9,7 +9,7 @@ FROM node:alpine AS builder
 
 WORKDIR /app
 COPY package.json ./
-RUN yarn --production
+RUN yarn install --production
 
 ENV PATH="./node_modules/.bin:$PATH"
 
