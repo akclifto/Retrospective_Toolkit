@@ -1,12 +1,12 @@
 const request = require("supertest");
 // eslint-disable-next-line import/no-extraneous-dependencies
-const routes = require("../../../../server/routes/index");
+const routes = require("../../routes/index");
 
 describe("Routes/Index Testing", () => {
   test("Get unprotected login endpoint", () => {
     request(routes)
       .get("api/users/login")
-      .set("Deny", true)
+      .set("Deny", false)
       .expect("Content-Type", "number")
       .expect(401);
   });
