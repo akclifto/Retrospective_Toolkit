@@ -29,6 +29,7 @@ describe("Controller/Auth Testing", () => {
 
   it("Send empty request parameter, shoud return status 400", async (done) => {
     try {
+      // seed empty data to auth controller, then check status
       await request(app)
         .post("/api/users/login")
         .send({
