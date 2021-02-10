@@ -2,11 +2,49 @@
  * This class will create a "constants" file for the dicethat will populate at the start of the project's runtime. It will
  * contain useful information about each dice image: name, url to use, and which theme it is from.
  */
+import randomIconSelector from "../components/RandomIconSelector";
+
 const AWS = require("aws-sdk");
 const config = require("../resources/awsConfig.json");
 
 const BASEURL = "https://retrospective-toolkit.s3-us-west-1.amazonaws.com/";
-export const formattedDiceArray = [];
+
+// import errorIcon from "../resources/dangerous-24px.svg";
+export const fullDiceArray = [];
+// eslint-disable-next-line import/no-mutable-exports
+export let randomDiceThemes = [];
+
+// Contains information about different types of dice that can be used
+const dieSides = {
+  FOUR: {
+    sides: 4,
+    chance: 1 / 4,
+  },
+  SIX: {
+    sides: 6,
+    chance: 1 / 6,
+  },
+  EIGHT: {
+    sides: 8,
+    chance: 1 / 8,
+  },
+  TEN: {
+    sides: 10,
+    chance: 1 / 10,
+  },
+  TWELVE: {
+    sides: 12,
+    chance: 1 / 12,
+  },
+  TWENTY: {
+    sides: 20,
+    chance: 1 / 20,
+  },
+};
+
+export const randomizeDice = () => {
+  randomDiceThemes = randomIconSelector(dieSides.SIX.sides, fullDiceArray);
+};
 
 /**
  * Formats the Content into a usuable array for the rest of the project.
@@ -51,10 +89,10 @@ const formatDiceArray = (S3Content) => {
     name = name.replace("_", " ");
     formattedDiceEntry.Name = name;
 
-    formattedDiceArray.push(formattedDiceEntry);
+    fullDiceArray.push(formattedDiceEntry);
   });
 
-  return formattedDiceArray;
+  return fullDiceArray;
 };
 
 export async function initDiceImages() {
@@ -63,7 +101,7 @@ export async function initDiceImages() {
     AWS.config.update({
       accessKeyId: config.accessKey,
       secretAccessKey: config.secretAccessKey,
-      region: "eu-west-1",
+      region: "us-west-1",
     });
 
     const s3 = new AWS.S3();
@@ -79,11 +117,12 @@ export async function initDiceImages() {
 
     getS3Objects.Contents.shift(); // Removes first element, which is the Dice/Themes/Action folder "object"
     formatDiceArray(getS3Objects.Contents);
+    randomizeDice();
   } catch (e) {
     // eslint-disable-next-line
     console.log("error occured", e);
   }
-  return formattedDiceArray;
+  return fullDiceArray;
 }
 
-module.export = { initDiceImages, formattedDiceArray };
+module.export = { initDiceImages, randomDiceThemes, randomizeDice };

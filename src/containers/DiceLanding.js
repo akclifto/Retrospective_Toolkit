@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 // import Die from "../components/Dice/Die";
-import { initDiceImages } from "../constants/DieConstants";
+import { randomDiceThemes, initDiceImages } from "../constants/DieConstants";
 import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
 
@@ -19,16 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// TODO: Have the project call the DieConstants initDiceImages only ONCE and figure out a solution for
-// getting the dice array in the project. Passing it around as props, starting from DiceLanding seems the easiest option..
-/* eslint-disable no-unused-vars, no-console */
-const InitOnStart = () => {
-  useEffect(() => {
-    const arr = initDiceImages;
-  }, []);
-};
-/* eslint-enable no-unused-vars, no-console */
-/// /////////////////////////////////////////////////////////
+let randomDice;
 
 // Directs the browser to statefarm for more information in new tab.
 const redirect = (e) => {
@@ -39,7 +30,20 @@ const redirect = (e) => {
 
 // Returns a landing page for the Dice Game
 const DiceLanding = () => {
-  InitOnStart();
+  // TODO: Have the project call the DieConstants initDiceImages only ONCE and figure out a solution for
+  // getting the dice array in the project. Passing it around as props, starting from DiceLanding seems the easiest option..
+  /* eslint-disable no-unused-vars, no-console */
+  useEffect(() => {
+    const loadDice = async () => {
+      console.log("Dice Landing Render");
+      randomDice = await initDiceImages();
+      console.log(randomDiceThemes);
+    };
+    loadDice();
+  }, []);
+  /* eslint-enable no-unused-vars, no-console */
+  /// /////////////////////////////////////////////////////////
+
   const classes = useStyles();
 
   return (

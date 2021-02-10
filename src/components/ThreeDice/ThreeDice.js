@@ -9,7 +9,7 @@ import Icon from "@material-ui/core/Icon";
 import { Provider, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { formattedDiceArray as themes } from "../../constants/DieConstants";
+import { randomDiceThemes as themes } from "../../constants/DieConstants";
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
@@ -69,7 +69,11 @@ const Loader = () => {
 
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useTexture([...themes.action.images]);
+  const actionTextures = useTexture([...themes.URL]);
+  // eslint-disable-next-line no-console
+  console.log("Action Textures");
+  // eslint-disable-next-line no-console
+  console.log(actionTextures);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -101,17 +105,15 @@ const ThemedDie = (props) => {
         ref={mesh}
       >
         <boxBufferGeometry />
-        {actionTextures.map((image) => {
-          return (
-            <meshStandardMaterial
-              key={image.uuid}
-              flatShading
-              roughness={0.8}
-              attachArray="material"
-              map={image}
-            />
-          );
-        })}
+        {actionTextures.map((image) => (
+          <meshStandardMaterial
+            key={image.uuid}
+            flatShading
+            roughness={0.8}
+            attachArray="material"
+            map={image}
+          />
+        ))}
       </mesh>
     );
   }
@@ -172,16 +174,14 @@ const GameManager = () => {
       {gameStarted && (
         <>
           <Suspense fallback={null}>
-            {dicePosition.map((pos) => {
-              return (
-                <ThemedDie
-                  key={pos.uuid}
-                  theme="action"
-                  dicePos={pos.position}
-                  rerollToggle={reroll}
-                />
-              );
-            })}
+            {dicePosition.map((pos) => (
+              <ThemedDie
+                key={pos.uuid}
+                theme="action"
+                dicePos={pos.position}
+                rerollToggle={reroll}
+              />
+            ))}
             <CollisionMesh />
           </Suspense>
           <Html position={[-3, 0, 9]} scaleFactor={25}>
@@ -214,21 +214,19 @@ Model.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-const ThreeDice = () => {
-  return (
-    <Canvas
-      concurrent
-      style={{ width: "100vw", height: "500px" }}
-      camera={{ position: [0, 20, 12], fov: 50 }}
-    >
-      <Provider>
-        <Physics gravity={[0, -30, 0]} defaultContactMaterial>
-          <GameManager />
-        </Physics>
-      </Provider>
-      <OrbitControls />
-    </Canvas>
-  );
-};
+const ThreeDice = () => (
+  <Canvas
+    concurrent
+    style={{ width: "100vw", height: "500px" }}
+    camera={{ position: [0, 20, 12], fov: 50 }}
+  >
+    <Provider>
+      <Physics gravity={[0, -30, 0]} defaultContactMaterial>
+        <GameManager />
+      </Physics>
+    </Provider>
+    <OrbitControls />
+  </Canvas>
+);
 
 export default ThreeDice;
