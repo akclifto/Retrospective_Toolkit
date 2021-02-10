@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "test-cover": "yarn test --coverage --watchAll=false"
+    "test-cover": "yarn test --collectCoverageFrom=**/*.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -40,10 +40,6 @@
     "coverageReporters": [
       "text-summary",
       "text"
-    ],
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "server/"
     ]
   }
 }
