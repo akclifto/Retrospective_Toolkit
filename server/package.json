@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "test-cover": "yarn test --collectCoverageFrom=**/*.js"
+    "testf": "jest --forceExit",
+    "test-cover": "yarn test --collectCoverage=true --collectCoverageFrom=**/*.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",

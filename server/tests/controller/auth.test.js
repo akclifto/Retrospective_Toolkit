@@ -1,7 +1,7 @@
 const request = require("supertest");
 // const chai = require("chai");
 // eslint-disable-next-line no-unused-vars
-const app = require("../../index");
+const server = require("../../index");
 // const authController = require("../../controller/auth");
 
 // const API = "http://localhost:5000";
@@ -11,14 +11,14 @@ const app = require("../../index");
 
 // beforeEach((done) => {
 //   // eslint-disable-next-line consistent-return
-//   server = app.listen(port, (err) => {
+//   server = server.listen(port, (err) => {
 //     if (err) return done(err);
 //     agent = request.agent(server);
 //     done();
 //   });
 // });
 
-afterEach((done) => app && app.close(done));
+afterEach((done) => server && server.close(done));
 
 describe("Controller/Auth Testing", () => {
   // eslint-disable-next-line no-unused-vars
@@ -30,7 +30,7 @@ describe("Controller/Auth Testing", () => {
   it("Send empty request parameter, shoud return status 400", async (done) => {
     try {
       // seed empty data to auth controller, then check status
-      await request(app)
+      await request(server)
         .post("/api/users/login")
         .send({
           email: "",
@@ -64,6 +64,9 @@ describe("Controller/Auth Testing", () => {
 /* stop all async operations */
 afterAll(async (done) => {
   try {
+    if (server) {
+      server.close();
+    }
     done();
   } catch (e) {
     done(e);
@@ -72,7 +75,7 @@ afterAll(async (done) => {
 
 // it("Test invalid login endpoint", async (done) => {
 //   try {
-//     const data = request(app).post("/api/users/login").send({
+//     const data = request(server).post("/api/users/login").send({
 //       email: "123@a.com",
 //       password: "1234",
 //     });
