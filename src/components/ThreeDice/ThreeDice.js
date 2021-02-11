@@ -1,6 +1,12 @@
 import React, { Suspense, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
-import { Html, useGLTF, useTexture, OrbitControls, useProgress } from "drei";
+import {
+  Html,
+  useGLTF,
+  useTexture,
+  OrbitControls,
+  useProgress,
+} from "@react-three/drei";
 // eslint-disable-next-line import/no-unresolved
 import { Physics, useBox } from "@react-three/cannon";
 import Button from "@material-ui/core/Button";
