@@ -13,6 +13,10 @@ describe("Controller/Auth Testing", () => {
       email: "admin@admin.com",
       password: "sfadmin",
     },
+    {
+      email: "",
+      password: "",
+    },
   ];
 
   it("Send empty login, shoud return status 400", async (done) => {
@@ -21,8 +25,8 @@ describe("Controller/Auth Testing", () => {
       await request(server)
         .post("/api/users/login")
         .send({
-          email: "",
-          password: "",
+          email: users[2].email,
+          password: users[2].password,
         })
         .expect(400);
       done();
@@ -57,7 +61,7 @@ describe("Controller/Auth Testing", () => {
           password: users[1].password,
         })
         .then((response) => {
-          expect(response.statusCode).resolves.toEqual(204);
+          expect(response.statusCode).toBe(204);
         });
       done();
     } catch (err) {
