@@ -50,7 +50,7 @@ describe("Controller/Auth Testing", () => {
         .then((response) => {
           expect(response.text).toBe(
             // eslint-disable-next-line prettier/prettier
-            "\"Bad request params - you need to provide an email and password\""
+            '"Bad request params - you need to provide an email and password"'
           );
         });
       done();
