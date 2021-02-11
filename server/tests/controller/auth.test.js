@@ -1,16 +1,21 @@
 const request = require("supertest");
-// eslint-disable-next-line no-unused-vars
 const server = require("../../index");
 
-// afterEach((done) => server && server.close(done));
+afterEach(() => server && server.close());
 
 describe("Controller/Auth Testing", () => {
-  const user = {
-    email: "2134@at.com",
-    password: "1234",
-  };
+  const users = [
+    {
+      email: "admin@at.com",
+      password: "1234@qwerty",
+    },
+    {
+      email: "admin@admin.com",
+      password: "sfadmin",
+    },
+  ];
 
-  it("Send empty request parameter, shoud return status 400", async (done) => {
+  it("Send empty login, shoud return status 400", async (done) => {
     try {
       // seed empty data to auth controller, then check status
       await request(server)
@@ -31,8 +36,8 @@ describe("Controller/Auth Testing", () => {
       await request(server)
         .post("/api/users/login")
         .send({
-          email: user.email,
-          password: user.password,
+          email: users[0].email,
+          password: users[0].password,
         })
         .expect(401);
       done();
@@ -41,22 +46,24 @@ describe("Controller/Auth Testing", () => {
     }
   });
 
-  // it("post invalid login", async (done) => {
-  //   try {
-  //     // seed data
-  //     const data = await request(API)
-  //       .post("/api/users/login", authController.login)
-  //       .send({ email: user.email })
-  //       .send({ password: user.password });
-  //     // get response and test it
-  //     const response = await authController.login;
-  //     expect(response).toEqual(401);
-  //     expect(response).toEqual(data);
-  //     done();
-  //   } catch (e) {
-  //     done(e);
-  //   }
-  // });
+  // eslint-disable-next-line consistent-return
+  test("Send valid login, should return status 204", async (done) => {
+    try {
+      // seed data to server
+      await request(server)
+        .post("/api/users/login")
+        .send({
+          email: users[1].email,
+          password: users[1].password,
+        })
+        .then((response) => {
+          expect(response.statusCode).resolves.toEqual(204);
+        });
+      done();
+    } catch (err) {
+      done(err);
+    }
+  });
 });
 
 /* stop all async operations */
@@ -70,18 +77,3 @@ afterAll(async (done) => {
     done(e);
   }
 });
-
-// it("Test invalid login endpoint", async (done) => {
-//   try {
-//     const data = request(server).post("/api/users/login").send({
-//       email: "123@a.com",
-//       password: "1234",
-//     });
-//     expect.assertions(1);
-//     await expect(data).toEqual(400);
-//     done();
-//   } catch (e) {
-//     done(e);
-//   }
-//   // expect(response.data.length).to.eql(30);
-// });
