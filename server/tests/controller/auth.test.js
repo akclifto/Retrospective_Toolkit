@@ -1,7 +1,20 @@
+/* eslint-disable no-useless-escape */
 const request = require("supertest");
+const redisClient = require("../../db/redis");
 const server = require("../../index");
 
 afterEach(() => server && server.close());
+
+async function shutdownRedisDB() {
+  await new Promise((resolve) => {
+    redisClient.quit(() => {
+      resolve();
+    });
+  });
+  // redis.quit() creates a thread to close the connection.
+  // We wait until all threads have been run once to ensure the connection closes.
+  await new Promise((resolve) => setImmediate(resolve));
+}
 
 describe("Controller/Auth Testing", () => {
   const users = [
@@ -17,6 +30,10 @@ describe("Controller/Auth Testing", () => {
       email: "",
       password: "",
     },
+    {
+      email: "admin@admin.com",
+      password: "admin",
+    },
   ];
 
   it("Send empty login, shoud return status 400", async (done) => {
@@ -28,7 +45,13 @@ describe("Controller/Auth Testing", () => {
           email: users[2].email,
           password: users[2].password,
         })
-        .expect(400);
+        .expect(400)
+        .then((response) => {
+          expect(response.text).toBe(
+            // eslint-disable-next-line prettier/prettier
+            "\"Bad request params - you need to provide an email and password\""
+          );
+        });
       done();
     } catch (err) {
       done(err);
@@ -50,7 +73,6 @@ describe("Controller/Auth Testing", () => {
     }
   });
 
-  // eslint-disable-next-line consistent-return
   test("Send valid login, should return status 204", async (done) => {
     try {
       // seed data to server
@@ -73,6 +95,7 @@ describe("Controller/Auth Testing", () => {
 /* stop all async operations */
 afterAll(async (done) => {
   try {
+    shutdownRedisDB();
     if (server) {
       server.close();
     }
