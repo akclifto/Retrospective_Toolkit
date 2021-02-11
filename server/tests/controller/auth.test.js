@@ -1,27 +1,10 @@
 const request = require("supertest");
-// const chai = require("chai");
 // eslint-disable-next-line no-unused-vars
 const server = require("../../index");
-// const authController = require("../../controller/auth");
 
-// const API = "http://localhost:5000";
-// const port = process.env.PORT || 5000;
-// let server;
-// let agent;
-
-// beforeEach((done) => {
-//   // eslint-disable-next-line consistent-return
-//   server = server.listen(port, (err) => {
-//     if (err) return done(err);
-//     agent = request.agent(server);
-//     done();
-//   });
-// });
-
-afterEach((done) => server && server.close(done));
+// afterEach((done) => server && server.close(done));
 
 describe("Controller/Auth Testing", () => {
-  // eslint-disable-next-line no-unused-vars
   const user = {
     email: "2134@at.com",
     password: "1234",
@@ -37,6 +20,21 @@ describe("Controller/Auth Testing", () => {
           password: "",
         })
         .expect(400);
+      done();
+    } catch (err) {
+      done(err);
+    }
+  });
+
+  it("Send invalid login, should return status 401", async (done) => {
+    try {
+      await request(server)
+        .post("/api/users/login")
+        .send({
+          email: user.email,
+          password: user.password,
+        })
+        .expect(401);
       done();
     } catch (err) {
       done(err);
