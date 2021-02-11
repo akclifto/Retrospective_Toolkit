@@ -19,6 +19,7 @@ services:
     container_name: frontend
     environment:
       - NODE_ENV=development
+      - DEVHOST=http://backend:5000
       - CHOKIDAR_USEPOLLING=true
     volumes:
       - /app/node_modules
