@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SNAPSHOT: Header component 1`] = `
+exports[`Components/Header Testing SNAPSHOT: Header 1`] = `
 <Fragment>
   <HideOnScroll>
     <WithStyles(ForwardRef(AppBar))

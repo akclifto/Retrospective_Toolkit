@@ -6,7 +6,7 @@
     "@babel/core": "^7.12.13",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@react-three/cannon": "^0.5.3",
+    "@react-three/cannon": "^0.5.4",
     "@react-three/drei": "^3.2.1",
     "axios": "^0.21.0",
     "immer": "8.0.1",
@@ -66,9 +66,9 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.3.1",
-    "http-proxy-middleware": "^1.0.6",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "http-proxy-middleware": "^1.0.6",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
@@ -88,8 +88,14 @@
       "text-summary",
       "text"
     ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(three|@react-three)/)"
     ]
   }
 }
