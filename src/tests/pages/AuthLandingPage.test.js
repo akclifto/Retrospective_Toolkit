@@ -9,7 +9,7 @@ beforeEach(() => {
 });
 
 describe("Pages/AuthLandingPage Testing", () => {
-  // Snapshot for PageNotFound
+  // Snapshot for AuthLandingPage
   test("SNAPSHOT: AuthLandingPage", () => {
     expect(wrapper).toMatchSnapshot();
   });
