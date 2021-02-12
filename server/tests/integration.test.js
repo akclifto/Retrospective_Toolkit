@@ -48,6 +48,7 @@ describe("Controller/Auth Testing", () => {
         })
         .expect(400)
         .then((response) => {
+          expect.assertions(1);
           expect(response.text).toBe(
             // eslint-disable-next-line prettier/prettier
             '"Bad request params - you need to provide an email and password"'
@@ -84,6 +85,7 @@ describe("Controller/Auth Testing", () => {
           password: users[1].password,
         })
         .then((response) => {
+          expect.assertions(1);
           expect(response.statusCode).toBe(204);
         });
       done();
@@ -99,7 +101,9 @@ describe("Middleware/Authenticate Testing", () => {
     try {
       await request(server)
         .get("/admin")
+        .set("Content-type", "application/json")
         .then((response) => {
+          expect.assertions(1);
           expect(response.statusCode).toBe(401);
           // expect(response).toThrowError(new Error("You are not logged in"));
         });
@@ -118,7 +122,10 @@ describe("Middleware/Authenticate Testing", () => {
     try {
       const status = await request(server).post("/api/users/login").send(login);
       expect(status.statusCode).toBe(204);
-      const response = request(server).get("/admin");
+      const response = request(server)
+        .get("/admin")
+        .set("Content-type", "application/json");
+      expect.assertions(2);
       expect((await response).badRequest).toBe(false);
       done();
     } catch (err) {
