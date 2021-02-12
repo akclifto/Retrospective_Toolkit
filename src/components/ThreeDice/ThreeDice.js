@@ -9,7 +9,12 @@ import Icon from "@material-ui/core/Icon";
 import { Provider, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { randomDiceThemes as themes } from "../../constants/DieConstants";
+import {
+  randomDiceThemes as themes,
+  initDiceImages,
+} from "../../constants/DieConstants";
+
+let randomDice;
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
@@ -69,7 +74,7 @@ const Loader = () => {
 
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useTexture([...themes.URL]);
+  const actionTextures = useTexture([...themes]);
   // eslint-disable-next-line no-console
   console.log("Action Textures");
   // eslint-disable-next-line no-console
@@ -94,7 +99,7 @@ const ThemedDie = (props) => {
     api.angularVelocity.set(-15, 2, -10);
   }, [api.angularVelocity, api.position, api.velocity, dicePos, rerollToggle]);
 
-  if (theme === "action") {
+  if (theme.Theme === "action") {
     return (
       <mesh
         onClick={() => {
@@ -107,11 +112,11 @@ const ThemedDie = (props) => {
         <boxBufferGeometry />
         {actionTextures.map((image) => (
           <meshStandardMaterial
-            key={image.uuid}
+            key={image.name}
             flatShading
             roughness={0.8}
             attachArray="material"
-            map={image}
+            map={image.URL}
           />
         ))}
       </mesh>
@@ -214,19 +219,32 @@ Model.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-const ThreeDice = () => (
-  <Canvas
-    concurrent
-    style={{ width: "100vw", height: "500px" }}
-    camera={{ position: [0, 20, 12], fov: 50 }}
-  >
-    <Provider>
-      <Physics gravity={[0, -30, 0]} defaultContactMaterial>
-        <GameManager />
-      </Physics>
-    </Provider>
-    <OrbitControls />
-  </Canvas>
-);
+const ThreeDice = () => {
+  /* eslint-disable no-unused-vars, no-console */
+  useEffect(() => {
+    const loadDice = async () => {
+      console.log("ThreeDice Render");
+      randomDice = await initDiceImages();
+      console.log(themes);
+    };
+    loadDice();
+  }, []);
+  /* eslint-enable no-unused-vars, no-console */
+  /// /////////////////////////////////////////////////////////
+  return (
+    <Canvas
+      concurrent
+      style={{ width: "100vw", height: "500px" }}
+      camera={{ position: [0, 20, 12], fov: 50 }}
+    >
+      <Provider>
+        <Physics gravity={[0, -30, 0]} defaultContactMaterial>
+          <GameManager />
+        </Physics>
+      </Provider>
+      <OrbitControls />
+    </Canvas>
+  );
+};
 
 export default ThreeDice;
