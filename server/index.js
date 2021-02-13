@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 
 const port = process.env.PORT || 5000;
 const router = require("./routes");
@@ -11,10 +10,12 @@ app.use(express.json());
 // if behind a proxy, uncomment this
 // server.set('trust proxy', 1);
 
-app.use(express.static(path.join(__dirname, "../build")));
-app.use(express.static(path.join(__dirname, "../src/resources")));
-
 app.use(session);
 app.use(router);
-// eslint-disable-next-line no-console
-app.listen(port, () => console.log(`server is running on port ${port}`));
+
+const server = app.listen(port, () =>
+  // eslint-disable-next-line no-console
+  console.log(`server is running on port ${port}`)
+);
+
+module.exports = server;

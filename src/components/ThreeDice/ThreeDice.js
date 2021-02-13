@@ -1,6 +1,12 @@
 import React, { Suspense, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
-import { Html, useGLTF, useTexture, OrbitControls, useProgress } from "drei";
+import {
+  Html,
+  useGLTF,
+  useTexture,
+  OrbitControls,
+  useProgress,
+} from "@react-three/drei";
 // eslint-disable-next-line import/no-unresolved
 import { Physics, useBox } from "@react-three/cannon";
 import Button from "@material-ui/core/Button";
@@ -71,9 +77,11 @@ const Loader = () => {
   return <Html center>{Math.trunc(progress)} % loaded</Html>;
 };
 
+// let textures = [];
+
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const actionTextures = useTexture([...themes]);
+  const textures = useTexture([...themes]);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -94,7 +102,7 @@ const ThemedDie = (props) => {
     api.angularVelocity.set(-15, 2, -10);
   }, [api.angularVelocity, api.position, api.velocity, dicePos, rerollToggle]);
 
-  if (theme === "action") {
+  if (theme === "random") {
     return (
       <mesh
         onClick={() => {
@@ -105,7 +113,7 @@ const ThemedDie = (props) => {
         ref={mesh}
       >
         <boxBufferGeometry />
-        {actionTextures.map((image) => (
+        {textures.map((image) => (
           <meshStandardMaterial
             key={image.uuid}
             flatShading
@@ -117,9 +125,11 @@ const ThemedDie = (props) => {
       </mesh>
     );
   }
+
   // if we are here, something has gone wrong
   return new Error("problem encountered in ThemedDice");
 };
+
 ThemedDie.propTypes = {
   theme: PropTypes.string.isRequired,
   dicePos: PropTypes.arrayOf(PropTypes.number).isRequired,
@@ -177,7 +187,7 @@ const GameManager = () => {
             {dicePosition.map((pos) => (
               <ThemedDie
                 key={pos.uuid}
-                theme="action"
+                theme="random"
                 dicePos={pos.position}
                 rerollToggle={reroll}
               />
