@@ -4,7 +4,7 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 
-import Die from "../../../components/Dice/Die";
+import Die from "../../components/Dice/Die";
 
 describe("Testing that Die.js displays information correctly", () => {
   const mockDie = {
