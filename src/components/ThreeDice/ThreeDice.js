@@ -10,11 +10,10 @@ import { Provider, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
 import {
-  randomDiceThemes as themes,
+  randomDiceImages as themes,
   initDiceImages,
+  randomizeDice,
 } from "../../constants/DieConstants";
-
-let randomDice;
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
@@ -75,10 +74,6 @@ const Loader = () => {
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
   const actionTextures = useTexture([...themes]);
-  // eslint-disable-next-line no-console
-  console.log("Action Textures");
-  // eslint-disable-next-line no-console
-  console.log(actionTextures);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -99,7 +94,7 @@ const ThemedDie = (props) => {
     api.angularVelocity.set(-15, 2, -10);
   }, [api.angularVelocity, api.position, api.velocity, dicePos, rerollToggle]);
 
-  if (theme.Theme === "action") {
+  if (theme === "action") {
     return (
       <mesh
         onClick={() => {
@@ -112,11 +107,11 @@ const ThemedDie = (props) => {
         <boxBufferGeometry />
         {actionTextures.map((image) => (
           <meshStandardMaterial
-            key={image.name}
+            key={image.uuid}
             flatShading
             roughness={0.8}
             attachArray="material"
-            map={image.URL}
+            map={image}
           />
         ))}
       </mesh>
@@ -196,6 +191,7 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
+                randomizeDice();
                 rerollDice(!reroll);
               }}
             >
@@ -220,17 +216,13 @@ Model.propTypes = {
 };
 
 const ThreeDice = () => {
-  /* eslint-disable no-unused-vars, no-console */
+  // Allows the initDiceImages function to load only once on startup.
   useEffect(() => {
     const loadDice = async () => {
-      console.log("ThreeDice Render");
-      randomDice = await initDiceImages();
-      console.log(themes);
+      await initDiceImages();
     };
     loadDice();
   }, []);
-  /* eslint-enable no-unused-vars, no-console */
-  /// /////////////////////////////////////////////////////////
   return (
     <Canvas
       concurrent

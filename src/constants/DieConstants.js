@@ -14,6 +14,9 @@ export const fullDiceArray = [];
 // eslint-disable-next-line import/no-mutable-exports
 export let randomDiceThemes = [];
 
+// eslint-disable-next-line import/no-mutable-exports
+export let randomDiceImages = [];
+
 // Contains information about different types of dice that can be used
 const dieSides = {
   FOUR: {
@@ -44,6 +47,7 @@ const dieSides = {
 
 export const randomizeDice = () => {
   randomDiceThemes = randomIconSelector(dieSides.SIX.sides, fullDiceArray);
+  randomDiceImages = randomDiceThemes.map((Theme) => Theme.URL);
 };
 
 /**

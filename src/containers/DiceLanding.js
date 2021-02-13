@@ -27,9 +27,6 @@ const redirect = (e) => {
 
 // Returns a landing page for the Dice Game
 const DiceLanding = () => {
-  // TODO: Have the project call the DieConstants initDiceImages only ONCE and figure out a solution for
-  // getting the dice array in the project. Passing it around as props, starting from DiceLanding seems the easiest option..
-
   const classes = useStyles();
 
   return (
