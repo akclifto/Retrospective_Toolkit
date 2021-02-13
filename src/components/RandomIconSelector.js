@@ -1,5 +1,3 @@
-import iconsArr from "../constants/IconsDataStructure";
-
 /**
  * RandomIconSelector.js file randomly selects desired number of icons
  * without duplicating any of the icon results.
@@ -9,9 +7,10 @@ import iconsArr from "../constants/IconsDataStructure";
  * Method compiles an array of randomly selected indeces, ensures no duplication
  * retrieve from IconDataStructure.
  * @param {*} dieNumber: number of die sides to index images.
+ * @param {*} fullDiceArray: the array that contains all of the dice objects from AWS
  * @returns final randomly selected icons array.
  */
-export default function getRandom(dieNumber) {
+export default function getRandom(dieNumber, fullDiceArray) {
   let rand;
   const maxLen = dieNumber; // assuming this will eventually be (die * sides) = maxLen
   const finalIdx = [];
@@ -19,7 +18,7 @@ export default function getRandom(dieNumber) {
   let count = 0;
 
   // check duplication possibility
-  if (maxLen > iconsArr.length) {
+  if (maxLen > fullDiceArray.length) {
     // eslint-disable-next-line no-console
     console.log(
       "RandomIconsSelector.js: function getRandom(dieNumber):",
@@ -29,11 +28,11 @@ export default function getRandom(dieNumber) {
   }
 
   while (count < maxLen) {
-    rand = Math.floor(Math.random() * iconsArr.length);
+    rand = Math.floor(Math.random() * fullDiceArray.length);
 
     if (!finalIdx.includes(rand)) {
       finalIdx.push(rand);
-      randomIconSelection.push(iconsArr[rand]);
+      randomIconSelection.push(fullDiceArray[rand]);
       count += 1;
     }
   }

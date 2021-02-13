@@ -15,7 +15,11 @@ import Icon from "@material-ui/core/Icon";
 import { Provider, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { themes } from "../../constants/DieConstants";
+import {
+  randomDiceImages as themes,
+  initDiceImages,
+  randomizeDice,
+} from "../Dice/Dice";
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
@@ -77,7 +81,7 @@ const Loader = () => {
 
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const textures = useTexture([...themes.random.images]);
+  const textures = useTexture([...themes]);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -197,6 +201,7 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
+                randomizeDice();
                 rerollDice(!reroll);
               }}
             >
@@ -220,19 +225,28 @@ Model.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-const ThreeDice = () => (
-  <Canvas
-    concurrent
-    style={{ width: "100vw", height: "500px" }}
-    camera={{ position: [0, 20, 12], fov: 50 }}
-  >
-    <Provider>
-      <Physics gravity={[0, -30, 0]} defaultContactMaterial>
-        <GameManager />
-      </Physics>
-    </Provider>
-    <OrbitControls />
-  </Canvas>
-);
+const ThreeDice = () => {
+  // Allows the initDiceImages function to load only once on startup.
+  useEffect(() => {
+    const loadDice = async () => {
+      await initDiceImages();
+    };
+    loadDice();
+  }, []);
+  return (
+    <Canvas
+      concurrent
+      style={{ width: "100vw", height: "500px" }}
+      camera={{ position: [0, 20, 12], fov: 50 }}
+    >
+      <Provider>
+        <Physics gravity={[0, -30, 0]} defaultContactMaterial>
+          <GameManager />
+        </Physics>
+      </Provider>
+      <OrbitControls />
+    </Canvas>
+  );
+};
 
 export default ThreeDice;
