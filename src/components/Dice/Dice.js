@@ -2,10 +2,10 @@
  * This class will create a "constants" file for the dicethat will populate at the start of the project's runtime. It will
  * contain useful information about each dice image: name, url to use, and which theme it is from.
  */
-import randomIconSelector from "../components/RandomIconSelector";
+import randomIconSelector from "../RandomIconSelector";
 
 const AWS = require("aws-sdk");
-const config = require("../resources/awsConfig.json");
+const config = require("../../resources/awsConfig.json");
 
 const BASEURL = "https://retrospective-toolkit.s3-us-west-1.amazonaws.com/";
 

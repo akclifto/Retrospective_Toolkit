@@ -6,7 +6,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-// import Die from "../components/Dice/Die";
 import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
 

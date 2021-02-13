@@ -13,7 +13,7 @@ import {
   randomDiceImages as themes,
   initDiceImages,
   randomizeDice,
-} from "../../constants/DieConstants";
+} from "../Dice/Dice";
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
