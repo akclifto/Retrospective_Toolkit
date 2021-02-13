@@ -1,6 +1,10 @@
 /**
- * This class will create a "constants" file for the dicethat will populate at the start of the project's runtime. It will
- * contain useful information about each dice image: name, url to use, and which theme it is from.
+ * This class will create a full dice array that will be loaded from AWS. It will have useful information like: name,
+ * theme, and the URL to find the picture. This file is inherently async, so it needs to be called at the
+ * beginning part of the DOM lifecycle.
+ *
+ * There will be two main variables that will be used from this class, randomDiceThemes and randomDiceImages.
+ * randomDiceImages is an array or URLs that is taken from randomDiceThemes, so they are inherently linked.
  */
 import randomIconSelector from "../RandomIconSelector";
 
@@ -45,6 +49,11 @@ const dieSides = {
   },
 };
 
+/**
+ * This function will randomize the dice images that will be used. We can't use something like
+ * "image.random: randomIconSelector" because of async shennanigans. So the function to randomize dice will have to be
+ * explicitly called (assumed to be after initDiceImages() is called).
+ */
 export const randomizeDice = () => {
   randomDiceThemes = randomIconSelector(dieSides.SIX.sides, fullDiceArray);
   randomDiceImages = randomDiceThemes.map((Theme) => Theme.URL);
@@ -64,7 +73,7 @@ export const randomizeDice = () => {
 
   We really only care about "Key" field here. It has all the info we need.
 
- * @param S3Content the content array from the S3 Bucket
+ * @param S3Content the content array received from the S3 Bucket
  */
 const formatDiceArray = (S3Content) => {
   // Iterate over each object in Content Array
@@ -99,6 +108,10 @@ const formatDiceArray = (S3Content) => {
   return fullDiceArray;
 };
 
+/**
+ * Makes the call to AWS and formats the response into a neat Array of JSON objects, each object representing an image.
+ * @returns the full dice array, non randomized, containing all useful information.
+ */
 export async function initDiceImages() {
   // Initialize s3 object to point to our S3 bucket for the class
   try {
