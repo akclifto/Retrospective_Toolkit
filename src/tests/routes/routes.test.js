@@ -10,6 +10,8 @@ import PageNotFound from "../../pages/PageNotFound";
 import Routes from "../../routes/routes";
 
 beforeAll(() => {
+  // React-three-fiber rendering on landing page throws error about
+  // resizeObserver.  This fixes it.
   if (!window.ResizeObserver) install();
 });
 
