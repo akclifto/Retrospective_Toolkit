@@ -105,7 +105,6 @@ const ThemedDie = (props) => {
   if (theme === "random") {
     return (
       <mesh
-        castShadow
         onClick={() => {
           api.position.set(dicePos[0], dicePos[1], dicePos[2]);
           api.velocity.set(15, 0, -10);
