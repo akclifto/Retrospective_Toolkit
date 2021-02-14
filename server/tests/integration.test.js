@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+// eslint-disable-next-line import/no-unresolved
 const request = require("supertest");
 const redisClient = require("../db/redis");
 const server = require("../index");
