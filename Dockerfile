@@ -1,3 +1,4 @@
+#Docker file for production build
 #Stage 1 Build the backend
 FROM node:alpine
 
