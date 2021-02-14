@@ -105,6 +105,7 @@ const ThemedDie = (props) => {
   if (theme === "random") {
     return (
       <mesh
+        castShadow
         onClick={() => {
           api.position.set(dicePos[0], dicePos[1], dicePos[2]);
           api.velocity.set(15, 0, -10);
@@ -164,10 +165,10 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<Loader />}>
-        <Model url="trayModel/diceTableSimple_v1_larger.glb" />
+        <Model url="table/gameTable.glb" />
       </Suspense>
       {!gameStarted && (
-        <Html position={[-4, 0, 4]} scaleFactor={75}>
+        <Html position={[-4, 0, 2]} scaleFactor={25}>
           <Button
             variant="contained"
             color="primary"
@@ -194,7 +195,7 @@ const GameManager = () => {
             ))}
             <CollisionMesh />
           </Suspense>
-          <Html position={[-3, 0, 9]} scaleFactor={25}>
+          <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
               color="primary"
@@ -216,9 +217,7 @@ const GameManager = () => {
 
 function Model({ url }) {
   const { scene } = useGLTF(url);
-  return (
-    <primitive rotation={[0, -Math.PI / 2, 0]} object={scene} dispose={null} />
-  );
+  return <primitive object={scene} dispose={null} />;
 }
 
 Model.propTypes = {
@@ -237,7 +236,7 @@ const ThreeDice = () => {
     <Canvas
       concurrent
       style={{ width: "100vw", height: "500px" }}
-      camera={{ position: [0, 20, 12], fov: 50 }}
+      camera={{ position: [0, 20, 8], fov: 50 }}
     >
       <Provider>
         <Physics gravity={[0, -30, 0]} defaultContactMaterial>
