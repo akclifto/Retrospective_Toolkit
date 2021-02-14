@@ -35,7 +35,6 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(PageNotFound)).toHaveLength(1);
   });
 
-  // TODO: validate PageNotFound redirect false, also validate LandingPage
   test("Validate PageNotFound redirect false, validate LandingPage", () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
