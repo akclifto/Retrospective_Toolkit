@@ -8,6 +8,7 @@
  */
 import randomIconSelector from "../RandomIconSelector";
 
+// eslint-disable-next-line import/no-unresolved
 const AWS = require("aws-sdk");
 const config = require("../../resources/awsConfig.json");
 
