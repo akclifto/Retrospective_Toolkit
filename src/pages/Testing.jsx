@@ -6,7 +6,7 @@ import randomIconSelector from "../components/RandomIconSelector";
 // Renders random selected, then renders all icons and name for validation check.
 const Testing = () => {
   // Store final array with randomly selected items from iconsArr
-  const randomSelected = randomIconSelector(6);
+  const randomSelected = randomIconSelector(6, iconsArr);
   return (
     <div>
       <h2>Random Selected: {randomSelected.length} </h2>
