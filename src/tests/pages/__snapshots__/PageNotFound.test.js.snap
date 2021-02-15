@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages/PageNotFound Testing SNAPSHOT: PageNotFound 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <img
+    alt="Oops! Page Not Found"
+    className="makeStyles-img-2"
+    src="https://d1g31diwtzkeb3.cloudfront.net/404.gif"
+  />
+  <h1
+    className="makeStyles-header-3"
+  >
+    404! Oops...
+  </h1>
+  <div
+    className="makeStyles-body-4"
+  >
+    <h2>
+      The page you are looking for doesn't exist!
+    </h2>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-button-6"
+    >
+      <Link
+        className="makeStyles-goHome-5"
+        to="/"
+      >
+        Go Home
+      </Link>
+    </WithStyles(ForwardRef(Button))>
+  </div>
+</div>
+`;

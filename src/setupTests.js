@@ -5,6 +5,9 @@ import Enzyme from "enzyme";
 // There is a workaround for the time being, used below
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 
+// This clears URL.createObjectURL error when testing.
+global.URL.createObjectURL = jest.fn();
+
 // Configures an adapter need to perform React tests when using Enzyme.
 // See README.md for Enzyme documentation.
 Enzyme.configure({ adapter: new Adapter() });

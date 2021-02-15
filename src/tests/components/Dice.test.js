@@ -1,7 +1,7 @@
 /**
  * Tests DiceConstants that pulling data from AWS works and is formatted.
  */
-import { initDiceImages, fullDiceArray } from "../components/Dice/Dice";
+import { initDiceImages, fullDiceArray } from "../../components/Dice/Dice";
 
 describe("Testing that DieConstants.js pulls information from AWS", () => {
   test("Test Init function that it receives any data", () =>
