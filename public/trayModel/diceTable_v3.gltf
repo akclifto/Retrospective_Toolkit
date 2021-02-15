@@ -1,0 +1,129 @@
+{
+  "asset": {
+    "copyright": "Copyright (c) 2020 ProtoTech Solutions and Services PVT LTD",
+    "generator": "ProtoTech Solutions and Services PVT LTD",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "name": "POSITION",
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 1718,
+      "max": [
+        38.0,
+        23.0,
+        20.0
+      ],
+      "min": [
+        -38.0,
+        -23.0,
+        0.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "NORMAL",
+      "bufferView": 0,
+      "byteOffset": 12,
+      "componentType": 5126,
+      "count": 1718,
+      "max": [
+        0.98521536588668823,
+        0.9472319483757019,
+        0.75373399257659912
+      ],
+      "min": [
+        -0.98636919260025024,
+        -0.94730961322784424,
+        0.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "TEXCOORD_0",
+      "bufferView": 0,
+      "byteOffset": 24,
+      "componentType": 5126,
+      "count": 1718,
+      "max": [
+        0.0,
+        0.0
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 10296,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 54976,
+      "byteStride": 32,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 20592,
+      "byteOffset": 54976,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 75568,
+      "uri": "diceTable_v3.bin"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.4392157,
+          0.5019608,
+          0.5647059,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
