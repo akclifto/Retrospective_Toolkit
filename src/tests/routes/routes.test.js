@@ -49,6 +49,7 @@ describe("Routes/routes Testing", () => {
     );
     console.log("mockedError_landing", console.error);
     expect(console.error).toHaveBeenCalledTimes(1);
+
     expect(wrapper.find(LandingPage)).toHaveLength(1);
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
@@ -129,6 +130,7 @@ describe("Routes/routes Testing", () => {
     );
     console.log("mockedError_testing", console.error);
     expect(console.error).toHaveBeenCalledTimes(1);
+
     expect(wrapper.find(LandingPage)).toHaveLength(0);
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
