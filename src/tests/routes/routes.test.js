@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from "react";
 import { mount, shallow } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
@@ -37,12 +38,17 @@ describe("Routes/routes Testing", () => {
   });
 
   test("Validate PageNotFound redirect false, validate LandingPage", () => {
+    // jest throws an error for react.jsx on ThreeDice because of react-three-fiber.
+    // it doesn't cause the test to fail, but fills the test screen
+    // with a bunch of red text.  This jest.fn() catches it.
+    console.error = jest.fn();
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
         <Routes />
       </MemoryRouter>
     );
-
+    console.log("mockedError_landing", console.error);
+    expect(console.error).toHaveBeenCalledTimes(1);
     expect(wrapper.find(LandingPage)).toHaveLength(1);
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
@@ -112,12 +118,17 @@ describe("Routes/routes Testing", () => {
   });
 
   test("Validate Testing Page", () => {
+    // jest throws an error mapping not having unique ids.
+    // it doesn't cause the test to fail, but fills the test screen
+    // with a bunch of red text.  This jest.fn() catches it.
+    console.error = jest.fn();
     const wrapper = mount(
       <MemoryRouter initialEntries={["/testing"]}>
         <Routes />
       </MemoryRouter>
     );
-
+    console.log("mockedError_testing", console.error);
+    expect(console.error).toHaveBeenCalledTimes(1);
     expect(wrapper.find(LandingPage)).toHaveLength(0);
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
