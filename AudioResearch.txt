@@ -1,0 +1,4 @@
+The goal is to get a sound or short audio file to play on our react application. 
+
+We are to use HTML code such as <audio> inside render() functions to embed the sound content. Inside the mp3 file is saved as src. 
+getElementsByClassName() grabs the element and audioEl.play() plays the element. We are to use <button> and an onClick() method that will play when the dice are rolled playing the audioEl.play()
