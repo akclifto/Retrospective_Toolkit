@@ -1,7 +1,9 @@
 /* eslint-disable no-useless-escape */
 // eslint-disable-next-line import/no-unresolved
 const request = require("supertest");
-const redisClient = require("../db/redis");
+// const redisClient = require("../db/redis");
+const redisTestConnect = require("../db/redis");
+// const session = require("../middleware/session");
 const server = require("../index");
 
 afterEach(() => server && server.close());
@@ -25,16 +27,33 @@ const users = [
   },
 ];
 
-async function shutdownRedisDB() {
-  await new Promise((resolve) => {
-    redisClient.quit(() => {
-      resolve();
-    });
+// async function shutdownRedisDB() {
+//   await new Promise((resolve) => {
+//     redisClient.quit(() => {
+//       resolve();
+//     });
+//   });
+//   // redis.quit() creates a thread to close the connection.
+//   // We wait until all threads have been run once to ensure the connection closes.
+//   await new Promise((resolve) => setImmediate(resolve));
+// }
+
+/** DB/REDIS TESTING */
+describe("DB/Redis Testing", () => {
+  it("Test redis createClient, should return true and no timeout", async (done) => {
+    try {
+      // seed empty data to auth controller, then check status
+      await request(redisTestConnect);
+      expect.assertions(2);
+      expect(redisTestConnect).not.toBeNull();
+      expect(redisTestConnect).toBeTruthy();
+
+      done();
+    } catch (err) {
+      done(err);
+    }
   });
-  // redis.quit() creates a thread to close the connection.
-  // We wait until all threads have been run once to ensure the connection closes.
-  await new Promise((resolve) => setImmediate(resolve));
-}
+});
 
 /** AUTHENTICATION TESTING */
 describe("Controller/Auth Testing", () => {
@@ -138,7 +157,7 @@ describe("Middleware/Authenticate Testing", () => {
 /* stop all async operations */
 afterAll(async (done) => {
   try {
-    shutdownRedisDB();
+    // shutdownRedisDB();
     if (server) {
       server.close();
     }

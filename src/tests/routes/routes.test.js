@@ -122,14 +122,14 @@ describe("Routes/routes Testing", () => {
     // jest throws an error mapping not having unique ids.
     // it doesn't cause the test to fail, but fills the test screen
     // with a bunch of red text.  This jest.fn() catches it.
-    console.error = jest.fn();
+    // console.error = jest.fn();
     const wrapper = mount(
       <MemoryRouter initialEntries={["/testing"]}>
         <Routes />
       </MemoryRouter>
     );
-    console.log("mockedError_testing", console.error);
-    expect(console.error).toHaveBeenCalledTimes(1);
+    // console.log("mockedError_testing", console.error);
+    // expect(console.error).toHaveBeenCalledTimes(1);
 
     expect(wrapper.find(LandingPage)).toHaveLength(0);
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
