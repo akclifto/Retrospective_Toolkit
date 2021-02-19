@@ -1,5 +1,5 @@
 /**
- * Tests DiceConstants that pulling data from AWS works and is formatted.
+ * Tests Dice data pull from AWS works and is formatted.
  */
 import { initDiceImages, fullDiceArray } from "../components/Dice/Dice";
 
