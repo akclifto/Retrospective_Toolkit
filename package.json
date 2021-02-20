@@ -99,10 +99,6 @@
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(three|@react-three)/)"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/index.js"
     ]
   }
 }
