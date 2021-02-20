@@ -33,6 +33,7 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
     expect(wrapper.find(Signup)).toHaveLength(0);
+    expect(wrapper.find(Testing)).toHaveLength(1);
     expect(wrapper.find(PageNotFound)).toHaveLength(1);
   });
 
@@ -47,6 +48,7 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
     expect(wrapper.find(Signup)).toHaveLength(0);
+    expect(wrapper.find(Testing)).toHaveLength(1);
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
   });
 
@@ -61,6 +63,7 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(AuthLandingPage)).not.toHaveLength(1);
     expect(wrapper.find(Login)).toHaveLength(0);
     expect(wrapper.find(Signup)).toHaveLength(0);
+    expect(wrapper.find(Testing)).toHaveLength(1);
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
   });
 
@@ -94,6 +97,7 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(1);
     expect(wrapper.find(Signup)).toHaveLength(0);
+    expect(wrapper.find(Testing)).toHaveLength(1);
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
   });
 
@@ -108,6 +112,7 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
     expect(wrapper.find(Signup)).toHaveLength(1);
+    expect(wrapper.find(Testing)).toHaveLength(1);
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
   });
 
