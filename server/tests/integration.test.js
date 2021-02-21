@@ -1,13 +1,13 @@
+/* eslint-disable no-console */
 /* eslint-disable no-useless-escape */
-// eslint-disable-next-line import/no-unresolved
 const request = require("supertest");
-// const redisClient = require("../db/redis");
-const redisTestConnect = require("../db/redis");
+const redisTestClient = require("../db/redis");
 // const session = require("../middleware/session");
 const server = require("../index");
 
 afterEach(() => server && server.close());
 
+// eslint-disable-next-line no-unused-vars
 const users = [
   {
     email: "admin@at.com",
@@ -27,28 +27,55 @@ const users = [
   },
 ];
 
-// async function shutdownRedisDB() {
-//   await new Promise((resolve) => {
-//     redisClient.quit(() => {
-//       resolve();
-//     });
-//   });
-//   // redis.quit() creates a thread to close the connection.
-//   // We wait until all threads have been run once to ensure the connection closes.
-//   await new Promise((resolve) => setImmediate(resolve));
-// }
+async function shutdownRedisDB() {
+  await new Promise((resolve) => {
+    redisTestClient.quit(() => {
+      resolve();
+    });
+  });
+  // redis.quit() creates a thread to close the connection.
+  // We wait until all threads have been run once to ensure the connection closes.
+  await new Promise((resolve) => setImmediate(resolve));
+}
 
 /** DB/REDIS TESTING */
 describe("DB/Redis Testing", () => {
-  it("Test redis createClient, should return true and no timeout", async (done) => {
+  it("Tests redis createClient, ensures createClient() creates AWS client", async (done) => {
     try {
       // seed empty data to auth controller, then check status
-      await request(redisTestConnect);
+      await request(redisTestClient);
       expect.assertions(2);
-      expect(redisTestConnect).not.toBeNull();
-      expect(redisTestConnect).toBeTruthy();
+      expect(redisTestClient.address).toBe(
+        "ec2-35-172-26-54.compute-1.amazonaws.com:17649"
+      );
+      expect(redisTestClient).toBeTruthy();
 
       done();
+    } catch (err) {
+      done(err);
+    }
+  });
+
+  it("Test redis connection, should return connected value as true", async (done) => {
+    try {
+      // seed empty data to auth controller, then check status
+      console.log("redisTestClient:", redisTestClient);
+      await request(redisTestClient);
+      try {
+        if (redisTestClient.connected === false) {
+          const err = new Error(
+            `ERROR: Redis client is not connecting. Async authentication validation tests will fail.`
+          );
+          done(err);
+          return;
+        }
+        expect.assertions(1);
+        expect(redisTestClient.connected).toBe(true);
+        expect(redisTestClient.ready).toBe(true);
+      } catch (err) {
+        console.log(err);
+        done();
+      }
     } catch (err) {
       done(err);
     }
@@ -115,7 +142,7 @@ describe("Controller/Auth Testing", () => {
   });
 });
 
-/** MIDDLEWARE TESTING */
+// /** MIDDLEWARE TESTING */
 describe("Middleware/Authenticate Testing", () => {
   it("Send empty admin session, should return status 401 with error message", async (done) => {
     try {
@@ -157,12 +184,12 @@ describe("Middleware/Authenticate Testing", () => {
 /* stop all async operations */
 afterAll(async (done) => {
   try {
-    // shutdownRedisDB();
+    shutdownRedisDB();
     if (server) {
       server.close();
     }
     done();
-  } catch (e) {
-    done(e);
+  } catch (err) {
+    done(err);
   }
 });
