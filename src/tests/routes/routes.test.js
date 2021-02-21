@@ -47,7 +47,7 @@ describe("Routes/routes Testing", () => {
         <Routes />
       </MemoryRouter>
     );
-    console.log("mockedError_landing", console.error);
+    // console.log("mockedError_landing", console.error);
     expect(console.error).toHaveBeenCalledTimes(1);
 
     expect(wrapper.find(LandingPage)).toHaveLength(1);
