@@ -59,7 +59,7 @@ describe("DB/Redis Testing", () => {
   it("Test redis connection, should return connected value as true", async (done) => {
     try {
       // seed empty data to auth controller, then check status
-      console.log("redisTestClient:", redisTestClient);
+      // console.log("redisTestClient:", redisTestClient);
       await request(redisTestClient);
       try {
         if (redisTestClient.connected === false) {
