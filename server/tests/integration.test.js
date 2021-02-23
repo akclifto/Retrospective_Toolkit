@@ -46,7 +46,7 @@ describe("DB/Redis Testing", () => {
       await request(redisTestClient);
       expect.assertions(2);
       expect(redisTestClient.address).toBe(
-        "ec2-35-172-26-54.compute-1.amazonaws.com:17649"
+        "ec2-34-202-178-6.compute-1.amazonaws.com:29099"
       );
       expect(redisTestClient).toBeTruthy();
 
@@ -84,7 +84,7 @@ describe("DB/Redis Testing", () => {
 
 /** AUTHENTICATION TESTING */
 describe("Controller/Auth Testing", () => {
-  it("Send empty login, shoud return status 400", async (done) => {
+  it("Send empty login, should return status 400", async (done) => {
     try {
       // seed empty data to auth controller, then check status
       await request(server)
