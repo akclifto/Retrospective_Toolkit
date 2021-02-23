@@ -28,9 +28,20 @@ const useStyles = makeStyles({
   },
 });
 
+const infoButton = (clicked, buttonText) => {
+  if (clicked) {
+    return (
+      <Button variant="contained" color="primary" onClick={clicked}>
+        {buttonText}
+      </Button>
+    );
+  }
+  return null;
+};
+
 const InfoCard = (props) => {
   const classes = useStyles();
-  const { title, body, body2, body3, clicked } = props;
+  const { title, body, body2, body3, clicked, buttonText } = props;
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -55,11 +66,8 @@ const InfoCard = (props) => {
           {body3}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button variant="contained" color="primary" onClick={clicked}>
-          Learn More
-        </Button>
-      </CardActions>
+      {infoButton(clicked, buttonText)}
+      <CardActions />
     </Card>
   );
 };
@@ -68,7 +76,13 @@ InfoCard.propTypes = {
   body: PropTypes.string.isRequired,
   body2: PropTypes.string.isRequired,
   body3: PropTypes.string.isRequired,
-  clicked: PropTypes.func.isRequired,
+  clicked: PropTypes.func,
+  buttonText: PropTypes.string,
+};
+
+InfoCard.defaultProps = {
+  clicked: null,
+  buttonText: "Learn More",
 };
 
 export default InfoCard;
