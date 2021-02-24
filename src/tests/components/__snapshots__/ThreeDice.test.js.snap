@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SNAPSHOT TEST THREEDICE 1`] = `
+<Memo(Canvas)
+  camera={
+    Object {
+      "fov": 50,
+      "position": Array [
+        0,
+        20,
+        8,
+      ],
+    }
+  }
+  concurrent={true}
+  style={
+    Object {
+      "height": "500px",
+      "width": "100vw",
+    }
+  }
+>
+  <Provider>
+    <Component
+      defaultContactMaterial={true}
+      gravity={
+        Array [
+          0,
+          -30,
+          0,
+        ]
+      }
+    >
+      <GameManager />
+    </Component>
+  </Provider>
+  <ForwardRef />
+</Memo(Canvas)>
+`;
