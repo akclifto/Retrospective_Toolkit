@@ -1,6 +1,10 @@
 import RandomIconSelector from "../../components/RandomIconSelector";
 import IconsArr from "../../constants/IconsDataStructure";
 
+beforeEach(() => {
+  jest.spyOn(console, "log").mockImplementation(() => {});
+});
+
 describe("Components/RandomIconSelector Testing", () => {
   it("Force duplication, should return empty array with log message.", () => {
     const consoleSpy = jest.spyOn(console, "log");
