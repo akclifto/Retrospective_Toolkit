@@ -6,7 +6,7 @@ import loginController from "../../controller/login";
 // eslint-disable-next-line no-unused-vars
 const users = [
   {
-    email: "admin@admin.com",
+    email: "sfadmin@admin.com",
     password: "admin",
   },
   {
