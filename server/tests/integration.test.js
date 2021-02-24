@@ -3,6 +3,7 @@
 const request = require("supertest");
 const server = require("../index");
 const redisTestClient = require("../db/redis");
+const postgresTestClient = require("../db/postgres");
 const authService = require("../service/auth");
 
 afterEach(() => server && server.close());
@@ -37,11 +38,31 @@ async function shutdownRedisDB() {
   await new Promise((resolve) => setImmediate(resolve));
 }
 
+/** DB/POSTGRES TESTING */
+describe("DB/Postgres Testing", () => {
+  it("Tests postgres new Pool creation", async (done) => {
+    try {
+      await request(postgresTestClient);
+      expect.assertions(2);
+      expect(postgresTestClient).toBeTruthy();
+      expect(postgresTestClient.options).toEqual(
+        expect.objectContaining({
+          connectionString: expect.any(String),
+          ssl: { rejectUnauthorized: false },
+          max: 20,
+        })
+      );
+      done();
+    } catch (err) {
+      done(err);
+    }
+  });
+});
+
 /** DB/REDIS TESTING */
 describe("DB/Redis Testing", () => {
   it("Tests redis createClient,createClient() should create AWS client", async (done) => {
     try {
-      // seed empty data to auth controller, then check status
       await request(redisTestClient);
       expect.assertions(2);
       expect(redisTestClient.address).toBe(
@@ -131,7 +152,7 @@ describe("Controller/Auth Testing", () => {
   });
 });
 
-// /** MIDDLEWARE TESTING */
+/** MIDDLEWARE TESTING */
 describe("Middleware/Authenticate Testing", () => {
   it("Send empty admin session, should return status 401 with error message", async (done) => {
     try {
@@ -170,6 +191,7 @@ describe("Middleware/Authenticate Testing", () => {
   });
 });
 
+/** SERVICE/AUTH TESTING */
 describe("Service/Auth Testing", () => {
   it("Send invalid login/password, should reject promise with message", async (done) => {
     let error;
