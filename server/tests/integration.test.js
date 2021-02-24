@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable no-useless-escape */
 const request = require("supertest");
-const redisTestClient = require("../db/redis");
-// const session = require("../middleware/session");
 const server = require("../index");
+const redisTestClient = require("../db/redis");
+const postgresTestClient = require("../db/postgres");
+const authService = require("../service/auth");
 
 afterEach(() => server && server.close());
 
-// eslint-disable-next-line no-unused-vars
 const users = [
   {
     email: "admin@at.com",
@@ -38,11 +38,31 @@ async function shutdownRedisDB() {
   await new Promise((resolve) => setImmediate(resolve));
 }
 
+/** DB/POSTGRES TESTING */
+describe("DB/Postgres Testing", () => {
+  it("Tests postgres new Pool creation", async (done) => {
+    try {
+      await request(postgresTestClient);
+      expect.assertions(2);
+      expect(postgresTestClient).toBeTruthy();
+      expect(postgresTestClient.options).toEqual(
+        expect.objectContaining({
+          connectionString: expect.any(String),
+          ssl: { rejectUnauthorized: false },
+          max: 20,
+        })
+      );
+      done();
+    } catch (err) {
+      done(err);
+    }
+  });
+});
+
 /** DB/REDIS TESTING */
 describe("DB/Redis Testing", () => {
-  it("Tests redis createClient, ensures createClient() creates AWS client", async (done) => {
+  it("Tests redis createClient,createClient() should create AWS client", async (done) => {
     try {
-      // seed empty data to auth controller, then check status
       await request(redisTestClient);
       expect.assertions(2);
       expect(redisTestClient.address).toBe(
@@ -132,7 +152,7 @@ describe("Controller/Auth Testing", () => {
   });
 });
 
-// /** MIDDLEWARE TESTING */
+/** MIDDLEWARE TESTING */
 describe("Middleware/Authenticate Testing", () => {
   it("Send empty admin session, should return status 401 with error message", async (done) => {
     try {
@@ -164,6 +184,51 @@ describe("Middleware/Authenticate Testing", () => {
         .set("Content-type", "application/json");
       expect.assertions(2);
       expect((await response).badRequest).toBe(false);
+      done();
+    } catch (err) {
+      done(err);
+    }
+  });
+});
+
+/** SERVICE/AUTH TESTING */
+describe("Service/Auth Testing", () => {
+  it("Send invalid login/password, should reject promise with message", async (done) => {
+    let error;
+    try {
+      await authService.login(users[0].email, users[0].password);
+      expect.assertions(1);
+      done();
+    } catch (err) {
+      error = err;
+      // console.log(err);
+    }
+    expect(error.message).toEqual("user not found");
+    done();
+  });
+
+  it("Send valid login, invalid password, should reject promise with message", async (done) => {
+    let error;
+    try {
+      await authService.login(users[3].email, users[3].password);
+      expect.assertions(1);
+      done();
+    } catch (err) {
+      error = err;
+    }
+    expect(error.message).toEqual("wrong username or password");
+    done();
+  });
+
+  it("Send valid login/password, should return user match", async (done) => {
+    try {
+      const response = await authService.login(
+        users[1].email,
+        users[1].password
+      );
+      expect.assertions(2);
+      expect(response.id).toBeDefined();
+      expect(response.roles).toBe("ADMIN");
       done();
     } catch (err) {
       done(err);
