@@ -27,13 +27,6 @@ exports[`Components/InfoCard Testing SNAPSHOT: InfoCard 1`] = `
       variant="body2"
     />
   </WithStyles(ForwardRef(CardContent))>
-  <WithStyles(ForwardRef(CardActions))>
-    <WithStyles(ForwardRef(Button))
-      color="primary"
-      variant="contained"
-    >
-      Learn More
-    </WithStyles(ForwardRef(Button))>
-  </WithStyles(ForwardRef(CardActions))>
+  <WithStyles(ForwardRef(CardActions)) />
 </WithStyles(ForwardRef(Card))>
 `;
