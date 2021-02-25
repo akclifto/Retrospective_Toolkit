@@ -179,7 +179,7 @@ describe("Middleware/Authenticate Testing", () => {
     try {
       const status = await request(server).post("/api/users/login").send(login);
       expect(status.statusCode).toBe(204);
-      const response = request(server)
+      const response = await request(server)
         .get("/admin")
         .set("Content-type", "application/json");
       expect.assertions(2);
