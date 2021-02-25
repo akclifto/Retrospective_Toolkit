@@ -17,13 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Directs the browser to statefarm for more information in new tab.
-const redirect = (e) => {
-  e.preventDefault();
-  const url = "http://statefarm.com";
-  window.open(url, "_blank");
-};
-
 // Returns a landing page for the Dice Game
 const DiceLanding = () => {
   const classes = useStyles();
@@ -43,7 +36,6 @@ const DiceLanding = () => {
           body2="How To Play:"
           body3="First, choose an action dice, then roll it. It will roll on a side with a picture. 
               Describe how the picture relates to an experience in software development you have had."
-          clicked={redirect}
         />
       </Grid>
 

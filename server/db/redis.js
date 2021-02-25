@@ -3,7 +3,7 @@
 
 // Heroku deployment
 const redisClient = require("redis").createClient(
-  "redis://h:p343f46b6946ec0516ef9ace243e856e99223c708ff817633212d183ae46674f6@ec2-35-172-26-54.compute-1.amazonaws.com:17649"
+  "redis://h:p343f46b6946ec0516ef9ace243e856e99223c708ff817633212d183ae46674f6@ec2-34-202-178-6.compute-1.amazonaws.com:29099"
 );
 
 /* configure redis for local development */

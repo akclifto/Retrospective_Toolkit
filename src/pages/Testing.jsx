@@ -1,7 +1,13 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid"; // clear annoying console warning about unique keys
 import iconsArr from "../constants/IconsDataStructure";
 import randomIconSelector from "../components/RandomIconSelector";
+
+let index = 0;
+
+const setIndex = () => {
+  index += 1;
+  return index;
+};
 
 // Renders random selected, then renders all icons and name for validation check.
 const Testing = () => {
@@ -12,17 +18,17 @@ const Testing = () => {
       <h2>Random Selected: {randomSelected.length} </h2>
       <div>
         {randomSelected.map((icon) => (
-          <span>
-            <img src={icon} alt={icon} key={uuidv4()} />{" "}
+          <span key={setIndex()}>
+            <img src={icon} alt={icon} />{" "}
           </span>
         ))}
       </div>
       <h1>Testing DS -- Total Items: {iconsArr.length} </h1>
       {iconsArr.map((icon) => (
-        <div>
-          <li key={uuidv4()}>
+        <div key={setIndex()}>
+          <li>
             {" "}
-            <img src={icon} alt={icon} key={uuidv4()} /> Name: {icon}
+            <img src={icon} alt={icon} /> Name: {icon}
           </li>
         </div>
       ))}
