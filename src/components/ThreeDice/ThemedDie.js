@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
-// eslint-disable-next-line import/no-unresolved
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
 import { randomDiceImages as themes } from "../Dice/Dice";

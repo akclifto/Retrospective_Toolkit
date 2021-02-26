@@ -6,6 +6,15 @@
     "prettier",
     "prettier/react"
   ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {},
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["node_modules/", "node_modules/@types"]
+      }
+    }
+  },
   "plugins": ["jsx-a11y", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

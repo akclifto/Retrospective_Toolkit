@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
-// eslint-disable-next-line import/no-unresolved
 import { Physics } from "@react-three/cannon";
 import { Provider } from "jotai";
 import { initDiceImages } from "../Dice/Dice";
