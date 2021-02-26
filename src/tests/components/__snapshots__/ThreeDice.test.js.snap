@@ -1,39 +1,128 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SNAPSHOT TEST THREEDICE 1`] = `
-<Memo(Canvas)
-  camera={
-    Object {
-      "fov": 50,
-      "position": Array [
-        0,
-        20,
-        8,
+Object {
+  "instance": null,
+  "nodeType": "component",
+  "props": Object {},
+  "rendered": Object {
+    "instance": null,
+    "nodeType": "component",
+    "props": Object {
+      "camera": Object {
+        "fov": 30,
+        "position": Array [
+          0,
+          20,
+          15,
+        ],
+      },
+      "children": Array [
+        <Provider>
+          <UNDEFINED
+            defaultContactMaterial={true}
+            gravity={
+              Array [
+                0,
+                -30,
+                0,
+              ]
+            }
+          >
+            <GameManager />
+          </UNDEFINED>
+        </Provider>,
+        <ForwardRef />,
       ],
-    }
-  }
-  concurrent={true}
-  style={
-    Object {
-      "height": "500px",
-      "width": "100vw",
-    }
-  }
->
-  <Provider>
-    <Component
-      defaultContactMaterial={true}
-      gravity={
-        Array [
-          0,
-          -30,
-          0,
-        ]
-      }
-    >
-      <GameManager />
-    </Component>
-  </Provider>
-  <ForwardRef />
-</Memo(Canvas)>
+      "concurrent": true,
+      "style": Object {
+        "height": "500px",
+        "width": "100vw",
+      },
+    },
+    "rendered": Object {
+      "instance": null,
+      "nodeType": "component",
+      "props": Object {
+        "camera": Object {
+          "fov": 30,
+          "position": Array [
+            0,
+            20,
+            15,
+          ],
+        },
+        "children": Array [
+          <Provider>
+            <UNDEFINED
+              defaultContactMaterial={true}
+              gravity={
+                Array [
+                  0,
+                  -30,
+                  0,
+                ]
+              }
+            >
+              <GameManager />
+            </UNDEFINED>
+          </Provider>,
+          <ForwardRef />,
+        ],
+        "concurrent": true,
+        "preRender": <canvas
+          style={
+            Object {
+              "display": "block",
+            }
+          }
+        />,
+        "renderer": [Function],
+        "style": Object {
+          "height": "500px",
+          "width": "100vw",
+        },
+      },
+      "rendered": Object {
+        "instance": null,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <canvas
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            />,
+            false,
+          ],
+          "style": Object {
+            "height": "500px",
+            "overflow": "hidden",
+            "position": "relative",
+            "width": "100vw",
+          },
+        },
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "nodeType": "host",
+            "props": Object {
+              "style": Object {
+                "display": "block",
+              },
+            },
+            "rendered": Array [],
+            "type": "canvas",
+          },
+        ],
+        "type": "div",
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  "type": [Function],
+}
 `;
