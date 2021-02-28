@@ -235,7 +235,7 @@ const ThreeDice = () => {
     <Canvas
       concurrent
       style={{ width: "100vw", height: "500px" }}
-      camera={{ position: [0, 20, 15], fov: 30 }}
+      camera={{ position: [0, 20, 8], fov: 50 }}
     >
       <Provider>
         <Physics gravity={[0, -30, 0]} defaultContactMaterial>
