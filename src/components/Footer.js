@@ -34,7 +34,7 @@ const Footer = () => {
       <AppBar className={classes.footer}>
         <Toolbar className={classes.root}>
           <Typography className={classes.footer__text}>
-            &copy; 2020 - Retrospective Toolkit
+            &copy; 2021 - Retrospective Toolkit
           </Typography>
           <div className={classes.grow} />
           <Typography className={classes.footer__text}>
