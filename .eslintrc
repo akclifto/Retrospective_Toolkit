@@ -3,6 +3,8 @@
     "react-app",
     "airbnb",
     "plugin:jsx-a11y/recommended",
+    "plugin:testing-library/recommended",
+    "plugin:jest-dom/recommended",
     "prettier",
     "prettier/react"
   ],
@@ -15,7 +17,7 @@
       }
     }
   },
-  "plugins": ["jsx-a11y", "prettier"],
+  "plugins": ["jsx-a11y", "prettier", "testing-library", "jest-dom"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "prettier/prettier": ["error", {}]
