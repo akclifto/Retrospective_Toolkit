@@ -8,11 +8,15 @@ const appMock = express();
 
 describe("SetupProxy Tests", () => {
   it("Test proxy creation", (done) => {
-    const result = request(proxy(appMock));
-    expect(proxy).toBeDefined();
-    expect(proxy.length).toBeGreaterThanOrEqual(1);
+    try {
+      const result = request(proxy(appMock));
+      expect(proxy).toBeDefined();
+      expect(proxy.length).toBeGreaterThanOrEqual(1);
 
-    expect(result).toBeDefined();
-    done();
+      expect(result).toBeDefined();
+      done();
+    } catch (err) {
+      done(err);
+    }
   });
 });
