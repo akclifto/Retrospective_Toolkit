@@ -5,6 +5,8 @@ const server = require("../index");
 const redisTestClient = require("../db/redis");
 const postgresTestClient = require("../db/postgres");
 const authService = require("../service/auth");
+// for routes/index testing
+const appRouter = require("./__mocks__/config.routesTest");
 
 afterEach(() => server && server.close());
 
@@ -229,6 +231,37 @@ describe("Service/Auth Testing", () => {
       expect.assertions(2);
       expect(response.id).toBeDefined();
       expect(response.roles).toBe("ADMIN");
+      done();
+    } catch (err) {
+      done(err);
+    }
+  });
+});
+
+/** SERVER/ROUTES TESTING */
+describe("Routes/index Testing", () => {
+  it("Tests Routes index", async (done) => {
+    try {
+      await request(appRouter)
+        .get("/api/checksession")
+        // from mock server
+        .expect("Content-type", "text/html; charset=utf-8");
+      // .expect(204);
+      // .end((err, res) => {
+      //   // console.log(res);
+      //   // console.log(err);
+      //   done();
+      // });
+      done();
+    } catch (err) {
+      console.log("Routes/index", err);
+      done();
+    }
+  });
+
+  it("Checks api session, should return status 204", (done) => {
+    try {
+      request(server).get("/api/checksession").expect(204);
       done();
     } catch (err) {
       done(err);
