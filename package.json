@@ -26,7 +26,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "start-server": "cd server && nodemon index.js",
+    "start-server": "cd server && yarn nodemon index.js",
     "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
