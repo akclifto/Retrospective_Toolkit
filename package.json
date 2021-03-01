@@ -6,7 +6,7 @@
     "@babel/core": "^7.12.13",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@react-three/cannon": "^0.5.4",
+    "@react-three/cannon": "^0.6.0",
     "@react-three/drei": "^3.2.1",
     "aws-sdk": "^2.843.0",
     "axios": "^0.21.0",
@@ -28,6 +28,7 @@
   "scripts": {
     "start-server": "cd server && yarn nodemon index.js",
     "start-client": "react-scripts start",
+    "yarn-init": "yarn && cd server && yarn",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "testw": "yarn test --watch",
