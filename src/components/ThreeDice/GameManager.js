@@ -10,6 +10,7 @@ import { randomizeDice } from "../Dice/Dice";
 import ThemedDie from "./ThemedDie";
 import CollisionMesh from "./CollisionMesh";
 
+/* istanbul ignore next */
 const GameManager = () => {
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);

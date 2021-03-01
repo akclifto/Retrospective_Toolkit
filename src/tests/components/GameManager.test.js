@@ -5,7 +5,7 @@ import { Provider } from "jotai";
 import GameManager from "../../components/ThreeDice/GameManager";
 
 describe("ThreeDice/GameManager Testing", () => {
-  it("should do a snapshot test on ThemedDie", async () => {
+  it("should do a snapshot test on GameManager", async () => {
     const wrapper = shallow(
       <Provider>
         <GameManager />
