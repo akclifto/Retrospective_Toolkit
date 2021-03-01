@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should do a snapshot test on ThemedDie 1`] = `
+exports[`ThreeDice/ThemedDie Testing should do a snapshot test on ThemedDie 1`] = `
 <Suspense
   fallback={
     <div>

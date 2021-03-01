@@ -9,7 +9,7 @@ beforeEach(() => {
   consoleSpy = jest.spyOn(console, "error").mockImplementation(() => {});
 });
 
-describe("rendering components", () => {
+describe("ThreeDice Testing", () => {
   it("renders and matches snapshot", () => {
     expect(shallow(<ThreeDice />)).toMatchSnapshot();
     expect(consoleSpy).toHaveBeenCalled();

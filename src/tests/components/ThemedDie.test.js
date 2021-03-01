@@ -34,17 +34,18 @@ jest.mock("@react-three/cannon", () => ({
   }),
 }));
 */
-
-it("should do a snapshot test on ThemedDie", async () => {
-  const wrapper = shallow(
-    <Suspense fallback={<div>Loading...</div>}>
-      <ThemedDie
-        theme="random"
-        dicePos={[-13, 5, 6]}
-        rerollToggle={false}
-        testID="testDie"
-      />
-    </Suspense>
-  ).dive();
-  expect(wrapper).toMatchSnapshot();
+describe("ThreeDice/ThemedDie Testing", () => {
+  it("should do a snapshot test on ThemedDie", async () => {
+    const wrapper = shallow(
+      <Suspense fallback={<div>Loading...</div>}>
+        <ThemedDie
+          theme="random"
+          dicePos={[-13, 5, 6]}
+          rerollToggle={false}
+          testID="testDie"
+        />
+      </Suspense>
+    ).dive();
+    expect(wrapper).toMatchSnapshot();
+  });
 });

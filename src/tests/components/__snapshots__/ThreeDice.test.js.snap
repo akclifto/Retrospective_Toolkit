@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering components renders and matches snapshot 1`] = `
+exports[`ThreeDice Testing renders and matches snapshot 1`] = `
 <Memo(Canvas)
   camera={
     Object {
