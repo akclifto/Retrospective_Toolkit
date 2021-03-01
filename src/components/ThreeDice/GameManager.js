@@ -87,10 +87,12 @@ const GameManager = () => {
     </>
   );
 };
+/* istanbul ignore next */
 const ProgressBar = () => {
   const { progress } = useProgress();
   return <Html center>{Math.trunc(progress)} % loaded</Html>;
 };
+/* istanbul ignore next */
 function ModelLoader({ url }) {
   const { scene } = useGLTF(url);
   return <primitive object={scene} dispose={null} />;
