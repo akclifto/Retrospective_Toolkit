@@ -1,32 +1,50 @@
 import React, { Suspense } from "react";
-import {
-  render,
-  screen,
-  cleanup,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
-import { Canvas } from "react-three-fiber";
-import { Physics } from "@react-three/cannon";
+import { shallow } from "enzyme";
+// import { useBox } from "@react-three/cannon";
+
 import ThemedDie from "../../components/ThreeDice/ThemedDie";
 
-afterEach(cleanup);
+/*
+jest.mock("@react-three/cannon", () => ({
+  useBox: () => ({
+    mesh: {
+      mass: 300,
+      inertia: 13,
+      rotation: [
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+      ],
+      linearDamping: 0.5,
+      angularDamping: 0.1,
+      material: { restitution: 0.3 },
+    },
+    api: {
+      position: [0, 0, 0],
+      rotation: [0, 0, 0],
+      velocity: [0, 0, 0],
+      angularVelocity: [0, 0, 0],
+      linearFactor: [0, 0, 0],
+      angularFactor: [0, 0, 0],
+      applyForce: jest.fn(),
+      applyImpulse: jest.fn(),
+      applyLocalForce: jest.fn(),
+      applyLocalImpulse: jest.fn(),
+    },
+  }),
+}));
+*/
 
 it("should do a snapshot test on ThemedDie", async () => {
-  render(
-    <Canvas concurrent style={{ width: "100vw", height: "500px" }}>
-      <Physics>
-        <Suspense fallback={<div>Loading...</div>}>
-          <ThemedDie
-            theme="random"
-            dicePos={[-13, 5, 6]}
-            rerollToggle={false}
-          />
-        </Suspense>
-      </Physics>
-    </Canvas>
-  );
-  const loading = () => screen.getByText("Loading...");
-  await waitForElementToBeRemoved(loading);
-  screen.debug();
-  // expect(container).toMatchSnapshot();
+  const wrapper = shallow(
+    <Suspense fallback={<div>Loading...</div>}>
+      <ThemedDie
+        theme="random"
+        dicePos={[-13, 5, 6]}
+        rerollToggle={false}
+        testID="testDie"
+      />
+    </Suspense>
+  ).dive();
+  expect(wrapper).toMatchSnapshot();
 });

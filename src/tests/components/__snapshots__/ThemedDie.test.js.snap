@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should do a snapshot test on ThemedDie 1`] = `
+<Suspense
+  fallback={
+    <div>
+      Loading...
+    </div>
+  }
+>
+  <ThemedDie
+    dicePos={
+      Array [
+        -13,
+        5,
+        6,
+      ]
+    }
+    rerollToggle={false}
+    testID="testDie"
+    theme="random"
+  />
+</Suspense>
+`;
