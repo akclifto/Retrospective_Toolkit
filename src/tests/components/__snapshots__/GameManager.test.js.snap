@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should do a snapshot test on ThemedDie 1`] = `
+<ContextProvider
+  value={
+    Object {
+      Symbol(): Object {
+        "l": Set {},
+        "n": Object {
+          "current": 0,
+        },
+        "u": [Function],
+        "v": Object {
+          "current": Object {
+            "add": [Function],
+            "del": [Function],
+            "read": [Function],
+            "write": [Function],
+          },
+        },
+      },
+    }
+  }
+>
+  <Component
+    value={
+      Object {
+        "a": WeakMap {},
+        "m": Map {},
+        "w": Map {},
+      }
+    }
+  >
+    <InnerProvider
+      c={
+        Object {
+          "$$typeof": Symbol(react.context),
+          "Provider": [Function],
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": Object {
+            Symbol(): Object {
+              "l": Set {},
+              "n": Object {
+                "current": -1,
+              },
+              "u": [Function],
+              "v": Object {
+                "current": null,
+              },
+            },
+          },
+          "_currentValue2": Object {
+            Symbol(): Object {
+              "l": Set {},
+              "n": Object {
+                "current": -1,
+              },
+              "u": [Function],
+              "v": Object {
+                "current": null,
+              },
+            },
+          },
+          "_threadCount": 0,
+          Symbol(): Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
+          },
+        }
+      }
+      r={
+        Object {
+          "current": [Function],
+        }
+      }
+    >
+      <GameManager />
+    </InnerProvider>
+  </Component>
+</ContextProvider>
+`;
