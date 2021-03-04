@@ -17,7 +17,7 @@ const ThreeDice = () => {
   return (
     <Canvas
       concurrent
-      style={{ width: "100vw", height: "40vw" }}
+      style={{ width: "100vw", height: "60vh" }}
       camera={{ position: [0, 20, 8], fov: 50 }}
     >
       <Provider>
