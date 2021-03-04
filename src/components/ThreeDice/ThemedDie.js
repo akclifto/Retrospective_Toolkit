@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { randomDiceImages as themes } from "../Dice/Dice";
 
 // let textures = [];
+
 /* istanbul ignore next */
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;

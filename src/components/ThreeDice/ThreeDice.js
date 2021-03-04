@@ -14,6 +14,7 @@ const ThreeDice = () => {
     };
     loadDice();
   }, []);
+
   return (
     <Canvas
       concurrent
