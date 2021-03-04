@@ -14,8 +14,9 @@ import PropTypes from "prop-types";
 // Custom CSS elements for an info card.
 const useStyles = makeStyles({
   root: {
-    maxWidth: "500px",
-    maxHeight: "600px",
+    width: "200%",
+    height: "100%",
+    maxHeight: "300px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "left",

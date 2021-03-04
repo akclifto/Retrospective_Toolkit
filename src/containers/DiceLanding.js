@@ -13,7 +13,7 @@ import ThreeDice from "../components/ThreeDice/ThreeDice";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: "5px",
+    padding: "1px",
   },
 }));
 
@@ -29,18 +29,19 @@ const DiceLanding = () => {
       justify="center"
       alignItems="center"
     >
-      <Grid item xs={5}>
+      <Grid item xs={4}>
         <InfoCard
           title="Cube Game"
           body="This cube game is intended to promote communication and understanding within a team."
-          body2="How To Play:"
-          body3="First, choose an action dice, then roll it. It will roll on a side with a picture. 
-              Describe how the picture relates to an experience in software development you have had."
+          body2="How To Play: Click 'Start Game' to roll the dice!"
+          body3="Each die will land on a random picture. 
+          Describe how the picture relates to an experience you had in software development.
+          To re-roll all die, click the 'Roll It!' button, to re-roll one die, click on a single die to re-roll."
         />
       </Grid>
 
       {/** Creates a Die object, contains variable properties */}
-      <Grid item xs={5}>
+      <Grid item xs={8}>
         <div className={classes.dice}>
           {/* <Die numSides={sidesConst.SIX.sides} title={diceArray.Action} /> */}
         </div>
