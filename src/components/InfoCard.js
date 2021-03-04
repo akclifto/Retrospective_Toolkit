@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "left",
-    margin: "10px 0px 0px 10px",
+    margin: "10px 0px 0px 10px", // top right bottom left
     boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
     transition: "all 0.3s cubic-bezier(.25,.8,.25,1)",
     "&:hover": {
