@@ -45,21 +45,24 @@ const InfoCard = (props) => {
         >
           {title}
         </Typography>
-        <Typography variant="body1" component="p">
-          {body}
-        </Typography>
-        <Typography className={classes.pos} component="p">
-          <br />
-          {body2}
-        </Typography>
-        <Typography variant="body2" component="p" color="textSecondary">
-          {body3}
-        </Typography>
+        <div className={classes.collapseContainer}>
+          <Typography variant="body1" component="p">
+            {body}
+          </Typography>
+          <Typography className={classes.pos} component="p">
+            <br />
+            {body2}
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            {body3}
+          </Typography>
+        </div>
       </CardContent>
       <CardActions />
     </Card>
   );
 };
+
 InfoCard.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,

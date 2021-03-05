@@ -19,6 +19,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-three-fiber": "^5.3.16",
+    "reactstrap": "^8.9.0",
     "resize-observer": "^1.0.0",
     "scheduler": "^0.20.1",
     "three": "^0.125.0",
