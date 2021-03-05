@@ -22,6 +22,8 @@ export let randomDiceThemes = [];
 // eslint-disable-next-line import/no-mutable-exports
 export let randomDiceImages = [];
 
+let workingGroup = [];
+
 // Contains information about different types of dice that can be used
 const dieSides = {
   FOUR: {
@@ -107,6 +109,28 @@ const formatDiceArray = (S3Content) => {
   });
 
   return fullDiceArray;
+};
+
+/**
+ *
+ *  This will return a set of 6 images. The unique part is that it will remove the images it returns from the "working
+ *  group". If the working pool is less than 6 images when the function is ready to return the images, it will
+ *  reset the pool to contain all the images originally pulled from AWS.
+ */
+export const uniqueImageSet = () => {
+  let uniqueImages = randomIconSelector(dieSides.SIX.sides, workingGroup);
+  uniqueImages = uniqueImages.map((Theme) => Theme.URL);
+
+  uniqueImages.forEach((image) => {
+    const index = workingGroup.indexOf(image);
+    workingGroup.splice(index, 1);
+  });
+
+  if (workingGroup.length < 6) {
+    workingGroup = fullDiceArray;
+  }
+
+  return uniqueImages;
 };
 
 /**
