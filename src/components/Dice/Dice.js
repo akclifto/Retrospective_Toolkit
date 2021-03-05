@@ -23,6 +23,7 @@ export let randomDiceThemes = [];
 export let randomDiceImages = [];
 
 let workingGroup = [];
+let uniqueImages = [];
 
 // Contains information about different types of dice that can be used
 const dieSides = {
@@ -118,18 +119,21 @@ const formatDiceArray = (S3Content) => {
  *  reset the pool to contain all the images originally pulled from AWS.
  */
 export const uniqueImageSet = () => {
-  let uniqueImages = randomIconSelector(dieSides.SIX.sides, workingGroup);
-  uniqueImages = uniqueImages.map((Theme) => Theme.URL);
+  if (workingGroup.length < 7) {
+    workingGroup = fullDiceArray.slice();
+  }
 
-  uniqueImages.forEach((image) => {
+  randomDiceThemes = randomIconSelector(dieSides.SIX.sides, workingGroup);
+
+  randomDiceThemes.forEach((image) => {
     const index = workingGroup.indexOf(image);
     workingGroup.splice(index, 1);
   });
 
-  if (workingGroup.length < 6) {
-    workingGroup = fullDiceArray;
-  }
+  uniqueImages = randomDiceThemes.map((Theme) => Theme.URL);
 
+  // eslint-disable-next-line
+  // console.log("Test");
   return uniqueImages;
 };
 
@@ -164,6 +168,7 @@ export async function initDiceImages() {
     // eslint-disable-next-line
     console.log("error occured", e);
   }
+  workingGroup = fullDiceArray.slice();
   return fullDiceArray;
 }
 

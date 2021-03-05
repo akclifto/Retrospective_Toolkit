@@ -2,14 +2,19 @@ import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
-import { randomDiceImages as themes } from "../Dice/Dice";
+import { uniqueImageSet as themes } from "../Dice/Dice";
 
 // let textures = [];
 
 /* istanbul ignore next */
 const ThemedDie = (props) => {
   const { theme, dicePos, rerollToggle } = props;
-  const textures = useTexture([...themes]);
+  // eslint-disable-next-line
+  console.log("Test");
+  // const themes = uniqueImageSet();
+  // eslint-disable-next-line
+  // console.log(themes.length);
+  const textures = useTexture([...themes()]);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,

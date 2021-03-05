@@ -6,7 +6,7 @@ import Icon from "@material-ui/core/Icon";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { randomizeDice } from "../Dice/Dice";
+// import { randomizeDice } from "../Dice/Dice";
 import ThemedDie from "./ThemedDie";
 import CollisionMesh from "./CollisionMesh";
 
@@ -76,7 +76,7 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
-                randomizeDice();
+                // randomizeDice();
                 rerollDice(!reroll);
               }}
             >
