@@ -17,12 +17,10 @@ const users = [
 
 describe("Controller/Login Testing", () => {
   it("Test Network Error handling, should return error message", async () => {
-    const someError = new Error("network error");
-    axios.post.mockRejectedValue(someError);
+    axios.post.mockRejectedValue("network error");
     try {
-      expect(await loginController(undefined, undefined)).rejects.toBe(
-        someError
-      );
+      const response = await loginController(undefined, undefined);
+      expect(response).toStrictEqual(Error("network error"));
     } catch (err) {
       console.log(err);
     }
