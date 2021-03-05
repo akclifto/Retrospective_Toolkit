@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
+import axios from "axios";
 import loginController from "../../controller/login";
 
-// const request = require("supertest");
-// const server = require("../__mocks__/express");
+jest.mock("axios");
 
-// eslint-disable-next-line no-unused-vars
 const users = [
   {
     email: "sfadmin@admin.com",
@@ -18,29 +17,41 @@ const users = [
 
 describe("Controller/Login Testing", () => {
   it("Test Network Error handling, should return error message", async () => {
-    console.error = jest.fn();
-    let error;
+    const someError = new Error("network error");
+    axios.post.mockRejectedValue(someError);
     try {
-      const response = await loginController(undefined, undefined);
-      expect.assertions(2);
-      expect(response.message).toBe("Error: Network Error");
+      expect(await loginController(undefined, undefined)).rejects.toBe(
+        someError
+      );
     } catch (err) {
-      error = err;
-      console.log(error);
+      console.log(err);
     }
-    expect(console.error).toHaveBeenCalledTimes(1);
   });
 
-  // it("Test valid login, should return true", async () => {
-  //   console.error = jest.fn();
-  //   try {
-  //     request(server);
-  //     const response = await loginController(users[1].email, users[1].password);
-  //     // expect.assertions(1);
-  //     console.log(response);
-  //     // expect(response).toBe(true);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // });
+  it("Test valid login, should return true", async () => {
+    const res = { status: 204 };
+    axios.post.mockResolvedValue(res);
+    try {
+      const response = await loginController(users[1].email, users[1].password);
+      expect.assertions(1);
+      expect(response).toBe(true);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  it("Test invalid login, should return false", async () => {
+    const res = {
+      status: 400,
+      json: "Bad request params - you need to provide an email and password",
+    };
+    axios.post.mockResolvedValue(res);
+    try {
+      const response = await loginController(undefined, undefined);
+      expect.assertions(1);
+      expect(response).toBe(false);
+    } catch (err) {
+      console.log(err);
+    }
+  });
 });
