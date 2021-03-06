@@ -15,13 +15,7 @@ const GameManager = () => {
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const [dicePosition] = useAtom(diceDefaultState);
-<script>
-  function play() {
-  var audio = document.getElementById("audio");
-  audio.play());
-  }
-  </script>
-  var audio = document.getElementBy
+
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -45,7 +39,8 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<ProgressBar />}>
-        <ModelLoader url="table/gameTable.glb" />
+       // <ModelLoader url="table/Table_15.glb" />
+		<ModelLoader url="table/Table_30.glb" />
       </Suspense>
       {!gameStarted && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
@@ -81,12 +76,11 @@ const GameManager = () => {
               color="primary"
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
-              onClick={() ="play()"> {
+              onClick={() => {
                 randomizeDice();
                 rerollDice(!reroll);
               }}
             >
-              <audio id="audio" src="2021_02_10_18_15_48.m4a"></audio> 
               Roll It!
             </Button>
           </Html>
