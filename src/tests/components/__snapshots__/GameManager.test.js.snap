@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThreeDice/GameManager Testing should do a snapshot test on ThemedDie 1`] = `
+exports[`ThreeDice/GameManager Testing should do a snapshot test on GameManager 1`] = `
 <ContextProvider
   value={
     Object {
