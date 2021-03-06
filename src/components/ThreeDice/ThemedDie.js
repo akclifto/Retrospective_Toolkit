@@ -31,6 +31,7 @@ const ThemedDie = (props) => {
 
   if (theme === "random") {
     return (
+      // I think this is where I will be having to add in a random factor to the die if we are going to randomize on single die reroll.
       <mesh
         onClick={() => {
           api.position.set(dicePos[0], dicePos[1], dicePos[2]);
