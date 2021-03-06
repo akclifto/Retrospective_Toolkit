@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import React from "react";
+import axios from "axios";
 import { mount, shallow } from "enzyme";
+import { render, screen, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { install } from "resize-observer";
 import AuthLandingPage from "../../pages/AuthLandingPage";
@@ -11,10 +13,16 @@ import Signup from "../../pages/Signup";
 import Testing from "../../pages/Testing";
 import Routes from "../../routes/routes";
 
+jest.mock("axios");
+
 beforeAll(() => {
   // React-three-fiber rendering on landing page throws error about
   // resizeObserver.  This fixes it.
   if (!window.ResizeObserver) install();
+});
+
+afterAll(() => {
+  cleanup();
 });
 
 describe("Routes/routes Testing", () => {
@@ -57,38 +65,28 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
   });
 
-  test("Validate AuthLandingPage, Auth FALSE", () => {
-    const wrapper = mount(
+  test("Validate AuthLandingPage redirects to login, Auth FALSE", async () => {
+    axios.get.mockRejectedValue(new Error("not logged in"));
+
+    render(
       <MemoryRouter initialEntries={["/admin"]}>
         <Routes />
       </MemoryRouter>
     );
 
-    expect(wrapper.find(LandingPage)).toHaveLength(0);
-    expect(wrapper.find(AuthLandingPage)).not.toHaveLength(1);
-    expect(wrapper.find(Login)).toHaveLength(0);
-    expect(wrapper.find(Signup)).toHaveLength(0);
-    expect(wrapper.find(PageNotFound)).toHaveLength(0);
+    expect(await screen.findByText("Sign In")).toBeTruthy();
   });
 
-  // Unsure how to test ifAuth method route
-  // Commenting out this test until I figure out how to validate it correctly
-  // test('Validate AuthLandingPage, Auth TRUE', () => {
+  test("Validate AuthLandingPage, Auth TRUE", async () => {
+    axios.get.mockResolvedValue({ status: 200 });
+    render(
+      <MemoryRouter initialEntries={["/admin"]}>
+        <Routes />
+      </MemoryRouter>
+    );
 
-  //     const wrapper = mount(
-  //         <MemoryRouter initialEntries = { [ '/admin'] } >
-  //         <Routes />
-  //         </MemoryRouter>
-  //         );
-
-  //     expect (wrapper.find(LandingPage)).toHaveLength(0);
-  //     expect (wrapper.find(AuthLandingPage)).toHaveLength(1);
-  //     expect (wrapper.find(Login)).toHaveLength(0);
-  //     expect (wrapper.find(Signup)).toHaveLength(0);
-
-  //     expect (wrapper.find(PageNotFound)).toHaveLength(0);
-
-  // });
+    expect(await screen.findByAltText("fin")).toBeTruthy();
+  });
 
   test("Validate Login Page", () => {
     const wrapper = mount(
