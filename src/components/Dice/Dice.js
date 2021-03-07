@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /**
  * This class will create a full dice array that will be loaded from AWS. It will have useful information like: name,
  * theme, and the URL to find the picture. This file is inherently async, so it needs to be called at the
@@ -8,25 +9,21 @@
  */
 import randomIconSelector from "../RandomIconSelector";
 
-// eslint-disable-next-line import/no-unresolved
 const AWS = require("aws-sdk");
 const config = require("../../resources/awsConfig.json");
 
 const BASEURL = "https://retrospective-toolkit.s3-us-west-1.amazonaws.com/";
 
 // import errorIcon from "../resources/dangerous-24px.svg";
-export const fullDiceArray = [];
-// eslint-disable-next-line import/no-mutable-exports
-export let randomDiceThemes = [];
-
-// eslint-disable-next-line import/no-mutable-exports
-export let randomDiceImages = [];
-
+const fullDiceArray = [];
 let workingGroup = [];
-let uniqueImages = [];
 
 // Contains information about different types of dice that can be used
 const dieSides = {
+  ONE: {
+    sides: 1,
+    chance: 1,
+  },
   FOUR: {
     sides: 4,
     chance: 1 / 4,
@@ -58,10 +55,16 @@ const dieSides = {
  * "image.random: randomIconSelector" because of async shennanigans. So the function to randomize dice will have to be
  * explicitly called (assumed to be after initDiceImages() is called).
  */
+/*
 export const randomizeDice = () => {
-  randomDiceThemes = randomIconSelector(dieSides.SIX.sides, fullDiceArray);
-  randomDiceImages = randomDiceThemes.map((Theme) => Theme.URL);
+  const randomDiceThemes = randomIconSelector(
+    dieSides.SIX.sides,
+    fullDiceArray
+  );
+  const randomDiceImages = randomDiceThemes.map((Theme) => Theme.URL);
+  return randomDiceImages;
 };
+*/
 
 /**
  * Formats the Content into a usuable array for the rest of the project.
@@ -108,40 +111,13 @@ const formatDiceArray = (S3Content) => {
 
     fullDiceArray.push(formattedDiceEntry);
   });
-
-  return fullDiceArray;
-};
-
-/**
- *
- *  This will return a set of 6 images. The unique part is that it will remove the images it returns from the "working
- *  group". If the working pool is less than 6 images when the function is ready to return the images, it will
- *  reset the pool to contain all the images originally pulled from AWS.
- */
-export const uniqueImageSet = () => {
-  if (workingGroup.length < 7) {
-    workingGroup = fullDiceArray.slice();
-  }
-
-  randomDiceThemes = randomIconSelector(dieSides.SIX.sides, workingGroup);
-
-  randomDiceThemes.forEach((image) => {
-    const index = workingGroup.indexOf(image);
-    workingGroup.splice(index, 1);
-  });
-
-  uniqueImages = randomDiceThemes.map((Theme) => Theme.URL);
-
-  // eslint-disable-next-line
-  // console.log("Test");
-  return uniqueImages;
 };
 
 /**
  * Makes the call to AWS and formats the response into a neat Array of JSON objects, each object representing an image.
  * @returns the full dice array, non randomized, containing all useful information.
  */
-export async function initDiceImages() {
+const initDiceImages = async () => {
   // Initialize s3 object to point to our S3 bucket for the class
   try {
     AWS.config.update({
@@ -163,13 +139,57 @@ export async function initDiceImages() {
 
     getS3Objects.Contents.shift(); // Removes first element, which is the Dice/Themes/Action folder "object"
     formatDiceArray(getS3Objects.Contents);
-    randomizeDice();
   } catch (e) {
     // eslint-disable-next-line
     console.log("error occured", e);
   }
-  workingGroup = fullDiceArray.slice();
+  workingGroup = [...fullDiceArray];
   return fullDiceArray;
-}
+};
 
-module.export = { initDiceImages, randomDiceThemes, randomizeDice };
+/**
+ *
+ *  This will return a set of 6 images. The unique part is that it will remove the images it returns from the "working
+ *  group". If the working pool is less than 6 images when the function is ready to return the images, it will
+ *  reset the pool to contain all the images originally pulled from AWS.
+ */
+const uniqueImageSet = () => {
+  if (workingGroup.length < 7) {
+    workingGroup = [...fullDiceArray];
+  }
+
+  const randomDiceThemes = randomIconSelector(dieSides.SIX.sides, workingGroup);
+
+  randomDiceThemes.forEach((image) => {
+    const index = workingGroup.indexOf(image);
+    workingGroup.splice(index, 1);
+  });
+
+  const uniqueImages = randomDiceThemes.map((Theme) => Theme.URL);
+
+  return uniqueImages;
+};
+
+/**
+ *
+ *  This will return one random image. The unique part is that it will remove the image it returns from the "working
+ *  group". If the working pool is less than 1 image, it will reset the pool to contain all the images originally pulled from AWS.
+ */
+const uniqueImage = () => {
+  if (workingGroup.length < 1) {
+    workingGroup = [...fullDiceArray];
+  }
+
+  const randomDiceThemes = randomIconSelector(dieSides.ONE.sides, workingGroup);
+
+  randomDiceThemes.forEach((image) => {
+    const index = workingGroup.indexOf(image);
+    workingGroup.splice(index, 1);
+  });
+
+  const image = randomDiceThemes.map((Theme) => Theme.URL);
+
+  return image;
+};
+
+export { initDiceImages, uniqueImageSet, uniqueImage };
