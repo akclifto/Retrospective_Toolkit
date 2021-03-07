@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
-import { randomDiceImages as themes } from "../Dice/Dice";
+import { randomDiceImages as themes, randomizeDice } from "../Dice/Dice";
 
 // let textures = [];
 /* istanbul ignore next */
@@ -34,6 +34,7 @@ const ThemedDie = (props) => {
       // I think this is where I will be having to add in a random factor to the die if we are going to randomize on single die reroll.
       <mesh
         onClick={() => {
+          randomizeDice();
           api.position.set(dicePos[0], dicePos[1], dicePos[2]);
           api.velocity.set(15, 0, -10);
           api.angularVelocity.set(-15, 2, -10);
