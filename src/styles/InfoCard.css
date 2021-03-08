@@ -1,0 +1,34 @@
+.infoCard--root {
+  width: 90%;
+  height: 88%;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 0px 0px 0px 10px; /* top right bottom left */
+  border-top: 0px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.titleButton {
+  text-decoration: none;
+  width: 90%;
+  margin: 10px 0px 0px 10px; /* top right bottom left */
+  border: none;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.titleButton:hover {
+  box-shadow: 0 10px 13px rgba(0, 0, 0, 0.25);
+  background-color: rgba(246, 248, 250, 0.356);
+  border-radius: 2px;
+}
+
+.titleButton:focus {
+  border: none;
+  text-decoration: none;
+  box-shadow: none;
+}
