@@ -6,7 +6,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import InfoCard from "../components/infoCard";
+import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
 
 // eslint-disable-next-line no-unused-vars

@@ -66,7 +66,7 @@ class InfoCard extends React.Component {
           </Typography>
         </button>
         {showActivityInfo ? (
-          <div className="info-open">
+          <div>
             <SetInfoCard body={body} body2={body2} body3={body3} />
           </div>
         ) : null}
