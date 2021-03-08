@@ -6,7 +6,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import InfoCard from "../components/InfoCard";
+import InfoCardTest from "../components/infoCard_test";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
 
 // eslint-disable-next-line no-unused-vars
@@ -29,7 +29,7 @@ const DiceLanding = () => {
     <div>
       <Grid className={classes.root} container direction="row">
         <Grid item xs={4}>
-          <InfoCard
+          <InfoCardTest
             title="Cube Game"
             body="This cube game is intended to promote communication and understanding within a team."
             body2="How To Play: Click 'Start Game' to roll the dice!"

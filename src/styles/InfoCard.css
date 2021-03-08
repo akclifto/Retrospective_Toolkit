@@ -1,5 +1,5 @@
 .infoCard--root {
-  width: 90%;
+  width: 200%;
   height: 88%;
   max-height: 400px;
   display: flex;
@@ -13,7 +13,7 @@
 
 .titleButton {
   text-decoration: none;
-  width: 90%;
+  width: 200%;
   margin: 10px 0px 0px 10px; /* top right bottom left */
   border: none;
   background-color: white;

@@ -17,16 +17,13 @@ function SetInfoCard(props) {
         <div>
           <Typography variant="body1" component="p">
             {body}
-            body1
           </Typography>
           <Typography component="p">
             <br />
             {body2}
-            body2
           </Typography>
           <Typography variant="body2" component="p" color="textSecondary">
             {body3}
-            body3
           </Typography>
         </div>
       </CardContent>
@@ -38,7 +35,7 @@ function SetInfoCard(props) {
 class InfoCardTest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showActivityInfo: true };
+    this.state = { showActivityInfo: false };
     // eslint rules force og constructor, bind the functions
     this.clickHandler = this.clickHandler.bind(this);
   }
@@ -49,7 +46,7 @@ class InfoCardTest extends React.Component {
 
   render() {
     const { showActivityInfo } = this.state;
-    const { title } = this.props;
+    const { title, body, body2, body3 } = this.props;
 
     return (
       <div>
@@ -66,12 +63,11 @@ class InfoCardTest extends React.Component {
             align="center"
           >
             {title}
-            Title
           </Typography>
         </button>
         {showActivityInfo ? (
           <div>
-            <SetInfoCard />
+            <SetInfoCard body={body} body2={body2} body3={body3} />
           </div>
         ) : null}
       </div>
@@ -88,6 +84,9 @@ SetInfoCard.propTypes = {
 
 InfoCardTest.propTypes = {
   title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  body2: PropTypes.string.isRequired,
+  body3: PropTypes.string.isRequired,
 };
 
 export default InfoCardTest;
