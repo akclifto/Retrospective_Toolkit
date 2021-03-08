@@ -1,32 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components/InfoCard Testing SNAPSHOT: InfoCard 1`] = `
-<WithStyles(ForwardRef(Card))
-  className="makeStyles-root-1"
-  variant="outlined"
->
-  <WithStyles(ForwardRef(CardContent))>
+<div>
+  <button
+    className="title-button"
+    onClick={[Function]}
+    type="button"
+  >
     <WithStyles(ForwardRef(Typography))
       align="center"
       color="textPrimary"
       gutterBottom={true}
       variant="h4"
     />
-    <WithStyles(ForwardRef(Typography))
-      component="p"
-      variant="body1"
-    />
-    <WithStyles(ForwardRef(Typography))
-      component="p"
-    >
-      <br />
-    </WithStyles(ForwardRef(Typography))>
-    <WithStyles(ForwardRef(Typography))
-      color="textSecondary"
-      component="p"
-      variant="body2"
-    />
-  </WithStyles(ForwardRef(CardContent))>
-  <WithStyles(ForwardRef(CardActions)) />
-</WithStyles(ForwardRef(Card))>
+  </button>
+  <div
+    className="info-close"
+  />
+</div>
 `;

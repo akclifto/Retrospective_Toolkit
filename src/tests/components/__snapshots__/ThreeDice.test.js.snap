@@ -15,7 +15,7 @@ exports[`ThreeDice Testing renders and matches snapshot 1`] = `
   concurrent={true}
   style={
     Object {
-      "height": "60vh",
+      "height": "70vh",
       "width": "100vw",
     }
   }
