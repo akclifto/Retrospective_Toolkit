@@ -66,17 +66,18 @@ class InfoCard extends React.Component {
           </Typography>
         </button>
         {showActivityInfo ? (
-          <div>
+          <div className="info-open">
             <SetInfoCard body={body} body2={body2} body3={body3} />
           </div>
-        ) : null}
+        ) : (
+          <div className="info-close" />
+        )}
       </div>
     );
   }
 }
 
 SetInfoCard.propTypes = {
-  // title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   body2: PropTypes.string.isRequired,
   body3: PropTypes.string.isRequired,

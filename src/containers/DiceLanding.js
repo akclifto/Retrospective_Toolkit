@@ -15,10 +15,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: "1px",
   },
-  threeDice: {
-    marginBottom: "5px",
-    // position: "absolute",
-  },
 }));
 
 // Returns a landing page for the Dice Game
@@ -40,7 +36,7 @@ const DiceLanding = () => {
         </Grid>
       </Grid>
       {/* ThreeDice Game */}
-      <div className={classes.threeDice}>
+      <div>
         <ThreeDice />
       </div>
     </div>

@@ -1,7 +1,5 @@
 .infoCard--root {
   width: 180%;
-  /* height: 88%;
-  max-height: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -35,13 +33,12 @@
 }
 
 .info-open {
-  transition: max-height 0.5s ease;
   max-height: 400px;
+  transition: max-height 0.4s ease;
   height: 88%;
 }
 
 .info-close {
-  transition: max-height 0.5s ease-in-out;
-  max-height: 400px;
-  height: 88%;
+  max-height: 0px;
+  transition: max-height 0.4s ease;
 }
