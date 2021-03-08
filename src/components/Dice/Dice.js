@@ -148,13 +148,12 @@ const initDiceImages = async () => {
 };
 
 /**
- *
  *  This will return a set of 6 images. The unique part is that it will remove the images it returns from the "working
  *  group". If the working pool is less than 6 images when the function is ready to return the images, it will
  *  reset the pool to contain all the images originally pulled from AWS.
  */
 const uniqueImageSet = () => {
-  if (workingGroup.length < 7) {
+  if (workingGroup.length < dieSides.SIX.sides) {
     workingGroup = [...fullDiceArray];
   }
 
@@ -187,9 +186,7 @@ const uniqueImage = () => {
     workingGroup.splice(index, 1);
   });
 
-  const image = randomDiceThemes.map((Theme) => Theme.URL);
-
-  return image;
+  return randomDiceThemes.map((Theme) => Theme.URL);
 };
 
 export { initDiceImages, uniqueImageSet, uniqueImage };
