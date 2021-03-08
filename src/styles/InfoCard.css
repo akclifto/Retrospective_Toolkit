@@ -1,34 +1,47 @@
 .infoCard--root {
-  width: 200%;
-  height: 88%;
-  max-height: 400px;
+  width: 180%;
+  /* height: 88%;
+  max-height: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: left;
   margin: 0px 0px 0px 10px; /* top right bottom left */
-  border-top: 0px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
 }
 
-.titleButton {
-  text-decoration: none;
-  width: 200%;
+.title-button {
+  padding-top: 13px;
+  text-align: center;
+  width: 180.5%;
   margin: 10px 0px 0px 10px; /* top right bottom left */
   border: none;
   background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.titleButton:hover {
+.title-button:hover {
   box-shadow: 0 10px 13px rgba(0, 0, 0, 0.25);
   background-color: rgba(246, 248, 250, 0.356);
-  border-radius: 2px;
 }
 
-.titleButton:focus {
+.title-button:focus {
   border: none;
   text-decoration: none;
   box-shadow: none;
+}
+
+.info-open {
+  transition: max-height 0.5s ease;
+  max-height: 400px;
+  height: 88%;
+}
+
+.info-close {
+  transition: max-height 0.5s ease-in-out;
+  max-height: 400px;
+  height: 88%;
 }

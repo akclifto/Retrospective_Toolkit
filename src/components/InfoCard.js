@@ -51,7 +51,7 @@ class InfoCard extends React.Component {
     return (
       <div>
         <button
-          className="titleButton"
+          className="title-button"
           type="button"
           onClick={this.clickHandler}
         >
@@ -66,7 +66,7 @@ class InfoCard extends React.Component {
           </Typography>
         </button>
         {showActivityInfo ? (
-          <div>
+          <div className="info-open">
             <SetInfoCard body={body} body2={body2} body3={body3} />
           </div>
         ) : null}
