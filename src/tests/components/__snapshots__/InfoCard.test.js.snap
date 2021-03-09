@@ -19,3 +19,25 @@ exports[`Components/InfoCard Testing SNAPSHOT: InfoCard 1`] = `
   />
 </div>
 `;
+
+exports[`Components/InfoCard Testing Test clickHandler event 1`] = `
+<div>
+  <button
+    className="title-button"
+    onClick={[Function]}
+    type="button"
+  >
+    <WithStyles(ForwardRef(Typography))
+      align="center"
+      color="textPrimary"
+      gutterBottom={true}
+      variant="h4"
+    />
+  </button>
+  <div
+    className="info-open"
+  >
+    <SetInfoCard />
+  </div>
+</div>
+`;

@@ -40,9 +40,9 @@ class InfoCard extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-  clickHandler() {
+  clickHandler = () => {
     this.setState((state) => ({ showActivityInfo: !state.showActivityInfo }));
-  }
+  };
 
   render() {
     const { showActivityInfo } = this.state;
