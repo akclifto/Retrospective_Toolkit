@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Header Testing SNAPSHOT: Header 1`] = `
+<Fragment>
+  <HideOnScroll>
+    <WithStyles(ForwardRef(AppBar))
+      className="makeStyles-toolbar-2"
+    >
+      <WithStyles(ForwardRef(Toolbar))
+        className="makeStyles-root-1"
+      >
+        <Link
+          to="/"
+        >
+          <img
+            alt="logo"
+            src="https://d1g31diwtzkeb3.cloudfront.net/statefarmLogo.svg"
+          />
+        </Link>
+        <div
+          className="makeStyles-grow-3"
+        />
+        <Link
+          className="makeStyles-menuButton-4"
+          to="/login"
+        >
+          <WithStyles(ForwardRef(Button))>
+            <Memo([object Object])
+              fontSize="large"
+            />
+            Login
+          </WithStyles(ForwardRef(Button))>
+        </Link>
+      </WithStyles(ForwardRef(Toolbar))>
+    </WithStyles(ForwardRef(AppBar))>
+  </HideOnScroll>
+  <WithStyles(ForwardRef(Toolbar)) />
+</Fragment>
+`;

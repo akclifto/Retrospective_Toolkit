@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Footer Testing SNAPSHOT: Footer 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(AppBar))
+    className="makeStyles-footer-2"
+  >
+    <WithStyles(ForwardRef(Toolbar))
+      className="makeStyles-root-1"
+    >
+      <WithStyles(ForwardRef(Typography))
+        className="makeStyles-footer__text-3"
+      >
+        © 2021 - Retrospective Toolkit
+      </WithStyles(ForwardRef(Typography))>
+      <div
+        className="makeStyles-grow-4"
+      />
+      <WithStyles(ForwardRef(Typography))
+        className="makeStyles-footer__text-3"
+      >
+        Developed by High Rollers
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Toolbar))>
+  </WithStyles(ForwardRef(AppBar))>
+</Fragment>
+`;
