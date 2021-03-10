@@ -33,7 +33,7 @@ const ThreeDice = () => {
       {!loading && (
         <Canvas
           concurrent
-          style={{ width: "100vw", height: "500px" }}
+          style={{ width: "100vw", height: "70vh" }}
           camera={{ position: [0, 20, 8], fov: 50 }}
         >
           <Physics gravity={[0, -30, 0]} defaultContactMaterial>
