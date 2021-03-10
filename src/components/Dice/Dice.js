@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 /**
  * This class will create a full dice array that will be loaded from AWS. It will have useful information like: name,
  * theme, and the URL to find the picture. This file is inherently async, so it needs to be called at the
@@ -49,22 +48,6 @@ const dieSides = {
     chance: 1 / 20,
   },
 };
-
-/**
- * This function will randomize the dice images that will be used. We can't use something like
- * "image.random: randomIconSelector" because of async shennanigans. So the function to randomize dice will have to be
- * explicitly called (assumed to be after initDiceImages() is called).
- */
-/*
-export const randomizeDice = () => {
-  const randomDiceThemes = randomIconSelector(
-    dieSides.SIX.sides,
-    fullDiceArray
-  );
-  const randomDiceImages = randomDiceThemes.map((Theme) => Theme.URL);
-  return randomDiceImages;
-};
-*/
 
 /**
  * Formats the Content into a usuable array for the rest of the project.
