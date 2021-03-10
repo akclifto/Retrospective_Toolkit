@@ -15,6 +15,7 @@ const GameManager = () => {
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const [dicePosition] = useAtom(diceDefaultState);
+  const rollSound = new Audio("/diceRoll.m4a");
 
   const useStyles = makeStyles((theme) => ({
     button: {
@@ -50,6 +51,7 @@ const GameManager = () => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
+              rollSound.play();
             }}
           >
             Start Game
@@ -78,6 +80,7 @@ const GameManager = () => {
               onClick={() => {
                 randomizeDice();
                 rerollDice(!reroll);
+                rollSound.play();
               }}
             >
               Roll It!
