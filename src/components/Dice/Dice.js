@@ -147,6 +147,13 @@ const initDiceImages = async () => {
   return fullDiceArray;
 };
 
+function clearArray(someArray) {
+  while (someArray.length > 0) {
+    someArray.pop();
+  }
+  return someArray;
+}
+
 /**
  *  This will return a set of 6 images. The unique part is that it will remove the images it returns from the "working
  *  group". If the working pool is less than 6 images when the function is ready to return the images, it will
@@ -154,6 +161,8 @@ const initDiceImages = async () => {
  */
 const uniqueImageSet = () => {
   if (workingGroup.length < dieSides.SIX.sides) {
+    // remove images still remaining so we do not push duplicates into the array
+    clearArray(workingGroup);
     workingGroup = [...fullDiceArray];
   }
 
@@ -175,7 +184,9 @@ const uniqueImageSet = () => {
  *  group". If the working pool is less than 1 image, it will reset the pool to contain all the images originally pulled from AWS.
  */
 const uniqueImage = () => {
-  if (workingGroup.length < 1) {
+  if (workingGroup.length < dieSides.ONE.sides) {
+    // remove images still remaining so we do not push duplicates into the array
+    clearArray(workingGroup);
     workingGroup = [...fullDiceArray];
   }
 
