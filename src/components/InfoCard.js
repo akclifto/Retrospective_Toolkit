@@ -1,5 +1,4 @@
 import React from "react";
-// import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,7 +7,6 @@ import PropTypes from "prop-types";
 import "../styles/InfoCard.css";
 
 function SetInfoCard(props) {
-  // const classes = useStyles();
   const { body, body2, body3 } = props;
 
   return (
@@ -57,7 +55,6 @@ class InfoCard extends React.Component {
         >
           <Typography
             variant="h4"
-            // className={classes.title}
             color="textPrimary"
             gutterBottom
             align="center"
