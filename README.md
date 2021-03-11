@@ -4,14 +4,10 @@
 
 ### Authors
 
-Adam Clifton
-
-Christopher Gold
-
-Dillon O'Brien
-
-Sergio Prieto
-
+Adam Clifton  
+Christopher Gold  
+Dillon O'Brien  
+Sergio Prieto  
 Shane Thoney
 
 ## Table of Contents
@@ -25,9 +21,11 @@ Shane Thoney
 - [Backend Technology](#Backend-Technology)
 - [Backend Tools](#Backend-Tools)
 - [Cloud-hosting and Database Overview](#[Cloud-hosting-and-Database-Overview)
-- [Cloud-hosting and Database Technology](#[Cloud-hosting-and-Database-Technology)
-- [Cloud-hosting and Database Tools](#[Cloud-hosting-and-Database-Tools)
 - [Reference Materials](#Reference-Materials)
+  - [Frontend](#References-for-Frontend/React)
+  - [Backend](#References-for-Backend/Node-Express)
+  - [Cloud-hosting](#References-for-Cloud-hosting)
+  - [Testing Tools](#Testing-Tools)
 
 ### Introduction
 
@@ -82,21 +80,58 @@ Mock components and other functionality should be written and placed in the `src
 
 ### Frontend Overview
 
+The frontend consists of a landing for the cube activity, information about the activity and the activity board. There is the ability to have administrative or user login.
+
 ### Frontend Technology
+
+The frontend is a Node/ReactJS build. The Cube activity game makes use of a physics library called `three.js` and its supporting libraries `react-three-fiber`. The frontend includes a full testing suite with heavy utilization of `jest` and supporting libraries. See [Reference Materials](#Reference-Materials) for more information.
 
 ### Frontend Tools
 
+Tools:
+
+- three.js
+- react-three-fiber
+- axios
+- aws-sdk
+- material-ui
+- React related libraries
+
+Testing Tools:
+
+- jest
+- enzyme
+- supertest
+- testing-library
+- react-test-renderer
+
 ### Backend Overview
+
+The backend consists of a seperate server package that handles authentication, middleware and database queries along with its usual server functionality (routing, controllers, etc.).
 
 ### Backend Technology
 
+The backend is a Node/ExpressJS build. Databases used include `Postgres` and `Redis`. The backend contains a full testing suite with using `jest` and supporting libraries. See [Reference Materials](#Reference-Materials) for more information.
+
 ### Backend Tools
+
+Tools:
+
+- redis
+- postgres
+- bcrypt
+- Express related libraries
+
+Testing Tools:
+
+- jest
+- supertest
+- mocha
+- chai
 
 ### Cloud-hosting and Database Overview
 
-### Cloud-hosting and Database Technology
-
-### Cloud-hosting and Database Tools
+- Heroku is used to host the application for its ease of use and cost effectiveness. See [Reference Materials](#Reference-Materials) for more information about Heroku.
 
 ### Reference Materials
 
@@ -107,24 +142,39 @@ Mock components and other functionality should be written and placed in the `src
 - [Webpack](https://webpack.js.org/): Webpack compiles multiple .js files into one file to load into scripts when starting the app.
 - [Yarn](https://classic.yarnpkg.com/en/): Makes package, scripting and dependency management easier.
 - [Create React App](https://github.com/facebook/create-react-app)
+- [three.js](https://threejs.org/)
+- [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
+- [axios](https://github.com/axios/axios)
+- [material-ui](https://material-ui.com/)
+- [aws-sdk](https://aws.amazon.com/sdk-for-javascript/)
 
 #### References for Backend/Node Express
 
+- [Redis](https://redis.io/documentation)
+- [Postgresql](https://www.postgresql.org/docs/)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [ExpressJS](https://expressjs.com/)
 
-#### References for Cloud-hosting and Database Heroku/postgresql
+#### References for Cloud-hosting
 
 - [Heroku](https://devcenter.heroku.com/categories/reference)
-- [Postgresql](https://www.postgresql.org/docs/)
-
-#### Guides
-
-The following guides illustrate how to use some features concretely:
-
-#### Additional Links
-
-These additional references should also help you:
-
 - [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
+
+#### Testing Tools
+
+Full-stack Tools:
+
 - [Jest Testing Documentation](https://jestjs.io/)
 - [Jest-Enzyme React Testing Documentation](https://enzymejs.github.io/enzyme/)
+
+Frontend Unit Testing:
+
+- [Enzyme](https://enzymejs.github.io/enzyme/)
+- [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
+- [Testing Library](https://testing-library.com/docs/)
+
+Backend Integration Testing:
+
+- [Supertest](https://www.npmjs.com/package/supertest)
+- [Mocha](https://mochajs.org/)
+- [Chai](https://www.chaijs.com/)
