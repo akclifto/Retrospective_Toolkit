@@ -2,6 +2,8 @@
 
 ## SER 401 Team 18 Capstone Project
 
+[Retrospective Toolkit Website](https://retrotoolbox.herokuapp.com/)
+
 ### Authors
 
 Adam Clifton  
@@ -29,7 +31,7 @@ Shane Thoney
 
 ### Introduction
 
-This Retrospective Toolkit (the "Toolkit") is the product of Team 18's capstone project. The toolkit will be used as a training tool by our sponsor and will contain two base activities: a cube activity and a model-building activity.
+This Retrospective Toolkit (the "Toolkit") is the product of Team 18's capstone project. The toolkit will be used as a training tool by our sponsor that modeled after a cube activity done in-person at our sponsor's training facility.
 
 The functional aspects of the Toolkit are separated into three areas: (1) frontend components, (2) backend components, and (3) cloud-hosting and database components. This document will cover the topics and technology used in the project.
 
