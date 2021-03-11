@@ -183,10 +183,10 @@ Testing Tools:
 Full-stack Tools:
 
 - [Jest Testing Documentation](https://jestjs.io/)
-- [Jest-Enzyme React Testing Documentation](https://enzymejs.github.io/enzyme/)
 
 Frontend Unit Testing:
 
+- [Jest-Enzyme React Testing Documentation](https://enzymejs.github.io/enzyme/)
 - [Enzyme](https://enzymejs.github.io/enzyme/)
 - [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
 - [Testing Library](https://testing-library.com/docs/)
