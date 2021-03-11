@@ -113,6 +113,8 @@ Testing Tools:
 - testing-library
 - react-test-renderer
 
+[Back to Top](#Table-of-Contents)
+
 ### Backend Overview
 
 The backend consists of a seperate server package that handles authentication, middleware and database queries along with its usual server functionality (routing, controllers, etc.).
