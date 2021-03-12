@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
-import { randomDiceImages as themes } from "../Dice/Dice";
+import { randomDiceImages as themes, randomizeDice } from "../Dice/Dice";
 
 // let textures = [];
 /* istanbul ignore next */
@@ -30,6 +30,7 @@ const ThemedDie = (props) => {
   }, [api.angularVelocity, api.position, api.velocity, dicePos, rerollToggle]);
 
   if (theme === "random") {
+    randomizeDice();
     return (
       <mesh
         onClick={() => {
