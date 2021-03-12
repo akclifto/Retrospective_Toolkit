@@ -6,47 +6,47 @@ const CollisionMesh = () => {
   const [floor] = useBox(() => ({
     position: [0, 0, 0],
     rotation: [0, -Math.PI / 2, 0],
-    args: [14, 0, 22],
+    args: [14, 2.5, 22],
     material: { friction: 1000 },
   }));
   const [left] = useBox(() => ({
-    position: [-11.1, 1, 0],
+    position: [-14.1, 1, 0],
     rotation: [0, -Math.PI / 2, 0],
-    args: [13, 4, 0],
+    args: [16, 4, 0],
   }));
   const [right] = useBox(() => ({
-    position: [11.1, 1, 0],
+    position: [14.1, 1, 0],
     rotation: [0, -Math.PI / 2, 0],
-    args: [13, 4, 0],
+    args: [16, 4, 0],
   }));
   const [top] = useBox(() => ({
-    position: [0, 1, 6.75],
-    args: [22, 4, 0],
+    position: [0, 1, 8],
+    args: [28, 4, 0],
   }));
   const [bottom] = useBox(() => ({
-    position: [0, 1, -6.75],
-    args: [22, 4, 0],
+    position: [0, 1, -8],
+    args: [28, 4, 0],
   }));
   return (
     <group>
       <mesh ref={floor}>
-        <boxBufferGeometry args={[14, 0, 22]} />
+        <boxBufferGeometry args={[15.5, 2, 28]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={left}>
-        <boxBufferGeometry args={[13.5, 2, 0]} />
+        <boxBufferGeometry args={[16.5, 2, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={right}>
-        <boxBufferGeometry args={[13.5, 2, 0]} />
+        <boxBufferGeometry args={[16.5, 2, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={top}>
-        <boxBufferGeometry args={[22.2, 2, 0]} />
+        <boxBufferGeometry args={[28.2, 2, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={bottom}>
-        <boxBufferGeometry args={[22.2, 2, 0]} />
+        <boxBufferGeometry args={[28.2, 2, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
     </group>

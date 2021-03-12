@@ -15,6 +15,7 @@ const GameManager = () => {
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const [dicePosition] = useAtom(diceDefaultState);
+  const rollSound = new Audio("/diceRoll.m4a");
 
   const useStyles = makeStyles((theme) => ({
     button: {
@@ -39,7 +40,7 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<ProgressBar />}>
-        <ModelLoader url="table/gameTable.glb" />
+        <ModelLoader url="table/BIG_TABLE.glb" />
       </Suspense>
       {!gameStarted && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
@@ -50,6 +51,7 @@ const GameManager = () => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
+              rollSound.play();
             }}
           >
             Start Game
@@ -78,6 +80,7 @@ const GameManager = () => {
               onClick={() => {
                 randomizeDice();
                 rerollDice(!reroll);
+                rollSound.play();
               }}
             >
               Roll It!
