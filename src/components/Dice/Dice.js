@@ -154,6 +154,7 @@ const initDiceImages = async () => {
  */
 const uniqueImageSet = () => {
   if (workingGroup.length < dieSides.SIX.sides) {
+    workingGroup = [];
     workingGroup = [...fullDiceArray];
   }
 
@@ -189,4 +190,4 @@ const uniqueImage = () => {
   return randomDiceThemes.map((Theme) => Theme.URL);
 };
 
-export { initDiceImages, uniqueImageSet, uniqueImage };
+export { initDiceImages, uniqueImageSet, uniqueImage, fullDiceArray };
