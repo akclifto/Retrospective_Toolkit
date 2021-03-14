@@ -2,12 +2,20 @@ import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
+import { uniqueImageSet } from "../Dice/Dice";
 
 /* istanbul ignore next */
 const ThemedDie = (props) => {
-  const { theme, dicePos, rerollToggle, dieIndex, imageSet } = props;
-
-  const textures = useTexture([...imageSet[dieIndex].url]);
+  const {
+    dicePos,
+    rerollAllToggle,
+    rerollValue,
+    rerollDieToggle,
+    imageSet,
+    setImages,
+  } = props;
+  const textures = useTexture([...imageSet]);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
@@ -26,42 +34,44 @@ const ThemedDie = (props) => {
     api.position.set(dicePos[0], dicePos[1], dicePos[2]);
     api.velocity.set(15, 0, -10);
     api.angularVelocity.set(-15, 2, -10);
-  }, [api.angularVelocity, api.position, api.velocity, dicePos, rerollToggle]);
-
-  if (theme === "random") {
-    return (
-      <mesh
-        onClick={() => {
-          api.position.set(dicePos[0], dicePos[1], dicePos[2]);
-          api.velocity.set(15, 0, -10);
-          api.angularVelocity.set(-15, 2, -10);
-        }}
-        ref={mesh}
-      >
-        <boxBufferGeometry />
-        {textures.map((image, index) => (
-          <meshStandardMaterial
-            key={imageSet[dieIndex].uuid[index]}
-            flatShading
-            roughness={0.8}
-            attachArray="material"
-            map={image}
-          />
-        ))}
-      </mesh>
-    );
-  }
-
-  // if we are here, something has gone wrong
-  return new Error("problem encountered in ThemedDice");
+    setImages(uniqueImageSet);
+  }, [
+    api.angularVelocity,
+    api.position,
+    api.velocity,
+    dicePos,
+    rerollAllToggle,
+    rerollValue,
+    setImages,
+  ]);
+  return (
+    <mesh
+      onClick={() => {
+        rerollDieToggle(!rerollValue);
+      }}
+      ref={mesh}
+    >
+      <boxBufferGeometry />
+      {textures.map((image) => (
+        <meshStandardMaterial
+          key={uuidv4()}
+          flatShading
+          roughness={0.8}
+          attachArray="material"
+          map={image}
+        />
+      ))}
+    </mesh>
+  );
 };
 
 ThemedDie.propTypes = {
-  theme: PropTypes.string.isRequired,
   dicePos: PropTypes.arrayOf(PropTypes.number).isRequired,
-  rerollToggle: PropTypes.bool.isRequired,
-  dieIndex: PropTypes.number.isRequired,
-  imageSet: PropTypes.arrayOf(PropTypes.object).isRequired,
+  imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setImages: PropTypes.func.isRequired,
+  rerollAllToggle: PropTypes.bool.isRequired,
+  rerollValue: PropTypes.bool.isRequired,
+  rerollDieToggle: PropTypes.func.isRequired,
 };
 
 export default ThemedDie;
