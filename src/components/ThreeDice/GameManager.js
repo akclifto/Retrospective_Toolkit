@@ -1,47 +1,17 @@
 import React, { Suspense } from "react";
 import { Html, useGLTF, useProgress } from "@react-three/drei";
-import { v4 as uuidv4 } from "uuid";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import { useAtom } from "jotai";
-import { useResetAtom, atomWithReset } from "jotai/utils";
 import PropTypes from "prop-types";
-import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { uniqueImageSet } from "../Dice/Dice";
-import ThemedDie from "./ThemedDie";
-import CollisionMesh from "./CollisionMesh";
+import { gameStartState, rerollState } from "./gameState";
+import DiceManager from "./DiceManager";
 
 /* istanbul ignore next */
 const GameManager = () => {
-  const diceImageState = atomWithReset([
-    {
-      uuid: [uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4()],
-      url: uniqueImageSet(),
-    },
-    {
-      uuid: [uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4()],
-      url: uniqueImageSet(),
-    },
-    {
-      uuid: [uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4()],
-      url: uniqueImageSet(),
-    },
-    {
-      uuid: [uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4()],
-      url: uniqueImageSet(),
-    },
-    {
-      uuid: [uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4(), uuidv4()],
-      url: uniqueImageSet(),
-    },
-  ]);
-
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
-  const [dicePosition] = useAtom(diceDefaultState);
-  const [images] = useAtom(diceImageState);
-  const resetImages = useResetAtom(diceImageState);
 
   const useStyles = makeStyles((theme) => ({
     button: {
@@ -85,19 +55,7 @@ const GameManager = () => {
       )}
       {gameStarted && (
         <>
-          <Suspense fallback={null}>
-            {dicePosition.map((pos, index) => (
-              <ThemedDie
-                key={pos.uuid}
-                theme="random"
-                dicePos={pos.position}
-                rerollToggle={reroll}
-                dieIndex={index}
-                imageSet={images}
-              />
-            ))}
-            <CollisionMesh />
-          </Suspense>
+          <DiceManager reroll={reroll} />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
@@ -105,7 +63,6 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
-                resetImages();
                 rerollDice(!reroll);
               }}
             >
