@@ -21,6 +21,7 @@ const rerollDieFive = atom(false);
 /* istanbul ignore next */
 const DiceManager = (props) => {
   const { reroll } = props;
+
   const [dicePosition] = useAtom(diceDefaultState);
   const [dieImagesOne, setImagesOne] = useAtom(dieOneImageState);
   const [dieImagesTwo, setImagesTwo] = useAtom(dieTwoImageState);
