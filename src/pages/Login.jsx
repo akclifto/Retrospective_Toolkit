@@ -71,11 +71,16 @@ export default function Login(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const isAuth = await loginController(email, password);
+    try {
+      const isAuth = await loginController(email, password);
 
-    // push to admin page if login successful.
-    if (isAuth) {
-      props.history.push("/admin");
+      // push to admin page if login successful.
+      if (isAuth) {
+        props.history.push("/admin");
+      }
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log("Login.handleSubmit Error: ", err);
     }
   }
   Login.propTypes = {
