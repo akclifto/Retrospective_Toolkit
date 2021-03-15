@@ -10,13 +10,13 @@ import { randomizeDice } from "../Dice/Dice";
 import ThemedDie from "./ThemedDie";
 import CollisionMesh from "./CollisionMesh";
 
+
 /* istanbul ignore next */
 const GameManager = () => {
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const [dicePosition] = useAtom(diceDefaultState);
-  const rollSound = new Audio("/diceRoll.m4a");
-
+  var audioElement = new Audio('2021_02_10_18_08_15.m4a');
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -40,7 +40,7 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<ProgressBar />}>
-        <ModelLoader url="table/BIG_TABLE.glb" />
+		<ModelLoader url="table/Table_30.glb" />
       </Suspense>
       {!gameStarted && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
@@ -51,7 +51,7 @@ const GameManager = () => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
-              rollSound.play();
+			  audioElement.play();
             }}
           >
             Start Game
@@ -80,7 +80,6 @@ const GameManager = () => {
               onClick={() => {
                 randomizeDice();
                 rerollDice(!reroll);
-                rollSound.play();
               }}
             >
               Roll It!
