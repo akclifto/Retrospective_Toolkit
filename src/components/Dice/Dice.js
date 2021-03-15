@@ -50,6 +50,15 @@ const dieSides = {
 };
 
 /**
+ * Checks to see if the fullDiceArray is already initialized from the CDN.
+ * @returns true if it is. False if not..
+ */
+const isDiceInit = () => {
+  if (fullDiceArray.length > 0) return true;
+  return false;
+};
+
+/**
  * Formats the Content into a usuable array for the rest of the project.
   
  * An example object is:
@@ -176,4 +185,4 @@ const uniqueImage = () => {
   return randomDiceThemes.map((Theme) => Theme.URL);
 };
 
-export { initDiceImages, uniqueImageSet, uniqueImage, fullDiceArray };
+export { initDiceImages, uniqueImageSet, uniqueImage, isDiceInit };
