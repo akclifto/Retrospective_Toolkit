@@ -85,7 +85,7 @@ const ProgressBar = () => {
 /* istanbul ignore next */
 const ModelLoader = ({ url }) => {
   const { scene } = useGLTF(url);
-  return <primitive object={scene} dispose={null} />;
+  return <primitive object={scene} />;
 };
 ModelLoader.propTypes = {
   url: PropTypes.string.isRequired,
