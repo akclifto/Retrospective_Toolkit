@@ -39,9 +39,12 @@ describe("ThreeDice/ThemedDie Testing", () => {
     const wrapper = shallow(
       <Suspense fallback={<div>Loading...</div>}>
         <ThemedDie
-          theme="random"
           dicePos={[-13, 5, 6]}
-          rerollToggle={false}
+          rerollValue={false}
+          rerollAllToggle={false}
+          rerollDieToggle={() => {}}
+          imageSet={[""]}
+          setImages={() => {}}
           testID="testDie"
         />
       </Suspense>

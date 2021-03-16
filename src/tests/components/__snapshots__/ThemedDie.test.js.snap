@@ -16,9 +16,16 @@ exports[`ThreeDice/ThemedDie Testing should do a snapshot test on ThemedDie 1`] 
         6,
       ]
     }
-    rerollToggle={false}
+    imageSet={
+      Array [
+        "",
+      ]
+    }
+    rerollAllToggle={false}
+    rerollDieToggle={[Function]}
+    rerollValue={false}
+    setImages={[Function]}
     testID="testDie"
-    theme="random"
   />
 </Suspense>
 `;
