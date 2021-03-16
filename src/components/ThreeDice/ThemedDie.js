@@ -6,7 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { uniqueImageSet } from "../Dice/Dice";
 
 // TODO: Update sound file for single dice roll
-const singleRollSound = new Audio("/diceRoll.m4a");
+const singleRollSound = () => {
+  new Audio("/diceRoll.m4a").play();
+};
 
 /* istanbul ignore next */
 const ThemedDie = (props) => {
@@ -51,7 +53,7 @@ const ThemedDie = (props) => {
     <mesh
       onClick={() => {
         rerollDieToggle(!rerollValue);
-        singleRollSound.play();
+        singleRollSound();
       }}
       ref={mesh}
     >
