@@ -41,6 +41,7 @@ const ThreeDice = () => {
       {!loading && (
         <Canvas
           concurrent
+          invalidateFrameloop
           style={{ width: "100vw", height: "70vh" }}
           camera={{ position: [0, 20, 8], fov: 50 }}
         >
