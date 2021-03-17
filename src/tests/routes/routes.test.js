@@ -45,18 +45,22 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(PageNotFound)).toHaveLength(1);
   });
 
-  test("Validate PageNotFound redirect false, validate LandingPage", () => {
+  test("Validate LandingPage", () => {
     // jest throws an error for react.jsx on ThreeDice because of react-three-fiber.
     // it doesn't cause the test to fail, but fills the test screen
     // with a bunch of red text.  This jest.fn() catches it.
     console.error = jest.fn();
+    console.log = jest.fn();
     const wrapper = mount(
       <MemoryRouter initialEntries={["/"]}>
         <Routes />
       </MemoryRouter>
     );
     // console.log("mockedError_landing", console.error);
-    expect(console.error).toHaveBeenCalledTimes(1);
+    // Error no longer throws, expect 0 calls.  This is jest specific.
+    expect(console.error).toHaveBeenCalledTimes(0);
+    expect(console.log).toHaveBeenCalled();
+    expect(console.log).toHaveBeenCalledTimes(1);
 
     expect(wrapper.find(LandingPage)).toHaveLength(1);
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);

@@ -1,39 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ThreeDice Testing renders and matches snapshot 1`] = `
-<Memo(Canvas)
-  camera={
-    Object {
-      "fov": 50,
-      "position": Array [
-        0,
-        20,
-        8,
-      ],
-    }
-  }
-  concurrent={true}
-  style={
-    Object {
-      "height": "70vh",
-      "width": "100vw",
-    }
-  }
->
-  <Provider>
-    <Component
-      defaultContactMaterial={true}
-      gravity={
-        Array [
-          0,
-          -30,
-          0,
-        ]
-      }
+<Fragment>
+  <Memo(Canvas)>
+    <ForwardRef
+      center={true}
     >
-      <GameManager />
-    </Component>
-  </Provider>
-  <ForwardRef />
-</Memo(Canvas)>
+      Loading game textures....
+    </ForwardRef>
+  </Memo(Canvas)>
+</Fragment>
 `;
