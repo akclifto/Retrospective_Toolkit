@@ -41,7 +41,6 @@ describe("Testing isDiceInit()", () => {
     // Note: why does it take an extra 146 entries to deplete array?
     for (let i = 0; i < diceArray.length + 146; i += 1) {
       uniqueImage();
-      diceArray.shift();
     }
     const flag = isDiceInit();
     expect(flag).toBe(false);
