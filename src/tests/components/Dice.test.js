@@ -66,7 +66,6 @@ describe("Testing uniqueness of image sets", () => {
   });
 
   test("Working group of images will refill once empty", async () => {
-    // const timesUntilRefill = await initDiceImages() / 6; // Hardcoded 6 because current functionality only uses 6 sided dice
     let timesUntilRefill = await initDiceImages(); // Hardcoded 6 because current functionality only uses 6 sided dice
     timesUntilRefill = timesUntilRefill.length / 6;
     for (let i = 0; i < Math.trunc(timesUntilRefill); i += 1) {
