@@ -51,6 +51,7 @@ const ThreeDice = () => {
             </Provider>
           </Physics>
           <OrbitControls />
+          <axesHelper args={[5, 5, 5]} />
         </Canvas>
       )}
     </>
