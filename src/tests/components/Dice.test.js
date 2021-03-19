@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Tests DiceConstants that pulling data from AWS works and is formatted.
  */
@@ -20,10 +21,30 @@ describe("Testing that DieConstants.js pulls information from AWS", () => {
       Name: "",
       Theme: "",
     };
-    const diceArray = await initDiceImages().then();
+    const diceArray = await initDiceImages();
     const DiceObject = diceArray[0];
 
     expect(Object.keys(testJSON)).toMatchObject(Object.keys(DiceObject));
+  });
+});
+
+describe("Testing isDiceInit()", () => {
+  test("Test base case, should return true.", () => {
+    const flag = isDiceInit();
+    expect(flag).toBe(true);
+  });
+
+  test("Test depleted diceArray, should return false.", async () => {
+    const diceArray = await initDiceImages();
+    const refill = diceArray.length / 6;
+    console.log(refill);
+    // Note: why does it take an extra 146 entries to deplete array?
+    for (let i = 0; i < diceArray.length + 146; i += 1) {
+      uniqueImage();
+      diceArray.shift();
+    }
+    const flag = isDiceInit();
+    expect(flag).toBe(false);
   });
 });
 
@@ -44,14 +65,10 @@ describe("Testing uniqueness of image sets", () => {
     }
   });
 
-  test("Test isDiceInit, should be true.", () => {
-    const flag = isDiceInit();
-    expect(flag).toBe(true);
-  });
-
-  test("Working group of images will refill once empty", () => {
-    const timesUntilRefill = initDiceImages() / 6; // Hardcoded 6 because current functionality only uses 6 sided dice
-
+  test("Working group of images will refill once empty", async () => {
+    // const timesUntilRefill = await initDiceImages() / 6; // Hardcoded 6 because current functionality only uses 6 sided dice
+    let timesUntilRefill = await initDiceImages(); // Hardcoded 6 because current functionality only uses 6 sided dice
+    timesUntilRefill = timesUntilRefill.length / 6;
     for (let i = 0; i < Math.trunc(timesUntilRefill); i += 1) {
       uniqueImageSet();
     }
