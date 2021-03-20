@@ -50,7 +50,7 @@ const ThreeDice = () => {
               <GameManager />
             </Provider>
           </Physics>
-          <OrbitControls />
+          <OrbitControls rotateSpeed={0.3} />
         </Canvas>
       )}
     </>
