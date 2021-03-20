@@ -4,6 +4,8 @@ import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { uniqueImageSet } from "../Dice/Dice";
+import { Vector3 } from "three";
+import * as THREE from "@react-three/cannon";
 
 /* istanbul ignore next */
 const ThemedDie = (props) => {
@@ -61,6 +63,15 @@ const ThemedDie = (props) => {
           map={image}
         />
       ))}
+      <arrowHelper />
+      const mat = new THREE.LineBasicMaterial( { color = 0x0000ff } );
+      const origin = new THREE.Vector3( 0, 0, 0);
+      const endpt = new THREE.Vector3 (0, 0, 5);
+      const points = [];
+      points.push( origin );
+      points.push ( endpt );
+      const geo = THREE.BufferGeometry().setFromPoints ( points );
+      const line = new THREE.Line( geo, mat);
     </mesh>
   );
 };
