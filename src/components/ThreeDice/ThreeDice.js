@@ -33,26 +33,25 @@ const ThreeDice = () => {
 
   return (
     <>
-      {loading && (
-        <Canvas>
-          <Html center>Loading game textures....</Html>
-        </Canvas>
-      )}
-      {!loading && (
-        <Canvas
-          concurrent
-          invalidateFrameloop
-          style={{ width: "100vw", height: "70vh" }}
-          camera={{ position: [0, 20, 8], fov: 50 }}
-        >
-          <Physics gravity={[0, -30, 0]} defaultContactMaterial>
-            <Provider>
-              <GameManager />
-            </Provider>
-          </Physics>
-          <OrbitControls />
-        </Canvas>
-      )}
+      <Canvas
+        concurrent
+        invalidateFrameloop
+        style={{ width: "100vw", height: "70vh" }}
+        camera={{ position: [0, 20, 8], fov: 50 }}
+      >
+        {loading && <Html center>Loading game textures....</Html>}
+        {!loading && (
+          <>
+            <Physics gravity={[0, -30, 0]} defaultContactMaterial>
+              <Provider>
+                <GameManager />
+              </Provider>
+            </Physics>
+            <OrbitControls />
+          </>
+        )}
+      </Canvas>
+      )
     </>
   );
 };
