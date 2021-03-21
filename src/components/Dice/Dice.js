@@ -185,4 +185,10 @@ const uniqueImage = () => {
   return randomDiceThemes.map((Theme) => Theme.URL);
 };
 
-export { initDiceImages, uniqueImageSet, uniqueImage, isDiceInit };
+export {
+  initDiceImages,
+  uniqueImageSet,
+  uniqueImage,
+  isDiceInit,
+  fullDiceArray,
+};
