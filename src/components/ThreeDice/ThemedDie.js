@@ -74,8 +74,7 @@ ThemedDie.propTypes = {
   rerollAllToggle: PropTypes.bool.isRequired,
   rerollValue: PropTypes.bool.isRequired,
   rerollDieToggle: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  geom: PropTypes.object.isRequired,
+  geom: PropTypes.shape().isRequired,
 };
 
 export default ThemedDie;
