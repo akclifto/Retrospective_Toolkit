@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Suspense } from "react";
 import { shallow } from "enzyme";
 // import { useBox } from "@react-three/cannon";
@@ -34,6 +35,7 @@ jest.mock("@react-three/cannon", () => ({
   }),
 }));
 */
+
 describe("ThreeDice/ThemedDie Testing", () => {
   it("should do a snapshot test on ThemedDie", async () => {
     const wrapper = shallow(
