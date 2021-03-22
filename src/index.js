@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { unstable_createRoot as createRoot } from "react-dom";
 import Routes from "./routes/routes";
 import "./index.css";
 
@@ -14,7 +14,7 @@ import "./index.css";
 
 // use React experimental mode in order to use concurrent functionality for dice game
 const rootEl = document.getElementById("root");
-const root = ReactDOM.unstable_createRoot(rootEl);
+const root = createRoot(rootEl);
 root.render(
   <React.StrictMode>
     <Routes />
