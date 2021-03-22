@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Suspense } from "react";
 import { shallow } from "enzyme";
 import ThemedDie from "../../components/ThreeDice/ThemedDie";
