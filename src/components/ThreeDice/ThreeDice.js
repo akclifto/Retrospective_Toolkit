@@ -9,6 +9,7 @@ import GameManager from "./GameManager";
 const ThreeDice = () => {
   // Allows the initDiceImages function to load only once on startup.
   const [loading, setLoading] = useState(true);
+  /* istanbul ignore next */
   useEffect(() => {
     if (!isDiceInit()) {
       try {
