@@ -59,9 +59,6 @@ describe("Routes/routes Testing", () => {
     // console.log("mockedError_landing", console.error);
     // Error no longer throws, expect 0 calls.  This is jest specific.
     expect(console.error).toHaveBeenCalledTimes(0);
-    expect(console.log).toHaveBeenCalled();
-    expect(console.log).toHaveBeenCalledTimes(2);
-
     expect(wrapper.find(LandingPage)).toHaveLength(1);
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);

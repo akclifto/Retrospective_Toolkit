@@ -14,6 +14,7 @@ const ThemedDie = (props) => {
     rerollDieToggle,
     imageSet,
     setImages,
+    geom,
   } = props;
   const textures = useTexture([...imageSet]);
 
@@ -50,6 +51,7 @@ const ThemedDie = (props) => {
         rerollDieToggle(!rerollValue);
       }}
       ref={mesh}
+      geometry={geom}
     >
       <boxBufferGeometry />
       {textures.map((image) => (
@@ -72,6 +74,7 @@ ThemedDie.propTypes = {
   rerollAllToggle: PropTypes.bool.isRequired,
   rerollValue: PropTypes.bool.isRequired,
   rerollDieToggle: PropTypes.func.isRequired,
+  geom: PropTypes.shape().isRequired,
 };
 
 export default ThemedDie;

@@ -27,7 +27,7 @@ const theme = createMuiTheme({
 
 function Routes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh>
       <LayoutTemplate>
         <ThemeProvider theme={theme}>
           <Switch>
