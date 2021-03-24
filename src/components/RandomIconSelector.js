@@ -5,7 +5,7 @@
 
 /**
  * Method compiles an array of randomly selected indexes, ensures no duplication
- * retrieve from IconDataStructure.
+ * retrieved from AWS CDN.
  * @param {*} dieNumber: number of die sides to index images.
  * @param {*} fullDiceArray: the array that contains all of the dice objects from AWS
  * @returns final randomly selected icons array.

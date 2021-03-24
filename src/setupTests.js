@@ -5,6 +5,10 @@ import Enzyme from "enzyme";
 // There is a workaround for the time being, used below
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 
+// This allows jest testing to work properly with React's concurrent mode
+// eslint-disable-next-line global-require
+jest.mock("scheduler", () => require("scheduler/unstable_mock"));
+
 // This clears URL.createObjectURL error when testing.
 global.URL.createObjectURL = jest.fn();
 
