@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 const { Pool } = require("pg");
 
 const postgresClient = new Pool({

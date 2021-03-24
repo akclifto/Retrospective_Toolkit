@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const session = require("express-session");
 const connectRedis = require("connect-redis");
 const redisClient = require("../db/redis");

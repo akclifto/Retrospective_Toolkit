@@ -1,29 +1,37 @@
-/* eslint-disable no-console */
 import React, { useEffect, useState } from "react";
 import { Canvas } from "react-three-fiber";
-import { OrbitControls, Html } from "@react-three/drei";
+// eslint-disable-next-line no-unused-vars
+import { OrbitControls, Html, OrthographicCamera } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Provider } from "jotai";
 import { initDiceImages, isDiceInit } from "../Dice/Dice";
 import GameManager from "./GameManager";
 
+const orbitalCamera = new OrbitControls(this.renderer.domElement);
+orbitalCamera.rotateSpeed = 0.1;
+orbitalCamera.maxPolarAngle = 0.35;
+orbitalCamera.keys = {
+  UP: 87, // w
+  LEFT: 65, // a
+  BOTTOM: 83, // s
+  RIGHT: 68, // d
+};
+
 const ThreeDice = () => {
   // Allows the initDiceImages function to load only once on startup.
   const [loading, setLoading] = useState(true);
+  /* istanbul ignore next */
   useEffect(() => {
-    console.log(isDiceInit());
     if (!isDiceInit()) {
       try {
         const loadDice = async () => {
-          console.log("images loading!");
           if (await initDiceImages()) {
             setLoading(false);
-            // eslint-disable-next-line no-console
-            console.log("images loaded");
           }
         };
         loadDice();
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log("ThreeDice.useEffect Error: ", e);
       }
     } else {
@@ -50,11 +58,7 @@ const ThreeDice = () => {
               <GameManager />
             </Provider>
           </Physics>
-          <OrbitControls
-            rotateSpeed={0.3}
-            maxPolarAngle={0.35}
-            minPolarAngle={0.35}
-          />
+          <orbitalCamera />
         </Canvas>
       )}
     </>
