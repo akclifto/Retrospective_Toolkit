@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Canvas } from "react-three-fiber";
 // eslint-disable-next-line no-unused-vars
@@ -7,6 +8,7 @@ import { Provider } from "jotai";
 import { initDiceImages, isDiceInit } from "../Dice/Dice";
 import GameManager from "./GameManager";
 
+const camera = new Canvas.Camera();
 const orbitalCamera = new OrbitControls(this.renderer.domElement);
 orbitalCamera.rotateSpeed = 0.1;
 orbitalCamera.maxPolarAngle = 0.35;
@@ -51,7 +53,12 @@ const ThreeDice = () => {
           concurrent
           invalidateFrameloop
           style={{ width: "100vw", height: "70vh" }}
-          camera={{ position: [0, 20, 8], fov: 50 }}
+          camera={{
+            position: [0, 20, 8],
+            fov: 50,
+            maxheight: -5 * "100vh",
+            maxWidth: -5 * "70vh",
+          }}
         >
           <Physics gravity={[0, -30, 0]} defaultContactMaterial>
             <Provider>
