@@ -9,17 +9,6 @@ import { Provider } from "jotai";
 import { initDiceImages, isDiceInit } from "../Dice/Dice";
 import GameManager from "./GameManager";
 
-// const camera = new Canvas();
-// const orbitalCamera = new OrbitControls(this.renderer.domElement);
-// orbitalCamera.rotateSpeed = 0.1;
-// orbitalCamera.maxPolarAngle = 0.35;
-// orbitalCamera.keys = {
-//   UP: 87, // w
-//   LEFT: 65, // a
-//   BOTTOM: 83, // s
-//   RIGHT: 68, // d
-// };
-
 const ThreeDice = () => {
   // Allows the initDiceImages function to load only once on startup.
   const [loading, setLoading] = useState(true);
@@ -57,8 +46,6 @@ const ThreeDice = () => {
           camera={{
             position: [0, 20, 8],
             fov: 50,
-            height: window.innerHeight,
-            width: window.innerWidth,
           }}
         >
           <Physics gravity={[0, -30, 0]} defaultContactMaterial>
