@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { uniqueImageSet } from "../Dice/Dice";
 
-// TODO: Update sound file for single dice roll
 const singleRollSound = () => {
   new Audio("/diceRoll.m4a").play();
 };
@@ -19,6 +18,7 @@ const ThemedDie = (props) => {
     rerollDieToggle,
     imageSet,
     setImages,
+    geom,
   } = props;
   const textures = useTexture([...imageSet]);
 
@@ -56,6 +56,7 @@ const ThemedDie = (props) => {
         singleRollSound();
       }}
       ref={mesh}
+      geometry={geom}
     >
       <boxBufferGeometry />
       {textures.map((image) => (
@@ -78,6 +79,7 @@ ThemedDie.propTypes = {
   rerollAllToggle: PropTypes.bool.isRequired,
   rerollValue: PropTypes.bool.isRequired,
   rerollDieToggle: PropTypes.func.isRequired,
+  geom: PropTypes.shape().isRequired,
 };
 
 export default ThemedDie;

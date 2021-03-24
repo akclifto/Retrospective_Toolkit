@@ -1,0 +1,168 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v1.3.48",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "table top",
+      "scale": [
+        17.627132415771484,
+        0.44067832827568054,
+        8.813566207885742
+      ],
+      "translation": [
+        1.3722630739212036,
+        -1.7158725261688232,
+        0.3993520140647888
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "Material.007",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0,
+          "texCoord": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5,
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "alphaMode": "OPAQUE"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube.001",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "name": "Statefarm_table_grey",
+      "uri": "Statefarm_table_grey.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 26,
+      "max": [
+        0.9368177652359009,
+        6.409856796264648,
+        1
+      ],
+      "min": [
+        -1.0631822347640991,
+        4.409856796264648,
+        -1
+      ],
+      "type": "VEC3",
+      "byteOffset": 0
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 26,
+      "type": "VEC3",
+      "byteOffset": 0
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 26,
+      "type": "VEC2",
+      "byteOffset": 0
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 36,
+      "type": "SCALAR",
+      "byteOffset": 0
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 312,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 312,
+      "byteOffset": 312,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 208,
+      "byteOffset": 624,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 72,
+      "byteOffset": 832,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "name": "BIG_TABLE",
+      "byteLength": 904,
+      "uri": "data:application/octet-stream;base64,WxaIv4wdjUAAAIA/WxaIv4wdzUAAAIA/WxaIv4wdzUAAAIC/WxaIv4wdjUAAAIC/WxaIv4wdjUAAAIC/WxaIv4wdzUAAAIC/StNvP4wdzUAAAIC/StNvP4wdjUAAAIC/StNvP4wdjUAAAIC/StNvP4wdzUAAAIC/StNvP4wdzUAAAIA/StNvP4wdjUAAAIC/StNvP4wdzUAAAIA/StNvP4wdjUAAAIA/StNvP4wdjUAAAIA/StNvP4wdzUAAAIA/WxaIv4wdzUAAAIA/WxaIv4wdjUAAAIA/WxaIv4wdjUAAAIC/StNvP4wdjUAAAIC/StNvP4wdjUAAAIA/WxaIv4wdjUAAAIA/StNvP4wdzUAAAIC/WxaIv4wdzUAAAIC/WxaIv4wdzUAAAIA/StNvP4wdzUAAAIA/AACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgL8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACA3Pl+P8DCrjzc+X4/3Ja1Pu58nz/clrU+7nyfP4DDrjwQ0TQ/1kUbPw7RND8sm3A/ENF0Py6bcD8Q0XQ/1kUbP9z5fj/clrU+3Pl+P8YgMD/ufJ8/yCAwP5QlND+opr09lCV0P14U2j6UJXQ/uKa9Pdz5Pj/clrU+3Pl+P9yWtT7c+X4/QMOuPNz5Pj/Awq483/l+P3y+n77f+X4/wMKuPO58nz8Aw6487nyfP3y+n775yYE/uO4uPgQXVT247i4+BBdVPRKdRj/5yYE/F51GPwAAAQACAAAAAgADAAQABQAGAAQABgAHAAgACQAKAAsADAANAA4ADwAQAA4AEAARABIAEwAUABIAFAAVABYAFwAYABYAGAAZAA=="
+    }
+  ]
+}

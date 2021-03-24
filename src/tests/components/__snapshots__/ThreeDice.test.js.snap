@@ -2,12 +2,32 @@
 
 exports[`ThreeDice Testing renders and matches snapshot 1`] = `
 <Fragment>
-  <Memo(Canvas)>
+  <Memo(Canvas)
+    camera={
+      Object {
+        "fov": 50,
+        "position": Array [
+          0,
+          20,
+          8,
+        ],
+      }
+    }
+    concurrent={true}
+    invalidateFrameloop={true}
+    style={
+      Object {
+        "height": "70vh",
+        "width": "100vw",
+      }
+    }
+  >
     <ForwardRef
       center={true}
     >
       Loading game textures....
     </ForwardRef>
   </Memo(Canvas)>
+  )
 </Fragment>
 `;

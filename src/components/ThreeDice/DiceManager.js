@@ -1,6 +1,7 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useMemo } from "react";
 import { atom, useAtom } from "jotai";
 import PropTypes from "prop-types";
+import { BoxBufferGeometry } from "three";
 import { uniqueImageSet } from "../Dice/Dice";
 import ThemedDie from "./ThemedDie";
 import CollisionMesh from "./CollisionMesh";
@@ -21,6 +22,7 @@ const rerollDieFive = atom(false);
 /* istanbul ignore next */
 const DiceManager = (props) => {
   const { reroll } = props;
+  const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [dicePosition] = useAtom(diceDefaultState);
   const [dieImagesOne, setImagesOne] = useAtom(dieOneImageState);
@@ -76,6 +78,7 @@ const DiceManager = (props) => {
           rerollDieToggle={rerollArray[index].reroll}
           imageSet={imageArray[index].images}
           setImages={imageArray[index].setImages}
+          geom={geom}
         />
       ))}
       <CollisionMesh />

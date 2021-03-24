@@ -13,7 +13,7 @@ const config = require("../../resources/awsConfig.json");
 
 const BASEURL = "https://retrospective-toolkit.s3-us-west-1.amazonaws.com/";
 
-// import errorIcon from "../resources/dangerous-24px.svg";
+// import errorIcon from "../resources/dangerous-24px.svg"
 const fullDiceArray = [];
 let workingGroup = [];
 
@@ -185,4 +185,10 @@ const uniqueImage = () => {
   return randomDiceThemes.map((Theme) => Theme.URL);
 };
 
-export { initDiceImages, uniqueImageSet, uniqueImage, isDiceInit };
+export {
+  initDiceImages,
+  uniqueImageSet,
+  uniqueImage,
+  isDiceInit,
+  fullDiceArray,
+};
