@@ -9,16 +9,16 @@ import { Provider } from "jotai";
 import { initDiceImages, isDiceInit } from "../Dice/Dice";
 import GameManager from "./GameManager";
 
-const camera = new Canvas.Camera();
-const orbitalCamera = new OrbitControls(this.renderer.domElement);
-orbitalCamera.rotateSpeed = 0.1;
-orbitalCamera.maxPolarAngle = 0.35;
-orbitalCamera.keys = {
-  UP: 87, // w
-  LEFT: 65, // a
-  BOTTOM: 83, // s
-  RIGHT: 68, // d
-};
+// const camera = new Canvas();
+// const orbitalCamera = new OrbitControls(this.renderer.domElement);
+// orbitalCamera.rotateSpeed = 0.1;
+// orbitalCamera.maxPolarAngle = 0.35;
+// orbitalCamera.keys = {
+//   UP: 87, // w
+//   LEFT: 65, // a
+//   BOTTOM: 83, // s
+//   RIGHT: 68, // d
+// };
 
 const ThreeDice = () => {
   // Allows the initDiceImages function to load only once on startup.
@@ -43,7 +43,7 @@ const ThreeDice = () => {
   }, []);
 
   return (
-    <>
+    <div>
       {loading && (
         <Canvas>
           <Html center>Loading game textures....</Html>
@@ -57,8 +57,8 @@ const ThreeDice = () => {
           camera={{
             position: [0, 20, 8],
             fov: 50,
-            maxheight: -5 * "100vh",
-            maxWidth: -5 * "70vh",
+            height: window.innerHeight,
+            width: window.innerWidth,
           }}
         >
           <Physics gravity={[0, -30, 0]} defaultContactMaterial>
@@ -66,10 +66,10 @@ const ThreeDice = () => {
               <GameManager />
             </Provider>
           </Physics>
-          <orbitalCamera />
+          <OrbitControls rotateSpeed={0.1} maxPolarAngle={0.35} />
         </Canvas>
       )}
-    </>
+    </div>
   );
 };
 
