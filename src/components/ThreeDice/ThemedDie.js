@@ -5,6 +5,10 @@ import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { uniqueImageSet } from "../Dice/Dice";
 
+const singleRollSound = () => {
+  new Audio("/diceRoll.m4a").play();
+};
+
 /* istanbul ignore next */
 const ThemedDie = (props) => {
   const {
@@ -49,6 +53,7 @@ const ThemedDie = (props) => {
     <mesh
       onClick={() => {
         rerollDieToggle(!rerollValue);
+        singleRollSound();
       }}
       ref={mesh}
       geometry={geom}

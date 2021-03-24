@@ -33,18 +33,6 @@ describe("Testing isDiceInit()", () => {
     const flag = isDiceInit();
     expect(flag).toBe(true);
   });
-
-  test("Test depleted diceArray, should return false.", async () => {
-    const diceArray = await initDiceImages();
-    const refill = diceArray.length / 6;
-    console.log(refill);
-    // Note: why does it take an extra 146 entries to deplete array?
-    for (let i = 0; i < diceArray.length + 146; i += 1) {
-      uniqueImage();
-    }
-    const flag = isDiceInit();
-    expect(flag).toBe(false);
-  });
 });
 
 describe("Testing uniqueness of image sets", () => {
