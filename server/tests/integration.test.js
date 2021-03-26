@@ -1,12 +1,14 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 /* eslint-disable no-useless-escape */
+import server from "../index.js";
+import redisTestClient from "../db/redis.js";
+import postgresTestClient from "../db/postgres.js";
+import authService from "../service/auth";
+import appRouter from "./__mocks__/config.routesTest";
+
 const request = require("supertest");
-const server = require("../index");
-const redisTestClient = require("../db/redis");
-const postgresTestClient = require("../db/postgres");
-const authService = require("../service/auth");
 // for routes/index testing
-const appRouter = require("./__mocks__/config.routesTest");
 
 afterEach(() => server && server.close());
 

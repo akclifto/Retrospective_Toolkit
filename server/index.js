@@ -1,11 +1,11 @@
-import express, { json } from "express";
+import express from "express";
 import router from "./routes";
 import session from "./middleware/session";
 
 const port = process.env.PORT || 5000;
 
 const app = express();
-app.use(json());
+app.use(express.json());
 
 // if behind a proxy, uncomment this
 // server.set('trust proxy', 1);
