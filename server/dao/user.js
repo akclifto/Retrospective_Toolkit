@@ -1,8 +1,8 @@
-const pool = require("../db/postgres");
+import postgresClient from "../db/postgres";
 
 async function findUserByEmail(email) {
   try {
-    const user = await pool.query(
+    const user = await postgresClient.query(
       `SELECT users.id, email, password, roles.role 
         FROM users 
         LEFT JOIN roles 
@@ -19,6 +19,6 @@ async function findUserByEmail(email) {
   }
 }
 
-module.exports = {
+export default {
   findUserByEmail,
 };

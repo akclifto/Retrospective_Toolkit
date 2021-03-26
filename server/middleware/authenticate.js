@@ -7,4 +7,4 @@ function authenticate(req, res, next) {
   next();
 }
 
-module.exports = authenticate;
+export default authenticate;

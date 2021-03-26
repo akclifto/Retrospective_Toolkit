@@ -1,10 +1,10 @@
-const session = require("express-session");
-const connectRedis = require("connect-redis");
-const redisClient = require("../db/redis");
+import session from "express-session";
+import connectRedis from "connect-redis";
+import redisClient from "../db/redis";
 
 const RedisStore = connectRedis(session);
 
-module.exports = session({
+export default session({
   store: new RedisStore({ client: redisClient }),
   // TODO: This is not a secure secret.. fix this if going to production
   secret: "secretsauce",

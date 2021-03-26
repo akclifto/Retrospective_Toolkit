@@ -1,4 +1,4 @@
-const authService = require("../service/auth");
+import _login from "../service/auth";
 
 async function login(req, res) {
   const { email, password } = req.body;
@@ -13,7 +13,7 @@ async function login(req, res) {
   }
 
   try {
-    const user = await authService.login(email, password);
+    const user = await _login(email, password);
     req.session.user = user;
     return res.sendStatus(204);
   } catch (err) {
@@ -21,6 +21,4 @@ async function login(req, res) {
   }
 }
 
-module.exports = {
-  login,
-};
+export default login;

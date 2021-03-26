@@ -12,4 +12,4 @@ const redisClient = require("redis").createClient(
 //     host: 'localhost'
 // });
 
-module.exports = redisClient;
+export default redisClient;

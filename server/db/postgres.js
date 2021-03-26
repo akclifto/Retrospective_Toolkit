@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+import { Pool } from "pg";
 
 const postgresClient = new Pool({
   connectionString:
@@ -19,4 +19,4 @@ const postgresClient = new Pool({
 
 // insure database is initialized
 
-module.exports = postgresClient;
+export default postgresClient;

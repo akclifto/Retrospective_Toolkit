@@ -1,12 +1,12 @@
-const bcrypt = require("bcrypt");
-const userDAO = require("../dao/user");
+import { compare } from "bcrypt";
+import userDAO from "../dao/user";
 
 async function login(email, password) {
   // lookup user by email
   try {
     const user = await userDAO.findUserByEmail(email);
 
-    const match = await bcrypt.compare(password, user.rows[0].password);
+    const match = await compare(password, user.rows[0].password);
 
     if (match) {
       return { id: user.rows[0].id, roles: user.rows[0].role };
@@ -17,4 +17,4 @@ async function login(email, password) {
   }
 }
 
-module.exports = { login };
+export default { login };

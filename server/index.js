@@ -1,11 +1,11 @@
-const express = require("express");
+import express, { json } from "express";
+import router from "./routes";
+import session from "./middleware/session";
 
 const port = process.env.PORT || 5000;
-const router = require("./routes");
-const session = require("./middleware/session");
 
 const app = express();
-app.use(express.json());
+app.use(json());
 
 // if behind a proxy, uncomment this
 // server.set('trust proxy', 1);
@@ -18,4 +18,4 @@ const server = app.listen(port, () =>
   console.log(`server is running on port ${port}`)
 );
 
-module.exports = server;
+export default server;
