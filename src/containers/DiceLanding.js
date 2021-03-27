@@ -24,7 +24,7 @@ const DiceLanding = () => {
   return (
     <div>
       <Grid className={classes.root} container direction="row">
-        <Grid item xs={4}>
+        <Grid item xs={12}>
           <InfoCard
             title="Cube Game"
             body="This cube game is intended to promote communication and understanding within a team."

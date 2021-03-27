@@ -17,7 +17,7 @@ const LayoutTemplate = (props) => {
   return (
     <div className={classes.template}>
       <Header />
-      <div>{children}</div>
+      {children}
       <Footer />
     </div>
   );
