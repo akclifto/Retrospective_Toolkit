@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/LandingPage.css";
 
 const bg = "https://d1g31diwtzkeb3.cloudfront.net/fin.png";
 

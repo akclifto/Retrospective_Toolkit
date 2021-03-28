@@ -33,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     textDecoration: "none",
   },
+  sfLogo: {
+    width: "300px",
+    height: "50px",
+  },
 }));
 
 /** *
@@ -63,7 +67,7 @@ const Header = () => {
         <AppBar className={classes.toolbar}>
           <Toolbar className={classes.root}>
             <Link to="/">
-              <img src={sfLogoURL} alt="logo" />
+              <img className={classes.sfLogo} src={sfLogoURL} alt="logo" />
             </Link>
             <div className={classes.grow} />
             <Link to="/login" className={classes.menuButton}>
