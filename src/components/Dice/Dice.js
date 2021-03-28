@@ -67,11 +67,9 @@ const isDiceInit = () => {
 const initDiceImages = async () => {
   // Initialize s3 object to point to our S3 bucket for the class
   try {
-    fetch(lambdaURL)
-      .then((response) => response.json())
-      .then((json) => fullDiceArray.push(...json));
-    // eslint-disable-next-line
-    console.log(fullDiceArray);
+    const response = await fetch(lambdaURL);
+    const data = await response.json();
+    fullDiceArray.push(...data);
   } catch (e) {
     // eslint-disable-next-line
     console.log("error occured", e);
