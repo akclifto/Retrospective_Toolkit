@@ -254,7 +254,7 @@ describe("Routes/index Testing", () => {
       // });
       done();
     } catch (err) {
-      console.log("Routes/index", err);
+      console.log("Routes/index: ", err);
       done();
     }
   });
