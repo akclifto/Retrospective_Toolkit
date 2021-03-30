@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     position: "fixed",
     bottom: 0,
     backgroundColor: "whitesmoke",
-    height: "30px",
+    height: "40px",
   },
   footer__text: {
     color: "black",
