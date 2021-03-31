@@ -20,3 +20,21 @@ ADD IN INDEX BEFORE BODY TAG
 <script>
   var socket = io();
 </script>
+
+EMIT can be used to send to other users connected.
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+  var form = document.getElementById('form');
+  var input = document.getElementById('input');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (input.value) {
+      socket.emit('chat message', input.value);
+      input.value = '';
+    }
+  });
+</script>
