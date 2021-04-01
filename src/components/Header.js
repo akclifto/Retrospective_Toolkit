@@ -62,7 +62,7 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <div>
       <HideOnScroll>
         <AppBar className={classes.toolbar}>
           <Toolbar className={classes.root}>
@@ -80,7 +80,7 @@ const Header = () => {
         </AppBar>
       </HideOnScroll>
       <Toolbar />
-    </>
+    </div>
   );
 };
 
