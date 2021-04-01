@@ -40,7 +40,7 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<ProgressBar />}>
-		<ModelLoader url="table/Table_30.glb" />
+		<ModelLoader url="table/BlackRedTable.glb" />
       </Suspense>
       {!gameStarted && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
