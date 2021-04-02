@@ -34,11 +34,10 @@ const DiceLanding = () => {
             To re-roll all die, click the 'Roll It!' button, to re-roll one die, click on a single die to re-roll."
           />
         </Grid>
+        <Grid item xs={12}>
+          <ThreeDice />
+        </Grid>
       </Grid>
-      {/* ThreeDice Game */}
-      <div>
-        <ThreeDice />
-      </div>
     </div>
   );
 };

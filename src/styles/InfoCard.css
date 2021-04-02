@@ -1,19 +1,23 @@
 .infoCard--root {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  margin: 0px 0px 0px 10px; /* top right bottom left */
+  width: 96.6vw;
+  margin: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title-button {
-  padding-top: 13px;
+  width: 96.6vw;
+  padding: 13px 0px 0px 0px; /* top right bottom left */
+  margin-top: 13px;
   text-align: center;
-  width: 100%;
-  margin: 10px 0px 0px 10px; /* top right bottom left */
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
