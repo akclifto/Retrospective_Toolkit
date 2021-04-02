@@ -10,46 +10,42 @@ const CollisionMesh = () => {
     material: { friction: 1000 },
   }));
   const [left] = useBox(() => ({
-    position: [-18.1, 2, 0.35],
+    position: [-18.05, 2, 0.35],
     rotation: [0, -Math.PI / 2, 0],
-    args: [16, 4, 1],
-    material: { friction: 1000 },
+    args: [20, 4, 1],
   }));
   const [right] = useBox(() => ({
-    position: [18.5, 2, 0.35],
+    position: [18.48, 2, 0.35],
     rotation: [0, -Math.PI / 2, 0],
     args: [16, 4, 0],
-    material: { friction: 1000 },
-  }));
-  const [top] = useBox(() => ({
-    position: [0.22, 2, 9.56],
-    args: [28, 4, 0],
-    material: { friction: 1000 },
   }));
   const [bottom] = useBox(() => ({
-    position: [0.22, 2, -8.75],
-    args: [28, 4, 0],
-    material: { friction: 1000 },
+    position: [0.22, 2, 9.53],
+    args: [37, 4, 0],
+  }));
+  const [top] = useBox(() => ({
+    position: [0.22, 2, -8.73],
+    args: [37, 4, 0],
   }));
   return (
     <group>
       <mesh ref={floor}>
-        <boxBufferGeometry args={[18.5, 2.0, 36.5]} />
-        <meshStandardMaterial color="red" transparent opacity={0} />
+        <boxBufferGeometry args={[18.5, 2.0, 37]} />
+        <meshStandardMaterial color="yellow" transparent opacity={0} />
       </mesh>
       <mesh ref={left}>
-        <boxBufferGeometry args={[18.7, 4.5, 0]} />
+        <boxBufferGeometry args={[18.5, 4.5, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={right}>
-        <boxBufferGeometry args={[18.7, 4.5, 0]} />
+        <boxBufferGeometry args={[18.5, 4.5, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
-      <mesh ref={top}>
+      <mesh ref={bottom}>
         <boxBufferGeometry args={[37, 4.5, 0]} />
         <meshStandardMaterial color="green" transparent opacity={0} />
       </mesh>
-      <mesh ref={bottom}>
+      <mesh ref={top}>
         <boxBufferGeometry args={[37, 4.5, 0]} />
         <meshStandardMaterial color="green" transparent opacity={0} />
       </mesh>
