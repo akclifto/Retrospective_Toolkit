@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
-import { gameStartState, rerollState } from "./gameState";
+import { clickBindState, gameStartState, rerollState } from "./gameState";
 import DiceManager from "./DiceManager";
 
 /* istanbul ignore next */
@@ -13,6 +13,8 @@ const GameManager = (props) => {
   const { setOrbitControl } = props;
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
+  // eslint-disable-next-line no-unused-vars
+  const [clickBind, setClickBind] = useAtom(clickBindState);
   const rollSound = new Audio("/diceRoll.m4a");
   const useStyles = makeStyles((theme) => ({
     button: {

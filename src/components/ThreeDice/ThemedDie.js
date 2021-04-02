@@ -65,7 +65,7 @@ const ThemedDie = (props) => {
     },
     {
       threshold: 1,
-      delay: 1000,
+      delay: 500,
     }
   );
 

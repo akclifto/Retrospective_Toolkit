@@ -6,7 +6,7 @@ const CollisionMesh = () => {
   const [floor] = useBox(() => ({
     position: [0, 0, 0],
     rotation: [0, -Math.PI / 2, 0],
-    args: [14, 2.5, 22],
+    args: [18, 2.43, 37],
     material: { friction: 1000 },
   }));
   const [left] = useBox(() => ({

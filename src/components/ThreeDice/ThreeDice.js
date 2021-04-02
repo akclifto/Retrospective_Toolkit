@@ -47,8 +47,8 @@ const ThreeDice = () => {
             </Physics>
             <OrbitControls
               rotateSpeed={0.3}
-              maxPolarAngle={0.35}
-              minPolarAngle={0.35}
+              // maxPolarAngle={0.5}
+              // minPolarAngle={0.35}
               enabled={isEnabled}
             />
           </>
