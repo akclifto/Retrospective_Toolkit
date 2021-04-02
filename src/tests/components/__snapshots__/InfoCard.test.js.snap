@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components/InfoCard Testing SNAPSHOT: InfoCard 1`] = `
-<div>
+<div
+  className="container"
+>
   <button
     className="title-button"
     onClick={[Function]}
@@ -21,7 +23,9 @@ exports[`Components/InfoCard Testing SNAPSHOT: InfoCard 1`] = `
 `;
 
 exports[`Components/InfoCard Testing Test clickHandler event 1`] = `
-<div>
+<div
+  className="container"
+>
   <button
     className="title-button"
     onClick={[Function]}
