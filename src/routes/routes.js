@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -11,6 +12,7 @@ import Signup from "../pages/Signup";
 import PageNotFound from "../pages/PageNotFound";
 // can remove this after testing IconsDataStructure is done
 import Testing from "../pages/Testing";
+// import InfoCard from "../components/InfoCard";
 
 const theme = createMuiTheme({
   palette: {
@@ -25,7 +27,7 @@ const theme = createMuiTheme({
 
 function Routes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh>
       <LayoutTemplate>
         <ThemeProvider theme={theme}>
           <Switch>

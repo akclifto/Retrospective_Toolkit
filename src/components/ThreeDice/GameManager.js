@@ -51,7 +51,7 @@ const GameManager = () => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
-			  audioElement.play();
+			        audioElement.play();
             }}
           >
             Start Game

@@ -1,32 +1,59 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Canvas } from "react-three-fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Html } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Provider } from "jotai";
-import { initDiceImages } from "../Dice/Dice";
+import { initDiceImages, isDiceInit } from "../Dice/Dice";
 import GameManager from "./GameManager";
 
 const ThreeDice = () => {
   // Allows the initDiceImages function to load only once on startup.
+  const [loading, setLoading] = useState(true);
+  /* istanbul ignore next */
   useEffect(() => {
-    const loadDice = async () => {
-      await initDiceImages();
-    };
-    loadDice();
+    if (!isDiceInit()) {
+      try {
+        const loadDice = async () => {
+          if (await initDiceImages()) {
+            setLoading(false);
+          }
+        };
+        loadDice();
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log("ThreeDice.useEffect Error: ", e);
+      }
+    } else {
+      setLoading(false);
+    }
   }, []);
+
   return (
-    <Canvas
-      concurrent
-      style={{ width: "100vw", height: "500px" }}
-      camera={{ position: [0, 20, 8], fov: 50 }}
-    >
-      <Provider>
-        <Physics gravity={[0, -30, 0]} defaultContactMaterial>
-          <GameManager />
-        </Physics>
-      </Provider>
-      <OrbitControls />
-    </Canvas>
+    <>
+      <Canvas
+        concurrent
+        invalidateFrameloop
+        style={{ width: "100vw", height: "70vh" }}
+        camera={{ position: [0, 20, 8], fov: 50 }}
+      >
+        {loading && <Html center>Loading game textures....</Html>}
+        {!loading && (
+          <>
+            <Physics gravity={[0, -30, 0]} defaultContactMaterial>
+              <Provider>
+                <GameManager />
+              </Provider>
+            </Physics>
+            <OrbitControls
+              rotateSpeed={0.3}
+              maxPolarAngle={0.35}
+              minPolarAngle={0.35}
+            />
+          </>
+        )}
+      </Canvas>
+      )
+    </>
   );
 };
 

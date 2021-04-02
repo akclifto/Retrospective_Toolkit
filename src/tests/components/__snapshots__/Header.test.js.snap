@@ -14,6 +14,7 @@ exports[`Components/Header Testing SNAPSHOT: Header 1`] = `
         >
           <img
             alt="logo"
+            className="makeStyles-sfLogo-5"
             src="https://d1g31diwtzkeb3.cloudfront.net/statefarmLogo.svg"
           />
         </Link>

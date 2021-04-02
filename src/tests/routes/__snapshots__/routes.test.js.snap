@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Routes/routes Testing SNAPSHOT: Routes 1`] = `
-<Component>
+<Component
+  forceRefresh={true}
+>
   <LayoutTemplate>
     <ThemeProvider
       theme={
