@@ -9,7 +9,8 @@ import { gameStartState, rerollState } from "./gameState";
 import DiceManager from "./DiceManager";
 
 /* istanbul ignore next */
-const GameManager = () => {
+const GameManager = (props) => {
+  const { setOrbitControl } = props;
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const rollSound = new Audio("/diceRoll.m4a");
@@ -56,7 +57,7 @@ const GameManager = () => {
       )}
       {gameStarted && (
         <>
-          <DiceManager reroll={reroll} />
+          <DiceManager reroll={reroll} setOrbitControl={setOrbitControl} />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
@@ -75,6 +76,9 @@ const GameManager = () => {
       )}
     </>
   );
+};
+GameManager.propTypes = {
+  setOrbitControl: PropTypes.func.isRequired,
 };
 /* istanbul ignore next */
 const ProgressBar = () => {
