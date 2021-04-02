@@ -10,7 +10,7 @@ import LandingPage from "../../pages/LandingPage";
 import Login from "../../pages/Login";
 import PageNotFound from "../../pages/PageNotFound";
 import Signup from "../../pages/Signup";
-// import Testing from "../../pages/Testing";
+import Testing from "../../pages/Testing";
 import Routes from "../../routes/routes";
 
 jest.mock("axios");
@@ -134,7 +134,7 @@ describe("Routes/routes Testing", () => {
     expect(wrapper.find(AuthLandingPage)).toHaveLength(0);
     expect(wrapper.find(Login)).toHaveLength(0);
     expect(wrapper.find(Signup)).toHaveLength(0);
-    // expect(wrapper.find(Testing)).toHaveLength(1);
-    expect(wrapper.find(PageNotFound)).toHaveLength(1);
+    expect(wrapper.find(Testing)).toHaveLength(1);
+    expect(wrapper.find(PageNotFound)).toHaveLength(0);
   });
 });

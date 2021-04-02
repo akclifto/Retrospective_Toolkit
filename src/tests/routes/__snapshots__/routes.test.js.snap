@@ -317,6 +317,10 @@ exports[`Routes/routes Testing SNAPSHOT: Routes 1`] = `
         />
         <ifAuth
           component={[Function]}
+          path="/testing"
+        />
+        <ifAuth
+          component={[Function]}
         />
       </ifAuth>
     </ThemeProvider>
