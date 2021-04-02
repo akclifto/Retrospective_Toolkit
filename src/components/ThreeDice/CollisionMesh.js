@@ -4,9 +4,9 @@ import { useBox } from "@react-three/cannon";
 
 const CollisionMesh = () => {
   const [floor] = useBox(() => ({
-    position: [0, 0, 0],
+    position: [0.22, 0, 0.3],
     rotation: [0, -Math.PI / 2, 0],
-    args: [18, 2.43, 37],
+    args: [18.5, 2.43, 36.5],
     material: { friction: 1000 },
   }));
   const [left] = useBox(() => ({
@@ -30,7 +30,7 @@ const CollisionMesh = () => {
   return (
     <group>
       <mesh ref={floor}>
-        <boxBufferGeometry args={[15.5, 2, 28]} />
+        <boxBufferGeometry args={[18.5, 2.0, 36.5]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={left}>
