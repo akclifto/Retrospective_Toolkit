@@ -24,7 +24,7 @@ const DiceLanding = () => {
   return (
     <div>
       <Grid className={classes.root} container direction="row">
-        <Grid item xs={4}>
+        <Grid item xs={12}>
           <InfoCard
             title="Cube Game"
             body="This cube game is intended to promote communication and understanding within a team."
@@ -34,11 +34,10 @@ const DiceLanding = () => {
             To re-roll all die, click the 'Roll It!' button, to re-roll one die, click on a single die to re-roll."
           />
         </Grid>
+        <Grid item xs={12}>
+          <ThreeDice />
+        </Grid>
       </Grid>
-      {/* ThreeDice Game */}
-      <div>
-        <ThreeDice />
-      </div>
     </div>
   );
 };

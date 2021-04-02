@@ -21,10 +21,11 @@ const rerollDieFive = atom(false);
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
-  const { reroll } = props;
+  const { reroll, setOrbitControl } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [dicePosition] = useAtom(diceDefaultState);
+
   const [dieImagesOne, setImagesOne] = useAtom(dieOneImageState);
   const [dieImagesTwo, setImagesTwo] = useAtom(dieTwoImageState);
   const [dieImagesThree, setImagesThree] = useAtom(dieThreeImageState);
@@ -72,13 +73,14 @@ const DiceManager = (props) => {
       {dicePosition.map((pos, index) => (
         <ThemedDie
           key={pos.uuid}
-          dicePos={pos.position}
+          diceInitPos={pos.position}
           rerollAllToggle={reroll}
           rerollValue={rerollArray[index].rerollDie}
           rerollDieToggle={rerollArray[index].reroll}
           imageSet={imageArray[index].images}
           setImages={imageArray[index].setImages}
           geom={geom}
+          setOrbitControl={setOrbitControl}
         />
       ))}
       <CollisionMesh />
@@ -88,6 +90,7 @@ const DiceManager = (props) => {
 
 DiceManager.propTypes = {
   reroll: PropTypes.bool.isRequired,
+  setOrbitControl: PropTypes.func.isRequired,
 };
 
 export default DiceManager;
