@@ -15,8 +15,8 @@
 
 .title-button {
   width: 96.6vw;
-  padding: 13px 0px 0px 0px; /* top right bottom left */
-  margin-top: 13px;
+  padding-top: 12px; /* top right bottom left */
+  margin-top: 12px;
   text-align: center;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.12);
