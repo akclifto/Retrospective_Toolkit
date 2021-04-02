@@ -5,18 +5,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
-import { gameStartState, diceDefaultState, rerollState } from "./gameState";
-import { randomizeDice } from "../Dice/Dice";
-import ThemedDie from "./ThemedDie";
-import CollisionMesh from "./CollisionMesh";
-
+import { gameStartState, rerollState } from "./gameState";
+import DiceManager from "./DiceManager";
 
 /* istanbul ignore next */
 const GameManager = () => {
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
-  const [dicePosition] = useAtom(diceDefaultState);
-  var audioElement = new Audio('2021_02_10_18_08_15.m4a');
+  const rollSound = new Audio("/diceRoll.m4a");
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -40,7 +36,7 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<ProgressBar />}>
-		<ModelLoader url="table/BlackRedTable.glb" />
+        <ModelLoader url="table/BlackRedTable.glb" />
       </Suspense>
       {!gameStarted && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
@@ -51,7 +47,7 @@ const GameManager = () => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
-			        audioElement.play();
+              rollSound.play();
             }}
           >
             Start Game
@@ -60,17 +56,7 @@ const GameManager = () => {
       )}
       {gameStarted && (
         <>
-          <Suspense fallback={null}>
-            {dicePosition.map((pos) => (
-              <ThemedDie
-                key={pos.uuid}
-                theme="random"
-                dicePos={pos.position}
-                rerollToggle={reroll}
-              />
-            ))}
-            <CollisionMesh />
-          </Suspense>
+          <DiceManager reroll={reroll} />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
@@ -78,8 +64,8 @@ const GameManager = () => {
               className={classes.button}
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
-                randomizeDice();
                 rerollDice(!reroll);
+                rollSound.play();
               }}
             >
               Roll It!
@@ -96,10 +82,10 @@ const ProgressBar = () => {
   return <Html center>{Math.trunc(progress)} % loaded</Html>;
 };
 /* istanbul ignore next */
-function ModelLoader({ url }) {
+const ModelLoader = ({ url }) => {
   const { scene } = useGLTF(url);
   return <primitive object={scene} dispose={null} />;
-}
+};
 ModelLoader.propTypes = {
   url: PropTypes.string.isRequired,
 };
