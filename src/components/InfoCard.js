@@ -47,7 +47,7 @@ class InfoCard extends React.Component {
     const { title, body, body2, body3 } = this.props;
 
     return (
-      <div>
+      <div className="container">
         <button
           className="title-button"
           type="button"
