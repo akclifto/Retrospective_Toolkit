@@ -43,6 +43,8 @@ const ThemedDie = (props) => {
   const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
   const isDragging = React.useRef(false);
+  let mousePosX;
+  let mousePosY;
 
   const clickBind = useGesture({
     onClick: () => {
@@ -53,23 +55,38 @@ const ThemedDie = (props) => {
   });
 
   const dragBind = useDrag(
-    ({ offset: [x, y], first, last }) => {
+    ({ movement: [x, y], first, last }) => {
       if (first) {
         setOrbitControl(false);
         isDragging.current = true;
         api.mass.set(0);
+        api.collisionResponse.set(0);
       } else if (last) {
         isDragging.current = false;
         setOrbitControl(true);
         api.mass.set(300);
+        api.collisionResponse.set(1);
       }
+      console.log(mousePosX);
+      console.log(mousePosY);
       api.position.set(x / aspect, 2, y / aspect);
     },
     {
+      // WIP
+      // initial: () => [mousePosX, mousePosY],
       threshold: 1,
       delay: 1000,
+      filterTaps: true,
     }
   );
+
+  // WIP - still not working..
+  /* useFrame((state) => {
+    const { mouse } = state;
+    const { width, height } = viewport();
+    mousePosX = (mouse.x * width) / aspect;
+    mousePosY = (mouse.y * height) / aspect;
+  }); */
 
   useEffect(() => {
     api.position.set(diceInitPos[0], diceInitPos[1], diceInitPos[2]);
