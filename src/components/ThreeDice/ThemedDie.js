@@ -42,9 +42,10 @@ const ThemedDie = (props) => {
 
   const clickBind = useGesture({
     onClick: () => {
-      if (isDragging.current) return;
-      rerollDieToggle(!rerollValue);
-      singleRollSound();
+      if (!isDragging.current) {
+        rerollDieToggle(!rerollValue);
+        singleRollSound();
+      }
     },
   });
 
@@ -56,7 +57,8 @@ const ThemedDie = (props) => {
         api.mass.set(0);
         api.collisionResponse.set(0);
       } else if (last) {
-        isDragging.current = false;
+        // eslint-disable-next-line no-return-assign
+        setTimeout(() => (isDragging.current = false), 100);
         setOrbitControl(true);
         api.mass.set(300);
         api.collisionResponse.set(1);
@@ -64,10 +66,7 @@ const ThemedDie = (props) => {
       api.position.set(mousePos[0], 2, -mousePos[1]);
     },
     {
-      // WIP
       initial: () => [mousePos[0], mousePos[1]],
-      threshold: 1,
-      delay: true,
       filterTaps: true,
     }
   );
