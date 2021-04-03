@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 
 export const gameStartState = atom(false);
 export const rerollState = atom(false);
-export const clickBindState = atom(false);
 
 export const diceDefaultState = atom([
   {
