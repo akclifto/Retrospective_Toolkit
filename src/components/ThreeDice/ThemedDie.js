@@ -57,11 +57,13 @@ const ThemedDie = (props) => {
       if (first) {
         setOrbitControl(false);
         isDragging.current = true;
+        api.mass.set(0);
       } else if (last) {
         isDragging.current = false;
         setOrbitControl(true);
+        api.mass.set(300);
       }
-      api.position.set(x / aspect, 1.5, y / aspect);
+      api.position.set(x / aspect, 2, y / aspect);
     },
     {
       threshold: 1,
