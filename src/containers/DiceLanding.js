@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Create a reference that will be contain the Canvas element
+const ref = React.createRef();
+
 // Returns a landing page for the Dice Game
 const DiceLanding = () => {
   const classes = useStyles();
@@ -37,7 +40,7 @@ const DiceLanding = () => {
       </Grid>
       {/* ThreeDice Game */}
       <div>
-        <ThreeDice />
+        <ThreeDice ref={ref} />
       </div>
     </div>
   );
