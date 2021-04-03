@@ -30,23 +30,23 @@ const CollisionMesh = () => {
   return (
     <group>
       <mesh ref={floor}>
-        <boxBufferGeometry args={[18.5, 2.0, 37]} />
+        <boxBufferGeometry args={[18.5, 0, 36.5]} />
         <meshStandardMaterial color="yellow" transparent opacity={0} />
       </mesh>
       <mesh ref={left}>
-        <boxBufferGeometry args={[18.5, 4.5, 0]} />
+        <boxBufferGeometry args={[18.36, 4, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={right}>
-        <boxBufferGeometry args={[18.5, 4.5, 0]} />
+        <boxBufferGeometry args={[18.36, 4, 0]} />
         <meshStandardMaterial color="red" transparent opacity={0} />
       </mesh>
       <mesh ref={bottom}>
-        <boxBufferGeometry args={[37, 4.5, 0]} />
+        <boxBufferGeometry args={[36.52, 4, 0]} />
         <meshStandardMaterial color="green" transparent opacity={0} />
       </mesh>
       <mesh ref={top}>
-        <boxBufferGeometry args={[37, 4.5, 0]} />
+        <boxBufferGeometry args={[36.52, 4, 0]} />
         <meshStandardMaterial color="green" transparent opacity={0} />
       </mesh>
     </group>
