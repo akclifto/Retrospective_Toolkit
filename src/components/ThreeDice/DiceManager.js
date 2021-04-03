@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, useMemo } from "react";
 import { atom, useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { BoxBufferGeometry } from "three";
+import { useThree, useFrame } from "react-three-fiber";
 import { uniqueImageSet } from "../Dice/Dice";
 import ThemedDie from "./ThemedDie";
 import CollisionMesh from "./CollisionMesh";
@@ -68,6 +69,16 @@ const DiceManager = (props) => {
     setImagesTwo,
   ]);
 
+  const { viewport } = useThree();
+  const mousePos = [];
+
+  useFrame((state) => {
+    const { mouse } = state;
+    const { width, height } = viewport();
+    mousePos[0] = (mouse.x * width) / 2;
+    mousePos[1] = (mouse.y * height) / 2;
+  });
+
   return (
     <Suspense fallback={null}>
       {dicePosition.map((pos, index) => (
@@ -81,6 +92,7 @@ const DiceManager = (props) => {
           setImages={imageArray[index].setImages}
           geom={geom}
           setOrbitControl={setOrbitControl}
+          mousePos={mousePos}
         />
       ))}
       <CollisionMesh />
