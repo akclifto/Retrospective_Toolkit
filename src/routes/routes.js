@@ -10,9 +10,7 @@ import AuthLandingPage from "../pages/AuthLandingPage";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PageNotFound from "../pages/PageNotFound";
-// can remove this after testing IconsDataStructure is done
 import Testing from "../pages/Testing";
-// import InfoCard from "../components/InfoCard";
 
 const theme = createMuiTheme({
   palette: {

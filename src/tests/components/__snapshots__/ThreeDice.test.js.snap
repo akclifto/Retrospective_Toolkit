@@ -28,6 +28,5 @@ exports[`ThreeDice Testing renders and matches snapshot 1`] = `
       Loading game textures....
     </ForwardRef>
   </Memo(Canvas)>
-  )
 </Fragment>
 `;
