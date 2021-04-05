@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
 import React, { useEffect } from "react";
-import { useThree } from "react-three-fiber";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
@@ -23,8 +21,8 @@ const ThemedDie = (props) => {
     setImages,
     geom,
     setOrbitControl,
+    mousePos,
   } = props;
-  // const [pos, setPos] = useState(diePos);
   const textures = useTexture([...imageSet]);
 
   const [mesh, api] = useBox(() => ({
@@ -40,32 +38,36 @@ const ThemedDie = (props) => {
     material: { restitution: 0.3 },
   }));
 
-  const { size, viewport } = useThree();
-  const aspect = size.width / viewport.width;
   const isDragging = React.useRef(false);
 
   const clickBind = useGesture({
     onClick: () => {
-      if (isDragging.current) return;
-      rerollDieToggle(!rerollValue);
-      singleRollSound();
+      if (!isDragging.current) {
+        rerollDieToggle(!rerollValue);
+        singleRollSound();
+      }
     },
   });
 
   const dragBind = useDrag(
-    ({ offset: [x, y], first, last }) => {
+    ({ first, last }) => {
       if (first) {
         setOrbitControl(false);
         isDragging.current = true;
+        api.mass.set(0);
+        api.collisionResponse.set(0);
       } else if (last) {
-        isDragging.current = false;
+        // eslint-disable-next-line no-return-assign
+        setTimeout(() => (isDragging.current = false), 100);
         setOrbitControl(true);
+        api.mass.set(300);
+        api.collisionResponse.set(1);
       }
-      api.position.set(x / aspect, 1.5, y / aspect);
+      api.position.set(mousePos[0], 2, -mousePos[1]);
     },
     {
-      threshold: 1,
-      delay: 1000,
+      initial: () => [mousePos[0], mousePos[1]],
+      filterTaps: true,
     }
   );
 
@@ -116,6 +118,7 @@ ThemedDie.propTypes = {
   rerollDieToggle: PropTypes.func.isRequired,
   geom: PropTypes.shape().isRequired,
   setOrbitControl: PropTypes.func.isRequired,
+  mousePos: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default ThemedDie;
