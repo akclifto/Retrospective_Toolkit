@@ -1,5 +1,5 @@
 .infoCard--root {
-  width: 96.6vw;
+  width: 100%;
   margin: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -14,7 +14,7 @@
 }
 
 .title-button {
-  width: 96.6vw;
+  width: 100%;
   padding-top: 12px; /* top right bottom left */
   margin-top: 12px;
   text-align: center;
@@ -36,6 +36,7 @@
 }
 
 .info-open {
+  width: 100%;
   max-height: 400px;
   transition: max-height 0.4s ease;
   height: 88%;
