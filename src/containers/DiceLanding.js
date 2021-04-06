@@ -3,11 +3,13 @@
  */
 
 // Imports
+/* eslint-disable */
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
+import SocketIO from 'socket.io.client';
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
@@ -17,10 +19,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 // Returns a landing page for the Dice Game
 const DiceLanding = () => {
   const classes = useStyles();
-
+  const connectionConfig = {
+    jsonp: false,
+    reconnection: true,
+    reconnectionDelay: 100,
+    reconnectionAttempts: 100000,
+    transports: ['websocket'], // you need to explicitly tell it to use websockets
+   };
+  
+   this.socket = SocketIO('http://localhost:5000',connectionConfig);
+   this.socket.on('connect', () => {
+        console.log('connected to server');
+   });
   return (
     <div>
       <Grid className={classes.root} container direction="row">
