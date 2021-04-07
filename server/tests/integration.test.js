@@ -63,12 +63,12 @@ describe("DB/Postgres Testing", () => {
 
 /** DB/REDIS TESTING */
 describe("DB/Redis Testing", () => {
-  it("Tests redis createClient,createClient() should create AWS client", async (done) => {
+  it("Tests redis createClient,createClient() should create AWS client", (done) => {
     try {
-      await request(redisTestClient);
+      request(redisTestClient);
       expect.assertions(2);
       expect(redisTestClient.address).toBe(
-        "ec2-34-202-178-6.compute-1.amazonaws.com:29099"
+        "ec2-3-210-163-2.compute-1.amazonaws.com:19299"
       );
       expect(redisTestClient).toBeTruthy();
       done();
@@ -77,14 +77,14 @@ describe("DB/Redis Testing", () => {
     }
   });
 
-  it("Test redis connection, should return connecting true, hadError false", async (done) => {
+  it("Test redis connection, should return connecting true, hadError false", (done) => {
     try {
       request(redisTestClient);
       expect(redisTestClient.stream).toEqual(
         expect.objectContaining({
           connecting: true,
           _hadError: false,
-          _host: "ec2-34-202-178-6.compute-1.amazonaws.com",
+          _host: "ec2-3-210-163-2.compute-1.amazonaws.com",
         })
       );
       done();
