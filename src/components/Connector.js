@@ -13,4 +13,8 @@ const customConfig = {
 
 const getUniqueName = () => uniqueNamesGenerator(customConfig);
 
-export default getUniqueName;
+const connect = (socket, id) => {
+  socket.emit("createRoom", id);
+};
+
+export { getUniqueName, connect };

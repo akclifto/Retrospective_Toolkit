@@ -6,9 +6,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import socketIOClient from "socket.io-client";
 import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
-import getUniqueName from "../components/Connector";
+import { getUniqueName, connect } from "../components/Connector";
+
+const ENDPOINT = "192.168.50.1532:3000";
+const socket = socketIOClient(ENDPOINT, {
+  path: "/",
+});
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
@@ -18,9 +24,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const generateURL = () => {
+socket.on("talk", (text) => {
   // eslint-disable-next-line
-  console.log(getUniqueName());
+  console.log(`Received this from server! ${text}`);
+});
+
+const generateURL = () => {
+  const name = getUniqueName();
+  // eslint-disable-next-line
+  console.log(`CLIENT SIDE NAME: ${name}`);
+  connect(socket, name);
 };
 
 // Returns a landing page for the Dice Game
