@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -10,6 +9,8 @@ import AuthLandingPage from "../pages/AuthLandingPage";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PageNotFound from "../pages/PageNotFound";
+import DiceLanding from "../containers/DiceLanding";
+// can remove this after testing IconsDataStructure is done
 import Testing from "../pages/Testing";
 
 const theme = createMuiTheme({
@@ -30,6 +31,7 @@ function Routes() {
         <ThemeProvider theme={theme}>
           <Switch>
             <Route exact path="/" component={LandingPage} />
+            <Route path="/board/:roomId" component={DiceLanding} />
             <Route path="/admin" component={ifAuth(AuthLandingPage)} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />

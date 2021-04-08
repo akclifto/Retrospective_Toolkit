@@ -1,12 +1,22 @@
+/* eslint-disable no-console */
 const express = require("express");
 
-const port = process.env.PORT || 5000;
-const socketIO = require("socket.io");
+const app = express();
+const server = require("http").createServer(app);
+
+const options = {
+  cors: true,
+  origins: ["http://127.0.0.1:5000"],
+};
+const io = require("socket.io")(server, options);
 const router = require("./routes");
 const session = require("./middleware/session");
 
-const app = express();
+const port = process.env.PORT || 5000;
+
 app.use(express.json());
+
+const rooms = [];
 
 // if behind a proxy, uncomment this
 // server.set('trust proxy', 1);
@@ -14,24 +24,32 @@ app.use(express.json());
 app.use(session);
 app.use(router);
 
-const server = app.listen(port, () =>
+server.listen(port, () =>
   // eslint-disable-next-line no-console
   console.log(`server is running on port ${port}`)
 );
 
-const io = socketIO(server);
+io.on("connection", (socket) => {
+  // functions here
+  console.log("new connection established");
 
-const rooms = [];
+  socket.on("board:create", (roomId) => {
+    console.log("board created");
+    rooms.push(roomId);
+    console.log("room created");
+    console.log(rooms);
+    socket.join(roomId);
+    console.log("joined room");
+    io.sockets.emit("create:complete", "this is from the server!");
+  });
 
-io.on("connection", () => {
-  // eslint-disable-next-line no-console
-  console.log("New client connected");
-  io.emit("talk");
-});
+  socket.on("board:delete", (roomId) => {
+    const position = rooms.indexOf(roomId);
+    rooms.splice(position, 1);
 
-io.on("createRoom", (roomName) => {
-  rooms.push(roomName);
-  io.emit("talk", `Received new room with name of ${roomName}!`);
+    console.log("room deleted");
+    console.log(rooms);
+  });
 });
 
 module.exports = server;
