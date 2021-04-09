@@ -3,18 +3,6 @@ import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import * as io from "socket.io-client";
 
-const generateRoll = () => {
-  // some logic here
-};
-
-const sendRoll = () => {
-  // some logic here
-};
-
-const getRoll = () => {
-  // some logic here
-};
-
 const NetworkManager = () => {
   const [socket, setSocket] = useState();
   let roomId;
@@ -56,4 +44,3 @@ const NetworkManager = () => {
 };
 
 export default NetworkManager;
-export { generateRoll, sendRoll, getRoll };

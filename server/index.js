@@ -11,6 +11,7 @@ const options = {
 const io = require("socket.io")(server, options);
 const router = require("./routes");
 const session = require("./middleware/session");
+// const { text } = require("express");
 
 const port = process.env.PORT || 5000;
 
@@ -49,6 +50,11 @@ io.on("connection", (socket) => {
 
     console.log("room deleted");
     console.log(rooms);
+  });
+
+  socket.on("talk", (chat) => {
+    console.log(chat);
+    socket.emit("talk", "Sent a talk message initiated by client");
   });
 });
 

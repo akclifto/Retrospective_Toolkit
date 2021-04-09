@@ -2,19 +2,18 @@
  * This class will be used as a container component that holds the other components in the landing page
  */
 
+/* eslint-disable no-console */
 // Imports
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import socketIOClient from "socket.io-client";
 import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
 import { getUniqueName, connect } from "../components/Connector";
 
-const ENDPOINT = "192.168.50.1532:3000";
-const socket = socketIOClient(ENDPOINT, {
-  path: "/",
-});
+let firstTime;
+let socket;
+const roomId = getUniqueName();
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles((theme) => ({
@@ -24,16 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-socket.on("talk", (text) => {
-  // eslint-disable-next-line
-  console.log(`Received this from server! ${text}`);
-});
-
 const generateURL = () => {
-  const name = getUniqueName();
   // eslint-disable-next-line
-  console.log(`CLIENT SIDE NAME: ${name}`);
-  connect(socket, name);
+  console.log(`CLIENT SIDE NAME: ${roomId}`);
+  if (!firstTime) {
+    firstTime = true;
+    socket = connect(roomId);
+  }
+  socket.emit("talk", "Sent a message from client");
 };
 
 // Returns a landing page for the Dice Game
@@ -60,6 +57,13 @@ const DiceLanding = () => {
             body2="Click the 'Generate URL' button and give it to someone else to put in their browser"
             buttonName="Generate URL"
             buttonOnClick={generateURL}
+          />
+          <InfoCard
+            title="Join Board"
+            body="If you want to join someone else's board:"
+            body2="Type in their code in the field and click 'Join Game!'"
+            buttonName="Join Game"
+            // buttonOnClick={joinGame}
           />
         </Grid>
         <Grid item xs={12}>

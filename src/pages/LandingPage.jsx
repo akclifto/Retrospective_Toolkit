@@ -1,6 +1,6 @@
 import React from "react";
-import NetworkManager from "../components/ThreeDice/NetworkManager";
+import DiceLanding from "../containers/DiceLanding";
 
-const LandingPage = () => <NetworkManager />;
+const LandingPage = () => <DiceLanding />;
 
 export default LandingPage;

@@ -3,6 +3,7 @@ import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
+// eslint-ignore-next-line
 import { useGesture, useDrag } from "react-use-gesture";
 import { uniqueImageSet } from "../Dice/Dice";
 
