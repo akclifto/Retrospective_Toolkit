@@ -1,10 +1,10 @@
+/* eslint-disable no-console */
 import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { useGesture, useDrag } from "react-use-gesture";
-import { uniqueImageSet } from "../Dice/Dice";
 
 const singleRollSound = () => {
   new Audio("/diceRoll.m4a").play();
@@ -16,12 +16,13 @@ const ThemedDie = (props) => {
     diceInitPos,
     rerollAllToggle,
     rerollValue,
-    rerollDieToggle,
+    // rerollDieToggle,
     imageSet,
     setImages,
     geom,
     setOrbitControl,
     mousePos,
+    rotationValues,
   } = props;
   const textures = useTexture([...imageSet]);
 
@@ -29,9 +30,9 @@ const ThemedDie = (props) => {
     mass: 300,
     inertia: 13,
     rotation: [
-      Math.random() * Math.PI,
-      Math.random() * Math.PI,
-      Math.random() * Math.PI,
+      rotationValues[0] * Math.PI,
+      rotationValues[1] * Math.PI,
+      rotationValues[2] * Math.PI,
     ],
     linearDamping: 0.5,
     angularDamping: 0.1,
@@ -43,7 +44,7 @@ const ThemedDie = (props) => {
   const clickBind = useGesture({
     onClick: () => {
       if (!isDragging.current) {
-        rerollDieToggle(!rerollValue);
+        // rerollDieToggle(!rerollValue);
         singleRollSound();
       }
     },
@@ -75,7 +76,6 @@ const ThemedDie = (props) => {
     api.position.set(diceInitPos[0], diceInitPos[1], diceInitPos[2]);
     api.velocity.set(15, 0, -10);
     api.angularVelocity.set(-15, 2, -10);
-    setImages(uniqueImageSet);
   }, [
     api.angularVelocity,
     api.position,
@@ -119,6 +119,7 @@ ThemedDie.propTypes = {
   geom: PropTypes.shape().isRequired,
   setOrbitControl: PropTypes.func.isRequired,
   mousePos: PropTypes.arrayOf(PropTypes.number).isRequired,
+  rotationValues: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default ThemedDie;

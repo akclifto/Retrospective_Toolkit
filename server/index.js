@@ -35,18 +35,38 @@ io.on("connection", (socket) => {
 
   socket.on("board:create", (roomId) => {
     console.log("board created");
-    rooms[roomId] = { diceState: { randRotation: [], diceImages: {} } };
+    rooms[roomId] = { rotationValues: [], diceImages: {} };
     console.log("room created");
     console.log(rooms);
     socket.join(roomId);
     console.log("joined room");
-    io.sockets.emit("create:complete", { msg: "this is from the server!" });
+    io.sockets.emit("create:complete", "this is from the server!");
   });
 
   socket.on("board:delete", (roomId) => {
     delete rooms[roomId];
     console.log("room deleted");
     console.log(rooms);
+  });
+
+  socket.on("host:newRoll", (roomId, rotationValues, hostImageArray) => {
+    console.log("new roll by host");
+    console.log(`New roll: ${rotationValues}`);
+    console.log(`New roll: ${hostImageArray}`);
+    rooms[roomId].rotationValues = rotationValues;
+    rooms[roomId].diceImages = hostImageArray;
+    io.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
+  });
+
+  socket.on("game:start", (roomId, rotationValues, hostImageArray) => {
+    console.log("game started by host");
+    console.log(rotationValues);
+    console.log(hostImageArray);
+    rooms[roomId].rotationValues = rotationValues;
+    rooms[roomId].diceImages = hostImageArray;
+    console.log(`Values set: ${rooms}`);
+    io.to(roomId).emit("game:started");
+    io.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
   });
 });
 
