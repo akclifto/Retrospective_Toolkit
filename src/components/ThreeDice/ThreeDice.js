@@ -3,10 +3,12 @@ import { Canvas } from "react-three-fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Provider } from "jotai";
+import PropTypes from "prop-types";
 import { initDiceImages, isDiceInit } from "../Dice/Dice";
 import GameManager from "./GameManager";
 
-const ThreeDice = () => {
+const ThreeDice = (props) => {
+  const { socket, roomId } = props;
   // Allows the initDiceImages function to load only once on startup.
   const [loading, setLoading] = useState(true);
   const [isEnabled, setOrbitControl] = useState(true);
@@ -42,7 +44,11 @@ const ThreeDice = () => {
           <>
             <Physics gravity={[0, -30, 0]} defaultContactMaterial>
               <Provider>
-                <GameManager setOrbitControl={setOrbitControl} />
+                <GameManager
+                  setOrbitControl={setOrbitControl}
+                  socket={socket}
+                  roomId={roomId}
+                />
               </Provider>
             </Physics>
             <OrbitControls
@@ -56,6 +62,11 @@ const ThreeDice = () => {
       </Canvas>
     </>
   );
+};
+ThreeDice.propTypes = {
+  roomId: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  socket: PropTypes.object.isRequired,
 };
 
 export default ThreeDice;

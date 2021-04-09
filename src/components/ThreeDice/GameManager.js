@@ -6,14 +6,19 @@ import Icon from "@material-ui/core/Icon";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { gameStartState, rerollState } from "./gameState";
-import DiceManager from "./DiceManager";
+import HostDiceManager from "./HostDiceManager";
+import UserDiceManager from "./UserDiceManager";
+
+const getRole = () =>
+  sessionStorage.getItem("role") ? sessionStorage.getItem("role") : "user";
 
 /* istanbul ignore next */
 const GameManager = (props) => {
-  const { setOrbitControl } = props;
+  const { setOrbitControl, socket, roomId } = props;
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const rollSound = new Audio("/diceRoll.m4a");
+  const role = getRole();
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -26,6 +31,8 @@ const GameManager = (props) => {
   }));
 
   const classes = useStyles();
+  // eslint-disable-next-line no-console
+  console.log(role);
 
   return (
     <>
@@ -39,7 +46,7 @@ const GameManager = (props) => {
       <Suspense fallback={<ProgressBar />}>
         <ModelLoader url="../../table/BlackRedTable.glb" />
       </Suspense>
-      {!gameStarted && (
+      {!gameStarted && role === "host" && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
           <Button
             variant="contained"
@@ -55,9 +62,14 @@ const GameManager = (props) => {
           </Button>
         </Html>
       )}
-      {gameStarted && (
+      {gameStarted && role === "host" && (
         <>
-          <DiceManager reroll={reroll} setOrbitControl={setOrbitControl} />
+          <HostDiceManager
+            reroll={reroll}
+            setOrbitControl={setOrbitControl}
+            socket={socket}
+            roomId={roomId}
+          />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
@@ -74,11 +86,19 @@ const GameManager = (props) => {
           </Html>
         </>
       )}
+      {role === "user" && (
+        <>
+          <UserDiceManager setOrbitControl={setOrbitControl} socket={socket} />
+        </>
+      )}
     </>
   );
 };
 GameManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
+  roomId: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  socket: PropTypes.object.isRequired,
 };
 /* istanbul ignore next */
 const ProgressBar = () => {

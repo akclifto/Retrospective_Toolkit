@@ -6,6 +6,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import PropTypes from "prop-types";
 import InfoCard from "../components/InfoCard";
 import ThreeDice from "../components/ThreeDice/ThreeDice";
 
@@ -18,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Returns a landing page for the Dice Game
-const DiceLanding = () => {
+const DiceLanding = (props) => {
+  const { socket, roomId } = props;
   const classes = useStyles();
 
   return (
@@ -35,11 +37,16 @@ const DiceLanding = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <ThreeDice />
+          <ThreeDice socket={socket} roomId={roomId} />
         </Grid>
       </Grid>
     </div>
   );
+};
+DiceLanding.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  socket: PropTypes.object.isRequired,
+  roomId: PropTypes.string.isRequired,
 };
 
 export default DiceLanding;

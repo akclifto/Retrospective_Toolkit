@@ -4,12 +4,12 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Red from "@material-ui/core/colors/red";
 import ifAuth from "../components/ifAuth";
 import LayoutTemplate from "../containers/LayoutTemplate";
-import LandingPage from "../pages/LandingPage";
 import AuthLandingPage from "../pages/AuthLandingPage";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import PageNotFound from "../pages/PageNotFound";
-import DiceLanding from "../containers/DiceLanding";
+import NetworkManager from "../components/ThreeDice/NetworkManager";
+import GameController from "../controller/gameController";
 // can remove this after testing IconsDataStructure is done
 import Testing from "../pages/Testing";
 
@@ -26,12 +26,12 @@ const theme = createMuiTheme({
 
 function Routes() {
   return (
-    <BrowserRouter forceRefresh>
+    <BrowserRouter>
       <LayoutTemplate>
         <ThemeProvider theme={theme}>
           <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/board/:roomId" component={DiceLanding} />
+            <Route exact path="/" component={GameController} />
+            <Route path="/retro/:roomId" component={NetworkManager} />
             <Route path="/admin" component={ifAuth(AuthLandingPage)} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
