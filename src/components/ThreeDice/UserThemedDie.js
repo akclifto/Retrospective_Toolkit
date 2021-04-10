@@ -29,6 +29,7 @@ const ThemedDie = (props) => {
   const [mesh, api] = useBox(() => ({
     mass: 300,
     inertia: 13,
+    position: [diceInitPos[0], diceInitPos[1], diceInitPos[2]],
     rotation: [
       rotationValues[0] * Math.PI,
       rotationValues[1] * Math.PI,
@@ -76,13 +77,20 @@ const ThemedDie = (props) => {
     api.position.set(diceInitPos[0], diceInitPos[1], diceInitPos[2]);
     api.velocity.set(15, 0, -10);
     api.angularVelocity.set(-15, 2, -10);
+    api.rotation.set(
+      rotationValues[0] * Math.PI,
+      rotationValues[1] * Math.PI,
+      rotationValues[2] * Math.PI
+    );
   }, [
     api.angularVelocity,
     api.position,
+    api.rotation,
     api.velocity,
     diceInitPos,
     rerollAllToggle,
     rerollValue,
+    rotationValues,
     setImages,
   ]);
 
