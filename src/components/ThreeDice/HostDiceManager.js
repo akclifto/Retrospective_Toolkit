@@ -11,12 +11,12 @@ import { diceDefaultState } from "./gameState";
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
-  const { reroll, setOrbitControl, socket, roomId } = props;
+  const { reroll, setOrbitControl, socket, roomId, gameStatus } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [dicePosition] = useAtom(diceDefaultState);
 
-  const [userGameReady, setUserReady] = useState(false);
+  const [userGameReady, setUserReady] = useState(gameStatus);
 
   const [dieImagesOne, setImagesOne] = useState(uniqueImageSet);
   const [dieImagesTwo, setImagesTwo] = useState(uniqueImageSet);
@@ -102,6 +102,7 @@ const DiceManager = (props) => {
       socket.emit("host:newRoll", roomId, userRotationArray, userImageArray);
     else {
       socket.emit("game:start", roomId, userRotationArray, userImageArray);
+      // console.log(userRotationArray);
       setUserReady(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -144,6 +145,7 @@ DiceManager.propTypes = {
   reroll: PropTypes.bool,
   setOrbitControl: PropTypes.func.isRequired,
   roomId: PropTypes.string.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };

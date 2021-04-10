@@ -8,7 +8,7 @@ import { initDiceImages, isDiceInit } from "../Dice/Dice";
 import GameManager from "./GameManager";
 
 const ThreeDice = (props) => {
-  const { socket, roomId } = props;
+  const { socket, roomId, gameStatus } = props;
   // Allows the initDiceImages function to load only once on startup.
   const [loading, setLoading] = useState(true);
   const [isEnabled, setOrbitControl] = useState(true);
@@ -48,6 +48,7 @@ const ThreeDice = (props) => {
                   setOrbitControl={setOrbitControl}
                   socket={socket}
                   roomId={roomId}
+                  gameStatus={gameStatus}
                 />
               </Provider>
             </Physics>
@@ -65,6 +66,7 @@ const ThreeDice = (props) => {
 };
 ThreeDice.propTypes = {
   roomId: PropTypes.string.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };

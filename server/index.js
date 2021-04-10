@@ -33,9 +33,22 @@ io.on("connection", (socket) => {
   // functions here
   console.log("new connection established");
 
+  socket.on("is:roomCreated", (roomId) => {
+    socket.emit("room:status", !!rooms[roomId]);
+  });
+
+  socket.on("is:gameStarted", (roomId) => {
+    socket.emit("game:status", rooms[roomId].gameStarted);
+  });
+
+  socket.on("join:Room", (roomId) => {
+    socket.join(roomId);
+    console.log("joined room");
+  });
+
   socket.on("board:create", (roomId) => {
     console.log("board created");
-    rooms[roomId] = { rotationValues: [], diceImages: {} };
+    rooms[roomId] = { gameStarted: false, rotationValues: [], diceImages: {} };
     console.log("room created");
     console.log(rooms);
     socket.join(roomId);
@@ -55,18 +68,26 @@ io.on("connection", (socket) => {
     console.log(`New roll: ${hostImageArray}`);
     rooms[roomId].rotationValues = rotationValues;
     rooms[roomId].diceImages = hostImageArray;
-    io.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
+    socket.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
+  });
+
+  socket.on("get:update", (roomId, socketId) => {
+    console.log("user requesting update");
+    io.to(socketId).emit(
+      "user:init",
+      rooms[roomId].rotationValues,
+      rooms[roomId].diceImages
+    );
   });
 
   socket.on("game:start", (roomId, rotationValues, hostImageArray) => {
     console.log("game started by host");
-    console.log(rotationValues);
-    console.log(hostImageArray);
+    rooms[roomId].gameStarted = true;
     rooms[roomId].rotationValues = rotationValues;
     rooms[roomId].diceImages = hostImageArray;
-    console.log(`Values set: ${rooms}`);
-    io.to(roomId).emit("game:started");
-    io.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
+    console.log(rooms[roomId].rotationValues);
+    socket.to(roomId).emit("game:started");
+    socket.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
   });
 });
 

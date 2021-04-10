@@ -13,10 +13,11 @@ import { diceDefaultState } from "./gameState";
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
-  const { reroll, setOrbitControl, socket } = props;
+  const { reroll, setOrbitControl, socket, roomId, gameStatus } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
-  const [userGameReady, setUserReady] = useState(false);
+  const [userGameReady, setUserReady] = useState(gameStatus);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const [dicePosition] = useAtom(diceDefaultState);
 
@@ -73,12 +74,27 @@ const DiceManager = (props) => {
 
   useEffect(() => {
     socket.on("game:started", () => {
+      console.log("inside game started");
       setUserReady(true);
+      setInitialLoad(false);
     });
-  }, [setUserReady, socket]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    console.log("inside DiveManager useEffect");
+    console.log("inside DiceManager useEffect");
+    if (initialLoad && userGameReady) {
+      socket.emit("get:update", roomId, socket.id);
+    }
+    socket.on("user:init", (rotationValues, imagesArray) => {
+      console.log("enter user:init");
+      // eslint-disable-next-line array-callback-return
+      imagesArray.map((image, index) => {
+        imageArray[index].setImages(image);
+        rotationArray[index].setRotation(rotationValues[index]);
+      });
+      setInitialLoad(false);
+    });
     socket.on("user:getRoll", (rotationValues, imagesArray) => {
       console.log("enter user:getRoll");
       // eslint-disable-next-line array-callback-return
@@ -89,7 +105,7 @@ const DiceManager = (props) => {
       console.log("success user:getRoll");
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userGameReady, initialLoad]);
 
   const { viewport } = useThree();
   const mousePos = [];
@@ -141,6 +157,8 @@ const DiceManager = (props) => {
 DiceManager.propTypes = {
   reroll: PropTypes.bool,
   setOrbitControl: PropTypes.func.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
+  roomId: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };
