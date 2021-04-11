@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import * as io from "socket.io-client";
 import DiceLanding from "../../containers/DiceLanding";
 
+/* istanbul ignore next */
 const NetworkManager = () => {
   const [socket, setSocket] = useState();
   const { roomId } = useParams();
