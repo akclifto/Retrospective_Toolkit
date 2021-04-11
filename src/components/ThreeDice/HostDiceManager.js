@@ -9,6 +9,8 @@ import HostThemedDie from "./HostThemedDie";
 import CollisionMesh from "./CollisionMesh";
 import { diceDefaultState } from "./gameState";
 
+const newRotationArray = () => [Math.random(), Math.random(), Math.random()];
+
 /* istanbul ignore next */
 const DiceManager = (props) => {
   const { reroll, setOrbitControl, socket, roomId, gameStatus } = props;
@@ -17,12 +19,13 @@ const DiceManager = (props) => {
   const [dicePosition] = useAtom(diceDefaultState);
 
   const [userGameReady, setUserReady] = useState(gameStatus);
+  const [initialRoll, setInitialRoll] = useState(true);
 
-  const [dieImagesOne, setImagesOne] = useState(uniqueImageSet);
-  const [dieImagesTwo, setImagesTwo] = useState(uniqueImageSet);
-  const [dieImagesThree, setImagesThree] = useState(uniqueImageSet);
-  const [dieImagesFour, setImagesFour] = useState(uniqueImageSet);
-  const [dieImagesFive, setImagesFive] = useState(uniqueImageSet);
+  const [dieImagesOne, setImagesOne] = useState(uniqueImageSet());
+  const [dieImagesTwo, setImagesTwo] = useState(uniqueImageSet());
+  const [dieImagesThree, setImagesThree] = useState(uniqueImageSet());
+  const [dieImagesFour, setImagesFour] = useState(uniqueImageSet());
+  const [dieImagesFive, setImagesFive] = useState(uniqueImageSet());
 
   const [rerollOne, toggleRerollOne] = useState(false);
   const [rerollTwo, toggleRerollTwo] = useState(false);
@@ -97,14 +100,43 @@ const DiceManager = (props) => {
   ];
 
   useEffect(() => {
-    console.log(`Inside useEffect: ${imageArray[0].images}`);
-    if (userGameReady)
-      socket.emit("host:newRoll", roomId, userRotationArray, userImageArray);
-    else {
+    if (!initialRoll && userGameReady) {
+      const newImageArray = [];
+      const newRotArray = [];
+
+      for (let i = 0; i < 5; i += 1) {
+        newImageArray.push(uniqueImageSet());
+        imageArray[i].setImages(newImageArray[i]);
+        newRotArray.push(newRotationArray());
+        rotationArray[i].setRotation(newRotArray[i]);
+      }
+
+      socket.emit("host:newRoll", roomId, newRotArray, newImageArray);
+    } else if (!userGameReady) {
+      console.log("starting game");
       socket.emit("game:start", roomId, userRotationArray, userImageArray);
-      // console.log(userRotationArray);
       setUserReady(true);
+      setInitialRoll(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reroll]);
+
+  useEffect(() => {
+    if (userGameReady) {
+      socket.emit("get:update", roomId);
+      setInitialRoll(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    socket.on("user:init", (rotationValues, imagesArray) => {
+      // eslint-disable-next-line array-callback-return
+      imagesArray.map((image, index) => {
+        imageArray[index].setImages(image);
+        rotationArray[index].setRotation(rotationValues[index]);
+      });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -124,16 +156,13 @@ const DiceManager = (props) => {
         <HostThemedDie
           key={pos.uuid}
           diceInitPos={pos.position}
-          rerollAllToggle={reroll}
           rerollValue={rerollArray[index].rerollDie}
           rerollDieToggle={rerollArray[index].reroll}
           imageSet={imageArray[index].images}
-          setImages={imageArray[index].setImages}
           geom={geom}
           setOrbitControl={setOrbitControl}
           mousePos={mousePos}
           rotationValues={rotationArray[index].rotation}
-          setRotationValues={rotationArray[index].setRotation}
         />
       ))}
       <CollisionMesh />

@@ -14,11 +14,9 @@ const singleRollSound = () => {
 const ThemedDie = (props) => {
   const {
     diceInitPos,
-    rerollAllToggle,
-    rerollValue,
+    // rerollAllToggle,
     // rerollDieToggle,
     imageSet,
-    setImages,
     geom,
     setOrbitControl,
     mousePos,
@@ -82,17 +80,8 @@ const ThemedDie = (props) => {
       rotationValues[1] * Math.PI,
       rotationValues[2] * Math.PI
     );
-  }, [
-    api.angularVelocity,
-    api.position,
-    api.rotation,
-    api.velocity,
-    diceInitPos,
-    rerollAllToggle,
-    rerollValue,
-    rotationValues,
-    setImages,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rotationValues]);
 
   return (
     <mesh
@@ -122,8 +111,8 @@ ThemedDie.propTypes = {
   imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
   setImages: PropTypes.func.isRequired,
   rerollAllToggle: PropTypes.bool.isRequired,
-  rerollValue: PropTypes.bool.isRequired,
-  rerollDieToggle: PropTypes.func.isRequired,
+  // rerollValue: PropTypes.bool.isRequired,
+  // rerollDieToggle: PropTypes.func.isRequired,
   geom: PropTypes.shape().isRequired,
   setOrbitControl: PropTypes.func.isRequired,
   mousePos: PropTypes.arrayOf(PropTypes.number).isRequired,
