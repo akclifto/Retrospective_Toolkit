@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Routes/routes Testing SNAPSHOT: Routes 1`] = `
-<Component
-  forceRefresh={true}
->
+<Component>
   <LayoutTemplate>
     <ThemeProvider
       theme={
@@ -302,6 +300,10 @@ exports[`Routes/routes Testing SNAPSHOT: Routes 1`] = `
           component={[Function]}
           exact={true}
           path="/"
+        />
+        <ifAuth
+          component={[Function]}
+          path="/retro/:roomId"
         />
         <ifAuth
           component={[Function]}

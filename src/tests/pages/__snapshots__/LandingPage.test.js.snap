@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pages/LandingPage Testing SNAPSHOT: LandingPage 1`] = `<DiceLanding />`;
+exports[`Pages/LandingPage Testing SNAPSHOT: LandingPage 1`] = `<NetworkManager />`;
