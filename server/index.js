@@ -69,6 +69,13 @@ io.on("connection", (socket) => {
     socket.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
   });
 
+  socket.on("host:newDieRoll", (roomId, rotationValue, hostImage, index) => {
+    console.log("new single die roll by host");
+    rooms[roomId].rotationValues[index] = rotationValue;
+    rooms[roomId].diceImages[index] = hostImage;
+    socket.to(roomId).emit("user:getDieRoll", rotationValue, hostImage, index);
+  });
+
   socket.on("get:update", (roomId) => {
     console.log("user requesting update");
     socket.emit(

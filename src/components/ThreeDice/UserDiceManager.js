@@ -18,7 +18,6 @@ const UserDiceManager = (props) => {
 
   const [userGameReady, setUserReady] = useState(gameStatus);
   const [waitingForInit, setWaitingForInit] = useState(true);
-  const [reroll, setReroll] = useState(false);
 
   const [dicePosition] = useAtom(diceDefaultState);
 
@@ -27,14 +26,6 @@ const UserDiceManager = (props) => {
   const [dieImagesThree, setImagesThree] = useState();
   const [dieImagesFour, setImagesFour] = useState();
   const [dieImagesFive, setImagesFive] = useState();
-
-  /*
-  const [rerollOne, toggleRerollOne] = useState(false);
-  const [rerollTwo, toggleRerollTwo] = useState(false);
-  const [rerollThree, toggleRerollThree] = useState(false);
-  const [rerollFour, toggleRerollFour] = useState(false);
-  const [rerollFive, toggleRerollFive] = useState(false);
-  */
 
   const [rotationOne, setRotationOne] = useState();
   const [rotationTwo, setRotationTwo] = useState();
@@ -49,15 +40,6 @@ const UserDiceManager = (props) => {
     { images: dieImagesFour, setImages: setImagesFour },
     { images: dieImagesFive, setImages: setImagesFive },
   ];
-  /*
-  const rerollArray = [
-    { rerollDie: rerollOne, reroll: toggleRerollOne },
-    { rerollDie: rerollTwo, reroll: toggleRerollTwo },
-    { rerollDie: rerollThree, reroll: toggleRerollThree },
-    { rerollDie: rerollFour, reroll: toggleRerollFour },
-    { rerollDie: rerollFive, reroll: toggleRerollFive },
-  ];
-  */
 
   const rotationArray = [
     { rotation: rotationOne, setRotation: setRotationOne },
@@ -94,13 +76,17 @@ const UserDiceManager = (props) => {
     });
     socket.on("user:getRoll", (rotationValues, imagesArray) => {
       // eslint-disable-next-line array-callback-return
-      imageArray.map((die, index) => {
-        die.setImages(imagesArray[index]);
+      imagesArray.map((image, index) => {
+        imageArray[index].setImages(image);
         rotationArray[index].setRotation(rotationValues[index]);
       });
       if (!userGameReady) setUserReady(true);
       if (waitingForInit) setWaitingForInit(false);
-      setReroll(!reroll);
+    });
+    socket.on("user:getDieRoll", (rotationValue, newImage, index) => {
+      imageArray[index].setImages(newImage);
+      rotationArray[index].setRotation(rotationValue);
+      setWaitingForInit(false);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -134,15 +120,12 @@ const UserDiceManager = (props) => {
             <UserThemedDie
               key={pos.uuid}
               diceInitPos={pos.position}
-              rerollAllToggle={reroll}
-              // rerollValue={rerollArray[index].rerollDie}
-              // rerollDieToggle={rerollArray[index].reroll}
+              rotationValues={rotationArray[index].rotation}
               imageSet={imageArray[index].images}
               setImages={imageArray[index].setImages}
               geom={geom}
               setOrbitControl={setOrbitControl}
               mousePos={mousePos}
-              rotationValues={rotationArray[index].rotation}
             />
           ))}
           <CollisionMesh />

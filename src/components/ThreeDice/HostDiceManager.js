@@ -140,6 +140,62 @@ const DiceManager = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // WIP for single die roll
+  useEffect(() => {
+    if (!initialRoll) {
+      const newImage = uniqueImageSet();
+      const newRotation = newRotationArray();
+      imageArray[0].setImages(newImage);
+      rotationArray[0].setRotation(newRotation);
+      socket.emit("host:newDieRoll", roomId, newRotation, newImage, 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rerollOne]);
+
+  useEffect(() => {
+    if (!initialRoll) {
+      const newImage = uniqueImageSet();
+      const newRotation = newRotationArray();
+      imageArray[1].setImages(newImage);
+      rotationArray[1].setRotation(newRotation);
+      socket.emit("host:newDieRoll", roomId, newRotation, newImage, 1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rerollTwo]);
+
+  useEffect(() => {
+    if (!initialRoll) {
+      const newImage = uniqueImageSet();
+      const newRotation = newRotationArray();
+      imageArray[2].setImages(newImage);
+      rotationArray[2].setRotation(newRotation);
+      socket.emit("host:newDieRoll", roomId, newRotation, newImage, 2);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rerollThree]);
+
+  useEffect(() => {
+    if (!initialRoll) {
+      const newImage = uniqueImageSet();
+      const newRotation = newRotationArray();
+      imageArray[3].setImages(newImage);
+      rotationArray[3].setRotation(newRotation);
+      socket.emit("host:newDieRoll", roomId, newRotation, newImage, 3);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rerollFour]);
+
+  useEffect(() => {
+    if (!initialRoll) {
+      const newImage = uniqueImageSet();
+      const newRotation = newRotationArray();
+      imageArray[4].setImages(newImage);
+      rotationArray[4].setRotation(newRotation);
+      socket.emit("host:newDieRoll", roomId, newRotation, newImage, 4);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rerollFive]);
+
   const { viewport } = useThree();
   const mousePos = [];
 
