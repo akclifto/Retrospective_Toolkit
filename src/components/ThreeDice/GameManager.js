@@ -31,10 +31,6 @@ const GameManager = (props) => {
   }));
 
   const classes = useStyles();
-  // eslint-disable-next-line no-console
-  console.log(role);
-  // eslint-disable-next-line no-console
-  console.log(gameStatus);
 
   return (
     <>

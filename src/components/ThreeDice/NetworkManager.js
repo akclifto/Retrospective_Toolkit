@@ -44,7 +44,7 @@ const NetworkManager = () => {
   }, [gameStatus, roomStatus]);
 
   useEffect(() => {
-    if (receivedGameStatus && !isConnected && role !== "host" && roomStatus) {
+    if (receivedGameStatus !== 0 && !isConnected && roomStatus) {
       console.log("entered join room if");
       socket.emit("join:Room", roomId);
       setConnectionStatus(true);
@@ -53,7 +53,7 @@ const NetworkManager = () => {
   }, [receivedGameStatus]);
 
   useEffect(() => {
-    if (receivedRoomStatus && role === "host" && !roomStatus) {
+    if (receivedRoomStatus !== 0 && role === "host" && !roomStatus) {
       console.log("inside received room status");
       socket.emit("board:create", roomId);
       setConnectionStatus(true);

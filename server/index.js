@@ -64,16 +64,14 @@ io.on("connection", (socket) => {
 
   socket.on("host:newRoll", (roomId, rotationValues, hostImageArray) => {
     console.log("new roll by host");
-    console.log(`New roll: ${rotationValues}`);
-    console.log(`New roll: ${hostImageArray}`);
     rooms[roomId].rotationValues = rotationValues;
     rooms[roomId].diceImages = hostImageArray;
     socket.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
   });
 
-  socket.on("get:update", (roomId, socketId) => {
+  socket.on("get:update", (roomId) => {
     console.log("user requesting update");
-    io.to(socketId).emit(
+    socket.emit(
       "user:init",
       rooms[roomId].rotationValues,
       rooms[roomId].diceImages
@@ -85,8 +83,6 @@ io.on("connection", (socket) => {
     rooms[roomId].gameStarted = true;
     rooms[roomId].rotationValues = rotationValues;
     rooms[roomId].diceImages = hostImageArray;
-    console.log(rooms[roomId].rotationValues);
-    socket.to(roomId).emit("game:started");
     socket.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
   });
 });
