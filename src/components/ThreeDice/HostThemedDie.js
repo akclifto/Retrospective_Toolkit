@@ -14,8 +14,8 @@ const singleRollSound = () => {
 const ThemedDie = (props) => {
   const {
     diceInitPos,
-    // rerollValue,
-    // rerollDieToggle,
+    rerollValue,
+    rerollDieToggle,
     imageSet,
     geom,
     setOrbitControl,
@@ -44,7 +44,7 @@ const ThemedDie = (props) => {
   const clickBind = useGesture({
     onClick: () => {
       if (!isDragging.current) {
-        // rerollDieToggle(!rerollValue);
+        rerollDieToggle(!rerollValue);
         singleRollSound();
       }
     },
@@ -110,8 +110,8 @@ const ThemedDie = (props) => {
 ThemedDie.propTypes = {
   diceInitPos: PropTypes.arrayOf(PropTypes.number).isRequired,
   imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // rerollValue: PropTypes.bool.isRequired,
-  // rerollDieToggle: PropTypes.func.isRequired,
+  rerollValue: PropTypes.bool.isRequired,
+  rerollDieToggle: PropTypes.func.isRequired,
   geom: PropTypes.shape().isRequired,
   setOrbitControl: PropTypes.func.isRequired,
   mousePos: PropTypes.arrayOf(PropTypes.number).isRequired,
