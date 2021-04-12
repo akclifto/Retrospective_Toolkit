@@ -9,11 +9,11 @@ import { gameStartState, rerollState } from "./gameState";
 import DiceManager from "./DiceManager";
 
 /* istanbul ignore next */
-const GameManager = () => {
+const GameManager = (props) => {
+  const { setOrbitControl } = props;
   const [gameStarted, setGameState] = useAtom(gameStartState);
   const [reroll, rerollDice] = useAtom(rerollState);
   const rollSound = new Audio("/diceRoll.m4a");
-
   const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -37,7 +37,7 @@ const GameManager = () => {
         shadow-mapSize-height={1024}
       />
       <Suspense fallback={<ProgressBar />}>
-        <ModelLoader url="table/BIG_TABLE.glb" />
+        <ModelLoader url="table/BlackRedTable.glb" />
       </Suspense>
       {!gameStarted && (
         <Html position={[-4, 0, 2]} scaleFactor={25}>
@@ -57,7 +57,7 @@ const GameManager = () => {
       )}
       {gameStarted && (
         <>
-          <DiceManager reroll={reroll} />
+          <DiceManager reroll={reroll} setOrbitControl={setOrbitControl} />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
@@ -77,6 +77,9 @@ const GameManager = () => {
     </>
   );
 };
+GameManager.propTypes = {
+  setOrbitControl: PropTypes.func.isRequired,
+};
 /* istanbul ignore next */
 const ProgressBar = () => {
   const { progress } = useProgress();
@@ -85,7 +88,7 @@ const ProgressBar = () => {
 /* istanbul ignore next */
 const ModelLoader = ({ url }) => {
   const { scene } = useGLTF(url);
-  return <primitive object={scene} />;
+  return <primitive object={scene} dispose={null} />;
 };
 ModelLoader.propTypes = {
   url: PropTypes.string.isRequired,

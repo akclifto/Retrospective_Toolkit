@@ -1,6 +1,8 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useMemo } from "react";
 import { atom, useAtom } from "jotai";
 import PropTypes from "prop-types";
+import { BoxBufferGeometry } from "three";
+import { useThree, useFrame } from "react-three-fiber";
 import { uniqueImageSet } from "../Dice/Dice";
 import ThemedDie from "./ThemedDie";
 import CollisionMesh from "./CollisionMesh";
@@ -20,9 +22,11 @@ const rerollDieFive = atom(false);
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
-  const { reroll } = props;
+  const { reroll, setOrbitControl } = props;
+  const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [dicePosition] = useAtom(diceDefaultState);
+
   const [dieImagesOne, setImagesOne] = useAtom(dieOneImageState);
   const [dieImagesTwo, setImagesTwo] = useAtom(dieTwoImageState);
   const [dieImagesThree, setImagesThree] = useAtom(dieThreeImageState);
@@ -65,17 +69,30 @@ const DiceManager = (props) => {
     setImagesTwo,
   ]);
 
+  const { viewport } = useThree();
+  const mousePos = [];
+
+  useFrame((state) => {
+    const { mouse } = state;
+    const { width, height } = viewport();
+    mousePos[0] = (mouse.x * width) / 2;
+    mousePos[1] = (mouse.y * height) / 2;
+  });
+
   return (
     <Suspense fallback={null}>
       {dicePosition.map((pos, index) => (
         <ThemedDie
           key={pos.uuid}
-          dicePos={pos.position}
+          diceInitPos={pos.position}
           rerollAllToggle={reroll}
           rerollValue={rerollArray[index].rerollDie}
           rerollDieToggle={rerollArray[index].reroll}
           imageSet={imageArray[index].images}
           setImages={imageArray[index].setImages}
+          geom={geom}
+          setOrbitControl={setOrbitControl}
+          mousePos={mousePos}
         />
       ))}
       <CollisionMesh />
@@ -85,6 +102,7 @@ const DiceManager = (props) => {
 
 DiceManager.propTypes = {
   reroll: PropTypes.bool.isRequired,
+  setOrbitControl: PropTypes.func.isRequired,
 };
 
 export default DiceManager;

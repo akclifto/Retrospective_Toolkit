@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Components/Header Testing SNAPSHOT: Header 1`] = `
-<Fragment>
+<div>
   <HideOnScroll>
     <WithStyles(ForwardRef(AppBar))
       className="makeStyles-toolbar-2"
@@ -14,6 +14,7 @@ exports[`Components/Header Testing SNAPSHOT: Header 1`] = `
         >
           <img
             alt="logo"
+            className="makeStyles-sfLogo-5"
             src="https://d1g31diwtzkeb3.cloudfront.net/statefarmLogo.svg"
           />
         </Link>
@@ -35,5 +36,5 @@ exports[`Components/Header Testing SNAPSHOT: Header 1`] = `
     </WithStyles(ForwardRef(AppBar))>
   </HideOnScroll>
   <WithStyles(ForwardRef(Toolbar)) />
-</Fragment>
+</div>
 `;

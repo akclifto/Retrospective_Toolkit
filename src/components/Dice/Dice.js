@@ -8,12 +8,10 @@
  */
 import randomIconSelector from "../RandomIconSelector";
 
-const AWS = require("aws-sdk");
-const config = require("../../resources/awsConfig.json");
+const lambdaURL =
+  "https://rdy5i3cmkd.execute-api.us-west-1.amazonaws.com/prod/Dice";
 
-const BASEURL = "https://retrospective-toolkit.s3-us-west-1.amazonaws.com/";
-
-// import errorIcon from "../resources/dangerous-24px.svg";
+// import errorIcon from "../resources/dangerous-24px.svg"
 const fullDiceArray = [];
 let workingGroup = [];
 
@@ -59,78 +57,19 @@ const isDiceInit = () => {
 };
 
 /**
- * Formats the Content into a usuable array for the rest of the project.
-  
- * An example object is:
-  {
-    Key: 'Dice/Themes/insert_photo.png',
-    LastModified: 2021-01-23T03:46:55.000Z,
-    ETag: '"3610cd99a0afa5fdd64dcdda8a62ea97"',
-    Size: 329,
-    StorageClass: 'STANDARD'
-  }
-
-  We really only care about "Key" field here. It has all the info we need.
-
- * @param S3Content the content array received from the S3 Bucket
- */
-const formatDiceArray = (S3Content) => {
-  // Iterate over each object in Content Array
-  S3Content.forEach((S3Object) => {
-    // Make sure no info is clean through each iteration
-    let name = "";
-    const formattedDiceEntry = {
-      URL: BASEURL,
-      Name: "",
-      Theme: "",
-    };
-
-    // An example URL is "https://retrospective-toolkit.s3-us-west-1.amazonaws.com/Dice/Themes/Action/alt_route-24px.svg"
-    formattedDiceEntry.URL += S3Object.Key;
-
-    // Second to last in array should be theme, last one should be unformatted name
-    const KeyArray = S3Object.Key.split("/");
-    name = KeyArray[KeyArray.length - 1];
-    formattedDiceEntry.Theme = KeyArray[KeyArray.length - 2];
-
-    // In case we take out the "-24px" in the S3 bucket
-    const pxIndex = name.indexOf("-");
-    if (pxIndex !== -1) {
-      name = name.substr(0, pxIndex);
-    }
-    name = name.replace("_", " ");
-    formattedDiceEntry.Name = name;
-
-    fullDiceArray.push(formattedDiceEntry);
-  });
-};
-
-/**
- * Makes the call to AWS and formats the response into a neat Array of JSON objects, each object representing an image.
+ * Makes the call to an URL on AWS that returns a formatted JSON array of all of the dice images.
+ * Each entry contains the fields:
+ *  URL: points to S3 bucket
+ *  Name: name of item
+ *  Theme: Which theme folder it resides in the S3 bucket
  * @returns the full dice array, non randomized, containing all useful information.
  */
 const initDiceImages = async () => {
   // Initialize s3 object to point to our S3 bucket for the class
   try {
-    AWS.config.update({
-      accessKeyId: config.accessKey,
-      secretAccessKey: config.secretAccessKey,
-      region: "us-west-1",
-    });
-
-    const s3 = new AWS.S3();
-
-    // Parameters needed to get to the folder we're looking for in the S3 bucket
-    const params = {
-      Bucket: "retrospective-toolkit",
-      Prefix: "Dice/Themes/",
-    };
-    // Getting the folder and its contents from S3 Bucket
-    AWS.config.setPromisesDependency();
-    const getS3Objects = await s3.listObjectsV2(params).promise();
-
-    getS3Objects.Contents.shift(); // Removes first element, which is the Dice/Themes/Action folder "object"
-    formatDiceArray(getS3Objects.Contents);
+    const response = await fetch(lambdaURL);
+    const data = await response.json();
+    fullDiceArray.push(...data);
   } catch (e) {
     // eslint-disable-next-line
     console.log("error occured", e);
@@ -185,4 +124,10 @@ const uniqueImage = () => {
   return randomDiceThemes.map((Theme) => Theme.URL);
 };
 
-export { initDiceImages, uniqueImageSet, uniqueImage, isDiceInit };
+export {
+  initDiceImages,
+  uniqueImageSet,
+  uniqueImage,
+  isDiceInit,
+  fullDiceArray,
+};
