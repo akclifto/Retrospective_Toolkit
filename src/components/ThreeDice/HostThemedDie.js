@@ -1,39 +1,34 @@
+/* eslint-disable no-console */
 import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { useGesture, useDrag } from "react-use-gesture";
-// import { uniqueImageSet } from "../Dice/Dice";
 
 const singleRollSound = () => {
   new Audio("/diceRoll.m4a").play();
 };
 
-// const newRandomArray = () => [Math.random(), Math.random(), Math.random()];
-
 /* istanbul ignore next */
 const ThemedDie = (props) => {
   const {
     diceInitPos,
-    rerollAllToggle,
     rerollValue,
     rerollDieToggle,
     imageSet,
-    // setImages,
     geom,
     setOrbitControl,
     mousePos,
     rotationValues,
-    // setRotationValues,
   } = props;
   // eslint-disable-next-line no-console
-  console.log(`Inside ThemedDie: ${imageSet}`);
   const textures = useTexture([...imageSet]);
 
   const [mesh, api] = useBox(() => ({
     mass: 300,
     inertia: 13,
+    position: [diceInitPos[0], diceInitPos[1], diceInitPos[2]],
     rotation: [
       rotationValues[0] * Math.PI,
       rotationValues[1] * Math.PI,
@@ -81,17 +76,13 @@ const ThemedDie = (props) => {
     api.position.set(diceInitPos[0], diceInitPos[1], diceInitPos[2]);
     api.velocity.set(15, 0, -10);
     api.angularVelocity.set(-15, 2, -10);
-    // setRotationValues(newRandomArray);
-    // setImages(uniqueImageSet);
+    api.rotation.set(
+      rotationValues[0] * Math.PI,
+      rotationValues[1] * Math.PI,
+      rotationValues[2] * Math.PI
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    api.angularVelocity,
-    api.position,
-    api.velocity,
-    diceInitPos,
-    rerollAllToggle,
-    rerollValue,
-  ]);
+  }, [rotationValues]);
 
   return (
     <mesh
@@ -119,15 +110,12 @@ const ThemedDie = (props) => {
 ThemedDie.propTypes = {
   diceInitPos: PropTypes.arrayOf(PropTypes.number).isRequired,
   imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setImages: PropTypes.func.isRequired,
-  rerollAllToggle: PropTypes.bool.isRequired,
   rerollValue: PropTypes.bool.isRequired,
   rerollDieToggle: PropTypes.func.isRequired,
   geom: PropTypes.shape().isRequired,
   setOrbitControl: PropTypes.func.isRequired,
   mousePos: PropTypes.arrayOf(PropTypes.number).isRequired,
   rotationValues: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setRotationValues: PropTypes.func.isRequired,
 };
 
 export default ThemedDie;

@@ -1,11 +1,11 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Html, useGLTF, useProgress } from "@react-three/drei";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
-import { gameStartState, rerollState } from "./gameState";
+import { rerollState } from "./gameState";
 import HostDiceManager from "./HostDiceManager";
 import UserDiceManager from "./UserDiceManager";
 
@@ -14,8 +14,8 @@ const getRole = () =>
 
 /* istanbul ignore next */
 const GameManager = (props) => {
-  const { setOrbitControl, socket, roomId } = props;
-  const [gameStarted, setGameState] = useAtom(gameStartState);
+  const { setOrbitControl, socket, roomId, gameStatus } = props;
+  const [gameStarted, setGameState] = useState(gameStatus);
   const [reroll, rerollDice] = useAtom(rerollState);
   const rollSound = new Audio("/diceRoll.m4a");
   const role = getRole();
@@ -31,8 +31,6 @@ const GameManager = (props) => {
   }));
 
   const classes = useStyles();
-  // eslint-disable-next-line no-console
-  console.log(role);
 
   return (
     <>
@@ -69,6 +67,7 @@ const GameManager = (props) => {
             setOrbitControl={setOrbitControl}
             socket={socket}
             roomId={roomId}
+            gameStatus={gameStatus}
           />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
@@ -88,7 +87,12 @@ const GameManager = (props) => {
       )}
       {role === "user" && (
         <>
-          <UserDiceManager setOrbitControl={setOrbitControl} socket={socket} />
+          <UserDiceManager
+            setOrbitControl={setOrbitControl}
+            socket={socket}
+            gameStatus={gameStatus}
+            roomId={roomId}
+          />
         </>
       )}
     </>
@@ -97,6 +101,7 @@ const GameManager = (props) => {
 GameManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
   roomId: PropTypes.string.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };

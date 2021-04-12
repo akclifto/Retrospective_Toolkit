@@ -12,11 +12,12 @@ import CollisionMesh from "./CollisionMesh";
 import { diceDefaultState } from "./gameState";
 
 /* istanbul ignore next */
-const DiceManager = (props) => {
-  const { reroll, setOrbitControl, socket } = props;
+const UserDiceManager = (props) => {
+  const { setOrbitControl, socket, roomId, gameStatus } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
-  const [userGameReady, setUserReady] = useState(false);
+  const [userGameReady, setUserReady] = useState(gameStatus);
+  const [waitingForInit, setWaitingForInit] = useState(true);
 
   const [dicePosition] = useAtom(diceDefaultState);
 
@@ -25,12 +26,6 @@ const DiceManager = (props) => {
   const [dieImagesThree, setImagesThree] = useState();
   const [dieImagesFour, setImagesFour] = useState();
   const [dieImagesFive, setImagesFive] = useState();
-
-  const [rerollOne, toggleRerollOne] = useState(false);
-  const [rerollTwo, toggleRerollTwo] = useState(false);
-  const [rerollThree, toggleRerollThree] = useState(false);
-  const [rerollFour, toggleRerollFour] = useState(false);
-  const [rerollFive, toggleRerollFive] = useState(false);
 
   const [rotationOne, setRotationOne] = useState();
   const [rotationTwo, setRotationTwo] = useState();
@@ -44,14 +39,6 @@ const DiceManager = (props) => {
     { images: dieImagesThree, setImages: setImagesThree },
     { images: dieImagesFour, setImages: setImagesFour },
     { images: dieImagesFive, setImages: setImagesFive },
-  ];
-
-  const rerollArray = [
-    { rerollDie: rerollOne, reroll: toggleRerollOne },
-    { rerollDie: rerollTwo, reroll: toggleRerollTwo },
-    { rerollDie: rerollThree, reroll: toggleRerollThree },
-    { rerollDie: rerollFour, reroll: toggleRerollFour },
-    { rerollDie: rerollFive, reroll: toggleRerollFive },
   ];
 
   const rotationArray = [
@@ -72,21 +59,48 @@ const DiceManager = (props) => {
   const classes = useStyles();
 
   useEffect(() => {
-    socket.on("game:started", () => {
-      setUserReady(true);
-    });
-  }, [setUserReady, socket]);
+    if (waitingForInit && userGameReady) {
+      socket.emit("get:update", roomId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [waitingForInit, userGameReady]);
 
   useEffect(() => {
-    console.log("inside DiveManager useEffect");
-    socket.on("user:getRoll", (rotationValues, imagesArray) => {
-      console.log("enter user:getRoll");
+    socket.on("user:init", (rotationValues, imagesArray) => {
       // eslint-disable-next-line array-callback-return
       imagesArray.map((image, index) => {
         imageArray[index].setImages(image);
         rotationArray[index].setRotation(rotationValues[index]);
       });
-      console.log("success user:getRoll");
+      setWaitingForInit(false);
+    });
+    socket.on("user:initQueue", (rollObject) => {
+      if (rollObject.die === null) {
+        // eslint-disable-next-line array-callback-return
+        rollObject.image.map((image, index) => {
+          imageArray[index].setImages(image);
+          rotationArray[index].setRotation(rollObject.rotation[index]);
+        });
+        setWaitingForInit(false);
+      } else {
+        // eslint-disable-next-line array-callback-return
+        imageArray[rollObject.die].setImages(rollObject.image);
+        rotationArray[rollObject.die].setRotation(rollObject.rotation);
+      }
+    });
+    socket.on("user:getRoll", (rotationValues, imagesArray) => {
+      // eslint-disable-next-line array-callback-return
+      imagesArray.map((image, index) => {
+        imageArray[index].setImages(image);
+        rotationArray[index].setRotation(rotationValues[index]);
+      });
+      if (!userGameReady) setUserReady(true);
+      if (waitingForInit) setWaitingForInit(false);
+    });
+    socket.on("user:getDieRoll", (rotationValue, newImage, index) => {
+      imageArray[index].setImages(newImage);
+      rotationArray[index].setRotation(rotationValue);
+      setWaitingForInit(false);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -114,21 +128,18 @@ const DiceManager = (props) => {
           </Button>
         </Html>
       )}
-      {userGameReady && !!dieImagesFive && !!rotationFive && (
+      {!waitingForInit && (
         <Suspense fallback={null}>
           {dicePosition.map((pos, index) => (
             <UserThemedDie
               key={pos.uuid}
               diceInitPos={pos.position}
-              rerollAllToggle={reroll}
-              rerollValue={rerollArray[index].rerollDie}
-              rerollDieToggle={rerollArray[index].reroll}
+              rotationValues={rotationArray[index].rotation}
               imageSet={imageArray[index].images}
               setImages={imageArray[index].setImages}
               geom={geom}
               setOrbitControl={setOrbitControl}
               mousePos={mousePos}
-              rotationValues={rotationArray[index].rotation}
             />
           ))}
           <CollisionMesh />
@@ -138,15 +149,12 @@ const DiceManager = (props) => {
   );
 };
 
-DiceManager.propTypes = {
-  reroll: PropTypes.bool,
+UserDiceManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
+  roomId: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };
 
-DiceManager.defaultProps = {
-  reroll: false,
-};
-
-export default DiceManager;
+export default UserDiceManager;

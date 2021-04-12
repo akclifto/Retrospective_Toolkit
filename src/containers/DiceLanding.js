@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 // Returns a landing page for the Dice Game
 const DiceLanding = (props) => {
-  const { socket, roomId } = props;
+  const { socket, roomId, gameStatus } = props;
   const classes = useStyles();
 
   return (
@@ -37,7 +37,7 @@ const DiceLanding = (props) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <ThreeDice socket={socket} roomId={roomId} />
+          <ThreeDice socket={socket} roomId={roomId} gameStatus={gameStatus} />
         </Grid>
       </Grid>
     </div>
@@ -47,6 +47,7 @@ DiceLanding.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
   roomId: PropTypes.string.isRequired,
+  gameStatus: PropTypes.bool.isRequired,
 };
 
 export default DiceLanding;
