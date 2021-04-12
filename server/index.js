@@ -4,9 +4,12 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 
+const production = "https://examplePage.com";
+const development = "http://localhost:3000/";
+
 const options = {
   cors: true,
-  origins: ["http://127.0.0.1:5000"],
+  origins: [process.env.NODE_ENV ? production : development],
 };
 const io = require("socket.io")(server, options);
 const router = require("./routes");
