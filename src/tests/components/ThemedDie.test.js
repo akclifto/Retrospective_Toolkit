@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { Suspense } from "react";
 import { shallow } from "enzyme";
-import ThemedDie from "../../components/ThreeDice/ThemedDie";
+import ThemedDie from "../../components/ThreeDice/UserThemedDie";
 
 describe("ThreeDice/ThemedDie Testing", () => {
   it("should do a snapshot test on ThemedDie", async () => {

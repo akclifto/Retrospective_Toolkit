@@ -36,8 +36,8 @@ describe("Testing isDiceInit()", () => {
 });
 
 describe("Testing uniqueness of image sets", () => {
-  beforeEach(() => {
-    initDiceImages().then();
+  beforeEach(async () => {
+    await initDiceImages();
   });
 
   test("Two sets of images are unique", () => {
