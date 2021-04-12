@@ -48,7 +48,12 @@ io.on("connection", (socket) => {
 
   socket.on("board:create", (roomId) => {
     console.log("board created");
-    rooms[roomId] = { gameStarted: false, rotationValues: [], diceImages: {} };
+    rooms[roomId] = {
+      gameStarted: false,
+      rotationValues: [],
+      diceImages: {},
+      diceQueue: [],
+    };
     console.log("room created");
     console.log(rooms);
     socket.join(roomId);
@@ -71,18 +76,36 @@ io.on("connection", (socket) => {
 
   socket.on("host:newDieRoll", (roomId, rotationValue, hostImage, index) => {
     console.log("new single die roll by host");
-    rooms[roomId].rotationValues[index] = rotationValue;
-    rooms[roomId].diceImages[index] = hostImage;
+    if (rooms[roomId].diceQueue.length === 0)
+      rooms[roomId].diceQueue.push({
+        rotation: rooms[roomId].rotationValues,
+        image: rooms[roomId].diceImages,
+        die: null,
+      });
+    rooms[roomId].diceQueue.push({
+      rotation: rotationValue,
+      image: hostImage,
+      die: index,
+    });
     socket.to(roomId).emit("user:getDieRoll", rotationValue, hostImage, index);
   });
 
   socket.on("get:update", (roomId) => {
     console.log("user requesting update");
-    socket.emit(
-      "user:init",
-      rooms[roomId].rotationValues,
-      rooms[roomId].diceImages
-    );
+    if (rooms[roomId].diceQueue.length === 0) {
+      socket.emit("user:initQueue", rooms[roomId].diceQueue.shift());
+    } else {
+      socket.emit("user:initQueue", rooms[roomId].diceQueue.shift());
+      for (
+        let i = 0, time = 3000;
+        i < rooms[roomId].diceQueue.length;
+        i += 1, time += 2000
+      ) {
+        setTimeout(() => {
+          socket.emit("user:initQueue", rooms[roomId].diceQueue.shift());
+        }, time);
+      }
+    }
   });
 
   socket.on("game:start", (roomId, rotationValues, hostImageArray) => {

@@ -74,6 +74,20 @@ const UserDiceManager = (props) => {
       });
       setWaitingForInit(false);
     });
+    socket.on("user:initQueue", (rollObject) => {
+      if (rollObject.die === null) {
+        // eslint-disable-next-line array-callback-return
+        rollObject.image.map((image, index) => {
+          imageArray[index].setImages(image);
+          rotationArray[index].setRotation(rollObject.rotation[index]);
+        });
+        setWaitingForInit(false);
+      } else {
+        // eslint-disable-next-line array-callback-return
+        imageArray[rollObject.die].setImages(rollObject.image);
+        rotationArray[rollObject.die].setRotation(rollObject.rotation);
+      }
+    });
     socket.on("user:getRoll", (rotationValues, imagesArray) => {
       // eslint-disable-next-line array-callback-return
       imagesArray.map((image, index) => {
