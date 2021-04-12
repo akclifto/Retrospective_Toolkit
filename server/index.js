@@ -71,6 +71,7 @@ io.on("connection", (socket) => {
     console.log("new roll by host");
     rooms[roomId].rotationValues = rotationValues;
     rooms[roomId].diceImages = hostImageArray;
+    rooms[roomId].diceQueue.length = 0;
     socket.to(roomId).emit("user:getRoll", rotationValues, hostImageArray);
   });
 
@@ -93,16 +94,17 @@ io.on("connection", (socket) => {
   socket.on("get:update", (roomId) => {
     console.log("user requesting update");
     if (rooms[roomId].diceQueue.length === 0) {
-      socket.emit("user:initQueue", rooms[roomId].diceQueue.shift());
+      socket.emit(
+        "user:init",
+        rooms[roomId].rotationValues,
+        rooms[roomId].diceImages
+      );
     } else {
-      socket.emit("user:initQueue", rooms[roomId].diceQueue.shift());
-      for (
-        let i = 0, time = 3000;
-        i < rooms[roomId].diceQueue.length;
-        i += 1, time += 2000
-      ) {
+      const queue = rooms[roomId].diceQueue.slice();
+      socket.emit("user:initQueue", queue.shift());
+      for (let i = 0, time = 3000; i < queue.length; i += 1, time += 2000) {
         setTimeout(() => {
-          socket.emit("user:initQueue", rooms[roomId].diceQueue.shift());
+          socket.emit("user:initQueue", queue.shift());
         }, time);
       }
     }

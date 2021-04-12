@@ -137,10 +137,22 @@ const DiceManager = (props) => {
         rotationArray[index].setRotation(rotationValues[index]);
       });
     });
+    socket.on("user:initQueue", (rollObject) => {
+      if (rollObject.die === null) {
+        // eslint-disable-next-line array-callback-return
+        rollObject.image.map((image, index) => {
+          imageArray[index].setImages(image);
+          rotationArray[index].setRotation(rollObject.rotation[index]);
+        });
+      } else {
+        // eslint-disable-next-line array-callback-return
+        imageArray[rollObject.die].setImages(rollObject.image);
+        rotationArray[rollObject.die].setRotation(rollObject.rotation);
+      }
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // WIP for single die roll
   useEffect(() => {
     if (!initialRoll) {
       const newImage = uniqueImageSet();
