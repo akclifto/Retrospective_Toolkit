@@ -12,7 +12,7 @@ beforeEach(() => {
 describe("ThreeDice Testing", () => {
   it("renders and matches snapshot", () => {
     expect(shallow(<ThreeDice />)).toMatchSnapshot();
-    expect(consoleSpy).not.toHaveBeenCalled();
-    expect(consoleSpy).toHaveBeenCalledTimes(0);
+    expect(consoleSpy).toHaveBeenCalled();
+    expect(consoleSpy).toHaveBeenCalledTimes(3);
   });
 });
