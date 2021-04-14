@@ -13,7 +13,6 @@ app.use(express.json());
 app.use(session);
 app.use(router);
 
-
 const server = app.listen(port, () =>
   // eslint-disable-next-line no-console
   console.log(`server is running on port ${port}`)
