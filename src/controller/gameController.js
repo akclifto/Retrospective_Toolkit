@@ -1,3 +1,5 @@
+import React from "react";
+import { Redirect } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 const GameController = () => {
@@ -7,13 +9,10 @@ const GameController = () => {
     roomId = uuidv4();
     sessionStorage.setItem("role", "host");
     sessionStorage.setItem("roomId", roomId);
-    window.location.assign(`/board/${roomId}`);
-  } else {
-    roomId = sessionStorage.getItem("roomId");
-    window.location.assign(`/retro/${roomId}`);
+    return <Redirect to={`/retro/${roomId}`} />;
   }
-
-  return null;
+  roomId = sessionStorage.getItem("roomId");
+  return <Redirect to={`/retro/${roomId}`} />;
 };
 
 export default GameController;

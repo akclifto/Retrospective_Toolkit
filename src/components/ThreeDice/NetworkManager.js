@@ -16,7 +16,13 @@ const NetworkManager = () => {
   const [isConnected, setConnectionStatus] = useState();
 
   useEffect(() => {
-    setSocket(io(window.location.origin.replace(window.location.port, "5000")));
+    setSocket(
+      io(
+        process.env.NODE_ENV
+          ? "https://retrotoolbox.herokuapp.com/"
+          : window.location.origin.replace(window.location.port, "5000")
+      )
+    );
   }, []);
 
   useEffect(() => {
