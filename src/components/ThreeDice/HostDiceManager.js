@@ -10,6 +10,9 @@ import CollisionMesh from "./CollisionMesh";
 import { diceDefaultState } from "./gameState";
 
 const newRotationArray = () => [Math.random(), Math.random(), Math.random()];
+const rollSound = () => {
+  new Audio("/diceRoll.m4a").play();
+};
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
@@ -148,6 +151,7 @@ const DiceManager = (props) => {
         // eslint-disable-next-line array-callback-return
         imageArray[rollObject.die].setImages(rollObject.image);
         rotationArray[rollObject.die].setRotation(rollObject.rotation);
+        rollSound();
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -207,6 +211,10 @@ const DiceManager = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rerollFive]);
+
+  useEffect(() => {
+    rollSound();
+  }, [reroll]);
 
   const { viewport } = useThree();
   const mousePos = [];

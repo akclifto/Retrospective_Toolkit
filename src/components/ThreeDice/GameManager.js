@@ -17,7 +17,6 @@ const GameManager = (props) => {
   const { setOrbitControl, socket, roomId, gameStatus } = props;
   const [gameStarted, setGameState] = useState(gameStatus);
   const [reroll, rerollDice] = useAtom(rerollState);
-  const rollSound = new Audio("/diceRoll.m4a");
   const role = getRole();
   const useStyles = makeStyles((theme) => ({
     button: {
@@ -53,7 +52,6 @@ const GameManager = (props) => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
-              rollSound.play();
             }}
           >
             Start Game
@@ -77,7 +75,6 @@ const GameManager = (props) => {
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
                 rerollDice(!reroll);
-                rollSound.play();
               }}
             >
               Roll It!
