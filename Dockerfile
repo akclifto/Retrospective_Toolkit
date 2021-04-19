@@ -33,13 +33,10 @@ RUN yarn run build
 #Stage 3: Add env variable support, move static files into nginx folder, and serve them
 FROM nginx:alpine
 
-RUN apk --no-cache add curl
-RUN curl -L https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-`uname -s`-`uname -m` -o envsubst && \
-    chmod +x envsubst && \
-    mv envsubst /usr/local/bin
+COPY ./nginx.conf /etc/nginx.conf
 
-COPY ./nginx.config /etc/nginx/nginx.template
-
-CMD ["/bin/sh", "-c", "envsubst '$$PORT' < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+COPY ./retrotoolbox.herokuapp.com.conf /etc/nginx/templates/default.conf.template
 
 COPY --from=builder /app/build /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
