@@ -14,7 +14,6 @@ import { diceDefaultState } from "./gameState";
 const rollSound = () => {
   new Audio("/diceRoll.m4a").play();
 };
-setTimeout(rollSound, 1000);
 
 /* istanbul ignore next */
 const UserDiceManager = (props) => {
@@ -102,13 +101,11 @@ const UserDiceManager = (props) => {
       });
       if (!userGameReady) setUserReady(true);
       if (waitingForInit) setWaitingForInit(false);
-      rollSound();
     });
     socket.on("user:getDieRoll", (rotationValue, newImage, index) => {
       imageArray[index].setImages(newImage);
       rotationArray[index].setRotation(rotationValue);
       setWaitingForInit(false);
-      rollSound();
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

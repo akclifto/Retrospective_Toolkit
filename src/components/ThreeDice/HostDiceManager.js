@@ -212,10 +212,6 @@ const DiceManager = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rerollFive]);
 
-  useEffect(() => {
-    rollSound();
-  }, [reroll]);
-
   const { viewport } = useThree();
   const mousePos = [];
 

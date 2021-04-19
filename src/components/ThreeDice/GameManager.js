@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { Html, useGLTF, useProgress } from "@react-three/drei";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,6 +11,10 @@ import UserDiceManager from "./UserDiceManager";
 
 const getRole = () =>
   sessionStorage.getItem("role") ? sessionStorage.getItem("role") : "user";
+
+const rollSound = () => {
+  new Audio("/diceRoll.m4a").play();
+};
 
 /* istanbul ignore next */
 const GameManager = (props) => {
@@ -30,6 +34,12 @@ const GameManager = (props) => {
   }));
 
   const classes = useStyles();
+
+  useEffect(() => {
+    if (gameStarted) {
+      rollSound();
+    }
+  }, [reroll, socket, gameStarted]);
 
   return (
     <>
