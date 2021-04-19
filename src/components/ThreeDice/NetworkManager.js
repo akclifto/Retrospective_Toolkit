@@ -15,6 +15,11 @@ const NetworkManager = () => {
   const [receivedRoomStatus, setReceivedRoomStatus] = useState(0);
   const [isConnected, setConnectionStatus] = useState();
 
+  // const url = process.env.NODE_ENV ? "" : "http://localhost:5000";
+
+  // console.log(url);
+  console.log(socket);
+
   useEffect(() => {
     setSocket(
       io(
@@ -26,7 +31,7 @@ const NetworkManager = () => {
   }, []);
 
   useEffect(() => {
-    if (socket) {
+    if (socket && socket.connected) {
       console.log("inside room check useEffect");
       socket.emit("is:roomCreated", roomId);
     }
@@ -69,7 +74,7 @@ const NetworkManager = () => {
   }, [receivedRoomStatus]);
 
   useEffect(() => {
-    if (socket) {
+    if (socket && socket.connected) {
       socket.on("room:status", (roomExists) => {
         console.log(`Room status: ${roomExists}`);
         if (!roomExists) {
@@ -91,6 +96,7 @@ const NetworkManager = () => {
   return (
     <>
       {socket &&
+        socket.connected &&
         receivedGameStatus !== 0 &&
         receivedRoomStatus !== 0 &&
         gameStatus !== 0 && (
