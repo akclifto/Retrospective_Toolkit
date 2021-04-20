@@ -39,7 +39,7 @@ describe("Components/InfoCard Testing", () => {
     fireEvent.click(screen.getByRole("button"));
 
     expect(mockCallBack).toHaveBeenCalledTimes(0);
-    expect(screen.getByText("TestButton")).toBeInTheDocument();
+    expect(screen.getByText("TestButton")).toBeDefined();
 
     fireEvent.click(screen.getByText("TestButton"));
     expect(mockCallBack).toHaveBeenCalledTimes(1);
@@ -49,6 +49,6 @@ describe("Components/InfoCard Testing", () => {
     render(<InfoCard body="Body1" body2="Body2" />);
 
     fireEvent.click(screen.getByRole("button"));
-    expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(screen.getAllByRole("button")).toHaveLength(1);
   });
 });
