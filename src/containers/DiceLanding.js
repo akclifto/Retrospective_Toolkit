@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DemoVideo = () => {
+const redirectToDemo = () => {
   window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 };
 
@@ -41,7 +41,7 @@ const DiceLanding = (props) => {
             Describe how the picture relates to an experience you had in software development.
             To re-roll all die, click the 'Roll It!' button, to re-roll one die, click on a single die to re-roll."
             buttonName="Video Demo"
-            buttonOnClick={DemoVideo}
+            buttonOnClick={redirectToDemo}
           />
         </Grid>
         <Grid item xs={12}>
