@@ -3,10 +3,8 @@
     "react-app",
     "airbnb",
     "plugin:jsx-a11y/recommended",
-    "plugin:testing-library/recommended",
     "plugin:jest-dom/recommended",
-    "prettier",
-    "prettier/react"
+    "prettier"
   ],
   "settings": {
     "import/resolver": {
