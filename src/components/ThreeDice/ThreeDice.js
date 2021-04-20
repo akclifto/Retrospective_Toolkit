@@ -23,6 +23,8 @@ const ThreeDice = (props) => {
         };
         loadDice();
       } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
       }
     } else {
       setLoading(false);

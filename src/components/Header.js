@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+
 const sfLogoURL = "https://d1g31diwtzkeb3.cloudfront.net/statefarmLogo.svg";
 
 // eslint-disable-next-line no-unused-vars
@@ -31,13 +32,13 @@ const Header = () => {
 
   return (
     <>
-        <AppBar className={classes.toolbar}>
-          <Toolbar className={classes.root}>
-            <Link to="/">
-              <img className={classes.sfLogo} src={sfLogoURL} alt="logo" />
-            </Link>
-          </Toolbar>
-        </AppBar>
+      <AppBar className={classes.toolbar}>
+        <Toolbar className={classes.root}>
+          <Link to="/">
+            <img className={classes.sfLogo} src={sfLogoURL} alt="logo" />
+          </Link>
+        </Toolbar>
+      </AppBar>
       <Toolbar />
     </>
   );

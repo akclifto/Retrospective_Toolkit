@@ -220,8 +220,8 @@ const DiceManager = (props) => {
 
   useFrame((state) => {
     const { mouse } = state;
-    const width = viewport.width;
-    const height = viewport.height;
+    const { width } = viewport;
+    const { height } = viewport;
     mousePos[0] = (mouse.x * width) / 2;
     mousePos[1] = (mouse.y * height) / 2;
   });

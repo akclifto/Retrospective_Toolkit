@@ -14,12 +14,13 @@ const NetworkManager = () => {
   const [receivedRoomStatus, setReceivedRoomStatus] = useState(0);
   const [isConnected, setConnectionStatus] = useState();
 
-  const url = (process.env.NODE_ENV === "production") ? "https://retrotoolbox.herokuapp.com/" : "http://localhost:5000";
+  const url =
+    process.env.NODE_ENV === "production"
+      ? "https://retrotoolbox.herokuapp.com/"
+      : "http://localhost:5000";
 
   useEffect(() => {
-    setSocket(
-      io(url)
-    );
+    setSocket(io(url));
   }, [url]);
 
   useEffect(() => {
