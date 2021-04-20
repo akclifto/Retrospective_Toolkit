@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { Html, useGLTF, useProgress } from "@react-three/drei";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,12 +12,15 @@ import UserDiceManager from "./UserDiceManager";
 const getRole = () =>
   sessionStorage.getItem("role") ? sessionStorage.getItem("role") : "user";
 
+const rollSound = () => {
+  new Audio("/diceRoll.m4a").play();
+};
+
 /* istanbul ignore next */
 const GameManager = (props) => {
   const { setOrbitControl, socket, roomId, gameStatus } = props;
   const [gameStarted, setGameState] = useState(gameStatus);
   const [reroll, rerollDice] = useAtom(rerollState);
-  const rollSound = new Audio("/diceRoll.m4a");
   const role = getRole();
   const useStyles = makeStyles((theme) => ({
     button: {
@@ -31,6 +34,12 @@ const GameManager = (props) => {
   }));
 
   const classes = useStyles();
+
+  useEffect(() => {
+    if (gameStarted) {
+      rollSound();
+    }
+  }, [reroll, gameStarted]);
 
   return (
     <>
@@ -53,7 +62,6 @@ const GameManager = (props) => {
             endIcon={<Icon>casino</Icon>}
             onClick={() => {
               setGameState(true);
-              rollSound.play();
             }}
           >
             Start Game
@@ -68,6 +76,7 @@ const GameManager = (props) => {
             socket={socket}
             roomId={roomId}
             gameStatus={gameStatus}
+            rollSound={rollSound}
           />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
@@ -77,7 +86,6 @@ const GameManager = (props) => {
               endIcon={<Icon>casino</Icon>}
               onClick={() => {
                 rerollDice(!reroll);
-                rollSound.play();
               }}
             >
               Roll It!
@@ -92,6 +100,7 @@ const GameManager = (props) => {
             socket={socket}
             gameStatus={gameStatus}
             roomId={roomId}
+            rollSound={rollSound}
           />
         </>
       )}
