@@ -2,7 +2,7 @@ import IconsArr, {
   actionArr,
   destinationArr,
   feelingArr,
-} from "../../constants/IconsDataStructure";
+} from "../testhelpers/IconsDataStructure";
 
 describe("Constants/IconDataStructure Testing", () => {
   it("Check valid length of Total Icons Array block", () => {

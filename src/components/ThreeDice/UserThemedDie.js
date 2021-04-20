@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";

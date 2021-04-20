@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
+/* istanbul ignore next */
 const GameController = () => {
   let roomId;
 

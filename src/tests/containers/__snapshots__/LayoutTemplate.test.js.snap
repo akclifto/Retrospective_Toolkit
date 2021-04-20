@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container/DiceLanding Testing SNAPSHOT: diceLanding 1`] = `
+<div
+  className="makeStyles-template-1"
+>
+  <Header />
+  <div />
+  <Footer />
+</div>
+`;

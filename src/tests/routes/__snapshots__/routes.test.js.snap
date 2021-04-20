@@ -295,36 +295,20 @@ exports[`Routes/routes Testing SNAPSHOT: Routes 1`] = `
         }
       }
     >
-      <ifAuth>
-        <ifAuth
+      <Switch>
+        <Route
           component={[Function]}
           exact={true}
           path="/"
         />
-        <ifAuth
+        <Route
           component={[Function]}
           path="/retro/:roomId"
         />
-        <ifAuth
-          component={[Function]}
-          path="/admin"
-        />
-        <ifAuth
-          component={[Function]}
-          path="/login"
-        />
-        <ifAuth
-          component={[Function]}
-          path="/signup"
-        />
-        <ifAuth
-          component={[Function]}
-          path="/testing"
-        />
-        <ifAuth
+        <Route
           component={[Function]}
         />
-      </ifAuth>
+      </Switch>
     </ThemeProvider>
   </LayoutTemplate>
 </Component>

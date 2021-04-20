@@ -9,6 +9,7 @@ import { rerollState } from "./gameState";
 import HostDiceManager from "./HostDiceManager";
 import UserDiceManager from "./UserDiceManager";
 
+/* istanbul ignore next */
 const getRole = () =>
   sessionStorage.getItem("role") ? sessionStorage.getItem("role") : "user";
 

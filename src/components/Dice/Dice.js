@@ -71,8 +71,6 @@ const initDiceImages = async () => {
     const data = await response.json();
     fullDiceArray.push(...data);
   } catch (e) {
-    // eslint-disable-next-line
-    console.log("error occured", e);
   }
   workingGroup = [...fullDiceArray];
   return fullDiceArray;
