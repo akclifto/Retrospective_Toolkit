@@ -13,7 +13,14 @@ const newRotationArray = () => [Math.random(), Math.random(), Math.random()];
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
-  const { reroll, setOrbitControl, socket, roomId, gameStatus } = props;
+  const {
+    reroll,
+    setOrbitControl,
+    socket,
+    roomId,
+    gameStatus,
+    rollSound,
+  } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [dicePosition] = useAtom(diceDefaultState);
@@ -147,6 +154,7 @@ const DiceManager = (props) => {
         // eslint-disable-next-line array-callback-return
         imageArray[rollObject.die].setImages(rollObject.image);
         rotationArray[rollObject.die].setRotation(rollObject.rotation);
+        rollSound();
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -243,6 +251,7 @@ DiceManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
   roomId: PropTypes.string.isRequired,
   gameStatus: PropTypes.bool.isRequired,
+  rollSound: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };
