@@ -39,7 +39,7 @@ const GameManager = (props) => {
     if (gameStarted) {
       rollSound();
     }
-  }, [reroll, socket, gameStarted]);
+  }, [reroll, gameStarted]);
 
   return (
     <>
@@ -76,6 +76,7 @@ const GameManager = (props) => {
             socket={socket}
             roomId={roomId}
             gameStatus={gameStatus}
+            rollSound={rollSound}
           />
           <Html position={[-3, 0, 7]} scaleFactor={25}>
             <Button
@@ -99,6 +100,7 @@ const GameManager = (props) => {
             socket={socket}
             gameStatus={gameStatus}
             roomId={roomId}
+            rollSound={rollSound}
           />
         </>
       )}

@@ -11,13 +11,9 @@ import UserThemedDie from "./UserThemedDie";
 import CollisionMesh from "./CollisionMesh";
 import { diceDefaultState } from "./gameState";
 
-const rollSound = () => {
-  new Audio("/diceRoll.m4a").play();
-};
-
 /* istanbul ignore next */
 const UserDiceManager = (props) => {
-  const { setOrbitControl, socket, roomId, gameStatus } = props;
+  const { setOrbitControl, socket, roomId, gameStatus, rollSound } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [userGameReady, setUserReady] = useState(gameStatus);
@@ -101,11 +97,13 @@ const UserDiceManager = (props) => {
       });
       if (!userGameReady) setUserReady(true);
       if (waitingForInit) setWaitingForInit(false);
+      rollSound();
     });
     socket.on("user:getDieRoll", (rotationValue, newImage, index) => {
       imageArray[index].setImages(newImage);
       rotationArray[index].setRotation(rotationValue);
       setWaitingForInit(false);
+      rollSound();
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -158,6 +156,7 @@ UserDiceManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
   gameStatus: PropTypes.bool.isRequired,
   roomId: PropTypes.string.isRequired,
+  rollSound: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };

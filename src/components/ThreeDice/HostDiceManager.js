@@ -10,13 +10,17 @@ import CollisionMesh from "./CollisionMesh";
 import { diceDefaultState } from "./gameState";
 
 const newRotationArray = () => [Math.random(), Math.random(), Math.random()];
-const rollSound = () => {
-  new Audio("/diceRoll.m4a").play();
-};
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
-  const { reroll, setOrbitControl, socket, roomId, gameStatus } = props;
+  const {
+    reroll,
+    setOrbitControl,
+    socket,
+    roomId,
+    gameStatus,
+    rollSound,
+  } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [dicePosition] = useAtom(diceDefaultState);
@@ -247,6 +251,7 @@ DiceManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
   roomId: PropTypes.string.isRequired,
   gameStatus: PropTypes.bool.isRequired,
+  rollSound: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };
