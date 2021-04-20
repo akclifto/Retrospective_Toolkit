@@ -41,7 +41,11 @@ exports[`Components/InfoCard Testing Test clickHandler event 1`] = `
   <div
     className="info-open"
   >
-    <SetInfoCard />
+    <SetInfoCard
+      body3=""
+      buttonName=""
+      buttonOnClick={[Function]}
+    />
   </div>
 </div>
 `;
