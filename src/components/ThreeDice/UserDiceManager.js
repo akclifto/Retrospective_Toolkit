@@ -73,6 +73,7 @@ const UserDiceManager = (props) => {
         rotationArray[index].setRotation(rotationValues[index]);
       });
       setWaitingForInit(false);
+      rollSound();
     });
     socket.on("user:initQueue", (rollObject) => {
       if (rollObject.die === null) {
@@ -82,6 +83,7 @@ const UserDiceManager = (props) => {
           rotationArray[index].setRotation(rollObject.rotation[index]);
         });
         setWaitingForInit(false);
+        rollSound();
       } else {
         // eslint-disable-next-line array-callback-return
         imageArray[rollObject.die].setImages(rollObject.image);
