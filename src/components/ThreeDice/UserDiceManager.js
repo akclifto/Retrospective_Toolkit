@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { BoxBufferGeometry } from "three";
-import { useThree, useFrame } from "react-three-fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -115,7 +114,8 @@ const UserDiceManager = (props) => {
 
   useFrame((state) => {
     const { mouse } = state;
-    const { width, height } = viewport();
+    const { width } = viewport;
+    const { height } = viewport;
     mousePos[0] = (mouse.x * width) / 2;
     mousePos[1] = (mouse.y * height) / 2;
   });

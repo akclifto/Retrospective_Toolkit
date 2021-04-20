@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from "react";
 import { useTexture } from "@react-three/drei";
 import { useBox } from "@react-three/cannon";
@@ -6,6 +5,7 @@ import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { useGesture, useDrag } from "react-use-gesture";
 
+/* istanbul ignore next */
 const singleRollSound = () => {
   new Audio("/diceRoll.m4a").play();
 };
@@ -22,7 +22,6 @@ const ThemedDie = (props) => {
     mousePos,
     rotationValues,
   } = props;
-  // eslint-disable-next-line no-console
   const textures = useTexture([...imageSet]);
 
   const [mesh, api] = useBox(() => ({

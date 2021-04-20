@@ -1,14 +1,14 @@
-/* eslint-disable no-console */
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { BoxBufferGeometry } from "three";
-import { useThree, useFrame } from "react-three-fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import { uniqueImageSet } from "../Dice/Dice";
 import HostThemedDie from "./HostThemedDie";
 import CollisionMesh from "./CollisionMesh";
 import { diceDefaultState } from "./gameState";
 
+/* istanbul ignore next */
 const newRotationArray = () => [Math.random(), Math.random(), Math.random()];
 
 /* istanbul ignore next */
@@ -120,7 +120,6 @@ const DiceManager = (props) => {
 
       socket.emit("host:newRoll", roomId, newRotArray, newImageArray);
     } else if (!userGameReady) {
-      console.log("starting game");
       socket.emit("game:start", roomId, userRotationArray, userImageArray);
       setUserReady(true);
       setInitialRoll(false);
@@ -221,7 +220,8 @@ const DiceManager = (props) => {
 
   useFrame((state) => {
     const { mouse } = state;
-    const { width, height } = viewport();
+    const { width } = viewport;
+    const { height } = viewport;
     mousePos[0] = (mouse.x * width) / 2;
     mousePos[1] = (mouse.y * height) / 2;
   });

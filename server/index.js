@@ -1,41 +1,29 @@
-/* eslint-disable no-console */
 const express = require("express");
+const fs = require('fs');
 
 const app = express();
 const server = require("http").createServer(app);
 
-const production = "https://examplePage.com";
-const development = "http://localhost:3000/";
+const production = `https://retrotoolbox.herokuapp.com/`;
+const development = "http://localhost:5000/";
 
 const options = {
   cors: true,
-  origins: [process.env.NODE_ENV ? production : development],
+  origins: [(process.env.NODE_ENV === "production") ? production : development],
 };
 const io = require("socket.io")(server, options);
-const router = require("./routes");
-const session = require("./middleware/session");
 
-const port = process.env.PORT || 5000;
+const port = (process.env.NODE_ENV === "production") ? "/tmp/nginx.socket" : 5000;
 
 app.use(express.json());
 
 const rooms = [];
 
-// if behind a proxy, uncomment this
-// server.set('trust proxy', 1);
-
-app.use(session);
-app.use(router);
-
 server.listen(port, () =>
-  // eslint-disable-next-line no-console
-  console.log(`server is running on port ${port}`)
+  fs.openSync('/tmp/app-initialized', 'w')
 );
 
 io.on("connection", (socket) => {
-  // functions here
-  console.log("new connection established");
-
   socket.on("is:roomCreated", (roomId) => {
     socket.emit("room:status", !!rooms[roomId]);
   });
@@ -46,32 +34,23 @@ io.on("connection", (socket) => {
 
   socket.on("join:Room", (roomId) => {
     socket.join(roomId);
-    console.log("joined room");
   });
 
   socket.on("board:create", (roomId) => {
-    console.log("board created");
     rooms[roomId] = {
       gameStarted: false,
       rotationValues: [],
       diceImages: {},
       diceQueue: [],
     };
-    console.log("room created");
-    console.log(rooms);
     socket.join(roomId);
-    console.log("joined room");
-    io.sockets.emit("create:complete", "this is from the server!");
   });
 
-  socket.on("board:delete", (roomId) => {
-    delete rooms[roomId];
-    console.log("room deleted");
-    console.log(rooms);
+  io.of("/").adapter.on("delete-room", (room) => {
+    if (room.includes("-")) delete rooms[room];
   });
 
   socket.on("host:newRoll", (roomId, rotationValues, hostImageArray) => {
-    console.log("new roll by host");
     rooms[roomId].rotationValues = rotationValues;
     rooms[roomId].diceImages = hostImageArray;
     rooms[roomId].diceQueue.length = 0;
@@ -79,7 +58,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("host:newDieRoll", (roomId, rotationValue, hostImage, index) => {
-    console.log("new single die roll by host");
     if (rooms[roomId].diceQueue.length === 0)
       rooms[roomId].diceQueue.push({
         rotation: rooms[roomId].rotationValues,
@@ -95,7 +73,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("get:update", (roomId) => {
-    console.log("user requesting update");
     if (rooms[roomId].diceQueue.length === 0) {
       socket.emit(
         "user:init",
@@ -114,7 +91,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("game:start", (roomId, rotationValues, hostImageArray) => {
-    console.log("game started by host");
     rooms[roomId].gameStarted = true;
     rooms[roomId].rotationValues = rotationValues;
     rooms[roomId].diceImages = hostImageArray;

@@ -1,5 +1,5 @@
 import RandomIconSelector from "../../components/RandomIconSelector";
-import IconsArr from "../../constants/IconsDataStructure";
+import IconsArr from "../testhelpers/IconsDataStructure";
 
 beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
