@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -7,8 +8,16 @@ import PropTypes from "prop-types";
 import "../styles/InfoCard.css";
 
 function SetInfoCard(props) {
-  const { body, body2, body3 } = props;
+  const { body, body2, body3, buttonName, buttonOnClick } = props;
 
+  let button;
+  if (buttonName) {
+    button = (
+      <Button variant="contained" color="primary" onClick={buttonOnClick}>
+        {buttonName}
+      </Button>
+    );
+  }
   return (
     <Card className="infoCard--root" variant="outlined">
       <CardContent>
@@ -25,7 +34,7 @@ function SetInfoCard(props) {
           </Typography>
         </div>
       </CardContent>
-      <CardActions />
+      <CardActions> {button} </CardActions>
     </Card>
   );
 }
@@ -44,7 +53,7 @@ class InfoCard extends React.Component {
 
   render() {
     const { showActivityInfo } = this.state;
-    const { title, body, body2, body3 } = this.props;
+    const { title, body, body2, body3, buttonName, buttonOnClick } = this.props;
 
     return (
       <div className="container">
@@ -64,7 +73,13 @@ class InfoCard extends React.Component {
         </button>
         {showActivityInfo ? (
           <div className="info-open">
-            <SetInfoCard body={body} body2={body2} body3={body3} />
+            <SetInfoCard
+              body={body}
+              body2={body2}
+              body3={body3}
+              buttonName={buttonName}
+              buttonOnClick={buttonOnClick}
+            />
           </div>
         ) : (
           <div className="info-close" />
@@ -77,14 +92,30 @@ class InfoCard extends React.Component {
 SetInfoCard.propTypes = {
   body: PropTypes.string.isRequired,
   body2: PropTypes.string.isRequired,
-  body3: PropTypes.string.isRequired,
+  body3: PropTypes.string,
+  buttonName: PropTypes.string,
+  buttonOnClick: PropTypes.func,
+};
+
+SetInfoCard.defaultProps = {
+  body3: "",
+  buttonName: "",
+  buttonOnClick: () => {},
 };
 
 InfoCard.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   body2: PropTypes.string.isRequired,
-  body3: PropTypes.string.isRequired,
+  body3: PropTypes.string,
+  buttonName: PropTypes.string,
+  buttonOnClick: PropTypes.func,
+};
+
+InfoCard.defaultProps = {
+  body3: "",
+  buttonName: "",
+  buttonOnClick: () => {},
 };
 
 export default InfoCard;

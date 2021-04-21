@@ -18,9 +18,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const redirectToDemo = () => {
+  window.location = "https://www.youtube.com/watch?v=WVq6dCgf--M";
+};
+
 // Returns a landing page for the Dice Game
 const DiceLanding = (props) => {
   const { socket, roomId, gameStatus } = props;
+
   const classes = useStyles();
 
   return (
@@ -34,6 +39,8 @@ const DiceLanding = (props) => {
             body3="Each die will land on a random picture. 
             Describe how the picture relates to an experience you had in software development.
             To re-roll all die, click the 'Roll It!' button, to re-roll one die, click on a single die to re-roll."
+            buttonName="Video Demo"
+            buttonOnClick={redirectToDemo}
           />
         </Grid>
         <Grid item xs={12}>
