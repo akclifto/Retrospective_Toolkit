@@ -36,6 +36,7 @@ exports[`ThreeDice/GameManager Testing should do a snapshot test on GameManager 
         Object {
           "$$typeof": Symbol(react.context),
           "Provider": [Function],
+          "_calculateChangedBits": null,
           "_currentRenderer": null,
           "_currentRenderer2": null,
           "_currentValue": Object {

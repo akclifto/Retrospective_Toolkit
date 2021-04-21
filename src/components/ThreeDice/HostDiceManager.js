@@ -1,19 +1,26 @@
-/* eslint-disable no-console */
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { BoxBufferGeometry } from "three";
-import { useThree, useFrame } from "react-three-fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import { uniqueImageSet } from "../Dice/Dice";
 import HostThemedDie from "./HostThemedDie";
 import CollisionMesh from "./CollisionMesh";
 import { diceDefaultState } from "./gameState";
 
+/* istanbul ignore next */
 const newRotationArray = () => [Math.random(), Math.random(), Math.random()];
 
 /* istanbul ignore next */
 const DiceManager = (props) => {
-  const { reroll, setOrbitControl, socket, roomId, gameStatus } = props;
+  const {
+    reroll,
+    setOrbitControl,
+    socket,
+    roomId,
+    gameStatus,
+    rollSound,
+  } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [dicePosition] = useAtom(diceDefaultState);
@@ -113,7 +120,6 @@ const DiceManager = (props) => {
 
       socket.emit("host:newRoll", roomId, newRotArray, newImageArray);
     } else if (!userGameReady) {
-      console.log("starting game");
       socket.emit("game:start", roomId, userRotationArray, userImageArray);
       setUserReady(true);
       setInitialRoll(false);
@@ -148,6 +154,7 @@ const DiceManager = (props) => {
         // eslint-disable-next-line array-callback-return
         imageArray[rollObject.die].setImages(rollObject.image);
         rotationArray[rollObject.die].setRotation(rollObject.rotation);
+        rollSound();
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -213,7 +220,8 @@ const DiceManager = (props) => {
 
   useFrame((state) => {
     const { mouse } = state;
-    const { width, height } = viewport();
+    const { width } = viewport;
+    const { height } = viewport;
     mousePos[0] = (mouse.x * width) / 2;
     mousePos[1] = (mouse.y * height) / 2;
   });
@@ -243,6 +251,7 @@ DiceManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
   roomId: PropTypes.string.isRequired,
   gameStatus: PropTypes.bool.isRequired,
+  rollSound: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };

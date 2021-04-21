@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container/DiceLanding Testing SNAPSHOT: diceLanding 1`] = `
+<div>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-root-1"
+    container={true}
+    direction="row"
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={12}
+    >
+      <InfoCard
+        body="This cube game is intended to promote communication and understanding within a team."
+        body2="How To Play: Click 'Start Game' to roll the dice!"
+        body3="Each die will land on a random picture.  Describe how the picture relates to an experience you had in software development. To re-roll all die, click the 'Roll It!' button, to re-roll one die, click on a single die to re-roll."
+        title="Cube Game"
+      />
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={12}
+    >
+      <ThreeDice />
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</div>
+`;

@@ -1,19 +1,6 @@
-#Docker file for production build
-#Stage 1 Build the backend
-FROM node:alpine
+#This file is no longer used for deployment due to conflicts with Heroku, Socket.io, and NGINX.
+#Had to use Heroku buildpacks to bypass the connection issues
 
-WORKDIR '/backend'
-
-COPY ./server/package.json ./
-COPY ./server/yarn.lock ./
-
-RUN yarn install --production
-
-COPY ./server .
-
-CMD [ "yarn", "start"]
-
-#Stage 2: Build the static files to be hosted by nginx
 FROM node:alpine AS builder
 
 WORKDIR /app
@@ -30,16 +17,33 @@ COPY ./public ./public
 
 RUN yarn run build
 
+#Stage 1 Build the backend
+FROM node:alpine
+
+WORKDIR '/backend'
+
+COPY ./server/package.json ./
+COPY ./server/yarn.lock ./
+
+RUN yarn install --production
+
+COPY ./server .
+
+COPY --from=builder /app/build ./build
+
+CMD [ "yarn", "start"]
+
+#Below no longer works because of socket issues with Heroku
+
+#Stage 2: Build the static files to be hosted by nginx
+
 #Stage 3: Add env variable support, move static files into nginx folder, and serve them
-FROM nginx:alpine
+#FROM nginx:alpine
 
-RUN apk --no-cache add curl
-RUN curl -L https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-`uname -s`-`uname -m` -o envsubst && \
-    chmod +x envsubst && \
-    mv envsubst /usr/local/bin
+#COPY ./nginx.conf /etc/nginx.conf
 
-COPY ./nginx.config /etc/nginx/nginx.template
+#COPY ./retrotoolbox.herokuapp.com.conf /etc/nginx/templates/default.conf.template
 
-CMD ["/bin/sh", "-c", "envsubst < /etc/nginx/nginx.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
+#COPY --from=builder /app/build /usr/share/nginx/html
 
-COPY --from=builder /app/build /usr/share/nginx/html
+#CMD ["nginx", "-g", "daemon off;"]

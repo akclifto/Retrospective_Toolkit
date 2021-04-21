@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Canvas } from "react-three-fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Provider } from "jotai";
@@ -9,7 +9,7 @@ import GameManager from "./GameManager";
 
 const ThreeDice = (props) => {
   const { socket, roomId, gameStatus } = props;
-  // Allows the initDiceImages function to load only once on startup.
+
   const [loading, setLoading] = useState(true);
   const [isEnabled, setOrbitControl] = useState(true);
   /* istanbul ignore next */
@@ -24,7 +24,7 @@ const ThreeDice = (props) => {
         loadDice();
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.log("ThreeDice.useEffect Error: ", e);
+        console.error(e);
       }
     } else {
       setLoading(false);

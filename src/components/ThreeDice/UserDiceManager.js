@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { BoxBufferGeometry } from "three";
-import { useThree, useFrame } from "react-three-fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -13,7 +12,7 @@ import { diceDefaultState } from "./gameState";
 
 /* istanbul ignore next */
 const UserDiceManager = (props) => {
-  const { setOrbitControl, socket, roomId, gameStatus } = props;
+  const { setOrbitControl, socket, roomId, gameStatus, rollSound } = props;
   const geom = useMemo(() => new BoxBufferGeometry(), []);
 
   const [userGameReady, setUserReady] = useState(gameStatus);
@@ -73,6 +72,7 @@ const UserDiceManager = (props) => {
         rotationArray[index].setRotation(rotationValues[index]);
       });
       setWaitingForInit(false);
+      rollSound();
     });
     socket.on("user:initQueue", (rollObject) => {
       if (rollObject.die === null) {
@@ -82,10 +82,12 @@ const UserDiceManager = (props) => {
           rotationArray[index].setRotation(rollObject.rotation[index]);
         });
         setWaitingForInit(false);
+        rollSound();
       } else {
         // eslint-disable-next-line array-callback-return
         imageArray[rollObject.die].setImages(rollObject.image);
         rotationArray[rollObject.die].setRotation(rollObject.rotation);
+        rollSound();
       }
     });
     socket.on("user:getRoll", (rotationValues, imagesArray) => {
@@ -96,11 +98,13 @@ const UserDiceManager = (props) => {
       });
       if (!userGameReady) setUserReady(true);
       if (waitingForInit) setWaitingForInit(false);
+      rollSound();
     });
     socket.on("user:getDieRoll", (rotationValue, newImage, index) => {
       imageArray[index].setImages(newImage);
       rotationArray[index].setRotation(rotationValue);
       setWaitingForInit(false);
+      rollSound();
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -110,7 +114,8 @@ const UserDiceManager = (props) => {
 
   useFrame((state) => {
     const { mouse } = state;
-    const { width, height } = viewport();
+    const { width } = viewport;
+    const { height } = viewport;
     mousePos[0] = (mouse.x * width) / 2;
     mousePos[1] = (mouse.y * height) / 2;
   });
@@ -153,6 +158,7 @@ UserDiceManager.propTypes = {
   setOrbitControl: PropTypes.func.isRequired,
   gameStatus: PropTypes.bool.isRequired,
   roomId: PropTypes.string.isRequired,
+  rollSound: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   socket: PropTypes.object.isRequired,
 };
