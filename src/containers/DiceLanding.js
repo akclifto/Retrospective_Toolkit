@@ -2,7 +2,6 @@
  * This class will be used as a container component that holds the other components in the landing page
  */
 
-/* eslint-disable no-console */
 // Imports
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";

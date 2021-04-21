@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import "../styles/InfoCard.css";
 
 function SetInfoCard(props) {
-  // eslint-disable-next-line
   const { body, body2, body3, buttonName, buttonOnClick } = props;
 
   let button;
