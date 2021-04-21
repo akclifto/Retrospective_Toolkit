@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const redirectToDemo = () => {
-  window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  window.location = "https://www.youtube.com/watch?v=WVq6dCgf--M";
 };
 
 // Returns a landing page for the Dice Game
