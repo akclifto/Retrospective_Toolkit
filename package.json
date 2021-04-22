@@ -10,7 +10,7 @@
     "aws-sdk": "^2.843.0",
     "jotai": "^0.12.6",
     "prop-types": "^15.7.2",
-    "react": "^0.0.0-experimental-25bfa287f",
+    "react": "^0.14.0",
     "react-dom": "^0.0.0-experimental-25bfa287f",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
