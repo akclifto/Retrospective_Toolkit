@@ -23,14 +23,20 @@ const GameManager = (props) => {
   const [gameStarted, setGameState] = useState(gameStatus);
   const [reroll, rerollDice] = useAtom(rerollState);
   const role = getRole();
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(() => ({
     button: {
-      margin: theme.spacing(1),
       width: "120px",
+      background: "#e53935",
+      "&:hover": {
+        background: "#a12725",
+      },
     },
     buttonStart: {
-      margin: theme.spacing(1),
       width: "160px",
+      background: "#e53935",
+      "&:hover": {
+        background: "#a12725",
+      },
     },
   }));
 
@@ -55,7 +61,7 @@ const GameManager = (props) => {
         <ModelLoader url="../../table/BlackRedTable.glb" />
       </Suspense>
       {!gameStarted && role === "host" && (
-        <Html position={[-4, 0, 2]} scaleFactor={25}>
+        <Html center position={[0, 0, 3]} scaleFactor={25}>
           <Button
             variant="contained"
             color="primary"
@@ -79,7 +85,7 @@ const GameManager = (props) => {
             gameStatus={gameStatus}
             rollSound={rollSound}
           />
-          <Html position={[-3, 0, 7]} scaleFactor={25}>
+          <Html center position={[0, 0, 7]} scaleFactor={25}>
             <Button
               variant="contained"
               color="primary"
