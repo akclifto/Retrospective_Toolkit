@@ -9,15 +9,6 @@ import "../styles/InfoCard.css";
 
 function SetInfoCard(props) {
   const { body, body2, body3, buttonName, buttonOnClick } = props;
-
-  let button;
-  if (buttonName) {
-    button = (
-      <Button variant="contained" color="primary" onClick={buttonOnClick}>
-        {buttonName}
-      </Button>
-    );
-  }
   return (
     <Card className="infoCard--root" variant="outlined">
       <CardContent>
@@ -34,7 +25,13 @@ function SetInfoCard(props) {
           </Typography>
         </div>
       </CardContent>
-      <CardActions> {button} </CardActions>
+      <CardActions>
+        {buttonName && (
+          <Button variant="contained" color="primary" onClick={buttonOnClick}>
+            {buttonName}
+          </Button>
+        )}
+      </CardActions>
     </Card>
   );
 }

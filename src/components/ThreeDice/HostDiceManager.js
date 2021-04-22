@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
 import PropTypes from "prop-types";
 import { BoxBufferGeometry } from "three";
-import { useThree, useFrame } from "@react-three/fiber";
+import { useThree, useFrame } from "react-three-fiber";
 import { uniqueImageSet } from "../Dice/Dice";
 import HostThemedDie from "./HostThemedDie";
 import CollisionMesh from "./CollisionMesh";
@@ -220,8 +220,7 @@ const DiceManager = (props) => {
 
   useFrame((state) => {
     const { mouse } = state;
-    const { width } = viewport;
-    const { height } = viewport;
+    const { width, height } = viewport();
     mousePos[0] = (mouse.x * width) / 2;
     mousePos[1] = (mouse.y * height) / 2;
   });

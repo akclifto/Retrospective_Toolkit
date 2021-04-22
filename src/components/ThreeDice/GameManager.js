@@ -118,6 +118,7 @@ GameManager.propTypes = {
 /* istanbul ignore next */
 const ProgressBar = () => {
   const { progress } = useProgress();
+  // eslint-disable-next-line react/jsx-one-expression-per-line
   return <Html center>{Math.trunc(progress)} % loaded</Html>;
 };
 /* istanbul ignore next */
