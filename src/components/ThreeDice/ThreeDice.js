@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas } from "react-three-fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Provider } from "jotai";
