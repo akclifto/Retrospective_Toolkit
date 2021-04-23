@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -8,7 +8,15 @@ import PropTypes from "prop-types";
 import "../styles/InfoCard.css";
 
 function SetInfoCard(props) {
-  const { body, body2, body3, buttonName, buttonOnClick } = props;
+  const { body, body2, body3 } = props;
+  const [isClicked, setClicked] = useState(false);
+  const [buttonText, setText] = useState("Show Demo");
+
+  useEffect(() => {
+    if (isClicked) setText("Hide Demo");
+    else setText("Show Demo");
+  }, [isClicked]);
+
   return (
     <Card className="infoCard--root" variant="outlined">
       <CardContent>
@@ -25,11 +33,27 @@ function SetInfoCard(props) {
           </Typography>
         </div>
       </CardContent>
-      <CardActions>
-        {buttonName && (
-          <Button variant="contained" color="primary" onClick={buttonOnClick}>
-            {buttonName}
-          </Button>
+      <CardActions className="infoCard-demo">
+        <Button
+          className="infocard-demo-button"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            setClicked(!isClicked);
+          }}
+        >
+          {buttonText}
+        </Button>
+
+        {isClicked && (
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube-nocookie.com/embed/W8J6FHGf9lQ"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          />
         )}
       </CardActions>
     </Card>
@@ -50,7 +74,7 @@ class InfoCard extends React.Component {
 
   render() {
     const { showActivityInfo } = this.state;
-    const { title, body, body2, body3, buttonName, buttonOnClick } = this.props;
+    const { title, body, body2, body3 } = this.props;
 
     return (
       <div className="container">
@@ -70,13 +94,7 @@ class InfoCard extends React.Component {
         </button>
         {showActivityInfo ? (
           <div className="info-open">
-            <SetInfoCard
-              body={body}
-              body2={body2}
-              body3={body3}
-              buttonName={buttonName}
-              buttonOnClick={buttonOnClick}
-            />
+            <SetInfoCard body={body} body2={body2} body3={body3} />
           </div>
         ) : (
           <div className="info-close" />
@@ -90,14 +108,10 @@ SetInfoCard.propTypes = {
   body: PropTypes.string.isRequired,
   body2: PropTypes.string.isRequired,
   body3: PropTypes.string,
-  buttonName: PropTypes.string,
-  buttonOnClick: PropTypes.func,
 };
 
 SetInfoCard.defaultProps = {
   body3: "",
-  buttonName: "",
-  buttonOnClick: () => {},
 };
 
 InfoCard.propTypes = {
@@ -105,14 +119,10 @@ InfoCard.propTypes = {
   body: PropTypes.string.isRequired,
   body2: PropTypes.string.isRequired,
   body3: PropTypes.string,
-  buttonName: PropTypes.string,
-  buttonOnClick: PropTypes.func,
 };
 
 InfoCard.defaultProps = {
   body3: "",
-  buttonName: "",
-  buttonOnClick: () => {},
 };
 
 export default InfoCard;
