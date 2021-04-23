@@ -48,10 +48,13 @@ const UserDiceManager = (props) => {
     { rotation: rotationFive, setRotation: setRotationFive },
   ];
 
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(() => ({
     buttonStart: {
-      margin: theme.spacing(1),
-      width: "160px",
+      width: "280px",
+      background: "#e53935",
+      "&:hover": {
+        background: "#a12725",
+      },
     },
   }));
 
@@ -122,7 +125,7 @@ const UserDiceManager = (props) => {
   return (
     <>
       {!userGameReady && (
-        <Html position={[-4, 0, 2]} scaleFactor={25}>
+        <Html center position={[0, 0, 3.3]} scaleFactor={25}>
           <Button
             variant="contained"
             color="primary"
